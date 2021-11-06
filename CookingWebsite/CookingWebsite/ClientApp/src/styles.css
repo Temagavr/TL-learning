@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #FEFEFB;
+  background: url('assets/background.png') repeat-y;
+  background-size: contain;
+}
+
+app-tags-type {
+  width: 278px;
+}
+
+.content-block {
+  width: 1200px;
+  margin: 0 auto;
+}

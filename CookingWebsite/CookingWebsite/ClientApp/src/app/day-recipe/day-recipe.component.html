@@ -1,0 +1,28 @@
+<div class="day-recipe-comp">
+  <div class="day-recipe-img-block">
+    <img class="" src="{{dayRecipe.imageUrl}}"/>
+  </div>
+
+  <div class="day-recipe-info">
+
+    <div class="day-recipe-head">
+      <div class="day-recipe-head-comp">
+        <img class="head-icon like-icon" src="../../assets/likeIcon.png"/>
+        <span class="head-comp-text">{{dayRecipe.likes}}</span>
+      </div>
+      <div class="day-recipe-head-comp">
+        <img class="head-icon" src="../../assets/timerIcon.png" />
+        <span class="head-comp-text">{{dayRecipe.time}} минут</span>
+      </div>
+    </div>
+
+    <div class="day-recipe-icon-block">
+      <img class="day-recipe-icon" src="../../assets/dayRecipeIcon.png"/>
+    </div>
+
+    <div class="day-recipe-text">
+      <h2 class="day-recipe-title">{{dayRecipe.title}}</h2>
+      <p class="day-recipe-descr">{{dayRecipe.description}}</p>
+    </div>
+  </div>
+</div>
