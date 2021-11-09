@@ -1,0 +1,25 @@
+<div class="modal-shadow">
+  <div class="modal-window">
+    <div class="closing-block">
+      <img (click)="closeModal()" class="close-modal-button" src="../../../../../assets/closeModalButton.png" />
+    </div>
+    <form class="modal-content-custom">
+      <h3 class="modal-title">Регистрация</h3>
+      <input class="big-modal-input" placeholder="Имя" />
+      <input class="big-modal-input" placeholder="Логин" />
+
+      <div class="little-inputs-block">
+        <input class="big-modal-input little-modal-input" type="password" placeholder="Пароль" />
+        <input class="big-modal-input little-modal-input" type="password" placeholder="Повторите пароль" />
+      </div>
+
+      <span class="password-warning">Минимум 8 символов</span>
+
+      <div class="modal-buttons-block">
+        <button class="login-modal-button modal-button">Зарегистрироваться</button>
+        <button (click)="closeModal()" class="cancel-modal-button modal-button">Отмена</button>
+      </div>
+      <span class="modal-advice" (click)="switchModal()">У меня уже есть аккаунт</span>
+    </form>
+  </div>
+</div>

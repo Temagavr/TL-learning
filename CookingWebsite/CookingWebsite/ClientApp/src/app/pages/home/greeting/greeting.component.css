@@ -3,6 +3,10 @@
   margin-top: 10%;
 }
 
+button {
+  border: none;
+}
+
 .greeting-head {
   font-size: 72px;
   line-height: 88px;
@@ -23,6 +27,7 @@
 
 .greeting-btns-block {
   margin-top: 5%;
+  height: 60px;
 }
 
 .greeting-btn {
@@ -49,4 +54,5 @@
   width: 216px;
   border: 1px solid #FDB100;
   color: #FDB100;
+  background: #FFFFFF;
 }

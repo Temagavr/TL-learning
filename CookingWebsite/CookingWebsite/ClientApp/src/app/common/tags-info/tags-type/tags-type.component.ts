@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Tag } from '../../app.component';
+import { Tag } from '../Tag';
 
 @Component({
   selector: 'app-tags-type',

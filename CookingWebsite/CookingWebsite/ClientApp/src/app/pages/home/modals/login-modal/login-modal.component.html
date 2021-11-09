@@ -1,0 +1,17 @@
+<div class="modal-shadow">
+  <div class="modal-window">
+    <div class="closing-block">
+      <img (click)="closeModal()" class="close-modal-button" src="../../../../../assets/closeModalButton.png"/>
+    </div>
+    <form class="modal-content-custom">
+      <h3 class="modal-title">Войти</h3>
+      <input class="big-modal-input" placeholder="Логин" />
+      <input class="big-modal-input" type="password" placeholder="Пароль" />
+      <div class="modal-buttons-block">
+        <button class="login-modal-button modal-button">Войти</button>
+        <button (click)="closeModal()" class="cancel-modal-button modal-button">Отмена</button>
+      </div>
+      <span class="modal-advice" (click)="switchModal()">У меня еще нет аккаунта</span>
+    </form>
+  </div>
+</div>

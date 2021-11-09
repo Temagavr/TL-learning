@@ -1,0 +1,8 @@
+.modal-description {
+  font-size: 18px;
+  line-height: 28px;
+  color: #4A525A;
+  font-feature-settings: 'case' on;
+  width: 90%;
+  margin-bottom: 7%;
+}

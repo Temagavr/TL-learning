@@ -5,35 +5,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
+import { HomeModule } from './pages/home/home.module';
+import { RecipesListPageModule } from './pages/recipes-list-page/recipes-list-page.module';
 
-import { GreetingComponent } from './greeting/greeting.component';
-import { TagsInfoComponent } from './tags-info/tags-info.component';
-import { TagsTypeComponent } from './tags-info/tags-type/tags-type.component';
-import { FooterComponent } from './footer/footer.component';
-import { DayRecipeComponent } from './day-recipe/day-recipe.component';
-import { HomeSearchComponent } from './home-search/home-search.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    GreetingComponent,
-    TagsInfoComponent,
-    TagsTypeComponent,
-    DayRecipeComponent,
-    HomeSearchComponent,
+    HeaderComponent,
     FooterComponent
   ],
   imports: [
+    HomeModule,
+    RecipesListPageModule,
+
+    AppRoutingModule,
+
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-    ])
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
