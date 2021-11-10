@@ -1,24 +1,30 @@
-import { Component} from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
+import { UserInteractionService } from 'src/app/common/services/user-interaction.service';
 
 import { DayRecipe } from './day-recipe';
+import { LoginModalComponent } from './modals/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  isLoginModal = false;
-
   isGreetingModal = false;
 
   isRegistrationModal = false;
+
+  constructor(
+    private userInteractionService: UserInteractionService
+  ) {
+  }
 
   toggleRegistrationModal() {
     this.isRegistrationModal = !this.isRegistrationModal;
   }
 
-  toggleLoginModal() {
-    this.isLoginModal = !this.isLoginModal;
+  showLoginModal() {
+    // Тут в showModal можно, например, отправлять какие то данные, если надо
+    this.userInteractionService.showLoginModal();
   }
 
   toggleGreetingModal() {
@@ -26,18 +32,18 @@ export class HomeComponent {
   }
 
   switchToRegistration() {
-    this.toggleLoginModal();
-    this.toggleRegistrationModal();
+    // this.showLoginModal();
+    // this.toggleRegistrationModal();
   }
 
   switchToLogin() {
     this.toggleRegistrationModal();
-    this.toggleLoginModal();
+    // this.toggleLoginModal();
   }
 
   switchToLoginFrGreeting() {
     this.toggleGreetingModal();
-    this.toggleLoginModal();
+    // this.toggleLoginModal();
   }
 
   switchToRegistrationFrGreeting() {

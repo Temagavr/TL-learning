@@ -4,20 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { RecipesListPageModule } from './pages/recipes-list-page/recipes-list-page.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { AppComponent } from './app.component';
+import { UserInteractionService } from './common/services/user-interaction.service';
+import { LoginModalComponent } from './pages/home/modals/login-modal/login-modal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginModalComponent
   ],
   imports: [
     HomeModule,
@@ -29,7 +32,7 @@ import { FooterComponent } from './common/footer/footer.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserInteractionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

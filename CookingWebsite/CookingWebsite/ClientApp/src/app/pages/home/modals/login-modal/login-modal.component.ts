@@ -7,16 +7,20 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 })
 export class LoginModalComponent {
+  isShowed = false;
 
-  @Output() loginToggle = new EventEmitter();
+  @Output() onClose = new EventEmitter();
 
-  @Output() switchToRegistration = new EventEmitter();
+  @Output() onShow = new EventEmitter();
 
-  closeModal() {
-    this.loginToggle.emit();
+  close() {
+    this.isShowed = false;
+    this.onClose.emit();
   }
 
-  switchModal() {
-    this.switchToRegistration.emit();
+  show() {
+    // тут, например, можно чистить логин пароль если надо
+    this.isShowed = true;
+    this.onShow.emit();
   }
 }

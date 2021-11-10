@@ -1,12 +1,11 @@
 <div class="content-block">
   <div class="top-content">
     <img class="background-top" src="../../../assets/homeBackgroundTop.png"/>
-    <app-greeting (openGreeting)="toggleGreetingModal()" (openLogin)="toggleLoginModal()"></app-greeting>
+    <app-greeting (openGreeting)="toggleGreetingModal()" (openLogin)="showLoginModal()"></app-greeting>
   </div>
   <app-tags></app-tags>
   <app-day-recipe [dayRecipe]="dayRecipe"></app-day-recipe>
   <app-home-search></app-home-search>
-  <app-login-modal *ngIf="isLoginModal" (loginToggle)="toggleLoginModal()" (switchToRegistration)="switchToRegistration()"></app-login-modal>
   <app-greeting-modal *ngIf="isGreetingModal" (greetingToggle)="toggleGreetingModal()"
           (switchToLogin)="switchToLoginFrGreeting()" (switchToRegistration)="switchToRegistrationFrGreeting()"></app-greeting-modal>
   <app-registration-modal *ngIf="isRegistrationModal" (registrationToggle)="toggleRegistrationModal()" (switchToLogin)="switchToLogin()"></app-registration-modal>

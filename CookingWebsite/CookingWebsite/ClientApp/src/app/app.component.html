@@ -1,7 +1,8 @@
 <div>
-  <app-header></app-header>
+  <app-header (onUserEnterClicked)="showLoginModal()"></app-header>
   <div class="main-background">
     <router-outlet></router-outlet>
   </div>
   <app-footer></app-footer>
+  <app-login-modal (onClose)="doSmthOnCloseLoginModal()" (onShow)="doSmthOnOpenLoginModal()"></app-login-modal>
 </div>

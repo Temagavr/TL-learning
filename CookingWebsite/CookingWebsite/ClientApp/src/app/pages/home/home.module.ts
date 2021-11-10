@@ -26,7 +26,6 @@ import { RegistrationModalComponent } from './modals/registration-modal/registra
     TagsInfoComponent,
     TagsTypeComponent,
 
-    LoginModalComponent,
     GreetingModalComponent,
     RegistrationModalComponent
   ],
