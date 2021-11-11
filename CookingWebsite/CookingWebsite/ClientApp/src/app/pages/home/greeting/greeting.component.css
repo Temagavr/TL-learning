@@ -18,12 +18,14 @@ button {
   width: 75%;
   font-size: 18px;
   line-height: 28px;
+  font-weight: 600;
 }
 
 .greeting-text {
   display: block;
-  margin-top: 2%;
+  margin-top: 3%;
   color: #4A525A;
+  font-weight: normal;
 }
 
 .greeting-btns-block {

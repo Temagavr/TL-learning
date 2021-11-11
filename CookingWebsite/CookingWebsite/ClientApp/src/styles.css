@@ -5,12 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
 
 html {
-    font-family: 'Montserrat', sans-serif;
+  
 }
 
 body {
   min-width: 1024px !important;
   background-color: #FEFEFB;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 .background-top {
@@ -19,7 +20,6 @@ body {
   right: 0;
   width: 40%;
 }
-
 
 app-tags-type {
   width: 278px;
