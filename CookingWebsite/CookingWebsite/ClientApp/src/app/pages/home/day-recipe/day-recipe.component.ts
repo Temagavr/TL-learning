@@ -8,7 +8,5 @@ import { DayRecipe } from '../day-recipe';
   styleUrls: ['./day-recipe.component.css']
 })
 export class DayRecipeComponent {
-
   @Input() dayRecipe: DayRecipe;
-
 }

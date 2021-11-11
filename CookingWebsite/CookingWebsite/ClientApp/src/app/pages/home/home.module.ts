@@ -12,10 +12,6 @@ import { HomeSearchComponent } from './home-search/home-search.component';
 import { TagsInfoComponent } from '../../common/tags-info/tags-info.component';
 import { TagsTypeComponent } from '../../common/tags-info/tags-type/tags-type.component';
 
-import { LoginModalComponent } from './modals/login-modal/login-modal.component';
-import { GreetingModalComponent } from './modals/greeting-modal/greeting-modal.component';
-import { RegistrationModalComponent } from './modals/registration-modal/registration-modal.component';
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -26,9 +22,6 @@ import { RegistrationModalComponent } from './modals/registration-modal/registra
     TagsInfoComponent,
     TagsTypeComponent,
 
-    LoginModalComponent,
-    GreetingModalComponent,
-    RegistrationModalComponent
   ],
   imports: [CommonModule, HomeRoutingModule],
   providers: [],

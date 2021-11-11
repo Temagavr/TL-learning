@@ -1,7 +1,7 @@
-<div class="modal-shadow">
+<div class="modal-shadow" [hidden]="!isShowedRegistration">
   <div class="modal-window">
     <div class="closing-block">
-      <img (click)="closeModal()" class="close-modal-button" src="../../../../../assets/closeModalButton.png" />
+      <img (click)="close()" class="close-modal-button" src="../../../../../assets/closeModalButton.png" />
     </div>
     <form class="modal-content-custom">
       <h3 class="modal-title">Регистрация</h3>
@@ -16,10 +16,10 @@
       <span class="password-warning">Минимум 8 символов</span>
 
       <div class="modal-buttons-block">
-        <button class="login-modal-button modal-button">Зарегистрироваться</button>
-        <button (click)="closeModal()" class="cancel-modal-button modal-button">Отмена</button>
+        <button (click)="registration()" class="login-modal-button modal-button">Зарегистрироваться</button>
+        <button (click)="close()" class="cancel-modal-button modal-button">Отмена</button>
       </div>
-      <span class="modal-advice" (click)="switchModal()">У меня уже есть аккаунт</span>
+      <span class="modal-advice" (click)="switchToLogin()">У меня уже есть аккаунт</span>
     </form>
   </div>
 </div>

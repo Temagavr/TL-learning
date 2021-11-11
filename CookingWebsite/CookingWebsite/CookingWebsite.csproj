@@ -38,9 +38,9 @@
     <None Remove="ClientApp\src\app\common\tags-info\tags-info.component.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-type\tags-type.component.ts" />
     <None Remove="ClientApp\src\app\pages\home\home.module.ts" />
-    <None Remove="ClientApp\src\app\pages\home\modals\greeting-modal\greeting-modal.component.ts" />
-    <None Remove="ClientApp\src\app\pages\home\modals\login-modal\login-modal.component.ts" />
-    <None Remove="ClientApp\src\app\pages\home\modals\registration-modal\registration-modal.component.ts" />
+    <None Remove="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
+    <None Remove="ClientApp\src\app\common\modals\login-modal\login-modal.component.ts" />
+    <None Remove="ClientApp\src\app\common\modals\registration-modal\registration-modal.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
@@ -63,9 +63,9 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-info.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-type\tags-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home.module.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\pages\home\modals\greeting-modal\greeting-modal.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\pages\home\modals\login-modal\login-modal.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\pages\home\modals\registration-modal\registration-modal.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\modals\login-modal\login-modal.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\modals\registration-modal\registration-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />

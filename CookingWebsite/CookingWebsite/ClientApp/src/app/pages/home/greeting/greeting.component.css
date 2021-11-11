@@ -10,7 +10,8 @@ button {
 .greeting-head {
   font-size: 72px;
   line-height: 88px;
-  color: #25292D
+  color: #25292D;
+  font-weight: bold;
 }
 
 .regular-text-style {
