@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { DayRecipe } from '../DayRecipe';
+import { DayRecipe } from '../day-recipe';
 
 @Component({
   selector: 'app-day-recipe',

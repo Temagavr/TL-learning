@@ -5,11 +5,13 @@ import { RecipesListPageRoutingModule } from './recipes-list-page-routing.module
 
 import { RecipesListPageComponent } from './recipes-list-page.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
+import { RecipesTitleComponent } from './title/title.component';
 
 @NgModule({
   declarations: [
     RecipesListPageComponent,
-    RecipesListComponent
+    RecipesListComponent,
+    RecipesTitleComponent
   ],
   imports: [CommonModule, RecipesListPageRoutingModule],
   exports: [],

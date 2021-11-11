@@ -138,3 +138,14 @@ app-tags-type {
   .modal-advice:hover {
     cursor: pointer;
   }
+
+.yellow-btn {
+  padding: 16px;
+  display: block;
+  border-radius: 16px;
+  background: #FDB100;
+  width: 278px;
+  height: 60px;
+  color: #FFFFFF;
+  text-align: center;
+}
