@@ -1,0 +1,17 @@
+<div class="modal-shadow" [hidden]="!isShowedGreeting">
+  <div class="modal-window">
+    <div class="closing-block">
+      <img (click)="close()" class="close-modal-button" src="../../../../../assets/closeModalButton.png" />
+    </div>
+    <div class="modal-content-custom">
+      <h3 class="modal-title">Войдите в профиль</h3>
+      <p class="modal-description">
+        Добавлять рецепты могут только зарегистрированные пользователи.
+      </p>
+      <div class="modal-buttons-block">
+        <button (click)="switchToLogin()" class="login-modal-button modal-button">Войти</button>
+        <button (click)="switchToRegistration()" class="cancel-modal-button modal-button">Регистрация</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="content-block">
+  <div class="top-content">
+    <img class="background-top" src="../../../assets/homeBackgroundTop.png"/>
+    <app-greeting (openGreeting)="showGreetingModal()" (openLogin)="showLoginModal()"></app-greeting>
+  </div>
+  <app-tags></app-tags>
+  <app-day-recipe [dayRecipe]="dayRecipe"></app-day-recipe>
+  <app-home-search></app-home-search>
+</div>

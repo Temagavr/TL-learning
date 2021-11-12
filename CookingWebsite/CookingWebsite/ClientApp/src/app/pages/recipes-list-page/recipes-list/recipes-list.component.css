@@ -1,0 +1,15 @@
+.load-more-block {
+  display: flex;
+  justify-content: center;
+}
+
+.load-more-btn {
+  border: 1px solid #FDB100;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: #FDB100;
+  height: 60px;
+  padding: 16px;
+  width: 20%;
+  text-align: center;
+}

@@ -1,0 +1,10 @@
+<div>
+  <app-header (onUserEnterClicked)="showLoginModal()"></app-header>
+  <div class="main-background">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+  <app-login-modal (onClose)="doSmthOnCloseLoginModal()" (onShow)="doSmthOnOpenLoginModal()" (onSwitchToRegistration)="switchToRegistration()" (onLoginClick)="doSmthOnLoginClick()"></app-login-modal>
+  <app-registration-modal (onSwitchToLogin)="switchToLogin()" (onRegistrationClick)="doSmthOnRegistrationClick()"></app-registration-modal>
+  <app-greeting-modal (onSwitchToLogin)="switchToLogin()" (onSwitchToRegistration)="switchToRegistration()"></app-greeting-modal>
+</div>

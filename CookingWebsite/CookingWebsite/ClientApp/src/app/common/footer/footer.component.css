@@ -1,0 +1,34 @@
+footer {
+  display: flex;
+  margin-top: 5%;
+  background-color: #FBF9F4;
+  height: 113px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  height: 50px;
+  margin: auto;
+}
+
+.footer-logo {
+  font-size: 32px;
+  line-height: 39px;
+  font-weight: bold;
+  color: #FDB100;
+}
+
+.copyright-block {
+  display: flex;
+  vertical-align: middle;
+}
+
+.copyright {
+  margin: auto 0;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #4A525A;
+}
