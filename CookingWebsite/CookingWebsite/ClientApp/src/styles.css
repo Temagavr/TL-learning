@@ -28,6 +28,7 @@ app-tags-type {
 .main-background {
   background: url('assets/background.png') repeat-y;
   background-size: cover;
+  padding-bottom: 5%;
 }
 
 .content-block {
@@ -148,4 +149,7 @@ app-tags-type {
   height: 60px;
   color: #FFFFFF;
   text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
 }

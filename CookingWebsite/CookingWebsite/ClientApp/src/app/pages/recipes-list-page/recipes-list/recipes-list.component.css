@@ -1,6 +1,7 @@
 .load-more-block {
   display: flex;
   justify-content: center;
+  margin-top: 7%;
 }
 
 .load-more-btn {
@@ -13,3 +14,7 @@
   width: 20%;
   text-align: center;
 }
+
+  .load-more-btn:hover {
+    cursor: pointer;
+  }

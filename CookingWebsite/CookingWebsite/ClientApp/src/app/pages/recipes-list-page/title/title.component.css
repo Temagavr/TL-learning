@@ -10,3 +10,8 @@
   color: #25292D;
   font-weight: bold;
 }
+
+a:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
