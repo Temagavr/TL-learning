@@ -20,6 +20,8 @@ export class AppComponent {
 
   title = 'app';
 
+  userName = 'Татьяна';
+
   constructor(
     userInteractionService: UserInteractionService
   ) {
@@ -36,6 +38,10 @@ export class AppComponent {
 
   showLoginModal() {
     this.loginModal.show();
+  }
+
+  UserLogOut() {
+    console.log('User log out');
   }
 
   doSmthOnCloseLoginModal() {

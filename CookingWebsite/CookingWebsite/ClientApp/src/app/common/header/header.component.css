@@ -49,6 +49,7 @@ a {
   font-size: 18px;
   line-height: 22px;
   font-weight: 600;
+  display: flex;
 }
 
 .sign-in-btn {
@@ -62,3 +63,26 @@ a {
 .login-img {
   height: 38px;
 }
+
+.logined-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.vertical-line {
+  border: 1px solid rgba(253, 177, 0, 0.72);
+  transform: rotate(90deg);
+  width: 19px;
+  height: 0px;
+  margin-left: 15px;
+}
+
+.log-out-btn {
+  height: 24px;
+  margin-left: 15px;
+}
+
+  .log-out-btn:hover {
+    cursor: pointer;
+  }

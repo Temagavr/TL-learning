@@ -11,6 +11,18 @@ export class RecipeCardComponent {
 
   @Input() recipeInfo: RecipeCard;
 
+  rightPersons: string;
+
+  ngOnInit(): void {
+    if (this.recipeInfo.personsCount < 2) {
+      this.rightPersons = 'персону';
+    } else if (this.recipeInfo.personsCount > 1 && this.recipeInfo.personsCount < 5) {
+      this.rightPersons = 'персоны';
+    } else {
+      this.rightPersons = 'персон';
+    }
+  }
+
   likeRecipe() {
     this.recipeInfo.isLiked = !this.recipeInfo.isLiked;
     if (this.recipeInfo.isLiked) {

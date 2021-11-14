@@ -8,22 +8,14 @@ import { HomeModule } from './pages/home/home.module';
 import { RecipesListPageModule } from './pages/recipes-list-page/recipes-list-page.module';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './common/header/header.component';
-import { FooterComponent } from './common/footer/footer.component';
 import { AppComponent } from './app.component';
 import { UserInteractionService } from './common/services/user-interaction.service';
-import { LoginModalComponent } from './common/modals/login-modal/login-modal.component';
-import { RegistrationModalComponent } from './common/modals/registration-modal/registration-modal.component';
-import { GreetingModalComponent } from './common/modals/greeting-modal/greeting-modal.component';
+import { SharedModule } from './common/shared.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    LoginModalComponent,
-    RegistrationModalComponent,
-    GreetingModalComponent
+    AppComponent
   ],
   imports: [
     HomeModule,
@@ -33,7 +25,8 @@ import { GreetingModalComponent } from './common/modals/greeting-modal/greeting-
 
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [UserInteractionService],
   bootstrap: [AppComponent]

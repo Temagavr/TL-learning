@@ -1,5 +1,5 @@
 <div>
-  <app-header (onUserEnterClicked)="showLoginModal()"></app-header>
+  <app-header (onUserLogOutClicked)="UserLogOut()" (onUserEnterClicked)="showLoginModal()" [userName]="userName"></app-header>
   <div class="main-background">
     <router-outlet></router-outlet>
   </div>

@@ -103,11 +103,16 @@
 .recipe-metric-block {
   display: flex;
   flex-direction: row;
-  margin-right: 21%;
+  margin-right: 17%;
+  width: 45%;
 }
 
 .recipe-metric-img {
   height: 64px;
+}
+
+.persons-img {
+  margin-right: 6%;
 }
 
 .recipe-metric-text-block {

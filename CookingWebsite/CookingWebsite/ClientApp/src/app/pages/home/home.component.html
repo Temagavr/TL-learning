@@ -3,7 +3,7 @@
     <img class="background-top" src="../../../assets/homeBackgroundTop.png"/>
     <app-greeting (openGreeting)="showGreetingModal()" (openLogin)="showLoginModal()"></app-greeting>
   </div>
-  <app-tags></app-tags>
+  <app-tags-info [tagsList]="tagsInfo"></app-tags-info>
   <app-day-recipe [dayRecipe]="dayRecipe"></app-day-recipe>
   <app-home-search></app-home-search>
 </div>

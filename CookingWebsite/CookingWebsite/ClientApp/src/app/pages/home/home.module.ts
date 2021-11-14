@@ -9,21 +9,16 @@ import { GreetingComponent } from './greeting/greeting.component';
 import { DayRecipeComponent } from './day-recipe/day-recipe.component';
 import { HomeSearchComponent } from './home-search/home-search.component';
 
-import { TagsInfoComponent } from '../../common/tags-info/tags-info.component';
-import { TagsTypeComponent } from '../../common/tags-info/tags-type/tags-type.component';
+import { SharedModule } from '../../common/shared.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
     GreetingComponent,
     DayRecipeComponent,
-    HomeSearchComponent,
-
-    TagsInfoComponent,
-    TagsTypeComponent,
-
+    HomeSearchComponent
   ],
-  imports: [CommonModule, HomeRoutingModule],
+  imports: [CommonModule, HomeRoutingModule, SharedModule],
   providers: [],
 })
 export class HomeModule { }

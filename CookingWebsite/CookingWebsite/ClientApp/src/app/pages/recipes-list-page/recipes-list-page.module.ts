@@ -7,15 +7,19 @@ import { RecipesListPageComponent } from './recipes-list-page.component';
 import { RecipesTitleComponent } from './title/title.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
+import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
+
+import { SharedModule } from '../../common/shared.module';
 
 @NgModule({
   declarations: [
     RecipesListPageComponent,
     RecipesTitleComponent,
     RecipesListComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    RecipeSearchComponent
   ],
-  imports: [CommonModule, RecipesListPageRoutingModule],
+  imports: [CommonModule, RecipesListPageRoutingModule, SharedModule],
   exports: [],
   providers: [],
 })
