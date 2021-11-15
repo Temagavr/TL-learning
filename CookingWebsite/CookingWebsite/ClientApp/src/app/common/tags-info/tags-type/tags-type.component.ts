@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-
 import { Tag } from '../Tag';
 
 @Component({
@@ -9,6 +8,6 @@ import { Tag } from '../Tag';
 })
 export class TagsTypeComponent {
 
-  @Input() tag: Tag
+  @Input() tag: Tag;
 
 }

@@ -5,6 +5,7 @@ import { Tag } from '../../common/tags-info/Tag';
 @Component({
   selector: 'app-recipes-list-page',
   templateUrl: './recipes-list-page.component.html',
+  styleUrls: ['./recipes-list-page.component.css']
 })
 export class RecipesListPageComponent {
 

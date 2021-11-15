@@ -16,3 +16,11 @@
   line-height: 32px;
   color: #4A525A;
 }
+
+.background-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+}
+

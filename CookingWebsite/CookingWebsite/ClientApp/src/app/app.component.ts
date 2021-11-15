@@ -46,7 +46,7 @@ export class AppComponent {
     this.loginModal.show();
   }
 
-  UserLogOut() {
+  userLogOut() {
     console.log('User log out');
   }
 

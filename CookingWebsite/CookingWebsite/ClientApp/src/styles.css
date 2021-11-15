@@ -14,14 +14,6 @@ body {
   font-family: 'Montserrat', sans-serif !important;
 }
 
-.background-top {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40%;
-  z-index: -1;
-}
-
 app-tags-type {
   width: 278px;
 }

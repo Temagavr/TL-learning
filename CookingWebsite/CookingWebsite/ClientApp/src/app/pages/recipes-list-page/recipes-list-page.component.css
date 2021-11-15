@@ -1,0 +1,3 @@
+:host ::ng-deep app-tags-list app-tags-type:hover {
+  cursor: pointer;
+}
