@@ -9,4 +9,9 @@ export class SearchInputComponent {
 
   @Input() recommendsTags: string[];
 
+  inputValue = '';
+
+  callInput(tagName) {
+    this.inputValue = tagName;
+  }
 }

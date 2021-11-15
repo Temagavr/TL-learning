@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Tag } from '../Tag';
 
 @Component({
@@ -10,4 +10,9 @@ export class TagsTypeComponent {
 
   @Input() tag: Tag;
 
+  @Output() clickTag = new EventEmitter();
+
+  callInput(tagName) {
+    this.clickTag.emit(tagName);
+  }
 }

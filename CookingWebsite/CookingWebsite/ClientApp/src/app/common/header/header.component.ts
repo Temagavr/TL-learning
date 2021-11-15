@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,8 +19,6 @@ export class HeaderComponent {
 
   @Output() onUserLogOutClicked = new EventEmitter();
 
-  @Output() onNavMenuClicked = new EventEmitter();
-
   enterByUser() {
     this.onUserEnterClicked.emit();
   }
@@ -28,8 +27,30 @@ export class HeaderComponent {
     this.onUserLogOutClicked.emit();
   }
     
-  changePage(pageTitle: string) {
-    console.log(pageTitle);
-    this.onNavMenuClicked.emit(pageTitle);
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    this.router.events
+      .subscribe((event: NavigationEnd) => {
+        if (this.router.url == '/') {
+
+          this.isHome = true;
+          this.isRecipes = false;
+          this.isFavourites = false;
+
+        } else if (this.router.url == '/recipes') {
+
+          this.isRecipes = true;
+          this.isHome = false;
+          this.isFavourites = false;
+
+        } else if (this.router.url == '/favourite') {
+
+          this.isFavourites = true;
+          this.isHome = false;
+          this.isRecipes = false;
+
+        }
+      });
   }
 }

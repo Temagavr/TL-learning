@@ -7,7 +7,6 @@ import { RecipesListPageComponent } from './recipes-list-page.component';
 import { RecipesTitleComponent } from './title/title.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
-import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
 
 import { SharedModule } from '../../common/shared.module';
 
@@ -16,8 +15,7 @@ import { SharedModule } from '../../common/shared.module';
     RecipesListPageComponent,
     RecipesTitleComponent,
     RecipesListComponent,
-    RecipeCardComponent,
-    RecipeSearchComponent
+    RecipeCardComponent
   ],
   imports: [CommonModule, RecipesListPageRoutingModule, SharedModule],
   exports: [],

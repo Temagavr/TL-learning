@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
 })
 export class RecipeSearchComponent {
 
-  recommendsList = ['мясо', 'деликатесы', 'пироги', 'рыба', 'пост', 'пасха2021'];
 
 }
