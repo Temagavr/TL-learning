@@ -9,6 +9,7 @@ import { Tag } from '../../common/tags-info/Tag';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   

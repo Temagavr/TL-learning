@@ -8,7 +8,6 @@ import { GreetingModalComponent } from './modals/greeting-modal/greeting-modal.c
 import { LoginModalComponent } from './modals/login-modal/login-modal.component';
 import { RegistrationModalComponent } from './modals/registration-modal/registration-modal.component';
 
-import { TagsInfoComponent } from './tags-info/tags-info.component';
 import { TagsTypeComponent } from './tags-info/tags-type/tags-type.component';
 import { TagsListComponent } from './tags-info/tags-list/tags-list.component';
 
@@ -16,7 +15,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
 
 @NgModule({
   declarations: [
-    TagsInfoComponent,
     TagsTypeComponent,
     TagsListComponent,
     HeaderComponent,
@@ -28,7 +26,6 @@ import { SearchInputComponent } from './search-input/search-input.component';
   ],
   imports: [CommonModule],
   exports: [
-    TagsInfoComponent,
     TagsTypeComponent,
     HeaderComponent,
     FooterComponent,

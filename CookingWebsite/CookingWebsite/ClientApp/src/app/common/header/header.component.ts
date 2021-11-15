@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -26,33 +25,28 @@ export class HeaderComponent {
   isRecipes = false;
 
   isFavourite = false;
-
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-    this.router.events
-      .subscribe((event: NavigationEnd) => {
-        if (this.router.url == '/') {
-
-          this.isHome = true;
-          this.isRecipes = false;
-          this.isFavourite = false;
-
-        } else if (this.router.url == '/recipes') {
-
-          this.isRecipes = true;
-          this.isHome = false;
-          this.isFavourite = false;
-
-        } else if (this.router.url == '/favourite') {
-
-          this.isFavourite = true;
-          this.isHome = false;
-          this.isRecipes = false;
-
-        }
-      });
-
     
+  changePage(pageTitle:string) {
+    if (pageTitle == 'home') {
+
+      this.isHome = true;
+      this.isRecipes = false;
+      this.isFavourite = false;
+
+    } else if (pageTitle == 'recipes') {
+
+      this.isRecipes = true;
+      this.isHome = false;
+      this.isFavourite = false;
+
+    } else if (pageTitle == 'favourite') {
+
+      this.isFavourite = true;
+      this.isHome = false;
+      this.isRecipes = false;
+
+    }
+
+    console.log(pageTitle);
   }
 }

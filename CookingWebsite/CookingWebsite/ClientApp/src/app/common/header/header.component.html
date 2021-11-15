@@ -2,9 +2,9 @@
   <div class="navigation">
     <span class="title">Recipes</span>
     <ul>
-      <li><a [class.nav-element]="!isHome" [class.current-page]="isHome" href="/">Главная</a></li>
-      <li><a [class.nav-element]="!isRecipes" [class.current-page]="isRecipes" href="/recipes">Рецепты</a></li>
-      <li><a [class.nav-element]="!isFavourite" [class.current-page]="isFavourite" href="/">Избранное</a></li>
+      <li (click)="changePage('home')"><a [class.nav-element]="!isHome" [class.current-page]="isHome" href="/">Главная</a></li>
+      <li (click)="changePage('recipes')"><a [class.nav-element]="!isRecipes" [class.current-page]="isRecipes" href="/recipes">Рецепты</a></li>
+      <li (click)="changePage('favourites')"><a [class.nav-element]="!isFavourite" [class.current-page]="isFavourite" href="/">Избранное</a></li>
     </ul>
   </div>
 

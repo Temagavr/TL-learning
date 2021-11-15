@@ -1,9 +1,15 @@
 <div class="content-block">
   <div class="top-content">
-    <img class="background-top" src="../../../assets/homeBackgroundTop.png"/>
+    <img class="background-top" src="../../../assets/homeBackgroundTop.png" />
     <app-greeting (openGreeting)="showGreetingModal()" (openLogin)="showLoginModal()"></app-greeting>
   </div>
-  <app-tags-info [tagsList]="tagsInfo"></app-tags-info>
+
+  <div class="tags-sort-block">
+    <h2 class="tags-sort-title">Умная сортировка по тегам</h2>
+    <span class="tags-info-descr">Добавляй рецепты и указывай наиболее популярные теги. Это позволит быстро находить любые категории.</span>
+    <app-tags-list [tagsList]="tagsInfo"></app-tags-list>
+  </div>
+
   <app-day-recipe [dayRecipe]="dayRecipe"></app-day-recipe>
   <app-home-search></app-home-search>
 </div>
