@@ -15,10 +15,10 @@
   padding: 0 3%;
 }
 
-  .search-input:focus {
-    color: #000000;
-    outline: none;
-  }
+.search-input:focus {
+  color: #000000;
+  outline: none;
+}
 
 .search-btn {
   border-width: 0px;
@@ -51,6 +51,6 @@
   color: #808080;
 }
 
-  .recomend-el:hover {
-    cursor: pointer;
-  }
+.recomend-el:hover {
+  cursor: pointer;
+}

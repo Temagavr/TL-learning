@@ -56,9 +56,9 @@ a {
   margin-left: 15px;
 }
 
-  .sign-in-btn:hover {
-    cursor: pointer;
-  }
+.sign-in-btn:hover {
+  cursor: pointer;
+}
 
 .login-img {
   height: 38px;
@@ -83,6 +83,6 @@ a {
   margin-left: 15px;
 }
 
-  .log-out-btn:hover {
-    cursor: pointer;
-  }
+.log-out-btn:hover {
+  cursor: pointer;
+}

@@ -54,9 +54,9 @@ app-tags-type {
   height: 24px;
 }
 
-  .close-modal-button:hover {
-    cursor: pointer;
-  }
+.close-modal-button:hover {
+  cursor: pointer;
+}
 
 .modal-content-custom {
   width: 580px;
@@ -95,10 +95,10 @@ app-tags-type {
   color: rgba(37, 41, 45, 0.5);
 }
 
-  .big-modal-input:focus {
-    color: #25292D;
-    outline: none;
-  }
+.big-modal-input:focus {
+  color: #25292D;
+  outline: none;
+}
 
 .login-modal-button {
   border: none;
@@ -136,9 +136,9 @@ app-tags-type {
   width: max-content;
 }
 
-  .modal-advice:hover {
-    cursor: pointer;
-  }
+.modal-advice:hover {
+  cursor: pointer;
+}
 
 .yellow-btn {
   padding: 16px;
