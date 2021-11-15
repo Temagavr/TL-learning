@@ -1,6 +1,8 @@
 export class RecipeCard {
   imageUrl: string;
 
+  authorUsername: string
+
   title: string;
   description: string;
 

@@ -8,9 +8,17 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 export class HeaderComponent {
   @Input() userName: string;
 
+  @Input() isHome: boolean;
+
+  @Input() isRecipes: boolean;
+
+  @Input() isFavourites: boolean;
+
   @Output() onUserEnterClicked = new EventEmitter();
 
   @Output() onUserLogOutClicked = new EventEmitter();
+
+  @Output() onNavMenuClicked = new EventEmitter();
 
   enterByUser() {
     this.onUserEnterClicked.emit();
@@ -19,34 +27,9 @@ export class HeaderComponent {
   LogOut() {
     this.onUserLogOutClicked.emit();
   }
-
-  isHome = false;
-
-  isRecipes = false;
-
-  isFavourite = false;
     
-  changePage(pageTitle:string) {
-    if (pageTitle == 'home') {
-
-      this.isHome = true;
-      this.isRecipes = false;
-      this.isFavourite = false;
-
-    } else if (pageTitle == 'recipes') {
-
-      this.isRecipes = true;
-      this.isHome = false;
-      this.isFavourite = false;
-
-    } else if (pageTitle == 'favourite') {
-
-      this.isFavourite = true;
-      this.isHome = false;
-      this.isRecipes = false;
-
-    }
-
+  changePage(pageTitle: string) {
     console.log(pageTitle);
+    this.onNavMenuClicked.emit(pageTitle);
   }
 }

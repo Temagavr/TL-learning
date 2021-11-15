@@ -10,6 +10,23 @@
   z-index: 1;
 }
 
+.recipe-author {
+  display: block;
+  width: max-content;
+  position: relative;
+  bottom: 70px;
+  background: #FFFFFF;
+  color: #FDB100;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 600;
+  height: 32px;
+  padding: 0 6.4% 0 19px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  z-index: 2;
+}
+
 .recipe-img {
   height: 100%;
 }

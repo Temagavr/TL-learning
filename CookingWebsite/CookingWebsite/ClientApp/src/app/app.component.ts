@@ -22,6 +22,12 @@ export class AppComponent {
 
   userName = 'Татьяна';
 
+  isHome = true;
+
+  isRecipes = false;
+
+  isFavourites = false;
+
   constructor(
     userInteractionService: UserInteractionService
   ) {
@@ -77,5 +83,30 @@ export class AppComponent {
 
   doSmthOnRegistrationClick() {
     console.log('Try to registration');
+  }
+
+
+  changePage(pageTitle: string) {
+    if (pageTitle == 'home') {
+
+      this.isHome = true;
+      this.isRecipes = false;
+      this.isFavourites = false;
+
+    } else if (pageTitle == 'recipes') {
+
+      this.isRecipes = true;
+      this.isHome = false;
+      this.isFavourites = false;
+
+    } else if (pageTitle == 'favourite') {
+
+      this.isFavourites = true;
+      this.isHome = false;
+      this.isRecipes = false;
+
+    }
+
+    console.log(pageTitle);
   }
 }

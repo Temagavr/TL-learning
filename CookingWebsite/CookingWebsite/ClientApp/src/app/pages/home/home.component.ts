@@ -28,7 +28,8 @@ export class HomeComponent {
   }
 
   dayRecipe: DayRecipe = {
-    imageUrl: '../../assets/dayRecipeExample.png',
+    imageUrl: '../../assets/dayRecipeExamWithoutUsername.png',
+    authorUsername: 'glazest',
     title: 'Тыквенный Супчик На Кокосовом Молоке',
     description: 'Если у вас осталась тыква, и вы не знаете что с ней сделать, то это решение для вас! Ароматный, согревающий суп-пюре на кокосовом молоке. Можно даже в Пост!',
     likes: 356,
