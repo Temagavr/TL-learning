@@ -38,7 +38,6 @@
     <None Remove="ClientApp\src\app\common\header\header.component.ts" />
     <None Remove="ClientApp\src\app\pages\home\home-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\home\home-search\home-search.component.ts" />
-    <None Remove="ClientApp\src\app\common\tags-info\tags-info.component.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-type\tags-type.component.ts" />
     <None Remove="ClientApp\src\app\pages\home\home.module.ts" />
     <None Remove="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
@@ -67,7 +66,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\header\header.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home-search\home-search.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-info.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-type\tags-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
