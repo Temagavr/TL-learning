@@ -10,9 +10,9 @@ export class TagsTypeComponent {
 
   @Input() tag: Tag;
 
-  @Output() clickTag = new EventEmitter();
+  @Output() tagClicked = new EventEmitter();
 
   callInput(tagName) {
-    this.clickTag.emit(tagName);
+    this.tagClicked.emit(tagName);
   }
 }

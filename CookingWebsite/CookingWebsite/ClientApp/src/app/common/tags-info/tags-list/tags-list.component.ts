@@ -10,9 +10,9 @@ import { Tag } from '../Tag';
 export class TagsListComponent {
   @Input() tagsList: Tag[];
 
-  @Output() clickTag = new EventEmitter();
+  @Output() tagClicked = new EventEmitter();
 
-  testCall(tagName) {
-    this.clickTag.emit(tagName);
+  callInput(tagName) {
+    this.tagClicked.emit(tagName);
   }
 }

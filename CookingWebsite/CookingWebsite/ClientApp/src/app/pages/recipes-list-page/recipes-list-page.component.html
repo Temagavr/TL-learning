@@ -1,6 +1,6 @@
 <div class="content-block">
   <app-recipes-title></app-recipes-title>
-  <app-tags-list (clickTag)="callInput($event)" [tagsList]="tagsInfo"></app-tags-list>
+  <app-tags-list (tagClicked)="insertTagValue($event)" [tagsList]="tagsInfo"></app-tags-list>
 
   <div class="recipe-search-block">
     <h3 class="recipe-search-title">Поиск рецепта</h3>

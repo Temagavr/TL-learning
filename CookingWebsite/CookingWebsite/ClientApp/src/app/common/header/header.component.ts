@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Link } from './link';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +9,6 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class HeaderComponent {
   @Input() userName: string;
-
-  @Input() isHome: boolean;
-
-  @Input() isRecipes: boolean;
-
-  @Input() isFavourites: boolean;
 
   @Output() onUserEnterClicked = new EventEmitter();
 
@@ -29,28 +24,24 @@ export class HeaderComponent {
     
   constructor(private router: Router) { }
 
+  linksList: Link[] = [
+    { name: 'Главная', url: '/', isActive: false },
+    { name: 'Рецепты', url: '/recipes', isActive: false },
+    { name: 'Избранное', url: '/favourites', isActive: false }
+  ];
+
   ngOnInit(): void {
+
     this.router.events
       .subscribe((event: NavigationEnd) => {
-        if (this.router.url == '/') {
+        this.linksList.forEach(function (link) {
+          link.isActive = false;
+        });
 
-          this.isHome = true;
-          this.isRecipes = false;
-          this.isFavourites = false;
-
-        } else if (this.router.url == '/recipes') {
-
-          this.isRecipes = true;
-          this.isHome = false;
-          this.isFavourites = false;
-
-        } else if (this.router.url == '/favourite') {
-
-          this.isFavourites = true;
-          this.isHome = false;
-          this.isRecipes = false;
-
+        if (this.linksList.some(x => x.url == this.router.url)) {
+          this.linksList.filter(x => x.url == this.router.url)[0].isActive = true;
         }
       });
   }
+
 }

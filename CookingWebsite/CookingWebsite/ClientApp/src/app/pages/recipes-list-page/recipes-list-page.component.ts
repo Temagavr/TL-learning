@@ -13,7 +13,7 @@ export class RecipesListPageComponent {
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;
 
-  callInput(tagName) {
+  insertTagValue(tagName) {
     this.searchInput.callInput(tagName);
   }
 

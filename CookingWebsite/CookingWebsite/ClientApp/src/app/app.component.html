@@ -1,6 +1,5 @@
 <div>
-  <app-header (onUserLogOutClicked)="userLogOut()" (onUserEnterClicked)="showLoginModal()" (onNavMenuClicked)="changePage($event)"
-              [isHome]="isHome" [isRecipes]="isRecipes" [isFavourites]="isFavourites" [userName]="userName"></app-header>
+  <app-header (onUserLogOutClicked)="userLogOut()" (onUserEnterClicked)="showLoginModal()" (onNavMenuClicked)="changePage($event)" [userName]="userName"></app-header>
   <div class="main-background">
     <router-outlet></router-outlet>
   </div>
