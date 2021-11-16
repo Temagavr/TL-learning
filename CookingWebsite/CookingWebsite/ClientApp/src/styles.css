@@ -9,16 +9,9 @@ html {
 }
 
 body {
-  min-width: 1024px !important;
+  min-width: 1200px !important;
   background-color: #FEFEFB;
   font-family: 'Montserrat', sans-serif !important;
-}
-
-.background-top {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40%;
 }
 
 app-tags-type {
@@ -28,6 +21,7 @@ app-tags-type {
 .main-background {
   background: url('assets/background.png') repeat-y;
   background-size: cover;
+  padding-bottom: 5%;
 }
 
 .content-block {
@@ -53,9 +47,9 @@ app-tags-type {
   height: 24px;
 }
 
-  .close-modal-button:hover {
-    cursor: pointer;
-  }
+.close-modal-button:hover {
+  cursor: pointer;
+}
 
 .modal-content-custom {
   width: 580px;
@@ -94,10 +88,10 @@ app-tags-type {
   color: rgba(37, 41, 45, 0.5);
 }
 
-  .big-modal-input:focus {
-    color: #25292D;
-    outline: none;
-  }
+.big-modal-input:focus {
+  color: #25292D;
+  outline: none;
+}
 
 .login-modal-button {
   border: none;
@@ -135,9 +129,9 @@ app-tags-type {
   width: max-content;
 }
 
-  .modal-advice:hover {
-    cursor: pointer;
-  }
+.modal-advice:hover {
+  cursor: pointer;
+}
 
 .yellow-btn {
   padding: 16px;
@@ -148,4 +142,7 @@ app-tags-type {
   height: 60px;
   color: #FFFFFF;
   text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
 }

@@ -25,9 +25,13 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
+    <None Remove="ClientApp\src\app\common\header\link.ts" />
     <None Remove="ClientApp\src\app\common\recipe-card\recipe-card.component.ts" />
     <None Remove="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
+    <None Remove="ClientApp\src\app\common\search-input\search-input.component.ts" />
+    <None Remove="ClientApp\src\app\common\shared.module.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\Tag.ts" />
+    <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <None Remove="ClientApp\src\app\common\footer\footer.component.ts" />
@@ -35,12 +39,12 @@
     <None Remove="ClientApp\src\app\common\header\header.component.ts" />
     <None Remove="ClientApp\src\app\pages\home\home-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\home\home-search\home-search.component.ts" />
-    <None Remove="ClientApp\src\app\common\tags-info\tags-info.component.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-type\tags-type.component.ts" />
     <None Remove="ClientApp\src\app\pages\home\home.module.ts" />
     <None Remove="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
     <None Remove="ClientApp\src\app\common\modals\login-modal\login-modal.component.ts" />
     <None Remove="ClientApp\src\app\common\modals\registration-modal\registration-modal.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipes-list-page\recipe-search\recipe-search.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
@@ -50,9 +54,13 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\header\link.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\search-input\search-input.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\Tag.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\footer\footer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe.ts" />
@@ -60,12 +68,12 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\header\header.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home-search\home-search.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-info.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-type\tags-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\modals\login-modal\login-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\modals\registration-modal\registration-modal.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipe-search\recipe-search.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />

@@ -2,14 +2,20 @@
   <div class="navigation">
     <span class="title">Recipes</span>
     <ul>
-      <li><a class="current-page" routerLink="/">Главная</a></li>
-      <li><a class="nav-element" routerLink="/recipes">Рецепты</a></li>
-      <li><a class="nav-element" href="/">Избранное</a></li>
+      <li *ngFor="let link of linksList"><a [class.nav-element]="!link.isActive" [class.current-page]="link.isActive" href="{{link.url}}">{{link.name}}</a></li>
+      <!--<li><a [class.nav-element]="!isHome" [class.current-page]="isHome" href="/">Главная</a></li>
+      <li><a [class.nav-element]="!isRecipes" [class.current-page]="isRecipes" href="/recipes">Рецепты</a></li>
+      <li><a [class.nav-element]="!isFavourite" [class.current-page]="isFavourites" href="/">Избранное</a></li>-->
     </ul>
   </div>
 
   <div class="sign-in">
     <img class="login-img" src="../../assets/loginIcon.png" />
-    <span class="sign-in-btn" (click)="enterByUser()">Войти</span>
+    <span *ngIf="userName == ''" class="sign-in-btn" (click)="enterByUser()">Войти</span>
+    <div *ngIf="userName != ''" class="logined-user">
+      <span class="sign-in-btn user-name">Привет, {{userName}}</span>
+      <hr class="vertical-line" />
+      <img (click)="LogOut()" class="log-out-btn" src="../../../assets/exitAppIcon.png" />
+    </div>
   </div>
 </header>

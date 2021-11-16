@@ -1,27 +1,56 @@
 <div class="recipe-card">
   <div class="recipe-img-block">
-    <img src="/"/>
+    <img class="recipe-img" src="{{recipeInfo.imageUrl}}" />
+    <span class="recipe-author">@{{recipeInfo.authorUsername}}</span>
   </div>
 
   <div class="recipe-info">
-    <div class="recipe-top">
+    <div class="recipe-info-content">
+      <div class="recipe-top">
+        <div class="recipe-tags-block">
+          <div class="recipe-tag-bacgrd" *ngFor="let recipeTag of recipeInfo.tags">
+            <span class="recipe-tag">{{recipeTag}}</span>
+          </div>
+        </div>
 
-    </div>
+        <div class="recipe-card-btns-block">
+          <button (click)="favouriteRecipe()" class="recipe-card-btn">
+            <img [hidden]="recipeInfo.isFavourite" class="favourite-icon" src="../../../assets/recipes-list-page/starIcon.png" />
+            <img [hidden]="!recipeInfo.isFavourite" class="favourite-icon" src="../../../assets/recipes-list-page/coloredStarIcon.png"/>
+            <span class="recipe-card-btn-font">{{recipeInfo.favourite}}</span>
+          </button>
 
-    <div class="recipe-body">
-      <h3 class="recipe-title">Test Title</h3>
-      <p class="recipe-descr">test description for recipe</p>
-    </div>
-
-    <div class="recipe-metrics">
-      <div class="recipe-time">
-
+          <button (click)="likeRecipe()" class="recipe-card-btn">
+            <img [hidden]="recipeInfo.isLiked" class="favourite-icon" src="../../../assets/recipes-list-page/recipeLikeIcon.png" />
+            <img [hidden]="!recipeInfo.isLiked" class="favourite-icon" src="../../../assets/recipes-list-page/recipeLikePressedIcon.png" />
+            <span class="recipe-card-btn-font">{{recipeInfo.likes}}</span>
+          </button>
+        </div>
       </div>
 
-      <div class="recipe-persons">
-
+      <div class="recipe-body">
+        <h3 class="recipe-title">{{recipeInfo.title}}</h3>
+        <p class="recipe-descr">{{recipeInfo.description}}</p>
       </div>
-    </div>
 
+      <div class="recipe-metrics">
+        <div class="recipe-metric-block">
+          <img class="recipe-metric-img" src="../../../assets/recipes-list-page/recipeTimer.png"/>
+          <div class="recipe-metric-text-block">
+            <span class="recipe-metric-title">Время приготовления:</span>
+            <span class="recipe-metric-value">{{recipeInfo.time}} минут</span>
+          </div>
+        </div>
+
+        <div class="recipe-metric-block">
+          <img class="recipe-metric-img persons-img" src="../../../assets/recipes-list-page/recipePersons.png" />
+          <div class="recipe-metric-text-block">
+            <span class="recipe-metric-title">Рецепт на:</span>
+            <span class="recipe-metric-value">{{recipeInfo.personsCount}} {{rightPersons}}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

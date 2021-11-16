@@ -1,0 +1,30 @@
+.recipe-search-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 5% 0;
+}
+
+.recipe-search {
+  width: 85%;
+}
+
+.recipe-search-title {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: bold;
+  width: max-content;
+  display: block;
+}
+
+:host ::ng-deep .search-input-block {
+  justify-content: flex-end !important;
+}
+
+:host ::ng-deep .recomends-list-block {
+  width: 84% !important;
+}
+
+:host ::ng-deep app-tags-list app-tags-type:hover {
+  cursor: pointer;
+}

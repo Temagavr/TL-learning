@@ -18,6 +18,7 @@ export class LoginModalComponent {
   @Output() onLoginClick = new EventEmitter();
 
   close() {
+    event.preventDefault();
     this.isShowed = false;
     this.onClose.emit();
   }

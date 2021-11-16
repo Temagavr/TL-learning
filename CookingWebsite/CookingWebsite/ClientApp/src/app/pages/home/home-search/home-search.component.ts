@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-search.component.css']
 })
 export class HomeSearchComponent {
-  
+
+  recommendsList = ['Мясо', 'Деликатесы', 'Пироги', 'Рыба'];
+
 }

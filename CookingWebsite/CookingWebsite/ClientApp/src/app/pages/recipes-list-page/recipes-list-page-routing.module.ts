@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RecipesListPageComponent } from './recipes-list-page.component';
 import { NgModule } from '@angular/core';
 
+
 const routes: Routes = [
   {
     path: 'recipes',

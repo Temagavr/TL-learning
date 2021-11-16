@@ -4,16 +4,20 @@ import { NgModule } from '@angular/core';
 import { RecipesListPageRoutingModule } from './recipes-list-page-routing.module';
 
 import { RecipesListPageComponent } from './recipes-list-page.component';
-import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipesTitleComponent } from './title/title.component';
+import { RecipesListComponent } from './recipes-list/recipes-list.component';
+import { RecipeCardComponent } from '../../common/recipe-card/recipe-card.component';
+
+import { SharedModule } from '../../common/shared.module';
 
 @NgModule({
   declarations: [
     RecipesListPageComponent,
+    RecipesTitleComponent,
     RecipesListComponent,
-    RecipesTitleComponent
+    RecipeCardComponent
   ],
-  imports: [CommonModule, RecipesListPageRoutingModule],
+  imports: [CommonModule, RecipesListPageRoutingModule, SharedModule],
   exports: [],
   providers: [],
 })

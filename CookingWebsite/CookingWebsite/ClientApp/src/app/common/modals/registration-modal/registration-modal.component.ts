@@ -20,6 +20,7 @@ export class RegistrationModalComponent {
   @Output() onRegistrationClick = new EventEmitter();
 
   close() {
+    event.preventDefault();
     this.isShowedRegistration = false;
     this.onClose.emit();
   }

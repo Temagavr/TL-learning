@@ -1,0 +1,11 @@
+<div class="search-block">
+  <div class="search-input-block">
+    <input [value]="inputValue" class="search-input" placeholder="Название Блюда...." />
+    <button class="search-btn">Поиск</button>
+  </div>
+  <div class="recomends-list-block">
+    <ul class="recomends-list">
+      <li class="recomend-el" *ngFor="let recommendWord of recommendsTags">{{recommendWord}}</li>
+    </ul>
+  </div>
+</div>
