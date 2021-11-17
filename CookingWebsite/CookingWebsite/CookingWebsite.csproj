@@ -81,6 +81,16 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Modules\RecipesModule\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CookingWebsite.Application\CookingWebsite.Application.csproj" />
+    <ProjectReference Include="..\CookingWebsite.Domain\CookingWebsite.Domain.csproj" />
+    <ProjectReference Include="..\CookingWebsite.Infrastructure\CookingWebsite.Infrastructure.csproj" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
