@@ -4,10 +4,10 @@ import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { RecipeIngredient } from './recipe-ingredient';
 
 @Component({
-  selector: 'app-recipe-info-page',
-  templateUrl: './recipe-info-page.component.html'
+  selector: 'app-recipe-details',
+  templateUrl: './recipe-details.component.html'
 })
-export class RecipeInfoPageComponent {
+export class RecipeDetailsComponent {
 
   recipeCard: RecipeCard = {
     imageUrl: '../../../assets/recipes-list-page/recipeExpl1WithoutUsername.png',

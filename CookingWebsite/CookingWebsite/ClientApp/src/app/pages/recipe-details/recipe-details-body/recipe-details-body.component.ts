@@ -3,11 +3,11 @@ import { Component, Input } from '@angular/core';
 import { RecipeIngredient } from '../recipe-ingredient';
 
 @Component({
-  selector: 'app-recipe-info-body',
-  templateUrl: './recipe-info-body.component.html',
-  styleUrls: ['./recipe-info-body.component.css']
+  selector: 'app-recipe-details-body',
+  templateUrl: './recipe-details-body.component.html',
+  styleUrls: ['./recipe-details-body.component.css']
 })
-export class RecipeInfoBodyComponent {
+export class RecipeDetailsBodyComponent {
 
   @Input() recipeSteps: string[];
 
