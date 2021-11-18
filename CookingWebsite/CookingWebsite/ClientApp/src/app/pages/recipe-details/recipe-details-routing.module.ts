@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
-    path: 'recipes/1',
+    path: 'recipes/:id',
     component: RecipeDetailsComponent
   }
 ];
