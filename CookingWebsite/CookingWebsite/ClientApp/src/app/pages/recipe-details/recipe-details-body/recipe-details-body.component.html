@@ -1,0 +1,19 @@
+<div class="recipe-info-body">
+  <div class="recipe-ingredients-block">
+    <span class="ingredients-block-title">Ингредиенты</span>
+    <div class="ingredients-block" *ngFor="let ingredientBlock of recipeIngredients">
+      <span class="title-style">{{ingredientBlock.title}}</span>
+      <ul class="ingredients-list">
+        <li class="ingredient regular-text-style" *ngFor="let ingredient of ingredientBlock.ingredientsList">{{ingredient.name}} - {{ingredient.value}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="recipe-steps-block">
+    <div *ngFor="let step of recipeSteps; let idx = index" class="step">
+      <span class="title-style">Шаг {{idx + 1}}</span>
+      <p class="step-description regular-text-style">{{step}}</p>
+    </div>
+    <span class="recipe-steps-end">Приятного Аппетита!</span>
+  </div>
+</div>

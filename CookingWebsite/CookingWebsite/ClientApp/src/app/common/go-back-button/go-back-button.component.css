@@ -1,0 +1,21 @@
+.go-back-btn-block {
+  display: flex;
+}
+
+.go-back-btn-block:hover {
+  cursor: pointer;
+}
+
+.go-back-arrow {
+  height: 24px;
+}
+
+.go-back-btn {
+  display: flex;
+  vertical-align: middle;
+  margin-left: 10px;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FDB100;
+  font-weight: 500;
+}

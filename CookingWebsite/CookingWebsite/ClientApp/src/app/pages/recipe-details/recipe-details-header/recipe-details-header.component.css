@@ -1,0 +1,40 @@
+.recipe-info-header-block {
+  margin-top: 3%;
+}
+
+.recipe-info-header {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-btns-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.edit-btn {
+  border: none;
+  line-height: 26px;
+  display: flex;
+  padding: 16px 35px;
+}
+
+.edit-icon {
+  height: 24px;
+  margin-right: 20px;
+}
+
+.delete-recipe-btn {
+  border-radius: 16px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(145, 150, 161, 0.7);
+  background: #FFFFFF;
+}
+
+.trash-icon{
+  height: 24px;
+}
