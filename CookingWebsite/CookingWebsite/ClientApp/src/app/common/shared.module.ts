@@ -12,6 +12,8 @@ import { TagsTypeComponent } from './tags-info/tags-type/tags-type.component';
 import { TagsListComponent } from './tags-info/tags-list/tags-list.component';
 
 import { SearchInputComponent } from './search-input/search-input.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { GoBackButtonComponent } from './go-back-button/go-back-button.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SearchInputComponent } from './search-input/search-input.component';
     GreetingModalComponent,
     LoginModalComponent,
     RegistrationModalComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    RecipeCardComponent,
+    GoBackButtonComponent
   ],
   imports: [CommonModule],
   exports: [
@@ -33,7 +37,9 @@ import { SearchInputComponent } from './search-input/search-input.component';
     LoginModalComponent,
     RegistrationModalComponent,
     TagsListComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    RecipeCardComponent,
+    GoBackButtonComponent
   ]
 })
 export class SharedModule { }

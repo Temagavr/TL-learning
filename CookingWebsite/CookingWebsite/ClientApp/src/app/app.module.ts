@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomeModule } from './pages/home/home.module';
 import { RecipesListPageModule } from './pages/recipes-list-page/recipes-list-page.module';
+import { RecipeInfoPageModule } from './pages/recipe-info-page/recipe-info-page.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { SharedModule } from './common/shared.module';
   imports: [
     HomeModule,
     RecipesListPageModule,
+    RecipeInfoPageModule,
 
     AppRoutingModule,
 
