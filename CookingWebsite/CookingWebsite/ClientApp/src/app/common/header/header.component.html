@@ -3,9 +3,6 @@
     <span class="title">Recipes</span>
     <ul>
       <li *ngFor="let link of linksList"><a [class.nav-element]="!link.isActive" [class.current-page]="link.isActive" href="{{link.url}}">{{link.name}}</a></li>
-      <!--<li><a [class.nav-element]="!isHome" [class.current-page]="isHome" href="/">Главная</a></li>
-      <li><a [class.nav-element]="!isRecipes" [class.current-page]="isRecipes" href="/recipes">Рецепты</a></li>
-      <li><a [class.nav-element]="!isFavourite" [class.current-page]="isFavourites" href="/">Избранное</a></li>-->
     </ul>
   </div>
 
