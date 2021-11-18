@@ -1,4 +1,6 @@
+import { RecipeIngredientItem } from './recipe-ingredient-item';
+
 export interface RecipeIngredient {
-  name: string;
-  value: string;
+  title: string;
+  ingredientsList: RecipeIngredientItem[];
 }

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { RecipeIngredientsList } from '../recipe-ingredients-list';
+import { RecipeIngredient } from '../recipe-ingredient';
 
 @Component({
   selector: 'app-recipe-info-body',
@@ -11,6 +11,6 @@ export class RecipeInfoBodyComponent {
 
   @Input() recipeSteps: string[];
 
-  @Input() recipeIngredients: RecipeIngredientsList[];
+  @Input() recipeIngredients: RecipeIngredient[];
 
 }

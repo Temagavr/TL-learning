@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
-import { RecipeIngredientsList } from './recipe-ingredients-list';
+import { RecipeIngredient } from './recipe-ingredient';
 
 @Component({
   selector: 'app-recipe-info-page',
   templateUrl: './recipe-info-page.component.html'
-  //styleUrls: ['./recipe-info-page.component.css']
 })
 export class RecipeInfoPageComponent {
 
@@ -24,7 +23,7 @@ export class RecipeInfoPageComponent {
     personsCount: 5
   };
 
-  recipeIngredients: RecipeIngredientsList[] = [
+  recipeIngredients: RecipeIngredient[] = [
     {
       title: 'Для панна котты',
       ingredientsList: [
