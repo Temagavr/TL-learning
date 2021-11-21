@@ -1,8 +1,10 @@
 using CookingWebsite.Infrastructure;
+using CookingWebsite.Infrastructure.Foundation;
 using CookingWebsite.Modules.HomeModule;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,11 +33,20 @@ namespace CookingWebsite
              {
                  configuration.RootPath = "ClientApp/dist";
              } );
+
+            services.AddDbContext<CookingWebsiteDbContext>(c =>
+               c.UseSqlServer(Configuration.GetConnectionString("CookingWebsiteConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
         {
+            using IServiceScope scope = app.ApplicationServices.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<CookingWebsiteDbContext>();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
+
             if ( env.IsDevelopment() )
             {
                 app.UseDeveloperExceptionPage();

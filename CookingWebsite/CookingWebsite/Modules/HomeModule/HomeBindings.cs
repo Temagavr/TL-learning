@@ -8,7 +8,7 @@ namespace CookingWebsite.Modules.HomeModule
 {
     public static class HomeBindings
     {
-        public IServiceCollection AddHomeModule( this IServiceCollection services )
+        public static IServiceCollection AddHomeModule( this IServiceCollection services )
         {
             return services;
         }

@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 
 namespace CookingWebsite.Modules.HomeModule
 {
-    public class RecipeMapper
+    public static class RecipeMapper
     {
-        public RecipeOfDayDto Map( this Recipe recipe )
+        /*
+        public static RecipeOfDayDto Map( this Recipe recipe )
         {
-
+            return new RecipeOfDayDto();
         }
+        */
     }
 }

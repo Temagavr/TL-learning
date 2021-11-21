@@ -14,12 +14,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Modules\RecipesModule\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Modules\RecipesModule\**" />
+    <EmbeddedResource Remove="Modules\RecipesModule\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Modules\RecipesModule\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -98,13 +103,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\RecipesModule\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CookingWebsite.Application\CookingWebsite.Application.csproj" />
     <ProjectReference Include="..\CookingWebsite.Domain\CookingWebsite.Domain.csproj" />
     <ProjectReference Include="..\CookingWebsite.Infrastructure\CookingWebsite.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
