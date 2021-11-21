@@ -34,8 +34,10 @@ namespace CookingWebsite
                  configuration.RootPath = "ClientApp/dist";
              } );
 
-            services.AddDbContext<CookingWebsiteDbContext>(c =>
-               c.UseSqlServer(Configuration.GetConnectionString("CookingWebsiteConnection")));
+            services.AddDbContext<CookingWebsiteDbContext>(
+               x => x.UseSqlServer(Configuration.GetConnectionString("CookingWebsiteConnection"),
+               x => x.MigrationsAssembly( "CookingWebsite.Migrations" ) )
+            );
 
         }
 

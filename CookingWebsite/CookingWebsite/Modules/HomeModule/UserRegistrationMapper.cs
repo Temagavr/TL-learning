@@ -10,7 +10,7 @@ namespace CookingWebsite.Modules.HomeModule
     {
         public static RegistrationDto Map(this UserRegistrationDto userRegistrationDto)
         {
-
+            return null;
         }
     }
 }

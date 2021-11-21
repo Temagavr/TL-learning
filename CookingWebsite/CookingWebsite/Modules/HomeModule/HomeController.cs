@@ -18,10 +18,10 @@ namespace CookingWebsite.Modules.HomeModule
         }
 
         [HttpPost("registrate")]
-        public async bool Registrate(UserRegistrationDto userRegistrationDto)
+        public async Task<bool> Registrate(UserRegistrationDto userRegistrationDto)
         {
             await _accountService.Registrate(userRegistrationDto.Map());
-
+            return true;
         }
         
     }
