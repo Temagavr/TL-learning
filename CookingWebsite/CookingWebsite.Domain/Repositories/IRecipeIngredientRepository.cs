@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Domain.Entities.Recipes
+namespace CookingWebsite.Domain.Repositories
 {
-    class RecipteStep
+    public interface IRecipeIngredientRepository
     {
     }
 }

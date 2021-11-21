@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CookingWebsite.Domain;
 
 namespace CookingWebsite.Infrastructure.Foundation
@@ -15,10 +11,11 @@ namespace CookingWebsite.Infrastructure.Foundation
         {
             _dbContext = dbContext;
         }
-
+        
         public async Task Commit()
         {
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();    
         }
+        
     }
 }

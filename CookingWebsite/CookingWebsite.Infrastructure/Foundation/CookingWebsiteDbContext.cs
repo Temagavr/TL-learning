@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CookingWebsite.Infrastructure.Configurations;
+using Microsoft.EntityFrameworkCore;
 
 namespace CookingWebsite.Infrastructure.Foundation
 {
-    public class CookingWebsiteDbContext
+    public class CookingWebsiteDbContext : DbContext
     {
+        public CookingWebsiteDbContext(DbContextOptions<CookingWebsiteDbContext> options) : base(options)
+        {
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration( new UserConfiguration() );
+            builder.ApplyConfiguration( new UserStatisticConfiguration() );
+        }
     }
 }
