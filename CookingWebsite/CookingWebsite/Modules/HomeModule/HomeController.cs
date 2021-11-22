@@ -19,11 +19,11 @@ namespace CookingWebsite.Modules.HomeModule
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet("recipeOfDay")]
-        public RecipeOfDayDto GetRecipeOfDay()
-        {
+		[HttpGet("recipeOfDay")]
+        public RecipeOfDayDto GetRecipeOfDay
+		{
             var recipe = _recipeService.GetRecipe(1);
-
+            return true;
             return new RecipeOfDayDto();
 
             //return recipe.Map();

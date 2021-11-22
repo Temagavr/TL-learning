@@ -8,6 +8,7 @@ namespace CookingWebsite.Infrastructure.Foundation
         public CookingWebsiteDbContext(DbContextOptions<CookingWebsiteDbContext> options) : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration( new UserConfiguration() );
