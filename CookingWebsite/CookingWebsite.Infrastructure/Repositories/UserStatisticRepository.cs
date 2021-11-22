@@ -13,7 +13,7 @@ namespace CookingWebsite.Infrastructure.Repositories
 
         private DbSet<UserStatistic> _userStatistics => _dbContext.Set<UserStatistic>();
 
-        public async Task<UserStatistic> GetStatistic(int userId)
+        public async Task<UserStatistic> GetById(int userId)
         {
             return await _userStatistics.FirstOrDefaultAsync(s => s.Id == userId);
         }

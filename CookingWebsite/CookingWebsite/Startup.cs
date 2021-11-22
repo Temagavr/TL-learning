@@ -1,5 +1,7 @@
+using CookingWebsite.Application;
 using CookingWebsite.Infrastructure;
 using CookingWebsite.Infrastructure.Foundation;
+using CookingWebsite.Modules.AccountModule;
 using CookingWebsite.Modules.HomeModule;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +26,8 @@ namespace CookingWebsite
         public void ConfigureServices( IServiceCollection services )
         {
             services
+                .AddApplication()
+                .AddAccountModule()
                 .AddHomeModule()
                 .AddRepositories();
 

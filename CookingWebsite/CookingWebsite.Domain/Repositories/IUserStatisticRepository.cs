@@ -5,6 +5,6 @@ namespace CookingWebsite.Domain.Repositories
 {
     public interface IUserStatisticRepository
     {
-        Task<UserStatistic> GetStatistic(int userId);
+        Task<UserStatistic> GetById(int userId);
     }
 }

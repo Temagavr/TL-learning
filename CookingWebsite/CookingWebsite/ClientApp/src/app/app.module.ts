@@ -10,7 +10,10 @@ import { RecipeDetailsModule } from './pages/recipe-details/recipe-details.modul
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { UserInteractionService } from './common/services/user-interaction.service';
+import { AccountService } from './common/services/account.service';
+
 import { SharedModule } from './common/shared.module';
 
 
@@ -30,7 +33,7 @@ import { SharedModule } from './common/shared.module';
     FormsModule,
     SharedModule
   ],
-  providers: [UserInteractionService],
+  providers: [UserInteractionService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

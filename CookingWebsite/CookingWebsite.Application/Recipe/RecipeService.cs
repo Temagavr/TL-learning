@@ -2,50 +2,72 @@
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Application
+namespace CookingWebsite.Application.Recipe
 {
-    public class RecipeService
+    public class RecipeService : IRecipeService
     {
 
         private readonly IRecipeRepository _recipeRepostitory;
-
-        //private readonly IUserRepository _userRepostitory;
         private readonly IUnitOfWork _unitOfWork;
 
         public RecipeService(IRecipeRepository recipeRepository, IUnitOfWork unitOfWork)
         {
             _recipeRepostitory = recipeRepository;
             _unitOfWork = unitOfWork;
-            //_userRepostitory = userRepository;
         }
 
         public async Task AddRecipe (AddRecipeDto addRecipeDto)
         {
-            var recipe = new Recipe(
-                "image",
+            var recipe = new Domain.Entities.Recipes.Recipe(
+                imageUrl: "image",
                 addRecipeDto.Title,
                 addRecipeDto.Description,
                 addRecipeDto.CookingTime,
                 addRecipeDto.PersonsCount,
-                0,
-                0,
-                "author"
+                likesCount: 0,
+                favouritesCount: 0,
+                addRecipeDto.AuthorUsername
+            );
+
+            _recipeRepostitory.Add(recipe);
+
+            var recipeIngredient = new RecipeIngredient(
+                addRecipeDto.recipeIngredient.RecipeId,
+                addRecipeDto.recipeIngredient.Title
+                //recipeIngredientItemList
+            );
+            _recipeRepostitory.AddRecipeIngredient(recipeIngredient);
+
+            //var recipeIngredientItemList = new List<RecipeIngredientItem>();
+            foreach (RecipeIngredientItemDto ingredient in addRecipeDto.recipeIngredient.IngredientsList)
+            {
+                var recipeIngredientItem = new RecipeIngredientItem(
+                    ingredient.RecipeIngredientId,
+                    ingredient.Name,
+                    ingredient.Value
                 );
+                _recipeRepostitory.AddRecipeIngredientItem(recipeIngredientItem);
+            }
 
             await _unitOfWork.Commit();
         }
 
+        public async Task<Domain.Entities.Recipes.Recipe> GetRecipe(int recipeId)
+        {
+            var recipe = await _recipeRepostitory.GetById(recipeId);
+
+            return recipe;
+        }
+
         public async Task DeleteRecipe(int recipeId)
         {
-            var recipe = _recipeRepostitory.GetRecipe(recipeId);
+            var recipe = _recipeRepostitory.GetById(recipeId);
 
             _recipeRepostitory.Remove(recipe);
+
             await _unitOfWork.Commit();
         }
     }

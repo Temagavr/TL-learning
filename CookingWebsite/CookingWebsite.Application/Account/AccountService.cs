@@ -7,7 +7,7 @@ using CookingWebsite.Domain.Repositories;
 
 namespace CookingWebsite.Application.Account
 {
-    public class AccountService
+    public class AccountService : IAccountService
     {
         private readonly IUserRepository _userRepostitory;
 
@@ -21,7 +21,7 @@ namespace CookingWebsite.Application.Account
 
         public async Task<bool> Registrate (RegistrationDto registrationDto)
         {
-            var user = await _userRepostitory.GetUser(registrationDto.Login);
+            var user = await _userRepostitory.GetByLogin(registrationDto.Login);
             if (user != null)
                 return false;
 
@@ -29,7 +29,7 @@ namespace CookingWebsite.Application.Account
                 registrationDto.Login,
                 registrationDto.Password,
                 registrationDto.Name,
-                userInfo: ""
+                description: ""
                 );
             _userRepostitory.Add(user);
 
@@ -40,8 +40,9 @@ namespace CookingWebsite.Application.Account
 
         public async Task<bool> Login (LoginDto loginDto)
         {
-            var user = await _userRepostitory.GetUser(loginDto.Login);
-            if (user != null)
+            var user = await _userRepostitory.GetByLogin(loginDto.Login);
+            Console.WriteLine($"{loginDto.Login}, {loginDto.Password}");
+            if (user == null)
                 return false;
             else if (loginDto.Password == user.Password)
             {

@@ -5,12 +5,12 @@
     </div>
     <form class="modal-content-custom">
       <h3 class="modal-title">Регистрация</h3>
-      <input class="big-modal-input" placeholder="Имя" />
-      <input class="big-modal-input" placeholder="Логин" />
+      <input [(ngModel)]="registrationInfo.name" class="big-modal-input" placeholder="Имя" name="name" />
+      <input [(ngModel)]="registrationInfo.login" class="big-modal-input" placeholder="Логин" name="login" />
 
       <div class="little-inputs-block">
-        <input class="big-modal-input little-modal-input" type="password" placeholder="Пароль" />
-        <input class="big-modal-input little-modal-input" type="password" placeholder="Повторите пароль" />
+        <input [(ngModel)]="registrationInfo.password" class="big-modal-input little-modal-input" type="password" placeholder="Пароль" name="password" />
+        <input class="big-modal-input little-modal-input" type="password" placeholder="Повторите пароль" name="repeat_password" />
       </div>
 
       <span class="password-warning">Минимум 8 символов</span>

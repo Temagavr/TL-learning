@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CookingWebsite.Application.Dtos.RecipeDtos
+{
+    public class RecipeIngredientItemDto
+    {
+        public int RecipeIngredientId { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
+}

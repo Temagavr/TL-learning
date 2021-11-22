@@ -17,12 +17,12 @@ namespace CookingWebsite.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<User> GetUser(int userId)
+        public async Task<User> GetById(int userId)
         {
             return await _users.FirstOrDefaultAsync(u => u.Id == userId); 
         }
 
-        public async Task<User> GetUser(string login)
+        public async Task<User> GetByLogin(string login)
         {
             return await _users.FirstOrDefaultAsync(u => u.Login == login);
         }

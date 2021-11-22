@@ -1,9 +1,7 @@
 ﻿using CookingWebsite.Application.Account;
+using CookingWebsite.Application.Recipe;
+using CookingWebsite.Domain;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CookingWebsite.Modules.HomeModule
 {
@@ -11,17 +9,24 @@ namespace CookingWebsite.Modules.HomeModule
     [Route("api/home")]
     public class HomeController
     {
-        private readonly AccountService _accountService;
-        public HomeController(AccountService accountService)
+
+        private readonly IRecipeService _recipeService;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public HomeController(IRecipeService recipeService, IUnitOfWork unitOfWork)
         {
-            _accountService = accountService;
+            _recipeService = recipeService;
+            _unitOfWork = unitOfWork;
         }
 
-        [HttpPost("registrate")]
-        public async bool Registrate(UserRegistrationDto userRegistrationDto)
+        [HttpGet("recipeOfDay")]
+        public RecipeOfDayDto GetRecipeOfDay()
         {
-            await _accountService.Registrate(userRegistrationDto.Map());
+            var recipe = _recipeService.GetRecipe(1);
 
+            return new RecipeOfDayDto();
+
+            //return recipe.Map();
         }
         
     }

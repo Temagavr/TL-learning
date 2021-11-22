@@ -35,9 +35,13 @@
     <None Remove="ClientApp\src\app\common\recipe-card\recipe-card.component.ts" />
     <None Remove="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
     <None Remove="ClientApp\src\app\common\search-input\search-input.component.ts" />
+    <None Remove="ClientApp\src\app\common\services\account.service.ts" />
+    <None Remove="ClientApp\src\app\common\services\http.service.ts" />
     <None Remove="ClientApp\src\app\common\shared.module.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\Tag.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
+    <None Remove="ClientApp\src\app\Dtos\login-dto.ts" />
+    <None Remove="ClientApp\src\app\Dtos\registration-dto.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <None Remove="ClientApp\src\app\common\footer\footer.component.ts" />
@@ -72,9 +76,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\search-input\search-input.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\services\account.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\services\http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\Tag.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\login-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\registration-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\footer\footer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe.ts" />

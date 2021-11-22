@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CookingWebsite.Modules.HomeModule
+﻿
+namespace CookingWebsite.Modules.AccountModule
 {
     public class UserRegistrationDto
     {

@@ -17,7 +17,7 @@ namespace CookingWebsite.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<Recipe> GetRecipe(int recipeId)
+        public async Task<Recipe> GetById(int recipeId)
         {
             return await _recipes.FirstOrDefaultAsync(r => r.Id == recipeId);
         }
@@ -31,6 +31,14 @@ namespace CookingWebsite.Infrastructure.Repositories
         public void Add(Recipe recipe)
         {
             _dbContext.Add( recipe );
+        }
+        public void AddRecipeIngredient(RecipeIngredient recipeIngredient)
+        {
+            _dbContext.Add(recipeIngredient);
+        }
+        public void AddRecipeIngredientItem(RecipeIngredientItem recipeIngredientItem)
+        {
+            _dbContext.Add(recipeIngredientItem);
         }
 
         public void Remove(Task<Recipe> recipe)

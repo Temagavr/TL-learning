@@ -1,8 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserInteractionService } from './common/services/user-interaction.service';
+import { AccountService } from './common/services/account.service';
 import { LoginModalComponent } from './common/modals/login-modal/login-modal.component';
 import { RegistrationModalComponent } from './common/modals/registration-modal/registration-modal.component';
 import { GreetingModalComponent } from './common/modals/greeting-modal/greeting-modal.component';
+
+import { RegistrationDto } from './Dtos/registration-dto';
+import { LoginDto } from './Dtos/login-dto';
 
 @Component({
   selector: 'app-root',
@@ -20,10 +24,11 @@ export class AppComponent {
 
   title = 'app';
 
-  userName = 'Татьяна';
+  userName = '';
 
   constructor(
-    userInteractionService: UserInteractionService
+    userInteractionService: UserInteractionService,
+    private accountService: AccountService
   ) {
       userInteractionService.onOpenLoginModalRequest$.subscribe(() => {
         this.showLoginModal();
@@ -41,6 +46,7 @@ export class AppComponent {
   }
 
   userLogOut() {
+    this.userName = '';
     console.log('User log out');
   }
 
@@ -49,10 +55,12 @@ export class AppComponent {
     console.log('login modal closed');
   }
 
-  doSmthOnLoginClick() {
-    // Можно добавить в Login модал третий эмиттер(или избавиться от лишних)
-    // Тут два варианта. Логиниться здесь или внутри модалки
+  doSmthOnLoginClick(loginDto: LoginDto) {
     console.log('Im try to login');
+    if (this.accountService.Login(loginDto)) {
+      this.userName = loginDto.login;
+    };
+    this.loginModal.close();
   }
 
   doSmthOnOpenLoginModal() {
@@ -75,8 +83,11 @@ export class AppComponent {
     this.greetingModal.show();
   }
 
-  doSmthOnRegistrationClick() {
+  doSmthOnRegistrationClick(registrationInfo: RegistrationDto) {
+    event.preventDefault();
+    this.accountService.Register(registrationInfo);
     console.log('Try to registration');
+    this.registrationModal.close();
   }
 
 }

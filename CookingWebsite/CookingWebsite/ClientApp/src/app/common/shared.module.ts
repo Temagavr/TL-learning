@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -28,7 +29,7 @@ import { GoBackButtonComponent } from './go-back-button/go-back-button.component
     RecipeCardComponent,
     GoBackButtonComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [
     TagsTypeComponent,
     HeaderComponent,
