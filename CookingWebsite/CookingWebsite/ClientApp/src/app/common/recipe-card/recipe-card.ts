@@ -1,4 +1,4 @@
-export class RecipeCard {
+export interface RecipeCard {
   imageUrl: string;
 
   authorUsername: string
