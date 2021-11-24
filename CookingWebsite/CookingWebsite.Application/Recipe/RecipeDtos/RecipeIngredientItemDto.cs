@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CookingWebsite.Application.Dtos.RecipeDtos
+﻿namespace CookingWebsite.Application.Recipe.RecipeDtos
 {
     public class RecipeIngredientItemDto
     {

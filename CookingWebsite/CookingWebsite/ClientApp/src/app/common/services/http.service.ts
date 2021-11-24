@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpRequest, HttpEvent, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 export interface Response<R> {
   result: R;
@@ -11,13 +11,16 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  protected async Post<HttpRequest, HttpResponse>(url: string, body: HttpRequest)/*: Promise<HttpResponse>*/ {
+  public okStatusCode = 200;
+  public errorMsg = 'Ooops, something went wrong, please try later again!';
+
+  protected async Post<HttpRequest, HttpResponse>(url: string, body: HttpRequest) {
 
     const result = { result: null } as Response<HttpResponse>;
 
     try {
       const response = await this.http.post<HttpResponse>(url, body).toPromise();
-      result.statusCode = 200;
+      result.statusCode = this.okStatusCode;
       result.result = response;
 
     } catch (error) {
@@ -27,19 +30,15 @@ export class HttpService {
     return result;
   }
 
-  protected async Get<HttpR>(url: string, body)/*: Promise<Response<HttpR>>*/ {
+  protected async Get<HttpR>(url: string) {
 
-    const result = { result: null } as Response<HttpR>;
+    //const result = { result: null } as Response<HttpR>;
 
     try {
-      const response = await this.http.post<HttpR>(url, body).toPromise();
-      result.statusCode = 200;
-      result.result = response;
+      return await this.http.get<HttpR>(url).toPromise();
 
     } catch (error) {
-      result.statusCode = error.status;
+      return null;
     }
-
-    return result;
   }
 }

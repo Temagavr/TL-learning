@@ -1,4 +1,4 @@
-﻿namespace CookingWebsite.Application.Dtos.UserDtos
+﻿namespace CookingWebsite.Application.Account.UserDtos
 {
     public class RegistrationDto
     {

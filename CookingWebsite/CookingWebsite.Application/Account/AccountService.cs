@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CookingWebsite.Application.Dtos.UserDtos;
+using CookingWebsite.Application.Account.UserDtos;
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Users;
 using CookingWebsite.Domain.Repositories;

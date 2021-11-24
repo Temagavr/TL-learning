@@ -1,4 +1,6 @@
-﻿namespace CookingWebsite.Domain.Entities.Recipes
+﻿using System.Collections.Generic;
+
+namespace CookingWebsite.Domain.Entities.Recipes
 {
     public class Recipe
     {
@@ -11,6 +13,9 @@
         public int LikesCount { get; private set; }
         public int FavouritesCount { get; private set; }
         public string AuthorUsername { get; private set; }
+        public List<RecipeIngredient> Ingredients { get; private set; }
+        public List<RecipeStep> Steps { get; private set; }
+
 
         public Recipe(
             string imageUrl,

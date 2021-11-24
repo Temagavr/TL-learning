@@ -8,6 +8,5 @@ namespace CookingWebsite.Domain.Repositories
         Task<User> GetById(int id);
         Task<User> GetByLogin(string login);
         void Add(User user);
-        //void Save(User user);
     }
 }

@@ -1,4 +1,4 @@
-﻿using CookingWebsite.Application.Dtos.RecipeDtos;
+﻿using CookingWebsite.Application.Recipe.RecipeDtos;
 using System.Threading.Tasks;
 
 namespace CookingWebsite.Application.Recipe

@@ -1,4 +1,4 @@
-﻿using CookingWebsite.Application.Dtos.RecipeDtos;
+﻿using CookingWebsite.Application.Recipe.RecipeDtos;
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Repositories;
@@ -34,24 +34,6 @@ namespace CookingWebsite.Application.Recipe
 
             _recipeRepostitory.Add(recipe);
 
-            var recipeIngredient = new RecipeIngredient(
-                addRecipeDto.recipeIngredient.RecipeId,
-                addRecipeDto.recipeIngredient.Title
-                //recipeIngredientItemList
-            );
-            _recipeRepostitory.AddRecipeIngredient(recipeIngredient);
-
-            //var recipeIngredientItemList = new List<RecipeIngredientItem>();
-            foreach (RecipeIngredientItemDto ingredient in addRecipeDto.recipeIngredient.IngredientsList)
-            {
-                var recipeIngredientItem = new RecipeIngredientItem(
-                    ingredient.RecipeIngredientId,
-                    ingredient.Name,
-                    ingredient.Value
-                );
-                _recipeRepostitory.AddRecipeIngredientItem(recipeIngredientItem);
-            }
-
             await _unitOfWork.Commit();
         }
 
@@ -62,11 +44,34 @@ namespace CookingWebsite.Application.Recipe
             return recipe;
         }
 
+        public async Task<RecipeDetailsDto> GetRecipeDetails(int recipeId)
+        {
+            var recipe = await _recipeRepostitory.GetById(recipeId);
+
+            var recipeDetailsDto = new RecipeDetailsDto();
+
+            recipeDetailsDto.Title = recipe.Title;
+            recipeDetailsDto.Description = recipe.Description;
+            recipeDetailsDto.AuthorUsername = recipe.AuthorUsername;
+            recipeDetailsDto.CookingTime = recipe.CookingTime;
+            recipeDetailsDto.FavouritesCount = recipe.FavouritesCount;
+            recipeDetailsDto.Id = recipe.Id;
+            recipeDetailsDto.ImageUrl = recipe.ImageUrl;
+            recipeDetailsDto.LikesCount = recipe.LikesCount;
+            recipeDetailsDto.PersonsCount = recipe.PersonsCount;
+            
+            //recipeIngredientDto.Title = recipeIngredient.Title;
+            //recipeIngredientDto.RecipeId = recipeIngredient.RecipeId;
+
+
+            return recipeDetailsDto;
+        }
+
         public async Task DeleteRecipe(int recipeId)
         {
             var recipe = _recipeRepostitory.GetById(recipeId);
 
-            _recipeRepostitory.Remove(recipe);
+            _recipeRepostitory.Delete(recipe);
 
             await _unitOfWork.Commit();
         }

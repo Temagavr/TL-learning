@@ -1,4 +1,4 @@
-﻿using CookingWebsite.Application.Dtos.UserDtos;
+﻿using CookingWebsite.Application.Account.UserDtos;
 using System.Threading.Tasks;
 
 namespace CookingWebsite.Application.Account

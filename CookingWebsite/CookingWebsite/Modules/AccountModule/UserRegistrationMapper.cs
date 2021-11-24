@@ -1,4 +1,4 @@
-﻿using CookingWebsite.Application.Dtos.UserDtos;
+﻿using CookingWebsite.Application.Account.UserDtos;
 
 namespace CookingWebsite.Modules.AccountModule
 {

@@ -13,15 +13,15 @@ export class AccountService extends HttpService {
   }
 
   private url = 'api/account';
-
-  public async Register(registrationDto: RegistrationDto)/*: Promise<void>*/ {
+  
+  public async Register(registrationDto: RegistrationDto) {
 
     console.log(`registrate ${registrationDto.login}, password = ${registrationDto.password}, name = ${registrationDto.name}`);
 
     const response = await this.Post(`${this.url}/registrate`, registrationDto);
 
-    if (response.statusCode != 200) {
-      console.log('Fail');
+    if (response.statusCode != this.okStatusCode) {
+      alert(this.errorMsg);
     }
   }
 
@@ -30,8 +30,8 @@ export class AccountService extends HttpService {
 
     const response = await this.Post(`${this.url}/login`, loginDto);
 
-    if (response.statusCode != 200) {
-      console.log('Fail');
+    if (response.statusCode != this.okStatusCode) {
+      alert(this.errorMsg);
       return false;
     }
     else

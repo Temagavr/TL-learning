@@ -10,6 +10,7 @@ import { DayRecipeComponent } from './day-recipe/day-recipe.component';
 import { HomeSearchComponent } from './home-search/home-search.component';
 
 import { SharedModule } from '../../common/shared.module';
+import { HomeService } from '../../common/services/home.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { SharedModule } from '../../common/shared.module';
     HomeSearchComponent
   ],
   imports: [CommonModule, HomeRoutingModule, SharedModule],
-  providers: [],
+  providers: [HomeService],
 })
 export class HomeModule { }

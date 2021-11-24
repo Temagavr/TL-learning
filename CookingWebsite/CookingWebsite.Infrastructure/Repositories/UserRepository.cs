@@ -31,12 +31,5 @@ namespace CookingWebsite.Infrastructure.Repositories
         {
             _dbContext.Add(user);
         }
-        /*
-        public void Save(User user)
-        {
-            _dbContext.SaveChangesAsync(user);
-        }
-        */
-
     }
 }
