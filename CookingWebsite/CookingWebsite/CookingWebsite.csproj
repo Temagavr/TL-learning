@@ -42,6 +42,7 @@
     <None Remove="ClientApp\src\app\common\services\account.service.ts" />
     <None Remove="ClientApp\src\app\common\services\home.service.ts" />
     <None Remove="ClientApp\src\app\common\services\http.service.ts" />
+    <None Remove="ClientApp\src\app\common\services\recipe.service.ts" />
     <None Remove="ClientApp\src\app\common\shared.module.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\Tag.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
@@ -85,6 +86,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\services\account.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\home.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\http.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\services\recipe.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\Tag.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />

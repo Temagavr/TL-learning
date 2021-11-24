@@ -27,7 +27,7 @@ export class HttpService {
       result.statusCode = error.status;
     }
 
-    return result;
+    return result.result;
   }
 
   protected async Get<HttpR>(url: string) {
