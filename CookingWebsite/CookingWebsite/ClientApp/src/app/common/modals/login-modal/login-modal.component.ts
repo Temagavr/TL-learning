@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { LoginDto } from '../../../Dtos/login-dto';
 
 @Component({
   selector: 'app-login-modal',
@@ -7,6 +8,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 })
 export class LoginModalComponent {
+
+  public loginData: LoginDto;
+
   isShowed = false;
 
   @Output() onClose = new EventEmitter();
@@ -16,6 +20,10 @@ export class LoginModalComponent {
   @Output() onSwitchToRegistration = new EventEmitter();
 
   @Output() onLoginClick = new EventEmitter();
+
+  constructor() {
+    this.loginData = {} as LoginDto;
+  }
 
   close() {
     event.preventDefault();
@@ -35,7 +43,8 @@ export class LoginModalComponent {
   }
 
   login() {
-    this.onLoginClick.emit();
+    console.log(`${this.loginData.login}, ${this.loginData.password}`)
+    this.onLoginClick.emit(this.loginData);
   }
 
 }

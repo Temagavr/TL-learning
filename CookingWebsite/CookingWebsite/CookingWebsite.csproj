@@ -14,12 +14,21 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Modules\RecipesModule\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Modules\RecipesModule\**" />
+    <EmbeddedResource Remove="Modules\RecipesModule\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Modules\RecipesModule\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -30,9 +39,15 @@
     <None Remove="ClientApp\src\app\common\recipe-card\recipe-card.component.ts" />
     <None Remove="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
     <None Remove="ClientApp\src\app\common\search-input\search-input.component.ts" />
+    <None Remove="ClientApp\src\app\common\services\account.service.ts" />
+    <None Remove="ClientApp\src\app\common\services\home.service.ts" />
+    <None Remove="ClientApp\src\app\common\services\http.service.ts" />
     <None Remove="ClientApp\src\app\common\shared.module.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\Tag.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
+    <None Remove="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
+    <None Remove="ClientApp\src\app\Dtos\login-dto.ts" />
+    <None Remove="ClientApp\src\app\Dtos\registration-dto.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <None Remove="ClientApp\src\app\common\footer\footer.component.ts" />
@@ -67,9 +82,15 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\search-input\search-input.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\services\account.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\services\home.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\services\http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\Tag.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\login-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\registration-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\footer\footer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe.ts" />
@@ -95,6 +116,17 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list\recipes-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CookingWebsite.Application\CookingWebsite.Application.csproj" />
+    <ProjectReference Include="..\CookingWebsite.Domain\CookingWebsite.Domain.csproj" />
+    <ProjectReference Include="..\CookingWebsite.Infrastructure\CookingWebsite.Infrastructure.csproj" />
+    <ProjectReference Include="..\CookingWebsite.Migrations\CookingWebsite.Migrations.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

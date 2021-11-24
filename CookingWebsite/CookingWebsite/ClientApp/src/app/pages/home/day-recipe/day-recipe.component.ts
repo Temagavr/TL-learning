@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { DayRecipe } from '../day-recipe';
+import { DayRecipeDto } from '../../../Dtos/day-recipe-dto';
 
 @Component({
   selector: 'app-day-recipe',
@@ -8,5 +8,5 @@ import { DayRecipe } from '../day-recipe';
   styleUrls: ['./day-recipe.component.css']
 })
 export class DayRecipeComponent {
-  @Input() dayRecipe: DayRecipe;
+  @Input() dayRecipe: DayRecipeDto;
 }

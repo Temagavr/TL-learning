@@ -1,6 +1,12 @@
+using CookingWebsite.Application;
+using CookingWebsite.Infrastructure;
+using CookingWebsite.Infrastructure.Foundation;
+using CookingWebsite.Modules.AccountModule;
+using CookingWebsite.Modules.HomeModule;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +15,7 @@ namespace CookingWebsite
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup( IConfiguration configuration )
         {
             Configuration = configuration;
         }
@@ -17,55 +23,72 @@ namespace CookingWebsite
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices( IServiceCollection services )
         {
+            services
+                .AddApplication()
+                .AddAccountModule()
+                .AddHomeModule()
+                .AddRepositories();
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
+            services.AddSpaStaticFiles( configuration =>
+             {
+                 configuration.RootPath = "ClientApp/dist";
+             } );
+
+            services.AddDbContext<CookingWebsiteDbContext>(
+               x => x.UseSqlServer(Configuration.GetConnectionString("CookingWebsiteConnection"),
+               x => x.MigrationsAssembly( "CookingWebsite.Migrations" ) )
+            );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
         {
-            if (env.IsDevelopment())
+            using IServiceScope scope = app.ApplicationServices.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<CookingWebsiteDbContext>();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
+
+            if ( env.IsDevelopment() )
             {
                 app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler( "/Error" );
             }
 
             app.UseStaticFiles();
-            if (!env.IsDevelopment())
+            if ( !env.IsDevelopment() )
             {
                 app.UseSpaStaticFiles();
             }
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints( endpoints =>
+             {
+                 endpoints.MapControllerRoute(
+                     name: "default",
+                     pattern: "{controller}/{action=Index}/{id?}" );
+             } );
 
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
+            app.UseSpa( spa =>
+             {
+                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
+                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "ClientApp";
+                 spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
+                 if ( env.IsDevelopment() )
+                 {
+                     spa.UseAngularCliServer( npmScript: "start" );
+                 }
+             } );
         }
     }
 }

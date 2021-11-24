@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { RegistrationDto } from '../../../Dtos/registration-dto';
 
 @Component({
   selector: 'app-registration-modal',
@@ -11,6 +12,8 @@ export class RegistrationModalComponent {
 
   isShowedRegistration = false;
 
+  public registrationInfo: RegistrationDto;
+
   @Output() onClose = new EventEmitter();
 
   @Output() onShow = new EventEmitter();
@@ -18,6 +21,10 @@ export class RegistrationModalComponent {
   @Output() onSwitchToLogin = new EventEmitter();
 
   @Output() onRegistrationClick = new EventEmitter();
+
+  constructor() {
+    this.registrationInfo = {} as RegistrationDto;
+  }
 
   close() {
     event.preventDefault();
@@ -36,6 +43,6 @@ export class RegistrationModalComponent {
   }
 
   registration() {
-    this.onRegistrationClick.emit();
+    this.onRegistrationClick.emit(this.registrationInfo);
   }
 }
