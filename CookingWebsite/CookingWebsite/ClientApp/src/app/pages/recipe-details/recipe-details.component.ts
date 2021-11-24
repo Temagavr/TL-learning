@@ -28,6 +28,7 @@ export class RecipeDetailsComponent {
 
   private InitData() {
     this.recipeCard = {
+      id: 2,
       imageUrl: '../../../assets/recipes-list-page/recipeExpl1WithoutUsername.png',
       authorUsername: 'glazest',
       title: 'Клубничная панна-котта',

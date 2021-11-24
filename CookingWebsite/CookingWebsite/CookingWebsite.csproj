@@ -48,6 +48,7 @@
     <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
     <None Remove="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\login-dto.ts" />
+    <None Remove="ClientApp\src\app\Dtos\recipe-details-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\registration-dto.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
@@ -92,6 +93,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\login-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-details-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\registration-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\footer\footer.component.ts" />
@@ -110,8 +112,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details.module.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-ingredient-item.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-ingredient.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-ingredient-item-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-ingredient-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipe-search\recipe-search.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />

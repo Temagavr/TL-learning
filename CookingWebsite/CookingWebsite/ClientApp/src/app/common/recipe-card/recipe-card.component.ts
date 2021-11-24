@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { RecipeCard } from './recipe-card';
 
@@ -10,6 +10,8 @@ import { RecipeCard } from './recipe-card';
 export class RecipeCardComponent {
 
   @Input() recipeInfo: RecipeCard;
+
+  @Output() onRecipeClick = new EventEmitter();
 
   rightPersons: string;
 
@@ -39,5 +41,9 @@ export class RecipeCardComponent {
     } else {
       this.recipeInfo.favourite = this.recipeInfo.favourite - 1;
     }
+  }
+
+  ChooseRecipe() {
+    this.onRecipeClick.emit(this.recipeInfo.id);
   }
 }

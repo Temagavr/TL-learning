@@ -20,7 +20,7 @@ export class AccountService extends HttpService {
 
     const response = await this.Post(`${this.url}/registrate`, registrationDto);
 
-    if (response.statusCode != this.okStatusCode) {
+    if (!response) {
       alert(this.errorMsg);
     }
   }
@@ -30,7 +30,7 @@ export class AccountService extends HttpService {
 
     const response = await this.Post(`${this.url}/login`, loginDto);
 
-    if (response.statusCode != this.okStatusCode) {
+    if (!response) {
       alert(this.errorMsg);
       return false;
     }

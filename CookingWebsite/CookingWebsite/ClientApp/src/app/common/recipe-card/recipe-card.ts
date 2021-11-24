@@ -1,4 +1,5 @@
 export interface RecipeCard {
+  id: number;
   imageUrl: string;
 
   authorUsername: string

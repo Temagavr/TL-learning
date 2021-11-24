@@ -4,6 +4,7 @@ import { Tag } from '../../common/tags-info/Tag';
 
 import { SearchInputComponent } from '../../common/search-input/search-input.component';
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes-list-page',
@@ -11,6 +12,10 @@ import { RecipeCard } from '../../common/recipe-card/recipe-card';
   styleUrls: ['./recipes-list-page.component.css']
 })
 export class RecipesListPageComponent {
+
+
+  constructor(private router: Router) { }
+
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;
 
@@ -29,6 +34,7 @@ export class RecipesListPageComponent {
 
   recipes: RecipeCard[] = [
     {
+      id: 2,
       imageUrl: '../../../assets/recipes-list-page/recipeExpl1WithoutUsername.png',
       authorUsername: 'glazest',
       title: 'Клубничная панна-котта',
@@ -42,6 +48,7 @@ export class RecipesListPageComponent {
       personsCount: 5
     },
     {
+      id: 3,
       imageUrl: '../../../../assets/recipes-list-page/recipeExpl2WithoutUsername.png',
       authorUsername: 'horilka',
       title: 'Мясные фрикадельки',
@@ -55,6 +62,7 @@ export class RecipesListPageComponent {
       personsCount: 4
     },
     {
+      id: 4,
       imageUrl: '../../../../assets/recipes-list-page/recipeExpl3WithoutUsername.png',
       authorUsername: 'turum-pum-pum',
       title: 'Панкейки',
@@ -68,6 +76,7 @@ export class RecipesListPageComponent {
       personsCount: 3
     },
     {
+      id: 5,
       imageUrl: '../../../../assets/recipes-list-page/recipeExpl4WithoutUsername.png',
       authorUsername: 'sweet-girl',
       title: 'Полезное мороженое без сахара',
@@ -80,5 +89,9 @@ export class RecipesListPageComponent {
       time: 35,
       personsCount: 2
     },
-  ]
+  ];
+
+  redirectToRecipe(recipeId: number) {
+    this.router.navigate(['/recipes', recipeId]);
+  }
 }
