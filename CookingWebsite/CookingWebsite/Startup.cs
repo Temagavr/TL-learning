@@ -3,6 +3,7 @@ using CookingWebsite.Infrastructure;
 using CookingWebsite.Infrastructure.Foundation;
 using CookingWebsite.Modules.AccountModule;
 using CookingWebsite.Modules.HomeModule;
+using CookingWebsite.Modules.RecipeModule;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -29,6 +30,7 @@ namespace CookingWebsite
                 .AddApplication()
                 .AddAccountModule()
                 .AddHomeModule()
+                .AddRecipeModule()
                 .AddRepositories();
 
             services.AddControllersWithViews();
