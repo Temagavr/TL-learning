@@ -44,29 +44,6 @@ namespace CookingWebsite.Application.Recipe
             return recipe;
         }
 
-        public async Task<RecipeDetailsDto> GetRecipeDetails(int recipeId)
-        {
-            var recipe = await _recipeRepostitory.GetById(recipeId);
-
-            var recipeDetailsDto = new RecipeDetailsDto();
-
-            recipeDetailsDto.Title = recipe.Title;
-            recipeDetailsDto.Description = recipe.Description;
-            recipeDetailsDto.AuthorUsername = recipe.AuthorUsername;
-            recipeDetailsDto.CookingTime = recipe.CookingTime;
-            recipeDetailsDto.FavouritesCount = recipe.FavouritesCount;
-            recipeDetailsDto.Id = recipe.Id;
-            recipeDetailsDto.ImageUrl = recipe.ImageUrl;
-            recipeDetailsDto.LikesCount = recipe.LikesCount;
-            recipeDetailsDto.PersonsCount = recipe.PersonsCount;
-            
-            //recipeIngredientDto.Title = recipeIngredient.Title;
-            //recipeIngredientDto.RecipeId = recipeIngredient.RecipeId;
-
-
-            return recipeDetailsDto;
-        }
-
         public async Task DeleteRecipe(int recipeId)
         {
             var recipe = _recipeRepostitory.GetById(recipeId);

@@ -1,4 +1,4 @@
-﻿namespace CookingWebsite.Application.Recipe.RecipeDtos
+﻿namespace CookingWebsite.Modules.RecipeModule
 {
     public class RecipeIngredientItemDto
     {
