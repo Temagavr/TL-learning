@@ -15,7 +15,7 @@ export interface RecipeDetailsDto {
 
   favourite: number;
   likes: number;
-  time: number;
+  cookingTime: number;
   personsCount: number;
 
   steps: string[];

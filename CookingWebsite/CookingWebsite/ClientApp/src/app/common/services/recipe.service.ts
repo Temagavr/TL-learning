@@ -15,7 +15,7 @@ export class RecipeService extends HttpService {
 
   public async GetRecipeDetails(recipeId: number) {
 
-    const response = await this.Post(`${this.url}/recipeDetails`, recipeId);
+    const response = await this.Post(`${this.url}/recipeDetails/${recipeId}`, {});
 
     if (!response) {
       alert(this.errorMsg);

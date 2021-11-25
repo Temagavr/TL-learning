@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { RecipeService } from '../../common/services/recipe.service';
@@ -13,7 +14,8 @@ import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
 export class RecipeDetailsComponent {
 
   constructor(
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private route: ActivatedRoute
   ) {
   }
 
@@ -23,7 +25,8 @@ export class RecipeDetailsComponent {
 
   ngOnInit() {
     this.InitData();
-    //this.GetRecipeInfo();
+    var id = this.route.snapshot.params.id;
+    this.GetRecipeInfo(id);
   }
 
   private InitData() {
@@ -45,7 +48,7 @@ export class RecipeDetailsComponent {
     this.recipeIngredient = [
       {
         title: 'Для панна котты',
-        ingredientsList: [
+        items: [
           { name: 'Сливки-20-30%', value: '500мл.' },
           { name: 'Молоко', value: '100мл.' },
           { name: 'Желатин', value: '2ч.л.' },
@@ -55,7 +58,7 @@ export class RecipeDetailsComponent {
       },
       {
         title: 'Для клубничного желе',
-        ingredientsList: [
+        items: [
           { name: 'Сливки-20-30%', value: '500мл.' },
           { name: 'Молоко', value: '100мл.' },
           { name: 'Желатин', value: '2ч.л.' },
@@ -81,6 +84,8 @@ export class RecipeDetailsComponent {
         return;
       }
 
+      console.log(recipeDetailsDto);
+
       this.recipeCard.imageUrl = recipeDetailsDto.imageUrl;
       this.recipeCard.authorUsername = recipeDetailsDto.authorUsername;
       this.recipeCard.title = recipeDetailsDto.title;
@@ -90,27 +95,29 @@ export class RecipeDetailsComponent {
       this.recipeCard.isLiked = true;;
       this.recipeCard.favourite = 12 //recipeDetailsDto.favourite;
       this.recipeCard.likes = 6 //recipeDetailsDto.likes;
-      this.recipeCard.time = recipeDetailsDto.time;
+      this.recipeCard.time = recipeDetailsDto.cookingTime;
       this.recipeCard.personsCount = recipeDetailsDto.personsCount;
 
       this.recipeIngredient = [];
       for (let ingredient of recipeDetailsDto.ingredient) {
-        var ingredientDto: RecipeIngredientDto;
+        var ingredientDto:RecipeIngredientDto = { title: "", items: [] };
         ingredientDto.title = ingredient.title;
 
-        for (let item of ingredient.ingredientsList) {
-          var itemDto: RecipeIngredientItemDto;
+        for (let item of ingredient.items) {
+          var itemDto: RecipeIngredientItemDto = { name: "", value: "" };
           itemDto.name = item.name;
           itemDto.value = item.value;
 
-          ingredientDto.ingredientsList.push(itemDto);
+          ingredientDto.items.push(itemDto);
         }
+        this.recipeIngredient.push(ingredientDto);
       }
 
       this.recipeSteps = [];
       for (let step of recipeDetailsDto.steps) {
         this.recipeSteps.push(step);
       }
+
     });
   }
 

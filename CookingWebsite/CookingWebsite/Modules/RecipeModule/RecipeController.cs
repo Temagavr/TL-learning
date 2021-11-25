@@ -19,7 +19,7 @@ namespace CookingWebsite.Modules.RecipeModule
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet("recipeDetails")]
+        [HttpPost("recipeDetails/{recipeId}")]
         public async Task<RecipeDetailsDto> GetRecipeDetails(int recipeId)
         {
             var recipeDetails = await _recipeService.GetRecipe(recipeId);
