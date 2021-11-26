@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-input',
@@ -9,9 +9,15 @@ export class SearchInputComponent {
 
   @Input() recommendsTags: string[];
 
+  @Output() onSearchClick = new EventEmitter();
+
   inputValue = '';
 
   callInput(tagName) {
     this.inputValue = tagName;
+  }
+
+  searchClick() {
+    this.onSearchClick.emit(this.inputValue);
   }
 }

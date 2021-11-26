@@ -70,7 +70,6 @@
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-ingredient-item.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-ingredient.ts" />
-    <None Remove="ClientApp\src\app\pages\recipes-list-page\recipe-search\recipe-search.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
@@ -116,7 +115,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-ingredient-item-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-ingredient-dto.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipe-search\recipe-search.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
