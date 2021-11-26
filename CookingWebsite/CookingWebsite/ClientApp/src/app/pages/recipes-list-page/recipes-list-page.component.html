@@ -9,5 +9,5 @@
     </div>
   </div>
 
-  <app-recipes-list (onNavigateToRecipe)="redirectToRecipe($event)" [recipes]="recipes"></app-recipes-list>
+  <app-recipes-list (onLoadMoreClick)="loadMoreRecipes('')" (onNavigateToRecipe)="redirectToRecipe($event)" [recipes]="recipes"></app-recipes-list>
 </div>

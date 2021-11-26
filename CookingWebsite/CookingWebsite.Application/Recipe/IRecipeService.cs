@@ -10,6 +10,6 @@ namespace CookingWebsite.Application.Recipe
         Task DeleteRecipe(int recipeId);
         Task<Domain.Entities.Recipes.Recipe> GetRecipe(int recipeId);
         Task<List<Domain.Entities.Recipes.Recipe>> SearchRecipes(string searchString);
-        Task<List<Domain.Entities.Recipes.Recipe>> LoadMoreRecipes(string searchString);
+        Task<List<Domain.Entities.Recipes.Recipe>> LoadMoreRecipes(int skip, int take, string searchString);
     }
 }

@@ -19,6 +19,9 @@ export class RecipesListPageComponent {
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;
 
+  private skip: number = 4;
+  private take: number = 2;
+
   ngOnInit() {
     this.InitData();
     this.searchRecipes('');
@@ -105,9 +108,25 @@ export class RecipesListPageComponent {
   }
 
   searchRecipes(searchString: string) {
+    this.take = 4;
+    this.skip = 0;
+
     this.recipeService.GetRecipeList(searchString).then((recipeCards: RecipeCard[]) => {
-      console.log(recipeCards);
       this.recipes = recipeCards;
+    });
+
+    this.skip = this.take;
+    this.take = 2;
+  }
+
+  loadMoreRecipes(searchString: string) {
+    this.recipeService.LoadMoreRecipes(this.skip, this.take, searchString).then((recipeCards: RecipeCard[]) => {
+      console.log(recipeCards);
+      this.skip += this.take;
+      for (let recipe in recipeCards) {
+        console.log(recipe);
+        //this.recipes.push(recipe);
+      }
     });
   }
 }

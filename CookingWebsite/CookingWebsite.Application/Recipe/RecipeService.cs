@@ -13,9 +13,10 @@ namespace CookingWebsite.Application.Recipe
         private readonly IRecipeRepository _recipeRepostitory;
         private readonly IUnitOfWork _unitOfWork;
 
+        private bool _includeAll = false;
         private int _skip = 0;
         private int _take = 4;
-        private bool _includeAll = false;
+
 
         public RecipeService(IRecipeRepository recipeRepository, IUnitOfWork unitOfWork)
         {
@@ -59,21 +60,14 @@ namespace CookingWebsite.Application.Recipe
 
         public async Task<List<Domain.Entities.Recipes.Recipe>> SearchRecipes(string searchString)
         {
-            _skip = 0;
-            _take = 4;
-
             var recipesList = await _recipeRepostitory.Search(_skip, _take, searchString, _includeAll);
-
-            _skip = _take;
-            _take = 2;
 
             return recipesList;
         }
 
-        public async Task<List<Domain.Entities.Recipes.Recipe>> LoadMoreRecipes(string searchString)
+        public async Task<List<Domain.Entities.Recipes.Recipe>> LoadMoreRecipes(int skip, int take, string searchString)
         {
-            var recipesList = await _recipeRepostitory.Search(_skip, _take, searchString, _includeAll);
-            _skip += _take;
+            var recipesList = await _recipeRepostitory.Search(skip, take, searchString, _includeAll);
 
             return recipesList;
         }
