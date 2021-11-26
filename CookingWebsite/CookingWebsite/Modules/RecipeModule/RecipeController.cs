@@ -27,13 +27,20 @@ namespace CookingWebsite.Modules.RecipeModule
             return recipeDetails.Map();
         }
 
-        /*
-        [HttpGet("/recipes")]
-        public async Task<List<RecipeDetailsDto>> SearchRecipes(string searchString)
+        [HttpPost("/searchRecipes")]
+        public async Task<List<RecipeCardDto>> SearchRecipes(string searchString)
         {
+            var recipesList = await _recipeService.SearchRecipes(searchString);
 
+            return recipesList.Map();
+        }
 
-            return new List<RecipeDetailsDto>();
-        }*/
+        [HttpPost("/loadMoreRecipes")]
+        public async Task<List<RecipeCardDto>> LoadMoreRecipes(string searchString)
+        {
+            var recipesList = await _recipeService.SearchRecipes(searchString);
+
+            return recipesList.Map();
+        }
     }
 }

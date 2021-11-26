@@ -5,6 +5,7 @@ import { Tag } from '../../common/tags-info/Tag';
 import { SearchInputComponent } from '../../common/search-input/search-input.component';
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { Router } from '@angular/router';
+import { RecipeService } from '../../common/services/recipe.service';
 
 @Component({
   selector: 'app-recipes-list-page',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 export class RecipesListPageComponent {
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private recipeService: RecipeService) { }
 
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;

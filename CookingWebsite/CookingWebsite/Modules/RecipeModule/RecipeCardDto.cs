@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CookingWebsite.Modules.RecipeModule
 {
-    public class RecipeDetailsDto
+    public class RecipeCardDto
     {
         public int Id { get; set; }
         public string ImageUrl { get; set; }
@@ -16,7 +16,5 @@ namespace CookingWebsite.Modules.RecipeModule
         public int LikesCount { get; set; }
         public int FavouritesCount { get; set; }
         public string AuthorUsername { get; set; }
-        public List<RecipeIngredientDto> Ingredient { get; set; }
-        public List<string> Steps { get; set; }
     }
 }

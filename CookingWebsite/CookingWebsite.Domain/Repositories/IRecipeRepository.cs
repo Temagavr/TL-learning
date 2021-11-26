@@ -1,4 +1,5 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CookingWebsite.Domain.Repositories
@@ -10,5 +11,6 @@ namespace CookingWebsite.Domain.Repositories
         void AddRecipeIngredient(RecipeIngredient recipeIngredient);
         void AddRecipeIngredientItem(RecipeIngredientItem recipeIngredientItem);
         void Delete(Task<Recipe> recipe);
+        Task<List<Recipe>> Search(int skip, int take, string searchString, bool includeAll);
     }
 }

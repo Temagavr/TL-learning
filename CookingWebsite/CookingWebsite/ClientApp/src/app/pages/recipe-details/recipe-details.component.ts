@@ -25,8 +25,7 @@ export class RecipeDetailsComponent {
 
   ngOnInit() {
     this.InitData();
-    var id = this.route.snapshot.params.id;
-    this.GetRecipeInfo(id);
+    this.GetRecipeInfo(this.route.snapshot.params.id);
   }
 
   private InitData() {
@@ -84,8 +83,6 @@ export class RecipeDetailsComponent {
         return;
       }
 
-      console.log(recipeDetailsDto);
-
       this.recipeCard.imageUrl = recipeDetailsDto.imageUrl;
       this.recipeCard.authorUsername = recipeDetailsDto.authorUsername;
       this.recipeCard.title = recipeDetailsDto.title;
@@ -117,7 +114,6 @@ export class RecipeDetailsComponent {
       for (let step of recipeDetailsDto.steps) {
         this.recipeSteps.push(step);
       }
-
     });
   }
 

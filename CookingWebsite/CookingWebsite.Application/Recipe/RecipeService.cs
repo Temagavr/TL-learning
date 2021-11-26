@@ -13,6 +13,10 @@ namespace CookingWebsite.Application.Recipe
         private readonly IRecipeRepository _recipeRepostitory;
         private readonly IUnitOfWork _unitOfWork;
 
+        private int _skip = 0;
+        private int _take = 4;
+        private bool _includeAll = false;
+
         public RecipeService(IRecipeRepository recipeRepository, IUnitOfWork unitOfWork)
         {
             _recipeRepostitory = recipeRepository;
@@ -51,6 +55,27 @@ namespace CookingWebsite.Application.Recipe
             _recipeRepostitory.Delete(recipe);
 
             await _unitOfWork.Commit();
+        }
+
+        public async Task<List<Domain.Entities.Recipes.Recipe>> SearchRecipes(string searchString)
+        {
+            _skip = 0;
+            _take = 4;
+
+            var recipesList = await _recipeRepostitory.Search(_skip, _take, searchString, _includeAll);
+
+            _skip = _take;
+            _take = 2;
+
+            return recipesList;
+        }
+
+        public async Task<List<Domain.Entities.Recipes.Recipe>> LoadMoreRecipes(string searchString)
+        {
+            var recipesList = await _recipeRepostitory.Search(_skip, _take, searchString, _includeAll);
+            _skip += _take;
+
+            return recipesList;
         }
     }
 }
