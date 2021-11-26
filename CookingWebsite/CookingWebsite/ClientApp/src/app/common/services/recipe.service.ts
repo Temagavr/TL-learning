@@ -25,8 +25,9 @@ export class RecipeService extends HttpService {
   }
 
   public async GetRecipeList(searchString: string) {
+    console.log(searchString);
 
-    const response = await this.Post(`${this.url}/searchRecipes`, searchString);
+    const response = await this.Post(`${this.url}/searchRecipes`, {searchString});
 
     if (!response) {
       alert(this.errorMsg);
@@ -37,7 +38,7 @@ export class RecipeService extends HttpService {
 
   public async LoadMoreRecipes(searchString: string) {
 
-    const response = await this.Post(`${this.url}/searchRecipes`, searchString);
+    const response = await this.Post(`${this.url}/loadMoreRecipes`, searchString);
 
     if (!response) {
       alert(this.errorMsg);

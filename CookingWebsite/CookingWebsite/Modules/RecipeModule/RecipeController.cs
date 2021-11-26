@@ -27,7 +27,7 @@ namespace CookingWebsite.Modules.RecipeModule
             return recipeDetails.Map();
         }
 
-        [HttpPost("/searchRecipes")]
+        [HttpPost("searchRecipes")]
         public async Task<List<RecipeCardDto>> SearchRecipes(string searchString)
         {
             var recipesList = await _recipeService.SearchRecipes(searchString);
@@ -35,7 +35,7 @@ namespace CookingWebsite.Modules.RecipeModule
             return recipesList.Map();
         }
 
-        [HttpPost("/loadMoreRecipes")]
+        [HttpPost("loadMoreRecipes")]
         public async Task<List<RecipeCardDto>> LoadMoreRecipes(string searchString)
         {
             var recipesList = await _recipeService.SearchRecipes(searchString);

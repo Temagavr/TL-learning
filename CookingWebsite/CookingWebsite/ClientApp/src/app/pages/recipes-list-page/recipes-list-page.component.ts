@@ -14,11 +14,15 @@ import { RecipeService } from '../../common/services/recipe.service';
 })
 export class RecipesListPageComponent {
 
-
   constructor(private router: Router, private recipeService: RecipeService) { }
 
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;
+
+  ngOnInit() {
+    this.InitData();
+    this.searchRecipes('');
+  }
 
   insertTagValue(tagName) {
     this.searchInput.callInput(tagName);
@@ -33,66 +37,77 @@ export class RecipesListPageComponent {
     { iconUrl: '../../../assets/partyIcon.png', title: 'На Праздник', description: '' }
   ];
 
-  recipes: RecipeCard[] = [
-    {
-      id: 2,
-      imageUrl: '../../../assets/recipes-list-page/recipeExpl1WithoutUsername.png',
-      authorUsername: 'glazest',
-      title: 'Клубничная панна-котта',
-      description: 'Десерт, который невероятно легко и быстро готовится. Советую подавать его порционно в красивых бокалах, украсив взбитыми сливками, свежими ягодами и мятой.',
-      tags: ['десерты', 'клубника', 'сливки'],
-      isFavourite: true,
-      isLiked: false,
-      favourite: 10,
-      likes: 8,
-      time: 35,
-      personsCount: 5
-    },
-    {
-      id: 3,
-      imageUrl: '../../../../assets/recipes-list-page/recipeExpl2WithoutUsername.png',
-      authorUsername: 'horilka',
-      title: 'Мясные фрикадельки',
-      description: 'Мясные фрикадельки в томатном соусе - несложное и вкусное блюдо, которым можно порадовать своих близких.',
-      tags: ['вторые блюда', 'мясо', 'соевый соус'],
-      isFavourite: false,
-      isLiked: false,
-      favourite: 4,
-      likes: 7,
-      time: 90,
-      personsCount: 4
-    },
-    {
-      id: 4,
-      imageUrl: '../../../../assets/recipes-list-page/recipeExpl3WithoutUsername.png',
-      authorUsername: 'turum-pum-pum',
-      title: 'Панкейки',
-      description: 'Панкейки: меньше, чем блины, но больше, чем оладьи. Основное отличие — в тесте, оно должно быть воздушным, чтобы панкейки не растекались по сковородке...',
-      tags: ['десерты', 'завтрак', 'блины'],
-      isFavourite: true,
-      isLiked: true,
-      favourite: 25,
-      likes: 7,
-      time: 40,
-      personsCount: 3
-    },
-    {
-      id: 5,
-      imageUrl: '../../../../assets/recipes-list-page/recipeExpl4WithoutUsername.png',
-      authorUsername: 'sweet-girl',
-      title: 'Полезное мороженое без сахара',
-      description: 'Йогуртовое мороженое сочетает в себе нежный вкус и низкую калорийность, что будет особенно актуально для сладкоежек, соблюдающих диету.',
-      tags: ['десерты', 'вишня', 'мороженное'],
-      isFavourite: false,
-      isLiked: false,
-      favourite: 7,
-      likes: 4,
-      time: 35,
-      personsCount: 2
-    },
-  ];
+  recipes: RecipeCard[];
 
   redirectToRecipe(recipeId: number) {
     this.router.navigate(['/recipes', recipeId]);
+  }
+
+  InitData() {
+    this.recipes =[
+      {
+        id: 2,
+        imageUrl: '../../../assets/recipes/recipeExpl1WithoutUsername.png',
+        authorUsername: 'glazest',
+        title: 'Клубничная панна-котта',
+        description: 'Десерт, который невероятно легко и быстро готовится. Советую подавать его порционно в красивых бокалах, украсив взбитыми сливками, свежими ягодами и мятой.',
+        tags: ['десерты', 'клубника', 'сливки'],
+        isFavourite: true,
+        isLiked: false,
+        favouritesCount: 10,
+        likesCount: 8,
+        cookingTime: 35,
+        personsCount: 5
+      },
+      {
+        id: 3,
+        imageUrl: '../../../../assets/recipes-list-page/recipeExpl2WithoutUsername.png',
+        authorUsername: 'horilka',
+        title: 'Мясные фрикадельки',
+        description: 'Мясные фрикадельки в томатном соусе - несложное и вкусное блюдо, которым можно порадовать своих близких.',
+        tags: ['вторые блюда', 'мясо', 'соевый соус'],
+        isFavourite: false,
+        isLiked: false,
+        favouritesCount: 4,
+        likesCount: 7,
+        cookingTime: 90,
+        personsCount: 4
+      },
+      {
+        id: 4,
+        imageUrl: '../../../../assets/recipes-list-page/recipeExpl3WithoutUsername.png',
+        authorUsername: 'turum-pum-pum',
+        title: 'Панкейки',
+        description: 'Панкейки: меньше, чем блины, но больше, чем оладьи. Основное отличие — в тесте, оно должно быть воздушным, чтобы панкейки не растекались по сковородке...',
+        tags: ['десерты', 'завтрак', 'блины'],
+        isFavourite: true,
+        isLiked: true,
+        favouritesCount: 25,
+        likesCount: 7,
+        cookingTime: 40,
+        personsCount: 3
+      },
+      {
+        id: 5,
+        imageUrl: '../../../../assets/recipes-list-page/recipeExpl4WithoutUsername.png',
+        authorUsername: 'sweet-girl',
+        title: 'Полезное мороженое без сахара',
+        description: 'Йогуртовое мороженое сочетает в себе нежный вкус и низкую калорийность, что будет особенно актуально для сладкоежек, соблюдающих диету.',
+        tags: ['десерты', 'вишня', 'мороженное'],
+        isFavourite: false,
+        isLiked: false,
+        favouritesCount: 7,
+        likesCount: 4,
+        cookingTime: 35,
+        personsCount: 2
+      },
+    ];
+  }
+
+  searchRecipes(searchString: string) {
+    this.recipeService.GetRecipeList(searchString).then((recipeCards: RecipeCard[]) => {
+      console.log(recipeCards);
+      this.recipes = recipeCards;
+    });
   }
 }

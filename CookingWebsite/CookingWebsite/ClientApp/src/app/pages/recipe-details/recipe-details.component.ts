@@ -38,9 +38,9 @@ export class RecipeDetailsComponent {
       tags: ['десерты', 'клубника', 'сливки'],
       isFavourite: true,
       isLiked: false,
-      favourite: 10,
-      likes: 8,
-      time: 35,
+      favouritesCount: 10,
+      likesCount: 8,
+      cookingTime: 35,
       personsCount: 5
     };
 
@@ -90,9 +90,9 @@ export class RecipeDetailsComponent {
       this.recipeCard.tags = ['десерты', 'клубника', 'сливки'],
       this.recipeCard.isFavourite = false,
       this.recipeCard.isLiked = true;;
-      this.recipeCard.favourite = 12 //recipeDetailsDto.favourite;
-      this.recipeCard.likes = 6 //recipeDetailsDto.likes;
-      this.recipeCard.time = recipeDetailsDto.cookingTime;
+      this.recipeCard.favouritesCount = 12 //recipeDetailsDto.favourite;
+      this.recipeCard.likesCount = 6 //recipeDetailsDto.likes;
+      this.recipeCard.cookingTime = recipeDetailsDto.cookingTime;
       this.recipeCard.personsCount = recipeDetailsDto.personsCount;
 
       this.recipeIngredient = [];

@@ -12,8 +12,8 @@ export interface RecipeCard {
   isFavourite: boolean;
   isLiked: boolean;
 
-  favourite: number;
-  likes: number;
-  time: number;
+  favouritesCount: number;
+  likesCount: number;
+  cookingTime: number;
   personsCount: number;
 }
