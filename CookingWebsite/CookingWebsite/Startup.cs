@@ -50,6 +50,7 @@ namespace CookingWebsite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
         {
+            //Удалить в будущем эти 4 строки
             using IServiceScope scope = app.ApplicationServices.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<CookingWebsiteDbContext>();
             dbContext.Database.EnsureDeleted();

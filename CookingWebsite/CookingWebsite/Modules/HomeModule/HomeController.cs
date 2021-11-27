@@ -1,5 +1,5 @@
 ﻿using CookingWebsite.Application.Account;
-using CookingWebsite.Application.Recipe;
+using CookingWebsite.Application.Recipes;
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +21,10 @@ namespace CookingWebsite.Modules.HomeModule
             _unitOfWork = unitOfWork;
         }
 
-		[HttpGet("recipeOfDay")]
+		[HttpGet("recipe-of-day")]
         public async Task<RecipeOfDayDto> GetRecipeOfDay()
 		{
-            var recipe = await _recipeService.GetRecipe(1);
+            var recipe = await _recipeService.GetRecipeOfDay();
 
             return recipe.Map();
         }

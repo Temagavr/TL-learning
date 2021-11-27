@@ -22,9 +22,11 @@ export class RecipesListPageComponent {
   private skip: number = 4;
   private take: number = 2;
 
+  private searchString: string = '';
+
   ngOnInit() {
     this.InitData();
-    this.searchRecipes('');
+    this.searchRecipes(this.searchString);
   }
 
   insertTagValue(tagName) {
@@ -110,8 +112,9 @@ export class RecipesListPageComponent {
   searchRecipes(searchString: string) {
     this.take = 4;
     this.skip = 0;
+    this.searchString = searchString;
 
-    this.recipeService.GetRecipeList(searchString).then((recipeCards: RecipeCard[]) => {
+    this.recipeService.GetRecipeList(this.skip, this.take, this.searchString).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
     });
 
@@ -119,13 +122,13 @@ export class RecipesListPageComponent {
     this.take = 2;
   }
 
-  loadMoreRecipes(searchString: string) {
-    this.recipeService.LoadMoreRecipes(this.skip, this.take, searchString).then((recipeCards: RecipeCard[]) => {
+  loadMoreRecipes() {
+    this.recipeService.LoadMoreRecipes(this.skip, this.take, this.searchString).then((recipeCards: RecipeCard[]) => {
       console.log(recipeCards);
       this.skip += this.take;
-      for (let recipe in recipeCards) {
-        console.log(recipe);
-        //this.recipes.push(recipe);
+
+      for (let recipe of recipeCards) {
+        this.recipes.push(recipe);
       }
     });
   }

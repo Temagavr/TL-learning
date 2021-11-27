@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CookingWebsite.Application.Recipe.RecipeDtos
+namespace CookingWebsite.Application.Recipes.RecipeDtos
 {
     public class AddRecipeDto
     {

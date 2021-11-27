@@ -1,4 +1,4 @@
-﻿using CookingWebsite.Application.Recipe;
+﻿using CookingWebsite.Application.Recipes;
 using CookingWebsite.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -19,26 +19,32 @@ namespace CookingWebsite.Modules.RecipeModule
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost("recipeDetails/{recipeId}")]
-        public async Task<RecipeDetailsDto> GetRecipeDetails(int recipeId)
+        [HttpGet("recipe-details")]
+        public async Task<RecipeDetailsDto> GetRecipeDetails([FromQuery] int recipeId)
         {
             var recipeDetails = await _recipeService.GetRecipe(recipeId);
 
             return recipeDetails.Map();
         }
 
-        [HttpPost("searchRecipes")]
-        public async Task<List<RecipeCardDto>> SearchRecipes(string searchString)
+        [HttpGet("search")]
+        public async Task<List<RecipeCardDto>> SearchRecipes(
+            [FromQuery] int skip,
+            [FromQuery] int take,
+            [FromQuery] string searchString)
         {
-            var recipesList = await _recipeService.SearchRecipes(searchString);
+            var recipesList = await _recipeService.SearchRecipes(skip, take, searchString);
 
             return recipesList.Map();
         }
 
-        [HttpPost("loadMoreRecipes")]
-        public async Task<List<RecipeCardDto>> LoadMoreRecipes(LoadMoreRecipesDto loadMore)
+        [HttpGet("load-more-recipes")]
+        public async Task<List<RecipeCardDto>> LoadMoreRecipes(
+            [FromQuery] int skip,
+            [FromQuery] int take,
+            [FromQuery] string searchString)
         {
-            var recipesList = await _recipeService.LoadMoreRecipes(loadMore.Skip, loadMore.Take, loadMore.SearchString);
+            var recipesList = await _recipeService.SearchRecipes(skip, take, searchString);
 
             return recipesList.Map();
         }

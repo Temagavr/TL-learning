@@ -1,11 +1,11 @@
-﻿using CookingWebsite.Application.Recipe.RecipeDtos;
+﻿using CookingWebsite.Application.Recipes.RecipeDtos;
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Application.Recipe
+namespace CookingWebsite.Application.Recipes
 {
     public class RecipeService : IRecipeService
     {
@@ -42,7 +42,7 @@ namespace CookingWebsite.Application.Recipe
             await _unitOfWork.Commit();
         }
 
-        public async Task<Domain.Entities.Recipes.Recipe> GetRecipe(int recipeId)
+        public async Task<Recipe> GetRecipe(int recipeId)
         {
             var recipe = await _recipeRepostitory.GetById(recipeId);
 
@@ -58,18 +58,18 @@ namespace CookingWebsite.Application.Recipe
             await _unitOfWork.Commit();
         }
 
-        public async Task<List<Domain.Entities.Recipes.Recipe>> SearchRecipes(string searchString)
-        {
-            var recipesList = await _recipeRepostitory.Search(_skip, _take, searchString, _includeAll);
-
-            return recipesList;
-        }
-
-        public async Task<List<Domain.Entities.Recipes.Recipe>> LoadMoreRecipes(int skip, int take, string searchString)
+        public async Task<List<Recipe>> SearchRecipes(int skip, int take, string searchString)
         {
             var recipesList = await _recipeRepostitory.Search(skip, take, searchString, _includeAll);
 
             return recipesList;
+        }
+
+        public async Task<Recipe> GetRecipeOfDay()
+        {
+            var recipeOfDay = await _recipeRepostitory.GetFirst();
+
+            return recipeOfDay;
         }
     }
 }

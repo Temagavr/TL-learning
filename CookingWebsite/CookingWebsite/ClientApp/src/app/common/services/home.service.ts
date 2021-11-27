@@ -17,7 +17,7 @@ export class HomeService extends HttpService {
 
     console.log('Try to get recipe of day');
 
-    const response: DayRecipeDto = await this.Get(`${this.url}/recipeOfDay`);
+    const response: DayRecipeDto = await this.Get(`${this.url}/recipe-of-day`);
 
     if (!response) {
       alert(this.errorMsg);
