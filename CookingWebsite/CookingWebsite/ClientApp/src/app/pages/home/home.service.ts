@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from './http.service';
-import { DayRecipeDto } from '../../Dtos/day-recipe-dto';
+import { HttpService } from '../../common/services/http.service';
+import { DayRecipeDto } from './day-recipe-dto';
 
 @Injectable()
 export class HomeService extends HttpService {

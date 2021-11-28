@@ -84,13 +84,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\search-input\search-input.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\account.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\common\services\home.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\home\home.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\http.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\recipe.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\Tag.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\login-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-details-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\registration-dto.ts" />

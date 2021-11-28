@@ -1,11 +1,11 @@
 import { Component, ViewChild} from '@angular/core';
 import { UserInteractionService } from '../../common/services/user-interaction.service';
 
-import { DayRecipeDto } from '../../Dtos/day-recipe-dto';
+import { DayRecipeDto } from './day-recipe-dto';
 import { LoginModalComponent } from '../../common/modals/login-modal/login-modal.component';
 
 import { Tag } from '../../common/tags-info/Tag';
-import { HomeService } from '../../common/services/home.service';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
