@@ -12,16 +12,10 @@ export class RecipesListComponent {
 
   @Input() recipes: RecipeCard[];
 
-  @Output() onNavigateToRecipe = new EventEmitter();
-
   @Output() onLoadMoreClick = new EventEmitter();
 
   loadMoreRecipes() {
     console.log('Try to load more recipes');
     this.onLoadMoreClick.emit();
-  }
-
-  navigateToRecipe(recipeId: number) {
-    this.onNavigateToRecipe.emit(recipeId);
   }
 }

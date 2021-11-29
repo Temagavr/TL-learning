@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from './http.service';
+import { RecipeDetailsDto } from "../../Dtos/recipe-details-dto";
+import { RecipeCard } from "../recipe-card/recipe-card";
 
 @Injectable()
 export class RecipeService extends HttpService {
@@ -12,20 +14,9 @@ export class RecipeService extends HttpService {
 
   private url = 'api/recipe';
 
-  public async GetRecipeDetails(recipeId: number) {
+  public async getRecipeDetails(recipeId: number) {
 
-    const response = await this.Get(`${this.url}/recipe-details?recipeId=${recipeId}`);
-
-    if (!response) {
-      alert(this.errorMsg);
-    }
-
-    return response;
-  }
-
-  public async GetRecipeList(skip: number, take: number, searchString: string) {
-
-    const response = await this.Get(`${this.url}/search?skip=${skip}&take=${take}&searchString=${searchString}`);
+    const response: RecipeDetailsDto = await this.Get(`${this.url}/recipe-details?recipeId=${recipeId}`);
 
     if (!response) {
       alert(this.errorMsg);
@@ -34,10 +25,9 @@ export class RecipeService extends HttpService {
     return response;
   }
 
-  public async LoadMoreRecipes(skip: number, take: number, searchString: string) {
-    console.log(`skip: ${skip}, take: ${take}`);
+  public async getRecipeList(skip: number, take: number, searchString: string) {
 
-    const response = await this.Get(`${this.url}/load-more-recipes?skip=${skip}&take=${take}&searchString=${searchString}`);
+    const response: RecipeCard[] = await this.Get(`${this.url}/search?skip=${skip}&take=${take}&searchString=${searchString}`);
 
     if (!response) {
       alert(this.errorMsg);

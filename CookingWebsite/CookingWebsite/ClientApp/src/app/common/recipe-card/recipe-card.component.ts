@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RecipeCard } from './recipe-card';
 
@@ -9,9 +10,10 @@ import { RecipeCard } from './recipe-card';
 })
 export class RecipeCardComponent {
 
-  @Input() recipeInfo: RecipeCard;
+  constructor(private router: Router) {
+  }
 
-  @Output() onRecipeClick = new EventEmitter();
+  @Input() recipeInfo: RecipeCard;
 
   rightPersons: string;
 
@@ -43,7 +45,7 @@ export class RecipeCardComponent {
     }
   }
 
-  ChooseRecipe() {
-    this.onRecipeClick.emit(this.recipeInfo.id);
+  chooseRecipe() {
+    this.router.navigate(['/recipes', this.recipeInfo.id]);
   }
 }
