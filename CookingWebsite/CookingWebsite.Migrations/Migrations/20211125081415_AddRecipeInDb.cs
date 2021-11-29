@@ -102,29 +102,6 @@ namespace CookingWebsite.Migrations.Migrations
                 name: "IX_RecipeStep_RecipeId",
                 table: "RecipeStep",
                 column: "RecipeId");
-
-            /*
-            migrationBuilder.Sql("INSERT INTO Recipe (ImageUrl, Title, Description, CookingTime, PersonsCount, LikesCount, " +
-                "FavouritesCount, AuthorUsername) VALUES('../../../assets/recipes-list-page/recipeExpl1WithoutUsername.png', " +
-                "'Клубничная панна-котта', 'Десерт, который невероятно легко и быстро готовится. Советую подавать его порционно в" +
-                " красивых бокалах, украсив взбитыми сливками, свежими ягодами и мятой.', " +
-                "35, 5, 8, 10, 'glazest');");
-            
-            migrationBuilder.Sql("INSERT INTO RecipeIngredient VALUES(1, 'Для панна котты');");
-
-            migrationBuilder.Sql("INSERT INTO RecipeIngredientItem VALUES(1, 'Сливки-20-30%', '500мл.');");
-            migrationBuilder.Sql("INSERT INTO RecipeIngredientItem VALUES(1, 'Молоко', '100мл.');");
-            migrationBuilder.Sql("INSERT INTO RecipeIngredientItem VALUES(1, 'Желатин', '2 ч.л.');");
-            migrationBuilder.Sql("INSERT INTO RecipeIngredientItem VALUES(1, 'Сахар', '3 ст.л.');");
-            migrationBuilder.Sql("INSERT INTO RecipeIngredientItem VALUES(1, 'Ванильный сахар', '2 ч.л.');");
-
-            migrationBuilder.Sql("INSERT INTO RecipeStep VALUES(1, 1, 'Приготовим панна котту: Зальем желатин молоком и поставим на 30 минут для набухания. В сливки добавим сахар и ванильный сахар. Доводим до кипения (не кипятим!).'); ");
-            migrationBuilder.Sql("INSERT INTO RecipeStep VALUES(1, 2, 'Добавим в сливки набухший в молоке желатин. Перемешаем до полного растворения. Огонь отключаем. Охладим до комнатной температуры.'); ");
-            migrationBuilder.Sql("INSERT INTO RecipeStep VALUES(1, 3, 'Разольем охлажденные сливки по креманкам и поставим в холодильник до полного застывания. Это около 3-5 часов.'); ");
-            migrationBuilder.Sql("INSERT INTO RecipeStep VALUES(1, 4, 'Приготовим клубничное желе: Клубнику помоем, очистим от плодоножек. Добавим сахар. Взбиваем клубнику с помощью блендера в пюре.'); ");
-            migrationBuilder.Sql("INSERT INTO RecipeStep VALUES(1, 5, 'Добавим в миску с желатином 2ст.ложки холодной воды и сок лимона. Перемешаем и поставим на 30 минут для набухания. Доведем клубничное пюре до кипения. Добавим набухший желатин, перемешаем до полного растворения. Огонь отключаем. Охладим до комнатной температуры.'); ");
-            migrationBuilder.Sql("INSERT INTO RecipeStep VALUES(1, 6, 'Сверху на застывшие сливки добавим охлажденное клубничное желе. Поставим в холодильник до полного застывания клубничного желе. Готовую панна коту подаем с фруктами.'); ");
-            */
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

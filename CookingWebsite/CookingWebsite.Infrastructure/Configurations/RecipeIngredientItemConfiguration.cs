@@ -14,12 +14,6 @@ namespace CookingWebsite.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<RecipeIngredientItem> builder)
         {
             builder.ToTable(nameof(RecipeIngredientItem)).HasKey(t => t.Id);
-            /*
-            builder
-                .HasOne<RecipeIngredient>()
-                .WithOne()
-                .HasForeignKey<RecipeIngredientItem>(i => i.RecipeIngredientId);
-            */
         }
     }
 }

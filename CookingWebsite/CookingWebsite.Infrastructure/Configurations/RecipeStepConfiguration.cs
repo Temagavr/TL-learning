@@ -14,13 +14,6 @@ namespace CookingWebsite.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<RecipeStep> builder)
         {
             builder.ToTable(nameof(RecipeStep)).HasKey(t => t.Id);
-
-            /*
-            builder
-                .HasOne<Recipe>()
-                .WithOne()
-                .HasForeignKey<RecipeStep>(s => s.RecipeId);
-            */
         }
     }
 }
