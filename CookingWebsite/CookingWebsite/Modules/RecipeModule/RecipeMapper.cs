@@ -1,5 +1,6 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CookingWebsite.Modules.RecipeModule
 {
@@ -29,6 +30,15 @@ namespace CookingWebsite.Modules.RecipeModule
                 recipeIngredientDto.Title = ingredient.Title;
                 recipeIngredientDto.RecipeId = ingredient.RecipeId;
                 recipeIngredientDto.Items = new List<RecipeIngredientItemDto>();
+                /*
+                recipeIngredientDto.Items = (List<RecipeIngredientItemDto>)(from item in ingredient.Items
+                                            select new RecipeIngredientItemDto
+                                            {
+                                                Name = item.Name,
+                                                Value = item.Value,
+                                                RecipeIngredientId = item.RecipeIngredientId
+                                            });
+                */
 
                 foreach (RecipeIngredientItem item in ingredient.Items)
                 {
