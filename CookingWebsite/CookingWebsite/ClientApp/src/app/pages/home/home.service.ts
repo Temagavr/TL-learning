@@ -13,15 +13,10 @@ export class HomeService extends HttpService {
 
   private url = 'api/home';
 
-  public async GetRecipeOfDay(){
-
+  public async getRecipeOfDay(){
     console.log('Try to get recipe of day');
 
     const response: DayRecipeDto = await this.Get(`${this.url}/recipe-of-day`);
-
-    if (!response) {
-      alert(this.errorMsg);
-    }
 
     return response;
   }

@@ -19,7 +19,7 @@ namespace CookingWebsite.Modules.RecipeModule
             recipeDetailsDto.LikesCount = recipe.LikesCount;
             recipeDetailsDto.PersonsCount = recipe.PersonsCount;
 
-            recipeDetailsDto.Ingredient = new List<RecipeIngredientDto>();
+            recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
             recipeDetailsDto.Steps = new List<string>();
 
             foreach (RecipeIngredient ingredient in recipe.Ingredients)
@@ -40,7 +40,7 @@ namespace CookingWebsite.Modules.RecipeModule
                     recipeIngredientDto.Items.Add(ingredientItemDto);
                 }
 
-                recipeDetailsDto.Ingredient.Add(recipeIngredientDto);
+                recipeDetailsDto.Ingredients.Add(recipeIngredientDto);
             }
 
             recipe.Steps.Sort((s1, s2) => s1.StepNumber <= s2.StepNumber ? -1 : 1);

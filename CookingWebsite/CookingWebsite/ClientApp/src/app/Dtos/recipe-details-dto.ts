@@ -19,5 +19,5 @@ export interface RecipeDetailsDto {
   personsCount: number;
 
   steps: string[];
-  ingredient: RecipeIngredientDto[];
+  ingredients: RecipeIngredientDto[];
 }

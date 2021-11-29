@@ -24,7 +24,8 @@ export class HttpService {
       result.result = response;
 
     } catch (error) {
-      result.statusCode = error.status;
+      alert(this.errorMsg);
+      return null;
     }
 
     return result.result;
@@ -32,12 +33,11 @@ export class HttpService {
 
   protected async Get<HttpR>(url: string) {
 
-    //const result = { result: null } as Response<HttpR>;
-
     try {
       return await this.http.get<HttpR>(url).toPromise();
 
     } catch (error) {
+      alert(this.errorMsg);
       return null;
     }
   }

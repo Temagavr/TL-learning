@@ -23,8 +23,8 @@ namespace CookingWebsite.Modules.RecipeModule
             _recipeRepository = recipeRepository;
         }
 
-        [HttpGet("recipe-details")]
-        public async Task<RecipeDetailsDto> GetRecipeDetails([FromQuery] int recipeId)
+        [HttpGet("{recipeId}/details")]
+        public async Task<RecipeDetailsDto> GetRecipeDetails([FromRoute] int recipeId)
         {
             var recipeDetails = await _recipeRepository.GetById(recipeId);
 

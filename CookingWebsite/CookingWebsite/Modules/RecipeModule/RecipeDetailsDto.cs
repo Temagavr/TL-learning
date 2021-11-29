@@ -16,7 +16,7 @@ namespace CookingWebsite.Modules.RecipeModule
         public int LikesCount { get; set; }
         public int FavouritesCount { get; set; }
         public string AuthorUsername { get; set; }
-        public List<RecipeIngredientDto> Ingredient { get; set; }
+        public List<RecipeIngredientDto> Ingredients { get; set; }
         public List<string> Steps { get; set; }
     }
 }

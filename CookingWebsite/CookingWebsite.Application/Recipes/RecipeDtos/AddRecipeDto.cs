@@ -9,7 +9,7 @@ namespace CookingWebsite.Application.Recipes.RecipeDtos
         public int CookingTime { get; set; }
         public int PersonsCount { get; set; }
         public string AuthorUsername { get; set; }
-        //public List<RecipeIngredientDto> recipeIngredient { get; set; }
-        //public List<RecipeStepDto> Steps { get; set; }
+        public List<RecipeIngredientDto> recipeIngredient { get; set; }
+        public List<RecipeStepDto> Steps { get; set; }
     }
 }

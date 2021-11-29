@@ -19,15 +19,29 @@ export class RecipeDetailsComponent {
   ) {
   }
 
-  public recipeCard: RecipeCard;
+  public recipeCard: RecipeCard = {
+    id: 1,
+    imageUrl: '',
+    authorUsername: '',
+    title: '',
+    description: '',
+    tags: [],
+    isFavourite: false,
+    isLiked: false,
+    favouritesCount: 0,
+    likesCount: 0,
+    cookingTime: 0,
+    personsCount: 0
+  };
+
   public recipeIngredient: RecipeIngredientDto[];
   public recipeSteps: string[];
 
   ngOnInit() {
-    this.GetRecipeInfo(this.route.snapshot.params.id);
+    this.getRecipeInfo(this.route.snapshot.params.id);
   }
 
-  private GetRecipeInfo(recipeId: number): void {
+  private getRecipeInfo(recipeId: number): void {
     this.recipeService.getRecipeDetails(recipeId).then((recipeDetailsDto: RecipeDetailsDto) => {
       if (!recipeDetailsDto) {
         return;
@@ -37,16 +51,16 @@ export class RecipeDetailsComponent {
       this.recipeCard.authorUsername = recipeDetailsDto.authorUsername;
       this.recipeCard.title = recipeDetailsDto.title;
       this.recipeCard.description = recipeDetailsDto.description;
-      this.recipeCard.tags = ['десерты', 'клубника', 'сливки'],
-      this.recipeCard.isFavourite = false,
-      this.recipeCard.isLiked = true;;
+      this.recipeCard.tags = ['десерты', 'клубника', 'сливки'];
+      this.recipeCard.isFavourite = false;
+      this.recipeCard.isLiked = true;
       this.recipeCard.favouritesCount = 12 //recipeDetailsDto.favourite;
       this.recipeCard.likesCount = 6 //recipeDetailsDto.likes;
       this.recipeCard.cookingTime = recipeDetailsDto.cookingTime;
       this.recipeCard.personsCount = recipeDetailsDto.personsCount;
 
       this.recipeIngredient = [];
-      for (let ingredient of recipeDetailsDto.ingredient) {
+      for (let ingredient of recipeDetailsDto.ingredients) {
         var ingredientDto:RecipeIngredientDto = { title: "", items: [] };
         ingredientDto.title = ingredient.title;
 
