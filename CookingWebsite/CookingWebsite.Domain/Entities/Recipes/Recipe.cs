@@ -16,7 +16,6 @@ namespace CookingWebsite.Domain.Entities.Recipes
         public List<RecipeIngredient> Ingredients { get; private set; }
         public List<RecipeStep> Steps { get; private set; }
 
-
         public Recipe(
             string imageUrl,
             string title,

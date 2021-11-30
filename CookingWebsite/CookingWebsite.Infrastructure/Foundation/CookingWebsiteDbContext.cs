@@ -11,8 +11,15 @@ namespace CookingWebsite.Infrastructure.Foundation
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //User
             builder.ApplyConfiguration( new UserConfiguration() );
             builder.ApplyConfiguration( new UserStatisticConfiguration() );
+
+            //Recipe
+            builder.ApplyConfiguration( new RecipeConfiguration() );
+            builder.ApplyConfiguration( new RecipeIngredientConfiguration() ); 
+            builder.ApplyConfiguration( new RecipeIngredientItemConfiguration() );
+            builder.ApplyConfiguration( new RecipeStepConfiguration() );
         }
     }
 }

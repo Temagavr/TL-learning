@@ -5,9 +5,9 @@
   <div class="recipe-search-block">
     <h3 class="recipe-search-title">Поиск рецепта</h3>
     <div class="recipe-search">
-      <app-search-input [recommendsTags]="recommendsList"></app-search-input>
+      <app-search-input (onSearchClick)="searchRecipes($event)" [recommendsTags]="recommendsList"></app-search-input>
     </div>
   </div>
 
-  <app-recipes-list></app-recipes-list>
+  <app-recipes-list (onLoadMoreClick)="loadMoreRecipes()" [recipes]="recipes"></app-recipes-list>
 </div>

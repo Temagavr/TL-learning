@@ -38,8 +38,11 @@ export class HeaderComponent {
           link.isActive = false;
         });
 
-        if (this.linksList.some(x => x.url == this.router.url)) {
-          this.linksList.filter(x => x.url == this.router.url)[0].isActive = true;
+        var urlElems = this.router.url.split('/');
+        var mainUrl = `/${urlElems[1]}`;
+
+        if (this.linksList.some(x => x.url == mainUrl)) {
+          this.linksList.filter(x => x.url == mainUrl)[0].isActive = true;
         }
       });
   }

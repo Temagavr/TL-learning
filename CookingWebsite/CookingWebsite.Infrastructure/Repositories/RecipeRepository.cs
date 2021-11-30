@@ -68,5 +68,10 @@ namespace CookingWebsite.Infrastructure.Repositories
 
             return await query.ToListAsync();
         }
+
+        public async Task<Recipe> GetFirst()
+        {
+            return await _recipes.FirstOrDefaultAsync();
+        }
     }
 }

@@ -3,6 +3,7 @@ using CookingWebsite.Infrastructure;
 using CookingWebsite.Infrastructure.Foundation;
 using CookingWebsite.Modules.AccountModule;
 using CookingWebsite.Modules.HomeModule;
+using CookingWebsite.Modules.RecipeModule;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -29,6 +30,7 @@ namespace CookingWebsite
                 .AddApplication()
                 .AddAccountModule()
                 .AddHomeModule()
+                .AddRecipeModule()
                 .AddRepositories();
 
             services.AddControllersWithViews();
@@ -48,6 +50,7 @@ namespace CookingWebsite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
         {
+            //Delete this 4 strings in future
             using IServiceScope scope = app.ApplicationServices.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<CookingWebsiteDbContext>();
             dbContext.Database.EnsureDeleted();

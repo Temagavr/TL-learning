@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { RecipeIngredient } from '../recipe-ingredient';
+import { RecipeIngredientDto } from '../../../Dtos/recipe-ingredient-dto';
 
 @Component({
   selector: 'app-recipe-details-body',
@@ -11,6 +11,6 @@ export class RecipeDetailsBodyComponent {
 
   @Input() recipeSteps: string[];
 
-  @Input() recipeIngredients: RecipeIngredient[];
+  @Input() recipeIngredients: RecipeIngredientDto[];
 
 }

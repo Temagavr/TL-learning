@@ -1,5 +1,6 @@
-export interface RecipeCard {
-  id: number;
+import { RecipeIngredientDto } from './recipe-ingredient-dto';
+
+export interface RecipeDetailsDto {
   imageUrl: string;
 
   authorUsername: string
@@ -12,8 +13,11 @@ export interface RecipeCard {
   isFavourite: boolean;
   isLiked: boolean;
 
-  favouritesCount: number;
-  likesCount: number;
+  favourite: number;
+  likes: number;
   cookingTime: number;
   personsCount: number;
+
+  steps: string[];
+  ingredients: RecipeIngredientDto[];
 }

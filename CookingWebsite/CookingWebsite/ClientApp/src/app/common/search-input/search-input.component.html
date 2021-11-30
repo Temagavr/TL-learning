@@ -1,7 +1,7 @@
 <div class="search-block">
   <div class="search-input-block">
-    <input [value]="inputValue" class="search-input" placeholder="Название Блюда...." />
-    <button class="search-btn">Поиск</button>
+    <input [(ngModel)]="inputValue" class="search-input" placeholder="Название Блюда...." name="inputValue" />
+    <button (click)="searchClick()" class="search-btn">Поиск</button>
   </div>
   <div class="recomends-list-block">
     <ul class="recomends-list">

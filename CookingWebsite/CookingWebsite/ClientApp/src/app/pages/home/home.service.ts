@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from './http.service';
-import { DayRecipeDto } from '../../Dtos/day-recipe-dto';
+import { HttpService } from '../../common/services/http.service';
+import { DayRecipeDto } from './day-recipe-dto';
 
 @Injectable()
 export class HomeService extends HttpService {
@@ -13,15 +13,10 @@ export class HomeService extends HttpService {
 
   private url = 'api/home';
 
-  public async GetRecipeOfDay(){
-
+  public async getRecipeOfDay(){
     console.log('Try to get recipe of day');
 
-    const response: DayRecipeDto = await this.Get(`${this.url}/recipeOfDay`);
-
-    if (!response) {
-      alert(this.errorMsg);
-    }
+    const response: DayRecipeDto = await this.Get(`${this.url}/recipe-of-day`);
 
     return response;
   }

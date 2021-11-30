@@ -17,19 +17,19 @@
           <button (click)="favouriteRecipe()" class="recipe-card-btn">
             <img [hidden]="recipeInfo.isFavourite" class="favourite-icon" src="../../../assets/recipes-list-page/starIcon.png" />
             <img [hidden]="!recipeInfo.isFavourite" class="favourite-icon" src="../../../assets/recipes-list-page/coloredStarIcon.png"/>
-            <span class="recipe-card-btn-font">{{recipeInfo.favourite}}</span>
+            <span class="recipe-card-btn-font">{{recipeInfo.favouritesCount}}</span>
           </button>
 
           <button (click)="likeRecipe()" class="recipe-card-btn">
             <img [hidden]="recipeInfo.isLiked" class="favourite-icon" src="../../../assets/recipes-list-page/recipeLikeIcon.png" />
             <img [hidden]="!recipeInfo.isLiked" class="favourite-icon" src="../../../assets/recipes-list-page/recipeLikePressedIcon.png" />
-            <span class="recipe-card-btn-font">{{recipeInfo.likes}}</span>
+            <span class="recipe-card-btn-font">{{recipeInfo.likesCount}}</span>
           </button>
         </div>
       </div>
 
       <div class="recipe-body">
-        <h3 class="recipe-title">{{recipeInfo.title}}</h3>
+        <h3 class="recipe-title" (click)="chooseRecipe()">{{recipeInfo.title}}</h3>
         <p class="recipe-descr">{{recipeInfo.description}}</p>
       </div>
 
@@ -38,7 +38,7 @@
           <img class="recipe-metric-img" src="../../../assets/recipes-list-page/recipeTimer.png"/>
           <div class="recipe-metric-text-block">
             <span class="recipe-metric-title">Время приготовления:</span>
-            <span class="recipe-metric-value">{{recipeInfo.time}} минут</span>
+            <span class="recipe-metric-value">{{recipeInfo.cookingTime}} минут</span>
           </div>
         </div>
 

@@ -1,11 +1,11 @@
 import { Component, ViewChild} from '@angular/core';
 import { UserInteractionService } from '../../common/services/user-interaction.service';
 
-import { DayRecipeDto } from '../../Dtos/day-recipe-dto';
+import { DayRecipeDto } from './day-recipe-dto';
 import { LoginModalComponent } from '../../common/modals/login-modal/login-modal.component';
 
 import { Tag } from '../../common/tags-info/Tag';
-import { HomeService } from '../../common/services/home.service';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +36,7 @@ export class HomeComponent {
   }
 
   private getDayRecipe(): void {
-    this.homeService.GetRecipeOfDay().then((recipeOfDayDto: DayRecipeDto) => {
+    this.homeService.getRecipeOfDay().then((recipeOfDayDto: DayRecipeDto) => {
       if (!recipeOfDayDto) {
         return;
       }

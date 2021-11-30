@@ -10,7 +10,6 @@ namespace CookingWebsite.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<UserStatistic> builder)
         {
             builder.ToTable(nameof(UserStatistic)).HasKey(t => t.Id);
-
         }
     }
 }

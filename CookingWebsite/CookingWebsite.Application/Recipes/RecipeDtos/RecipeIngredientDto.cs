@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CookingWebsite.Application.Recipe.RecipeDtos
+namespace CookingWebsite.Application.Recipes.RecipeDtos
 {
     public class RecipeIngredientDto
     {

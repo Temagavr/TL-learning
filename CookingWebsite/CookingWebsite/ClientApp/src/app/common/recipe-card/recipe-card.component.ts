@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RecipeCard } from './recipe-card';
 
@@ -8,6 +9,9 @@ import { RecipeCard } from './recipe-card';
   styleUrls: ['./recipe-card.component.css']
 })
 export class RecipeCardComponent {
+
+  constructor(private router: Router) {
+  }
 
   @Input() recipeInfo: RecipeCard;
 
@@ -26,18 +30,22 @@ export class RecipeCardComponent {
   likeRecipe() {
     this.recipeInfo.isLiked = !this.recipeInfo.isLiked;
     if (this.recipeInfo.isLiked) {
-      this.recipeInfo.likes = this.recipeInfo.likes + 1;
+      this.recipeInfo.likesCount = this.recipeInfo.likesCount + 1;
     } else {
-      this.recipeInfo.likes = this.recipeInfo.likes - 1;
+      this.recipeInfo.likesCount = this.recipeInfo.likesCount - 1;
     }
   }
 
   favouriteRecipe() {
     this.recipeInfo.isFavourite = !this.recipeInfo.isFavourite;
     if (this.recipeInfo.isFavourite) {
-      this.recipeInfo.favourite = this.recipeInfo.favourite + 1;
+      this.recipeInfo.favouritesCount = this.recipeInfo.favouritesCount + 1;
     } else {
-      this.recipeInfo.favourite = this.recipeInfo.favourite - 1;
+      this.recipeInfo.favouritesCount = this.recipeInfo.favouritesCount - 1;
     }
+  }
+
+  chooseRecipe() {
+    this.router.navigate(['/recipes', this.recipeInfo.id]);
   }
 }

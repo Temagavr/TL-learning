@@ -18,3 +18,7 @@
 .load-more-btn:hover {
   cursor: pointer;
 }
+
+:host ::ng-deep app-recipe-card .recipe-title:hover {
+  cursor: pointer;
+}

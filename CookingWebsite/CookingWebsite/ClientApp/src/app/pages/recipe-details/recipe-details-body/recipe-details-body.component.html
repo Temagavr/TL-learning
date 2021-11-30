@@ -4,7 +4,7 @@
     <div class="ingredients-block" *ngFor="let ingredientBlock of recipeIngredients">
       <span class="title-style">{{ingredientBlock.title}}</span>
       <ul class="ingredients-list">
-        <li class="ingredient regular-text-style" *ngFor="let ingredient of ingredientBlock.ingredientsList">{{ingredient.name}} - {{ingredient.value}}</li>
+        <li class="ingredient regular-text-style" *ngFor="let ingredient of ingredientBlock.items">{{ingredient.name}} - {{ingredient.value}}</li>
       </ul>
     </div>
   </div>

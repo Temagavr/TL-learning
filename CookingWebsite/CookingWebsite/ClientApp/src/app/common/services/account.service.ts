@@ -18,20 +18,15 @@ export class AccountService extends HttpService {
 
     console.log(`registrate ${registrationDto.login}, password = ${registrationDto.password}, name = ${registrationDto.name}`);
 
-    const response = await this.Post(`${this.url}/registrate`, registrationDto);
-
-    if (response.statusCode != this.okStatusCode) {
-      alert(this.errorMsg);
-    }
+    const response: boolean = await this.Post(`${this.url}/registrate`, registrationDto);
   }
 
   public async Login(loginDto: LoginDto) {
     console.log(`login ${loginDto.login}, password = ${loginDto.password}`);
 
-    const response = await this.Post(`${this.url}/login`, loginDto);
+    const response: boolean = await this.Post(`${this.url}/login`, loginDto);
 
-    if (response.statusCode != this.okStatusCode) {
-      alert(this.errorMsg);
+    if (!response) {
       return false;
     }
     else

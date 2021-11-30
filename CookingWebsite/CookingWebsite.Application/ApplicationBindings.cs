@@ -1,5 +1,5 @@
 ﻿using CookingWebsite.Application.Account;
-using CookingWebsite.Application.Recipe;
+using CookingWebsite.Application.Recipes;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CookingWebsite.Application
