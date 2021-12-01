@@ -1,0 +1,27 @@
+<div class="recipe-info-body">
+  <div class="recipe-ingredients-block">
+    <span class="ingredients-block-title">Ингредиенты</span>
+    <div *ngFor="let ingredientBlock of ingredients; let idx = index">
+      <div class="ingredient-header">
+        <img (click)="removeIngredient(idx)" src="../../../../assets/closeModalButton.png" class="remove-elem" />
+      </div>
+
+      <div class="ingredients-block">
+        <input class="input-style ingredients-title" [(ngModel)]="ingredients[idx].title" placeholder="Заголовок для ингредиентов" />
+        <textarea class="input-style ingredients-list" placeholder="Список продуктов для категории"></textarea>
+      </div>
+    </div>
+    <button class="add-block-btn add-ingredient" (click)="addIngredient()">Добавить заголовок</button>
+  </div>
+
+  <div class="recipe-steps-block">
+    <div *ngFor="let step of steps; let idx = index; trackBy:trackByFn" class="step">
+      <div class="step-header">
+        <span class="title-style">Шаг {{idx + 1}}</span>
+        <img (click)="removeStep(idx)" src="../../../../assets/closeModalButton.png" class="remove-elem" />
+      </div>
+      <textarea class="input-style step-input" [(ngModel)]="steps[idx]" placeholder="Описание шага" name="step"></textarea>
+    </div>
+    <button class="add-block-btn add-step" (click)="addStep()">Добавить шаг</button>
+  </div>
+</div>

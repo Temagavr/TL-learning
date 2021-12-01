@@ -76,21 +76,24 @@ app-tags-type {
   padding: 5px 20px 13px 20px;
 }
 
-.big-modal-input {
-  margin-bottom: 4%;
-  height: 50px;
-  width: 100%;
-  padding-left: 4%; 
+.input-style {
   border-radius: 16px;
   border: 1px solid rgba(145, 150, 161, 0.4);
   font-size: 16px;
   line-height: 28px;
   color: rgba(37, 41, 45, 0.5);
+  padding: 0 4%;
+  outline: none;
 }
 
-.big-modal-input:focus {
+.big-modal-input {
+  margin-bottom: 4%;
+  height: 50px;
+  width: 100%;
+}
+
+.input-style:focus {
   color: #25292D;
-  outline: none;
 }
 
 .login-modal-button {

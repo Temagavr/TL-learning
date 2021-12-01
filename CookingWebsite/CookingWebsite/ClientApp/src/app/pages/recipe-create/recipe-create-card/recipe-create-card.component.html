@@ -1,0 +1,45 @@
+<div class="recipe-card">
+  <div class="recipe-img-block">
+    <div (click)="loadClick()" class="img-border">
+      <div class="load-img-block"> 
+        <img class="load-img-icon" src="../../../../assets/loadImgIcon.png" />
+        <span class="img-load-text">Загрузите фото готового блюда</span>
+      </div>
+      <input type="file" class="img-load" id="imgInput" />
+    </div>
+  </div>
+
+  <div class="recipe-info">
+    <div class="recipe-info-content">
+
+      <div class="recipe-body">
+        <input class="input-style recipe-card-input regular-input-height" placeholder="Название рецепта" />
+        <textarea class="input-style recipe-card-input description" maxlength="150" placeholder="Краткое описание рецепта (150 символов)"></textarea>
+        <input class="input-style recipe-card-input regular-input-height" placeholder="Добавить теги" />
+      </div>
+
+      <div class="recipe-metrics">
+        <div class="recipe-metric-block">
+          <div class="recipe-metric-text-block">
+            <select class="input-style metric-input">
+              <option disabled>Время готовки</option>
+              <option *ngFor="let time of timeVariants" value="{{time}}">{{time}}</option>
+            </select>
+            <span class="recipe-metric-title">Минут</span>
+          </div>
+        </div>
+
+        <div class="recipe-metric-block">
+          <div class="recipe-metric-text-block">
+            <select class=" input-style metric-input">
+              <option disabled>Порций в блюде</option>
+              <option *ngFor="let person of personsVariants" value="{{person}}">{{person}}</option>
+            </select>
+            <span class="recipe-metric-title">Персон</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

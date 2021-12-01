@@ -1,0 +1,115 @@
+.recipe-info-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 3%;
+}
+
+.recipe-ingredients-block {
+  width: 32%;
+}
+
+.ingredients-block-title {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: bold;
+  color: #4A525A;
+}
+
+.recipe-steps-block {
+  width: 65%;
+}
+
+.step {
+  width: 100%;
+  margin-bottom: 2%;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+  padding: 5% 14%;
+}
+
+.step-input {
+  width: 100%;
+  resize: none;
+  margin-top: 4%;
+  padding: 2% 4%;
+  height: 166px;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-elem {
+  height: 30px;
+}
+
+.remove-elem:hover {
+  cursor: pointer;
+}
+
+.title-style {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 600;
+  color: #4A525A;
+}
+
+.regular-text-style {
+  font-size: 18px;
+  line-height: 30px;
+  color: #4A525A;
+}
+
+.ingredients-title {
+  height: 50px;
+}
+
+.ingredient-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3%;
+}
+
+.ingredients-list {
+  height: 229px;
+  margin-top: 7%;
+  resize: none;
+  padding: 3% 4%;
+}
+
+.ingredients-block {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  padding: 10% 9%;
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+}
+
+.add-block-btn {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #FDB100;
+  border-radius: 16px;
+  font-size: 18px;
+  line-height: 28px;
+  height: 60px;
+  color: #FDB100;
+  background: url('../../../../assets/plusIcon.png') no-repeat #FFFFFF;
+  background-position: 10% 50%;
+  background-size: 24px;
+}
+
+.add-ingredient {
+  width: 100%;
+  margin-top: 11%;
+}
+
+.add-step {
+  width: 380px;
+  margin-top: 6%;
+}

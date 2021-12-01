@@ -23,11 +23,15 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Controllers\**" />
     <Compile Remove="Modules\RecipesModule\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Controllers\**" />
     <Content Remove="Modules\RecipesModule\**" />
+    <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Modules\RecipesModule\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Controllers\**" />
     <None Remove="Modules\RecipesModule\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
@@ -62,6 +66,12 @@
     <None Remove="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
     <None Remove="ClientApp\src\app\common\modals\login-modal\login-modal.component.ts" />
     <None Remove="ClientApp\src\app\common\modals\registration-modal\registration-modal.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-body\recipe-create-body.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-card\recipe-create-card.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-header\recipe-create-header.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-routing.module.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-body\recipe-details-body.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-header\recipe-details-header.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-routing.module.ts" />
@@ -106,6 +116,16 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\modals\greeting-modal\greeting-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\modals\login-modal\login-modal.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\modals\registration-modal\registration-modal.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create-body\recipe-create-body.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create-card\recipe-create-card.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create-header\recipe-create-header.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-body\recipe-details-body.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-header\recipe-details-header.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-routing.module.ts" />
@@ -125,10 +145,6 @@
     <ProjectReference Include="..\CookingWebsite.Domain\CookingWebsite.Domain.csproj" />
     <ProjectReference Include="..\CookingWebsite.Infrastructure\CookingWebsite.Infrastructure.csproj" />
     <ProjectReference Include="..\CookingWebsite.Migrations\CookingWebsite.Migrations.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
