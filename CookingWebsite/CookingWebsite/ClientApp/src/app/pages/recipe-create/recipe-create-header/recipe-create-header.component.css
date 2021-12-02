@@ -1,0 +1,15 @@
+.recipe-info-header-block {
+  margin-top: 3%;
+}
+
+.recipe-info-header {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.publish-btn {
+  border: none;
+  line-height: 26px;
+  padding: 16px 35px;
+}
