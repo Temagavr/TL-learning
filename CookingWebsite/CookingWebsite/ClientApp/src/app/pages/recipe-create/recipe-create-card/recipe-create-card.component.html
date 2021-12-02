@@ -1,12 +1,13 @@
 <div class="recipe-card">
   <div class="recipe-img-block">
-    <div (click)="loadClick()" class="img-border">
-      <div class="load-img-block"> 
+    <img class="recipe-img" *ngIf="imgUrl" (click)="loadClick()" src="{{imgUrl}}" />
+    <div *ngIf="!imgUrl" (click)="loadClick()" class="img-border">
+      <div class="load-img-block">
         <img class="load-img-icon" src="../../../../assets/loadImgIcon.png" />
         <span class="img-load-text">Загрузите фото готового блюда</span>
       </div>
-      <input type="file" class="img-load" id="imgInput" />
     </div>
+    <input (input)="preloadImg($event)" type="file" ref="file" class="img-load" id="imgInput" />
   </div>
 
   <div class="recipe-info">

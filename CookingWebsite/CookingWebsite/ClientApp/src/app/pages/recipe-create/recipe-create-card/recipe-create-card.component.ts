@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-create-card.component.css']
 })
 export class RecipeCreateCardComponent {
-  timeVariants: number[] = [];
-  personsVariants: number[] = []
 
+  timeVariants: number[] = [];
+  personsVariants: number[] = [];
+  imgUrl: string = '';
+  
   ngOnInit() {
     this.fillTimeVariants();
     this.fillPersonsVariants();
@@ -29,5 +31,22 @@ export class RecipeCreateCardComponent {
   loadClick() {
     var input = document.getElementById('imgInput');
     input.click();
+  }
+
+  preloadImg(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+
+    // File Preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imgUrl = reader.result as string;
+    }
+
+    reader.onerror = () => {
+      this.imgUrl = '';
+    }
+
+    if(file)
+      reader.readAsDataURL(file);
   }
 }

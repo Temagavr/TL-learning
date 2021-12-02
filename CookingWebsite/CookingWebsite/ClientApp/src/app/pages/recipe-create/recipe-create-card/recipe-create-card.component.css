@@ -14,6 +14,15 @@
   justify-content: center;
 }
 
+.recipe-img {
+  border-radius: 72px 0px;
+  width: 100%;
+}
+
+.recipe-img:hover {
+  cursor: pointer;
+}
+
 .img-border {
   border: 1px dashed #F29E1F;
   box-sizing: border-box;
