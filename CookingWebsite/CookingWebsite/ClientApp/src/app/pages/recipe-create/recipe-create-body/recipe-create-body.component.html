@@ -15,7 +15,7 @@
   </div>
 
   <div class="recipe-steps-block">
-    <div *ngFor="let step of steps; let idx = index; trackBy:trackByFn" class="step">
+    <div *ngFor="let step of steps; let idx = index; trackBy:getStepTrackKey" class="step">
       <div class="step-header">
         <span class="title-style">Шаг {{idx + 1}}</span>
         <img (click)="removeStep(idx)" src="../../../../assets/closeModalButton.png" class="remove-elem" />

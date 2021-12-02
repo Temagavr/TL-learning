@@ -31,7 +31,7 @@ export class RecipeCreateBodyComponent {
     this.steps.splice(index, 1);
   }
 
-  trackByFn(index: any, item: any) {
+  getStepTrackKey(index: any, item: any) {
     return index;
   }
 }
