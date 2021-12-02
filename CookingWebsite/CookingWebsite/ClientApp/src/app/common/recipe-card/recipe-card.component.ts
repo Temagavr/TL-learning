@@ -46,6 +46,6 @@ export class RecipeCardComponent {
   }
 
   chooseRecipe() {
-    this.router.navigate(['/recipes', this.recipeInfo.id]);
+    this.router.navigate(['/recipes/details', this.recipeInfo.id]);
   }
 }
