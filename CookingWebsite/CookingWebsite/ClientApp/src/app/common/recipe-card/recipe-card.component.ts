@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { RecipeCard } from './recipe-card';
@@ -10,19 +11,27 @@ import { RecipeCard } from './recipe-card';
 })
 export class RecipeCardComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private sanitizer: DomSanitizer
+  ) {
   }
 
   @Input() recipeInfo: RecipeCard;
 
-  baseImagesPath: string = 'E:\\TL-learning\\CookingWebsite\\CookingWebsite\\ClientApp\\src\\assets\\';
+  baseImagesPath: string = '../../../assets/'; // Здесь наверное должен быть полный путь на устройстве 
+
+  imageSafeUrl: SafeUrl;
 
   rightPersons: string;
 
   ngOnInit(): void {
-    this.recipeInfo.imageUrl = this.baseImagesPath + this.recipeInfo.imageUrl;
+    var fullUrl: string = this.baseImagesPath + this.recipeInfo.imageUrl;
+    this.imageSafeUrl = this.sanitizer.bypassSecurityTrustUrl(fullUrl);
+    //this.sanitizer.bypassSecurityTrustUrl(this.recipeInfo.imageUrl);
 
-    if (this.recipeInfo.personsCount < 2) {
+    console.log(this.recipeInfo);
+
+    if (this.recipeInfo.personsCount == 1) {
       this.rightPersons = 'персону';
     } else if (this.recipeInfo.personsCount > 1 && this.recipeInfo.personsCount < 5) {
       this.rightPersons = 'персоны';

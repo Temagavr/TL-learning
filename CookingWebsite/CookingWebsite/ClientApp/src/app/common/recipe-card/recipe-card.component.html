@@ -1,6 +1,6 @@
 <div class="recipe-card">
   <div class="recipe-img-block">
-    <img class="recipe-img" src="{{recipeInfo.imageUrl}}" />
+    <img class="recipe-img" [src]="imageSafeUrl" />
     <span class="recipe-author">@{{recipeInfo.authorUsername}}</span>
   </div>
 
