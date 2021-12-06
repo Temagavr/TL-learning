@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Modules.RecipeModule
+namespace CookingWebsite.Modules.RecipeModule.Dtos
 {
-    public class RecipeCardDto
+    public class AddRecipeDto
     {
-        public int Id { get; set; }
-        public string ImageUrl { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int CookingTime { get; set; }
         public int PersonsCount { get; set; }
-        public int LikesCount { get; set; }
-        public int FavouritesCount { get; set; }
         public string AuthorUsername { get; set; }
+        public List<RecipeIngredientDto> RecipeIngredient { get; set; }
+        public List<RecipeStepDto> Steps { get; set; }
     }
 }

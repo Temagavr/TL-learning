@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using CookingWebsite.Application.Files;
+using System.Collections.Generic;
 
 namespace CookingWebsite.Application.Recipes.RecipeDtos
 {
     public class AddRecipeDto
     {
+        public FileService Image { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int CookingTime { get; set; }
         public int PersonsCount { get; set; }
         public string AuthorUsername { get; set; }
-        public List<RecipeIngredientDto> recipeIngredient { get; set; }
+        public List<RecipeIngredientDto> RecipeIngredient { get; set; }
         public List<RecipeStepDto> Steps { get; set; }
     }
 }

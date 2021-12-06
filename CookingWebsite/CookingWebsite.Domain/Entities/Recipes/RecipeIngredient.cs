@@ -21,5 +21,10 @@ namespace CookingWebsite.Domain.Entities.Recipes
             Title = title;
             RecipeId = recipeId;
         }
+
+        public void SetItems(List<RecipeIngredientItem> ingredientItems)
+        {
+            Items = ingredientItems;
+        }
     }
 }

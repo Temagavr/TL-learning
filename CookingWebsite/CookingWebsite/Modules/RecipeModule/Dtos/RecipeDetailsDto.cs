@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Modules.RecipeModule
+namespace CookingWebsite.Modules.RecipeModule.Dtos
 {
     public class RecipeDetailsDto
     {

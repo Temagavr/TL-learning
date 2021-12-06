@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AddRecipeDto } from '../add-recipe-dto';
 
 @Component({
   selector: 'app-recipe-create-card',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-create-card.component.css']
 })
 export class RecipeCreateCardComponent {
+
+  @Input() recipeData: AddRecipeDto;
 
   timeVariants: number[] = [];
   personsVariants: number[] = [];
@@ -46,7 +49,10 @@ export class RecipeCreateCardComponent {
       this.imgUrl = '';
     }
 
-    if(file)
+    if (file) {
       reader.readAsDataURL(file);
+      this.recipeData.image = file;
+    }
+      
   }
 }

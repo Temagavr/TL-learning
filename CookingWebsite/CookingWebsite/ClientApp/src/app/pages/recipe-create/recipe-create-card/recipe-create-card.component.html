@@ -14,16 +14,16 @@
     <div class="recipe-info-content">
 
       <div class="recipe-body">
-        <input class="input-style recipe-card-input regular-input-height" placeholder="Название рецепта" />
-        <textarea class="input-style recipe-card-input description" maxlength="150" placeholder="Краткое описание рецепта (150 символов)"></textarea>
+        <input [(ngModel)]="recipeData.title" class="input-style recipe-card-input regular-input-height" placeholder="Название рецепта" name="title" />
+        <textarea [(ngModel)]="recipeData.description" class="input-style recipe-card-input description" maxlength="150" placeholder="Краткое описание рецепта (150 символов)" name="description"></textarea>
         <input class="input-style recipe-card-input regular-input-height" placeholder="Добавить теги" />
       </div>
 
       <div class="recipe-metrics">
         <div class="recipe-metric-block">
           <div class="recipe-metric-text-block">
-            <select class="input-style metric-input">
-              <option disabled>Время готовки</option>
+            <select [(ngModel)]="recipeData.cookingTime" class="input-style metric-input" name="cookingTime">
+              <option value="0" disabled>Время готовки</option>
               <option *ngFor="let time of timeVariants" value="{{time}}">{{time}}</option>
             </select>
             <span class="recipe-metric-title">Минут</span>
@@ -32,8 +32,8 @@
 
         <div class="recipe-metric-block">
           <div class="recipe-metric-text-block">
-            <select class=" input-style metric-input">
-              <option disabled>Порций в блюде</option>
+            <select [(ngModel)]="recipeData.personsCount" class=" input-style metric-input" name="personsCount">
+              <option value="0" disabled>Порций в блюде</option>
               <option *ngFor="let person of personsVariants" value="{{person}}">{{person}}</option>
             </select>
             <span class="recipe-metric-title">Персон</span>

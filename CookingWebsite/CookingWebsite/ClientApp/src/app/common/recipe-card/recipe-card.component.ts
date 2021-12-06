@@ -15,9 +15,13 @@ export class RecipeCardComponent {
 
   @Input() recipeInfo: RecipeCard;
 
+  baseImagesPath: string = 'E:\\TL-learning\\CookingWebsite\\CookingWebsite\\ClientApp\\src\\assets\\';
+
   rightPersons: string;
 
   ngOnInit(): void {
+    this.recipeInfo.imageUrl = this.baseImagesPath + this.recipeInfo.imageUrl;
+
     if (this.recipeInfo.personsCount < 2) {
       this.rightPersons = 'персону';
     } else if (this.recipeInfo.personsCount > 1 && this.recipeInfo.personsCount < 5) {

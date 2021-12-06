@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RecipeIngredientDto } from '../../../Dtos/recipe-ingredient-dto';
+import { AddRecipeIngredientFront } from '../add-recipe-ingredient-front';
 
 @Component({
   selector: 'app-recipe-create-body',
@@ -10,12 +10,12 @@ export class RecipeCreateBodyComponent {
 
   @Input() steps: string[];
 
-  @Input() ingredients: RecipeIngredientDto[];
+  @Input() ingredients: AddRecipeIngredientFront[];
 
   addIngredient() {
     this.ingredients.push({
       title: '',
-      items: []
+      items: ''
     });
   }
 

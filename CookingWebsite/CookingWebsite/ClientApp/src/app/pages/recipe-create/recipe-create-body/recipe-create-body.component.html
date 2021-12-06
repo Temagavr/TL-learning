@@ -8,7 +8,7 @@
 
       <div class="ingredients-block">
         <input class="input-style ingredients-title" [(ngModel)]="ingredients[idx].title" placeholder="Заголовок для ингредиентов" />
-        <textarea class="input-style ingredients-list" placeholder="Список продуктов для категории"></textarea>
+        <textarea class="input-style ingredients-list" [(ngModel)]="ingredients[idx].items" placeholder="Список продуктов для категории"></textarea>
       </div>
     </div>
     <button class="add-block-btn add-ingredient" (click)="addIngredient()">Добавить заголовок</button>

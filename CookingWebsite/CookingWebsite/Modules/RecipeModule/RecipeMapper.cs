@@ -1,4 +1,5 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
+using CookingWebsite.Modules.RecipeModule.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -85,6 +86,53 @@ namespace CookingWebsite.Modules.RecipeModule
             }
 
             return recipeCardsList;
+        }
+
+        public static Application.Recipes.RecipeDtos.AddRecipeDto Map(this AddRecipeDto recipe)
+        {
+            var recipeDto = new Application.Recipes.RecipeDtos.AddRecipeDto();
+
+            recipeDto.Title = recipe.Title;
+            recipeDto.Description = recipe.Description;
+            recipeDto.AuthorUsername = recipe.AuthorUsername;
+            recipeDto.CookingTime = recipe.CookingTime;
+            recipeDto.PersonsCount = recipe.PersonsCount;
+
+            recipeDto.RecipeIngredient = new List<Application.Recipes.RecipeDtos.RecipeIngredientDto>();
+
+            foreach (RecipeIngredientDto ingredient in recipe.RecipeIngredient)
+            {
+                var recipeIngredientDto = new Application.Recipes.RecipeDtos.RecipeIngredientDto();
+
+                recipeIngredientDto.Title = ingredient.Title;
+                recipeIngredientDto.Items = new List<Application.Recipes.RecipeDtos.RecipeIngredientItemDto>();
+
+
+                foreach (RecipeIngredientItemDto item in ingredient.Items)
+                {
+                    var ingredientItemDto = new Application.Recipes.RecipeDtos.RecipeIngredientItemDto();
+                    ingredientItemDto.Name = item.Name;
+                    ingredientItemDto.Value = item.Value;
+
+                    recipeIngredientDto.Items.Add(ingredientItemDto);
+                }
+
+                recipeDto.RecipeIngredient.Add(recipeIngredientDto);
+            }
+
+            recipeDto.Steps = new List<Application.Recipes.RecipeDtos.RecipeStepDto>();
+
+            for (int stepIndex = 0; stepIndex < recipe.Steps.Count; stepIndex++ )
+            {
+                var stepDto = new Application.Recipes.RecipeDtos.RecipeStepDto();
+
+                stepDto.StepNum = stepIndex + 1;
+                stepDto.Description = recipe.Steps[stepIndex].Description;
+
+                recipeDto.Steps.Add(stepDto);
+            }
+
+            return recipeDto;
         }
     }
 }

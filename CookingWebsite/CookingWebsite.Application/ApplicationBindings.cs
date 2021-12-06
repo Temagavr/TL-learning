@@ -1,4 +1,5 @@
 ﻿using CookingWebsite.Application.Account;
+using CookingWebsite.Application.Files;
 using CookingWebsite.Application.Recipes;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ namespace CookingWebsite.Application
         {
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IRecipeService, RecipeService>();
+            services.AddScoped<IFileService, FileService>();
 
             return services;
         }

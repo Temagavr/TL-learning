@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-recipe-create-header',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-create-header.component.css']
 })
 export class RecipeCreateHeaderComponent {
+
+  @Output() onCreateRecipeClick = new EventEmitter();
+
+  createRecipeClick() {
+    this.onCreateRecipeClick.emit();
+  }
 
 }

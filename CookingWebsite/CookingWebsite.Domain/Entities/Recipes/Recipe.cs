@@ -36,5 +36,15 @@ namespace CookingWebsite.Domain.Entities.Recipes
             FavouritesCount = favouritesCount;
             AuthorUsername = authorUsername;
         }
+
+        public void SetIngredients(List<RecipeIngredient> ingredients)
+        {
+            Ingredients = ingredients;
+        }
+
+        public void SetSteps(List<RecipeStep> steps)
+        {
+            Steps = steps;
+        }
     }
 }
