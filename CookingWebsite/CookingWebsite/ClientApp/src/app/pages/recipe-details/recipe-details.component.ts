@@ -19,20 +19,7 @@ export class RecipeDetailsComponent {
   ) {
   }
 
-  public recipeCard: RecipeCard = {
-    id: 1,
-    imageUrl: '',
-    authorUsername: '',
-    title: '',
-    description: '',
-    tags: [],
-    isFavourite: false,
-    isLiked: false,
-    favouritesCount: 0,
-    likesCount: 0,
-    cookingTime: 0,
-    personsCount: 0
-  };
+  public recipeCard: RecipeCard;
 
   public recipeIngredient: RecipeIngredientDto[];
   public recipeSteps: string[];
@@ -46,6 +33,21 @@ export class RecipeDetailsComponent {
       if (!recipeDetailsDto) {
         return;
       }
+
+      this.recipeCard = {
+        id: 1,
+        imageUrl: '',
+        authorUsername: '',
+        title: '',
+        description: '',
+        tags: [],
+        isFavourite: false,
+        isLiked: false,
+        favouritesCount: 0,
+        likesCount: 0,
+        cookingTime: 0,
+        personsCount: 0
+      };
 
       this.recipeCard.imageUrl = recipeDetailsDto.imageUrl;
       this.recipeCard.authorUsername = recipeDetailsDto.authorUsername;

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -7,9 +7,10 @@ import { RecipeCard } from './recipe-card';
 @Component({
   selector: 'app-recipe-card',
   templateUrl: './recipe-card.component.html',
-  styleUrls: ['./recipe-card.component.css']
+  styleUrls: ['./recipe-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RecipeCardComponent {
+export class RecipeCardComponent implements OnChanges {
 
   constructor(private router: Router,
     private sanitizer: DomSanitizer
@@ -28,8 +29,6 @@ export class RecipeCardComponent {
     var fullUrl: string = this.baseImagesPath + this.recipeInfo.imageUrl;
     this.imageSafeUrl = this.sanitizer.bypassSecurityTrustUrl(fullUrl);
     //this.sanitizer.bypassSecurityTrustUrl(this.recipeInfo.imageUrl);
-
-    console.log(this.recipeInfo);
 
     if (this.recipeInfo.personsCount == 1) {
       this.rightPersons = 'персону';
