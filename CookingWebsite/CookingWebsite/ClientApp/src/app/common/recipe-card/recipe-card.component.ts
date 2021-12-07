@@ -10,7 +10,7 @@ import { RecipeCard } from './recipe-card';
   styleUrls: ['./recipe-card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RecipeCardComponent implements OnChanges {
+export class RecipeCardComponent {
 
   constructor(private router: Router,
     private sanitizer: DomSanitizer

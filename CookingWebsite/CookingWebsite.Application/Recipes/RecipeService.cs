@@ -50,7 +50,7 @@ namespace CookingWebsite.Application.Recipes
 
             //_recipeRepostitory.Add(recipe);
 
-            foreach (RecipeIngredientDto ingredientDto in addRecipeDto.RecipeIngredient)
+            foreach (RecipeIngredientDto ingredientDto in addRecipeDto.Ingredients)
             {
                 RecipeIngredient recipeIngredient = new RecipeIngredient(
                     recipe.Id,

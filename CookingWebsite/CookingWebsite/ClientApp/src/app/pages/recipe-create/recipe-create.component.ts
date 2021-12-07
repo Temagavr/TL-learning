@@ -25,7 +25,7 @@ export class RecipeCreateComponent {
     description: '',
     cookingTime: 0,
     personsCount: 0,
-    recipeIngredient: [],
+    ingredients: [],
     steps: [],
     tags: []
   };
@@ -58,7 +58,7 @@ export class RecipeCreateComponent {
       }
 
 
-      this.addRecipeDto.recipeIngredient.push(ingredientDto);
+      this.addRecipeDto.ingredients.push(ingredientDto);
     }
 
     for (let [index, step] of this.steps.entries()) {

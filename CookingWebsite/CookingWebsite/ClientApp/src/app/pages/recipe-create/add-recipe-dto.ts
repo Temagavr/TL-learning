@@ -14,6 +14,6 @@ export interface AddRecipeDto {
   cookingTime: number;
   personsCount: number;
 
-  recipeIngredient: RecipeIngredientDto[];
+  ingredients: RecipeIngredientDto[];
   steps: AddRecipeStepDto[];
 }

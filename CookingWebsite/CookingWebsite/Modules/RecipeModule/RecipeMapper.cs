@@ -24,35 +24,17 @@ namespace CookingWebsite.Modules.RecipeModule
             recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
             recipeDetailsDto.Steps = new List<string>();
 
-            foreach (RecipeIngredient ingredient in recipe.Ingredients)
+            recipeDetailsDto.Ingredients = recipe.Ingredients.Select(x => new RecipeIngredientDto
             {
-                var recipeIngredientDto = new RecipeIngredientDto();
-
-                recipeIngredientDto.Title = ingredient.Title;
-                recipeIngredientDto.RecipeId = ingredient.RecipeId;
-                recipeIngredientDto.Items = new List<RecipeIngredientItemDto>();
-                /*
-                recipeIngredientDto.Items = (List<RecipeIngredientItemDto>)(from item in ingredient.Items
-                                            select new RecipeIngredientItemDto
-                                            {
-                                                Name = item.Name,
-                                                Value = item.Value,
-                                                RecipeIngredientId = item.RecipeIngredientId
-                                            });
-                */
-
-                foreach (RecipeIngredientItem item in ingredient.Items)
+                RecipeId = x.RecipeId,
+                Title = x.Title,
+                Items = x.Items.Select(y => new RecipeIngredientItemDto
                 {
-                    var ingredientItemDto = new RecipeIngredientItemDto();
-                    ingredientItemDto.RecipeIngredientId = item.RecipeIngredientId;
-                    ingredientItemDto.Name = item.Name;
-                    ingredientItemDto.Value = item.Value;
-
-                    recipeIngredientDto.Items.Add(ingredientItemDto);
-                }
-
-                recipeDetailsDto.Ingredients.Add(recipeIngredientDto);
-            }
+                    RecipeIngredientId = y.RecipeIngredientId,
+                    Name = y.Name,
+                    Value = y.Value
+                }).ToList()
+            }).ToList();
 
             recipe.Steps.Sort((s1, s2) => s1.StepNumber <= s2.StepNumber ? -1 : 1);
 
@@ -90,49 +72,32 @@ namespace CookingWebsite.Modules.RecipeModule
 
         public static Application.Recipes.RecipeDtos.AddRecipeDto Map(this AddRecipeDto recipe)
         {
-            var recipeDto = new Application.Recipes.RecipeDtos.AddRecipeDto();
+            var result = new Application.Recipes.RecipeDtos.AddRecipeDto();
 
-            recipeDto.Title = recipe.Title;
-            recipeDto.Description = recipe.Description;
-            recipeDto.AuthorUsername = recipe.AuthorUsername;
-            recipeDto.CookingTime = recipe.CookingTime;
-            recipeDto.PersonsCount = recipe.PersonsCount;
+            result.Title = recipe.Title;
+            result.Description = recipe.Description;
+            result.AuthorUsername = recipe.AuthorUsername;
+            result.CookingTime = recipe.CookingTime;
+            result.PersonsCount = recipe.PersonsCount;
 
-            recipeDto.RecipeIngredient = new List<Application.Recipes.RecipeDtos.RecipeIngredientDto>();
+            result.Ingredients = new List<Application.Recipes.RecipeDtos.RecipeIngredientDto>();
+            
+            result.Ingredients = recipe.Ingredients.Select(x => new Application.Recipes.RecipeDtos.RecipeIngredientDto {
+                Title = x.Title,
+                Items = x.Items.Select( y => new Application.Recipes.RecipeDtos.RecipeIngredientItemDto {
+                    Name = y.Name,
+                    Value = y.Value
+                }).ToList()
+            }).ToList();
 
-            foreach (RecipeIngredientDto ingredient in recipe.RecipeIngredient)
-            {
-                var recipeIngredientDto = new Application.Recipes.RecipeDtos.RecipeIngredientDto();
+            result.Steps = new List<Application.Recipes.RecipeDtos.RecipeStepDto>();
 
-                recipeIngredientDto.Title = ingredient.Title;
-                recipeIngredientDto.Items = new List<Application.Recipes.RecipeDtos.RecipeIngredientItemDto>();
+            result.Steps = recipe.Steps.Select((s, i) => new Application.Recipes.RecipeDtos.RecipeStepDto {
+                StepNum = i + 1,
+                Description = s.Description
+            }).ToList();
 
-
-                foreach (RecipeIngredientItemDto item in ingredient.Items)
-                {
-                    var ingredientItemDto = new Application.Recipes.RecipeDtos.RecipeIngredientItemDto();
-                    ingredientItemDto.Name = item.Name;
-                    ingredientItemDto.Value = item.Value;
-
-                    recipeIngredientDto.Items.Add(ingredientItemDto);
-                }
-
-                recipeDto.RecipeIngredient.Add(recipeIngredientDto);
-            }
-
-            recipeDto.Steps = new List<Application.Recipes.RecipeDtos.RecipeStepDto>();
-
-            for (int stepIndex = 0; stepIndex < recipe.Steps.Count; stepIndex++ )
-            {
-                var stepDto = new Application.Recipes.RecipeDtos.RecipeStepDto();
-
-                stepDto.StepNum = stepIndex + 1;
-                stepDto.Description = recipe.Steps[stepIndex].Description;
-
-                recipeDto.Steps.Add(stepDto);
-            }
-
-            return recipeDto;
+            return result;
         }
     }
 }
