@@ -14,12 +14,12 @@ namespace CookingWebsite.Application.Recipes
     {
 
         private readonly IRecipeRepository _recipeRepostitory;
+        private readonly IFileService _fileService;
 
-        private const string ImagesPath = @"E:\TL-learning\CookingWebsite\CookingWebsite\ClientApp\src\assets\recipes";
-
-        public RecipeService(IRecipeRepository recipeRepository)
+        public RecipeService(IRecipeRepository recipeRepository, IFileService fileService)
         {
             _recipeRepostitory = recipeRepository;
+            _fileService = fileService;
         }
 
         public async Task<Recipe> GetRecipeOfDay()
@@ -31,8 +31,7 @@ namespace CookingWebsite.Application.Recipes
         
         public async Task AddRecipe(AddRecipeDto addRecipeDto)
         {
-            Directory.CreateDirectory(ImagesPath);
-            var imageSaveResult = await SaveAsync(addRecipeDto.Image, ImagesPath);
+            var imageSaveResult = await _fileService.SaveAsync(addRecipeDto.Image);
 
             var recipe = new Recipe(
                 imageSaveResult.RelativePath,
@@ -91,27 +90,5 @@ namespace CookingWebsite.Application.Recipes
 
             return;
         }
-
-        private async Task<FileSaveResult> SaveAsync(FileService formFile, string basePath)
-        {
-            string fileName = $"{Guid.NewGuid().ToString()}.{formFile.FileExtension}";
-            var newFilePath = $@"{basePath}\{fileName}";
-            using (FileStream fs = File.Create(newFilePath))
-            {
-                await fs.WriteAsync(formFile.Data);
-            }
-
-            string folderName = basePath.Split(@"\").Last();
-            return new FileSaveResult
-            {
-                RelativePath = $@"{folderName}/{fileName}"
-            };
-        }
-
-        private class FileSaveResult
-        {
-            public string RelativePath { get; set; }
-        }
-
     }
 }

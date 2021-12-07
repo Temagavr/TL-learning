@@ -5,7 +5,7 @@ namespace CookingWebsite.Application.Recipes.RecipeDtos
 {
     public class AddRecipeDto
     {
-        public FileService Image { get; set; }
+        public File Image { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int CookingTime { get; set; }

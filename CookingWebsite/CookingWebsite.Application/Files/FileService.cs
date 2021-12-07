@@ -1,40 +1,35 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CookingWebsite.Application.Files
 {
     public class FileService : IFileService
     {
-        public byte[] Data { get; private set; }
-        public string FileName { get; private set; }
-        public string FileExtension { get; private set; }
+        private const string ImagesPath = @"E:\TL-learning\CookingWebsite\CookingWebsite\ClientApp\src\assets\recipes";
 
-        public static async Task<FileService> CreateAsync(IFormFile formFile)
+        public async Task<FileSaveResult> SaveAsync(File formFile)
         {
-            byte[] fileBytes = await FileToBytes(formFile);
+            Directory.CreateDirectory(ImagesPath);
 
-            return new FileService
+            string fileName = $"{Guid.NewGuid().ToString()}.{formFile.FileExtension}";
+            var newFilePath = $@"{ImagesPath}\{fileName}";
+            using (FileStream fs = System.IO.File.Create(newFilePath))
             {
-                Data = fileBytes,
-                FileName = formFile.FileName,
-                FileExtension = formFile.FileName.Split('.').Last()
+                await fs.WriteAsync(formFile.Data);
+            }
+
+            string folderName = ImagesPath.Split(@"\").Last();
+            return new FileSaveResult
+            {
+                RelativePath = $@"{folderName}/{fileName}"
             };
         }
 
-        private static async Task<byte[]> FileToBytes(IFormFile formFile)
+        public class FileSaveResult
         {
-            using (var ms = new MemoryStream())
-            using (Stream stream = formFile.OpenReadStream())
-            {
-                await stream.CopyToAsync(ms);
-                return ms.ToArray();
-            }
+            public string RelativePath { get; set; }
         }
-
     }
 }
