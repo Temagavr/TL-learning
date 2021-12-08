@@ -38,7 +38,7 @@ export class RecipeCreateComponent {
   }];
 
   addRecipe() {
-    for (let ingredient of this.ingredients) {
+    this.addRecipeDto.ingredients = this.ingredients.map(function (ingredient): RecipeIngredientDto {
       let ingredientDto: RecipeIngredientDto = {
         title: '',
         items: []
@@ -46,20 +46,20 @@ export class RecipeCreateComponent {
 
       ingredientDto.title = ingredient.title.trim();
       let ingredientsFront: string[] = ingredient.items.trim().split('\n');
-      for (let ingrt of ingredientsFront) {
-        let ingredientItems: string[] = ingrt.split('-');
+
+      ingredientDto.items = ingredientsFront.map(function (item: string): RecipeIngredientItemDto {
+        let ingredientItems: string[] = item.split('-');
 
         let itemDto: RecipeIngredientItemDto = {
           name: ingredientItems[0].trim(),
           value: ingredientItems[1].trim()
         }
 
-        ingredientDto.items.push(itemDto);
-      }
+        return itemDto;
+      })
 
-
-      this.addRecipeDto.ingredients.push(ingredientDto);
-    }
+      return ingredientDto;
+    })
 
     for (let [index, step] of this.steps.entries()) {
       let stepDto: AddRecipeStepDto = {
