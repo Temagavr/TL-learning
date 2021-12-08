@@ -1,7 +1,9 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Modules.RecipeModule.Dtos;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CookingWebsite.Modules.RecipeModule
 {
@@ -70,7 +72,7 @@ namespace CookingWebsite.Modules.RecipeModule
             return recipeCardsList;
         }
 
-        public static Application.Recipes.RecipeDtos.AddRecipeDto Map(this AddRecipeDto recipe)
+        public async static Task<Application.Recipes.RecipeDtos.AddRecipeDto> Map(this AddRecipeDto recipe, IFormFileCollection files)
         {
             var result = new Application.Recipes.RecipeDtos.AddRecipeDto();
 
@@ -96,6 +98,9 @@ namespace CookingWebsite.Modules.RecipeModule
                 StepNumber = i + 1,
                 Description = s.Description
             }).ToList();
+
+
+            result.Image = await FileManagment.CreateAsync(files[0]);
 
             return result;
         }

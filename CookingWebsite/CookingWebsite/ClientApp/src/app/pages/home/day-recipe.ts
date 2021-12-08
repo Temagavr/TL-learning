@@ -1,9 +1,9 @@
 export interface DayRecipe {
-  imageUrl: string;
+  image: string;
   authorUsername: string;
   title: string;
   description: string;
 
-  likes: Number;
-  time: Number;
+  likes: number;
+  time: number;
 }

@@ -13,7 +13,7 @@ namespace CookingWebsite.Modules.HomeModule
             recipeOfDay.Title = recipe.Title;
             recipeOfDay.Description = recipe.Description;
             recipeOfDay.AuthorUsername = recipe.AuthorUsername;
-            recipeOfDay.ImageUrl = recipe.ImageUrl;
+            recipeOfDay.Image = recipe.ImageUrl;
             recipeOfDay.LikesCount = recipe.LikesCount;
             recipeOfDay.CookingTime = recipe.CookingTime;
 

@@ -14,7 +14,14 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent {
 
-  public dayRecipe: DayRecipeDto;
+  public dayRecipe: DayRecipeDto = {
+    image: '',
+    authorUsername: '',
+    title: '',
+    description: '',
+    likesCount: 0,
+    cookingTime: 0
+  };
 
   constructor(
     private userInteractionService: UserInteractionService,
@@ -23,15 +30,6 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.dayRecipe = {
-      imageUrl: '../../assets/dayRecipeExamWithoutUsername.png',
-      authorUsername: 'glazest',
-      title: 'Тыквенный Супчик На Кокосовом Молоке',
-      description: 'Если у вас осталась тыква, и вы не знаете что с ней сделать, то это решение для вас! Ароматный, согревающий суп-пюре на кокосовом молоке. Можно даже в Пост!',
-      likesCount: 356,
-      cookingTime: 35
-    };
-
     this.getDayRecipe();
   }
 
@@ -41,7 +39,16 @@ export class HomeComponent {
         return;
       }
 
-      this.dayRecipe = recipeOfDayDto;
+      this.dayRecipe = {
+        image: recipeOfDayDto.image,
+        authorUsername: recipeOfDayDto.authorUsername,
+        title: recipeOfDayDto.title,
+        description: recipeOfDayDto.description,
+        likesCount: 0,
+        cookingTime: recipeOfDayDto.cookingTime
+      };
+
+      console.log(recipeOfDayDto);
     });
   }
 

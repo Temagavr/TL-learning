@@ -54,8 +54,7 @@ namespace CookingWebsite.Modules.RecipeModule
 
             AddRecipeDto addRecipeDto = JsonConvert.DeserializeObject<AddRecipeDto>(Request.Form["data"]);
 
-            var recipeDto = addRecipeDto.Map();
-            recipeDto.Image = await FileManagment.CreateAsync(files[0]);
+            var recipeDto = await addRecipeDto.Map(files);
 
             await _recipeService.AddRecipe(recipeDto);
 
