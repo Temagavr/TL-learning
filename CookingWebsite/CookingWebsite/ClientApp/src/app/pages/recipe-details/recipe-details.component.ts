@@ -63,11 +63,11 @@ export class RecipeDetailsComponent {
 
       this.recipeIngredient = [];
       for (let ingredient of recipeDetailsDto.ingredients) {
-        var ingredientDto:RecipeIngredientDto = { title: "", items: [] };
+        let ingredientDto:RecipeIngredientDto = { title: "", items: [] };
         ingredientDto.title = ingredient.title;
 
         for (let item of ingredient.items) {
-          var itemDto: RecipeIngredientItemDto = { name: "", value: "" };
+          let itemDto: RecipeIngredientItemDto = { name: "", value: "" };
           itemDto.name = item.name;
           itemDto.value = item.value;
 

@@ -16,6 +16,8 @@ namespace CookingWebsite.Domain.Entities.Recipes
         public List<RecipeIngredient> Ingredients { get; private set; }
         public List<RecipeStep> Steps { get; private set; }
 
+        protected Recipe() { }
+
         public Recipe(
             string imageUrl,
             string title,
@@ -24,7 +26,9 @@ namespace CookingWebsite.Domain.Entities.Recipes
             int personsCount,
             int likesCount,
             int favouritesCount,
-            string authorUsername
+            string authorUsername,
+            List<RecipeIngredient> ingredients,
+            List<RecipeStep> steps
             )
         {
             ImageUrl = imageUrl;
@@ -35,15 +39,7 @@ namespace CookingWebsite.Domain.Entities.Recipes
             LikesCount = likesCount;
             FavouritesCount = favouritesCount;
             AuthorUsername = authorUsername;
-        }
-
-        public void SetIngredients(List<RecipeIngredient> ingredients)
-        {
             Ingredients = ingredients;
-        }
-
-        public void SetSteps(List<RecipeStep> steps)
-        {
             Steps = steps;
         }
     }

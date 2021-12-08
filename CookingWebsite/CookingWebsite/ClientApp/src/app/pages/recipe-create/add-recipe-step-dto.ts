@@ -1,4 +1,4 @@
 export interface AddRecipeStepDto {
-  stepNum: number;
+  stepNumber: number;
   description: string;
 }

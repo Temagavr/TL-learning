@@ -8,7 +8,7 @@ namespace CookingWebsite.Application.Recipes.RecipeDtos
 {
     public class RecipeStepDto
     {
-        public int StepNum { get; set; }
+        public int StepNumber { get; set; }
         public string Description { get; set; }
     }
 }

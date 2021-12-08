@@ -31,7 +31,21 @@ namespace CookingWebsite.Application.Recipes
         
         public async Task AddRecipe(AddRecipeDto addRecipeDto)
         {
-            var imageSaveResult = await _fileService.SaveAsync(addRecipeDto.Image);
+            var imageSaveResult = await _fileService.SaveImgAsync(addRecipeDto.Image);
+
+            List<RecipeIngredient> ingredients = addRecipeDto.Ingredients.Select(x => new RecipeIngredient(
+                    x.Title,
+                    x.Items.Select(y => new RecipeIngredientItem(
+                            y.Name,
+                            y.Value
+                    )).ToList()
+            )).ToList();
+
+            List<RecipeStep> steps = addRecipeDto.Steps.Select(x => new RecipeStep
+            (
+                x.StepNumber,
+                x.Description
+            )).ToList();
 
             var recipe = new Recipe(
                 imageSaveResult.RelativePath,
@@ -41,50 +55,10 @@ namespace CookingWebsite.Application.Recipes
                 addRecipeDto.PersonsCount,
                 likesCount: 0,
                 favouritesCount: 0,
-                authorUsername: "TestUser"
+                authorUsername: "TestUser",
+                ingredients,
+                steps
             );
-
-            recipe.SetIngredients(new List<RecipeIngredient>());
-            recipe.SetSteps(new List<RecipeStep>());
-
-            //_recipeRepostitory.Add(recipe);
-
-            foreach (RecipeIngredientDto ingredientDto in addRecipeDto.Ingredients)
-            {
-                RecipeIngredient recipeIngredient = new RecipeIngredient(
-                    recipe.Id,
-                    ingredientDto.Title
-                );
-                recipeIngredient.SetItems( new List<RecipeIngredientItem>() );
-                //_recipeRepostitory.AddRecipeIngredient(recipeIngredient);
-
-                foreach(RecipeIngredientItemDto ingredientItemDto in ingredientDto.Items)
-                {
-                    RecipeIngredientItem ingredientItem = new RecipeIngredientItem(
-                        recipeIngredient.Id,
-                        ingredientItemDto.Name,
-                        ingredientItemDto.Value
-                    );
-
-                    recipeIngredient.Items.Add(ingredientItem);
-                    //_recipeRepostitory.AddRecipeIngredientItem(ingredientItem);
-                }
-
-                recipe.Ingredients.Add(recipeIngredient);
-            }
-
-            foreach(RecipeStepDto stepDto in addRecipeDto.Steps)
-            {
-                RecipeStep step = new RecipeStep(
-                    recipe.Id,
-                    stepDto.StepNum,
-                    stepDto.Description
-                );
-
-                recipe.Steps.Add(step);
-
-                //_recipeRepostitory.AddRecipeStep(step);
-            }
 
             _recipeRepostitory.Add(recipe);
 

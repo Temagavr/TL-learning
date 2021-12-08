@@ -93,7 +93,7 @@ namespace CookingWebsite.Modules.RecipeModule
             result.Steps = new List<Application.Recipes.RecipeDtos.RecipeStepDto>();
 
             result.Steps = recipe.Steps.Select((s, i) => new Application.Recipes.RecipeDtos.RecipeStepDto {
-                StepNum = i + 1,
+                StepNumber = i + 1,
                 Description = s.Description
             }).ToList();
 

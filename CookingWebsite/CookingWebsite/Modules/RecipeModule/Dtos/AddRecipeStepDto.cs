@@ -7,7 +7,7 @@ namespace CookingWebsite.Modules.RecipeModule.Dtos
 {
     public class AddRecipeStepDto
     {
-        public int StepNum { get; set; }
+        public int StepNumber { get; set; }
         public string Description { get; set; }
     }
 }

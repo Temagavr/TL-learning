@@ -13,18 +13,15 @@ namespace CookingWebsite.Domain.Entities.Recipes
         public string Title { get; private set; }
         public List<RecipeIngredientItem> Items { get; private set; }
 
+        protected RecipeIngredient() { }
+
         public RecipeIngredient(
-            int recipeId,
-            string title
+            string title,
+            List<RecipeIngredientItem> items
             )
         {
             Title = title;
-            RecipeId = recipeId;
-        }
-
-        public void SetItems(List<RecipeIngredientItem> ingredientItems)
-        {
-            Items = ingredientItems;
+            Items = items;
         }
     }
 }
