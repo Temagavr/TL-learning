@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Application.Recipes.RecipeDtos
+namespace CookingWebsite.Modules.RecipeModule.Dtos
 {
-    public class RecipeStepDto
+    public class AddRecipeStepDto
     {
         public int StepNumber { get; set; }
         public string Description { get; set; }

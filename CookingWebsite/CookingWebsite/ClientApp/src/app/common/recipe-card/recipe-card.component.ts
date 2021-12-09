@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { RecipeCard } from './recipe-card';
@@ -6,19 +7,30 @@ import { RecipeCard } from './recipe-card';
 @Component({
   selector: 'app-recipe-card',
   templateUrl: './recipe-card.component.html',
-  styleUrls: ['./recipe-card.component.css']
+  styleUrls: ['./recipe-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipeCardComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private sanitizer: DomSanitizer
+  ) {
   }
 
   @Input() recipeInfo: RecipeCard;
 
+  baseImagesPath: string = '../../../assets/'; // Здесь наверное должен быть полный путь на устройстве 
+
+  imageSafeUrl: SafeUrl;
+
   rightPersons: string;
 
   ngOnInit(): void {
-    if (this.recipeInfo.personsCount < 2) {
+    let fullUrl: string = this.baseImagesPath + this.recipeInfo.imageUrl;
+    this.imageSafeUrl = this.sanitizer.bypassSecurityTrustUrl(fullUrl);
+    //this.sanitizer.bypassSecurityTrustUrl(this.recipeInfo.imageUrl);
+
+    if (this.recipeInfo.personsCount == 1) {
       this.rightPersons = 'персону';
     } else if (this.recipeInfo.personsCount > 1 && this.recipeInfo.personsCount < 5) {
       this.rightPersons = 'персоны';

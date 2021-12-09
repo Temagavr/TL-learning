@@ -41,6 +41,10 @@ namespace CookingWebsite.Infrastructure.Repositories
         {
             _dbContext.Add(recipeIngredientItem);
         }
+        public void AddRecipeStep(RecipeStep recipeStep)
+        {
+            _dbContext.Add(recipeStep);
+        }
 
         public void Delete(Task<Recipe> recipe)
         {

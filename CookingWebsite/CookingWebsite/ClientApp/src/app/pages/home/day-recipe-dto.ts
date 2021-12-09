@@ -1,5 +1,5 @@
 export interface DayRecipeDto {
-  imageUrl: string;
+  image: string;
   title: string;
   description: string;
   cookingTime: number;

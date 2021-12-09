@@ -7,13 +7,13 @@
         public int StepNumber { get; private set; }
         public string Description { get; private set; }
 
+        protected RecipeStep() { }
+
         public RecipeStep(
-            int recipeId,
             int stepNumber,
             string description
             )
         {
-            RecipeId = recipeId;
             StepNumber = stepNumber;
             Description = description;
         }

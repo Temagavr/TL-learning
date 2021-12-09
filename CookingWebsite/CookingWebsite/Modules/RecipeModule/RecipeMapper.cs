@@ -1,6 +1,9 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
+using CookingWebsite.Modules.RecipeModule.Dtos;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CookingWebsite.Modules.RecipeModule
 {
@@ -23,35 +26,17 @@ namespace CookingWebsite.Modules.RecipeModule
             recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
             recipeDetailsDto.Steps = new List<string>();
 
-            foreach (RecipeIngredient ingredient in recipe.Ingredients)
+            recipeDetailsDto.Ingredients = recipe.Ingredients.Select(x => new RecipeIngredientDto
             {
-                var recipeIngredientDto = new RecipeIngredientDto();
-
-                recipeIngredientDto.Title = ingredient.Title;
-                recipeIngredientDto.RecipeId = ingredient.RecipeId;
-                recipeIngredientDto.Items = new List<RecipeIngredientItemDto>();
-                /*
-                recipeIngredientDto.Items = (List<RecipeIngredientItemDto>)(from item in ingredient.Items
-                                            select new RecipeIngredientItemDto
-                                            {
-                                                Name = item.Name,
-                                                Value = item.Value,
-                                                RecipeIngredientId = item.RecipeIngredientId
-                                            });
-                */
-
-                foreach (RecipeIngredientItem item in ingredient.Items)
+                RecipeId = x.RecipeId,
+                Title = x.Title,
+                Items = x.Items.Select(y => new RecipeIngredientItemDto
                 {
-                    var ingredientItemDto = new RecipeIngredientItemDto();
-                    ingredientItemDto.RecipeIngredientId = item.RecipeIngredientId;
-                    ingredientItemDto.Name = item.Name;
-                    ingredientItemDto.Value = item.Value;
-
-                    recipeIngredientDto.Items.Add(ingredientItemDto);
-                }
-
-                recipeDetailsDto.Ingredients.Add(recipeIngredientDto);
-            }
+                    RecipeIngredientId = y.RecipeIngredientId,
+                    Name = y.Name,
+                    Value = y.Value
+                }).ToList()
+            }).ToList();
 
             recipe.Steps.Sort((s1, s2) => s1.StepNumber <= s2.StepNumber ? -1 : 1);
 
@@ -85,6 +70,39 @@ namespace CookingWebsite.Modules.RecipeModule
             }
 
             return recipeCardsList;
+        }
+
+        public async static Task<Application.Recipes.RecipeDtos.AddRecipeDto> Map(this AddRecipeDto recipe, IFormFileCollection files)
+        {
+            var result = new Application.Recipes.RecipeDtos.AddRecipeDto();
+
+            result.Title = recipe.Title;
+            result.Description = recipe.Description;
+            result.AuthorUsername = recipe.AuthorUsername;
+            result.CookingTime = recipe.CookingTime;
+            result.PersonsCount = recipe.PersonsCount;
+
+            result.Ingredients = new List<Application.Recipes.RecipeDtos.RecipeIngredientDto>();
+            
+            result.Ingredients = recipe.Ingredients.Select(x => new Application.Recipes.RecipeDtos.RecipeIngredientDto {
+                Title = x.Title,
+                Items = x.Items.Select( y => new Application.Recipes.RecipeDtos.RecipeIngredientItemDto {
+                    Name = y.Name,
+                    Value = y.Value
+                }).ToList()
+            }).ToList();
+
+            result.Steps = new List<Application.Recipes.RecipeDtos.RecipeStepDto>();
+
+            result.Steps = recipe.Steps.Select((s, i) => new Application.Recipes.RecipeDtos.RecipeStepDto {
+                StepNumber = i + 1,
+                Description = s.Description
+            }).ToList();
+
+
+            result.Image = await FileManagment.CreateAsync(files[0]);
+
+            return result;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CookingWebsite.Modules.RecipeModule
+namespace CookingWebsite.Modules.RecipeModule.Dtos
 {
     public class RecipeIngredientDto
     {

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { RecipeDetailsDto } from "../../Dtos/recipe-details-dto";
 import { RecipeCard } from "../recipe-card/recipe-card";
+import { AddRecipeDto } from "../../pages/recipe-create/add-recipe-dto";
 
 @Injectable()
 export class RecipeService extends HttpService {
@@ -25,9 +26,27 @@ export class RecipeService extends HttpService {
 
     const response: RecipeCard[] = await this.Get(`${this.url}/search?skip=${skip}&take=${take}&searchString=${searchString}`);
 
-    if (!response) {
-      alert(this.errorMsg);
-    }
+    return response;
+  }
+
+  public async addRecipe(addRecipeDto: AddRecipeDto) {
+    const formData = new FormData();
+    formData.append(addRecipeDto.image.name, addRecipeDto.image);
+
+    const data: string = JSON.stringify({
+      title: addRecipeDto.title,
+      description: addRecipeDto.description,
+      authorUsername: addRecipeDto.authorUsername,
+      personsCount: addRecipeDto.personsCount,
+      cookingTime: addRecipeDto.cookingTime,
+      tags: addRecipeDto.tags,
+      steps: addRecipeDto.steps,
+      ingredients: addRecipeDto.ingredients
+    });
+
+    formData.append('data', data);
+
+    const response = await this.Post(`${this.url}/add-recipe`, formData);
 
     return response;
   }

@@ -1,4 +1,5 @@
 using CookingWebsite.Application;
+using CookingWebsite.Application.Files;
 using CookingWebsite.Infrastructure;
 using CookingWebsite.Infrastructure.Foundation;
 using CookingWebsite.Modules.AccountModule;
@@ -45,6 +46,7 @@ namespace CookingWebsite
                x => x.MigrationsAssembly( "CookingWebsite.Migrations" ) )
             );
 
+            services.AddSingleton(Configuration.GetSection("Storage").Get<FileStorageSettings>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,5 +8,6 @@ namespace CookingWebsite.Application.Recipes
     public interface IRecipeService
     {
         Task<Recipe> GetRecipeOfDay();
+        Task AddRecipe(AddRecipeDto addRecipeDto);
     }
 }
