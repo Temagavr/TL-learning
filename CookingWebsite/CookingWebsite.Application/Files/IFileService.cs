@@ -5,6 +5,6 @@ namespace CookingWebsite.Application.Files
 {
     public interface IFileService
     {
-        Task<FileSaveResult> SaveImgAsync(File formFile);
+        Task<FileSaveResult> SaveAsync(File formFile, string relativePath);
     }
 }

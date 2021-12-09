@@ -31,13 +31,13 @@ namespace CookingWebsite.Application.Recipes
         
         public async Task AddRecipe(AddRecipeDto addRecipeDto)
         {
-            var imageSaveResult = await _fileService.SaveImgAsync(addRecipeDto.Image);
+            var imageSaveResult = await _fileService.SaveAsync(addRecipeDto.Image, "\\recipes");
 
             List<RecipeIngredient> ingredients = addRecipeDto.Ingredients.Select(x => new RecipeIngredient(
                     x.Title,
                     x.Items.Select(y => new RecipeIngredientItem(
-                            y.Name,
-                            y.Value
+                        y.Name,
+                        y.Value
                     )).ToList()
             )).ToList();
 
@@ -53,8 +53,6 @@ namespace CookingWebsite.Application.Recipes
                 addRecipeDto.Description,
                 addRecipeDto.CookingTime,
                 addRecipeDto.PersonsCount,
-                likesCount: 0,
-                favouritesCount: 0,
                 authorUsername: "TestUser",
                 ingredients,
                 steps

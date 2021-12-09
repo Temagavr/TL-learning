@@ -24,8 +24,6 @@ namespace CookingWebsite.Domain.Entities.Recipes
             string description,
             int cookingTime,
             int personsCount,
-            int likesCount,
-            int favouritesCount,
             string authorUsername,
             List<RecipeIngredient> ingredients,
             List<RecipeStep> steps
@@ -36,8 +34,8 @@ namespace CookingWebsite.Domain.Entities.Recipes
             Description = description;
             CookingTime = cookingTime;
             PersonsCount = personsCount;
-            LikesCount = likesCount;
-            FavouritesCount = favouritesCount;
+            LikesCount = 0;
+            FavouritesCount = 0;
             AuthorUsername = authorUsername;
             Ingredients = ingredients;
             Steps = steps;

@@ -9,19 +9,19 @@ namespace CookingWebsite.Application.Files
     {
         private const string Storage = @"E:\TL-learning\CookingWebsite\CookingWebsite\ClientApp\src\assets";
 
-        public async Task<FileSaveResult> SaveImgAsync(File formFile)
+        public async Task<FileSaveResult> SaveAsync(File formFile, string relativePath)
         {
-            const string imagesPath = Storage + "\\recipes"; 
-            Directory.CreateDirectory(imagesPath);
+            string fullPath = Storage + relativePath; 
+            Directory.CreateDirectory(fullPath);
 
             string fileName = $"{Guid.NewGuid().ToString()}.{formFile.FileExtension}";
-            var newFilePath = $@"{imagesPath}\{fileName}";
+            var newFilePath = $@"{fullPath}\{fileName}";
             using (FileStream fs = System.IO.File.Create(newFilePath))
             {
                 await fs.WriteAsync(formFile.Data);
             }
 
-            string folderName = imagesPath.Split(@"\").Last();
+            string folderName = fullPath.Split(@"\").Last();
             return new FileSaveResult
             {
                 RelativePath = $@"{folderName}/{fileName}"
