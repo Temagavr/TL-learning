@@ -7,11 +7,16 @@ namespace CookingWebsite.Application.Files
 {
     public class FileService : IFileService
     {
-        private const string Storage = @"E:\TL-learning\CookingWebsite\CookingWebsite\ClientApp\src\assets";
+        private readonly FileStorageSettings _storage;
+
+        public FileService(FileStorageSettings settings)
+        {
+            _storage = settings;
+        }
 
         public async Task<FileSaveResult> SaveAsync(File formFile, string relativePath)
         {
-            string fullPath = Storage + relativePath; 
+            string fullPath = _storage.StorageUrl + relativePath; 
             Directory.CreateDirectory(fullPath);
 
             string fileName = $"{Guid.NewGuid().ToString()}.{formFile.FileExtension}";
