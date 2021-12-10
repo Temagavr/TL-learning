@@ -20,6 +20,7 @@ export class RecipeCreateComponent {
 
   addRecipeDto: AddRecipeDto = {
     image: null,
+    imageUrl: '',
     authorUsername: '',
     title: '',
     description: '',

@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { RecipeCard } from '../../../common/recipe-card/recipe-card';
 import { AddRecipeDto } from '../add-recipe-dto';
 
 @Component({
@@ -8,15 +10,26 @@ import { AddRecipeDto } from '../add-recipe-dto';
 })
 export class RecipeCreateCardComponent {
 
+  constructor(private router: Router) {
+
+  }
+
   @Input() recipeData: AddRecipeDto;
 
   timeVariants: number[] = [];
   personsVariants: number[] = [];
   imgUrl: string = '';
+
+  isEdit: boolean = false;
   
   ngOnInit() {
     this.fillTimeVariants();
     this.fillPersonsVariants();
+
+    if (this.router.url.includes('/edit')) {
+      this.isEdit = true;
+      this.imgUrl = this.recipeData.imageUrl;
+    }
   }
 
   fillTimeVariants() {

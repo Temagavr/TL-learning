@@ -40,5 +40,27 @@ namespace CookingWebsite.Domain.Entities.Recipes
             Ingredients = ingredients;
             Steps = steps;
         }
+
+        public void Update(
+            string imageUrl,
+            string title,
+            string description,
+            int cookingTime,
+            int personsCount,
+            string authorUsername,
+            List<RecipeIngredient> ingredients,
+            List<RecipeStep> steps
+            )
+        {
+            ImageUrl = imageUrl;
+            Title = title;
+            Description = description;
+            CookingTime = cookingTime;
+            PersonsCount = personsCount;
+            AuthorUsername = authorUsername;
+            Ingredients = ingredients;
+            Steps = steps;
+
+        }
     }
 }

@@ -76,6 +76,8 @@
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create.module.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-update.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\update-recipe-dto.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-body\recipe-details-body.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-header\recipe-details-header.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-routing.module.ts" />
@@ -88,6 +90,7 @@
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list\recipes-list.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
+    <None Remove="Modules\RecipeModule\RecipeMapper.cs~RF886e990b.TMP" />
   </ItemGroup>
 
   <ItemGroup>
@@ -133,6 +136,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-update.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\update-recipe-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-body\recipe-details-body.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-header\recipe-details-header.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-routing.module.ts" />

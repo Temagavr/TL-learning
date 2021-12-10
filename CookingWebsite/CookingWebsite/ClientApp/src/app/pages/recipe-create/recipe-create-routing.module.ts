@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeCreateComponent } from './recipe-create.component';
+import { RecipeUpdateComponent } from './recipe-update.component';
 import { NgModule } from '@angular/core';
 
 
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'recipes/edit/:id',
-    component: RecipeCreateComponent
+    component: RecipeUpdateComponent
   }
 ];
 
