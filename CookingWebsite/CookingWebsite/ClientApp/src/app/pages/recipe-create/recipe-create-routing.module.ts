@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: 'recipes/create',
     component: RecipeCreateComponent
+  },
+  {
+    path: 'recipes/edit/:id',
+    component: RecipeCreateComponent
   }
 ];
 

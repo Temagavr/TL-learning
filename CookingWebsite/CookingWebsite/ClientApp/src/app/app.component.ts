@@ -7,6 +7,7 @@ import { GreetingModalComponent } from './common/modals/greeting-modal/greeting-
 
 import { RegistrationDto } from './Dtos/registration-dto';
 import { LoginDto } from './Dtos/login-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,8 @@ export class AppComponent {
 
   constructor(
     userInteractionService: UserInteractionService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router
   ) {
       userInteractionService.onOpenLoginModalRequest$.subscribe(() => {
         this.showLoginModal();
@@ -80,7 +82,10 @@ export class AppComponent {
   }
 
   showGreetingModal() {
-    this.greetingModal.show();
+    if (this.userName)
+      this.router.navigate(['/recipes/create']);
+    else
+      this.greetingModal.show();
   }
 
   doSmthOnRegistrationClick(registrationInfo: RegistrationDto) {
