@@ -10,6 +10,6 @@
     <app-tags-list [tagsList]="tagsInfo"></app-tags-list>
   </div>
 
-  <app-day-recipe [dayRecipe]="dayRecipe"></app-day-recipe>
+  <app-day-recipe *ngIf="dayRecipe.image" [dayRecipe]="dayRecipe"></app-day-recipe>
   <app-home-search></app-home-search>
 </div>

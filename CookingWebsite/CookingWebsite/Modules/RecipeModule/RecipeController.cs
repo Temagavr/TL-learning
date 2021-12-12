@@ -60,6 +60,19 @@ namespace CookingWebsite.Modules.RecipeModule
 
             await _unitOfWork.Commit();
         }
-        
+
+        [HttpPost("update-recipe")]
+        public async Task UpdateRecipe()
+        {
+            IFormFileCollection files = Request.Form.Files;
+
+            UpdateRecipeDto updateRecipeDto = JsonConvert.DeserializeObject<UpdateRecipeDto>(Request.Form["data"]);
+
+            var recipeDto = await updateRecipeDto.Map(files);
+
+            await _recipeService.UpdateRecipe(recipeDto);
+            
+            await _unitOfWork.Commit();
+        }
     }
 }

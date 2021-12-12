@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static CookingWebsite.Application.Files.FileService;
 
 namespace CookingWebsite.Application.Recipes
 {
@@ -61,6 +62,42 @@ namespace CookingWebsite.Application.Recipes
             _recipeRepostitory.Add(recipe);
 
             return;
+        }
+
+        public async Task UpdateRecipe(UpdateRecipeDto updateRecipeDto)
+        {
+            var recipe = await _recipeRepostitory.GetById(updateRecipeDto.Id);
+
+            FileSaveResult imageSaveResult = new FileSaveResult();
+            if (updateRecipeDto.Image != null)
+                imageSaveResult = await _fileService.SaveAsync(updateRecipeDto.Image, "\\recipes");
+            else
+                imageSaveResult.RelativePath = recipe.ImageUrl;
+
+            List<RecipeIngredient> ingredients = updateRecipeDto.Ingredients.Select(x => new RecipeIngredient(
+                    x.Title,
+                    x.Items.Select(y => new RecipeIngredientItem(
+                        y.Name,
+                        y.Value
+                    )).ToList()
+            )).ToList();
+
+            List<RecipeStep> steps = updateRecipeDto.Steps.Select(x => new RecipeStep
+            (
+                x.StepNumber,
+                x.Description
+            )).ToList();
+
+            recipe.Update(
+                imageSaveResult.RelativePath,
+                updateRecipeDto.Title,
+                updateRecipeDto.Description,
+                updateRecipeDto.CookingTime,
+                updateRecipeDto.PersonsCount,
+                authorUsername: "TestUserName",
+                ingredients,
+                steps
+            );
         }
     }
 }

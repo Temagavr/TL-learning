@@ -9,5 +9,6 @@ namespace CookingWebsite.Application.Recipes
     {
         Task<Recipe> GetRecipeOfDay();
         Task AddRecipe(AddRecipeDto addRecipeDto);
+        Task UpdateRecipe(UpdateRecipeDto updateRecipeDto);
     }
 }

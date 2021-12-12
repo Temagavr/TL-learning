@@ -1,10 +1,10 @@
 import { RecipeIngredientDto } from "../../Dtos/recipe-ingredient-dto";
 import { AddRecipeStepDto } from "./add-recipe-step-dto";
 
-export interface AddRecipeDto {
-  image: File;
+export interface UpdateRecipeDto {
+  id: number;
 
-  imageUrl: string;
+  image: File;
 
   authorUsername: string
 

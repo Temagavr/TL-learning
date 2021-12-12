@@ -5,6 +5,7 @@ import { HttpService } from './http.service';
 import { RecipeDetailsDto } from "../../Dtos/recipe-details-dto";
 import { RecipeCard } from "../recipe-card/recipe-card";
 import { AddRecipeDto } from "../../pages/recipe-create/add-recipe-dto";
+import { UpdateRecipeDto } from "../../pages/recipe-create/update-recipe-dto";
 
 @Injectable()
 export class RecipeService extends HttpService {
@@ -47,6 +48,30 @@ export class RecipeService extends HttpService {
     formData.append('data', data);
 
     const response = await this.Post(`${this.url}/add-recipe`, formData);
+
+    return response;
+  }
+
+  public async updateRecipe(updateRecipeDto: UpdateRecipeDto) {
+    const formData = new FormData();
+    if(updateRecipeDto.image)
+      formData.append(updateRecipeDto.image.name, updateRecipeDto.image);
+
+    const data: string = JSON.stringify({
+      id: updateRecipeDto.id,
+      title: updateRecipeDto.title,
+      description: updateRecipeDto.description,
+      authorUsername: updateRecipeDto.authorUsername,
+      personsCount: updateRecipeDto.personsCount,
+      cookingTime: updateRecipeDto.cookingTime,
+      tags: updateRecipeDto.tags,
+      steps: updateRecipeDto.steps,
+      ingredients: updateRecipeDto.ingredients
+    });
+
+    formData.append('data', data);
+
+    const response = await this.Post(`${this.url}/update-recipe`, formData);
 
     return response;
   }
