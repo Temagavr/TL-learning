@@ -46,7 +46,7 @@ namespace CookingWebsite.Infrastructure.Repositories
             _dbContext.Add(recipeStep);
         }
 
-        public void Delete(Task<Recipe> recipe)
+        public void Delete(Recipe recipe)
         {
             _dbContext.Remove(recipe);
         }

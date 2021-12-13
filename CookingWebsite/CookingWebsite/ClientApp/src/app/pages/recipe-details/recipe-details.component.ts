@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { RecipeService } from '../../common/services/recipe.service';
@@ -15,6 +15,7 @@ export class RecipeDetailsComponent {
 
   constructor(
     private recipeService: RecipeService,
+    private router: Router,
     private route: ActivatedRoute
   ) {
   }
@@ -81,6 +82,13 @@ export class RecipeDetailsComponent {
         this.recipeSteps.push(step);
       }
     });
+  }
+
+  deleteRecipe() {
+    var respose = this.recipeService.deleteRecipe(this.route.snapshot.params.id);
+
+    if (respose)
+      this.router.navigate(['/recipes']);
   }
 
 }
