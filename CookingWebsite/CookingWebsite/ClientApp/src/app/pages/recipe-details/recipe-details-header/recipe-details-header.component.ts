@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -14,10 +14,16 @@ export class RecipeDetailsHeaderComponent {
 
   }
 
+  @Output() onDeleteRecipeClick = new EventEmitter();
+
   @Input() recipeTitle: string;
 
   goToEditRecipe() {
     this.router.navigate(['/recipes/edit', this.route.snapshot.params.id]);
+  }
+
+  deleteRecipeClick() {
+    this.onDeleteRecipeClick.emit();
   }
 
 }
