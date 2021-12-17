@@ -42,7 +42,7 @@ export class RecipeService extends HttpService {
       cookingTime: addRecipeDto.cookingTime,
       tags: addRecipeDto.tags,
       steps: addRecipeDto.steps,
-      ingredients: addRecipeDto.ingredients
+      ingredients: addRecipeDto.ingredients,
     });
 
     formData.append('data', data);

@@ -12,6 +12,7 @@ export interface AddRecipeDto {
   description: string;
 
   tags: string[];
+  tagsString: string;
 
   cookingTime: number;
   personsCount: number;

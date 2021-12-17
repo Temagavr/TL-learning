@@ -25,6 +25,7 @@ namespace CookingWebsite.Modules.RecipeModule
 
             recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
             recipeDetailsDto.Steps = new List<string>();
+            recipeDetailsDto.Tags = new List<string>();
 
             recipeDetailsDto.Ingredients = recipe.Ingredients.Select(x => new RecipeIngredientDto
             {
@@ -44,6 +45,8 @@ namespace CookingWebsite.Modules.RecipeModule
             {
                 recipeDetailsDto.Steps.Add(step.Description);
             }
+
+            recipeDetailsDto.Tags = recipe.Tags.Select(x => x.TagName).ToList();
 
             return recipeDetailsDto;
         }
@@ -65,6 +68,12 @@ namespace CookingWebsite.Modules.RecipeModule
                 recipeCard.ImageUrl = recipe.ImageUrl;
                 recipeCard.LikesCount = recipe.LikesCount;
                 recipeCard.PersonsCount = recipe.PersonsCount;
+
+                recipeCard.Tags = new List<string>();
+                foreach(RecipeTag tag in recipe.Tags)
+                {
+                    recipeCard.Tags.Add(tag.TagName);
+                }
 
                 recipeCardsList.Add(recipeCard);
             }
@@ -99,6 +108,11 @@ namespace CookingWebsite.Modules.RecipeModule
                 Description = s.Description
             }).ToList();
 
+            result.Tags = new List<Application.Recipes.RecipeDtos.RecipeTagDto>();
+
+            result.Tags = recipe.Tags.Select(x => new Application.Recipes.RecipeDtos.RecipeTagDto {
+                TagName = x
+            }).ToList();
 
             result.Image = await FileManagment.CreateAsync(files[0]);
 
@@ -135,6 +149,16 @@ namespace CookingWebsite.Modules.RecipeModule
                 StepNumber = i + 1,
                 Description = s.Description
             }).ToList();
+
+            result.Tags = new List<Application.Recipes.RecipeDtos.RecipeTagDto>();
+
+            if (recipe.Tags.Count > 0)
+            {
+                result.Tags = recipe.Tags.Select(x => new Application.Recipes.RecipeDtos.RecipeTagDto
+                {
+                    TagName = x.TagName
+                }).ToList();
+            }
 
             if (files.Count > 0)
                 result.Image = await FileManagment.CreateAsync(files[0]);

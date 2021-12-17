@@ -54,7 +54,7 @@ export class RecipeDetailsComponent {
       this.recipeCard.authorUsername = recipeDetailsDto.authorUsername;
       this.recipeCard.title = recipeDetailsDto.title;
       this.recipeCard.description = recipeDetailsDto.description;
-      this.recipeCard.tags = ['десерты', 'клубника', 'сливки'];
+      this.recipeCard.tags = recipeDetailsDto.tags.slice(0, 3);
       this.recipeCard.isFavourite = false;
       this.recipeCard.isLiked = true;
       this.recipeCard.favouritesCount = 12 //recipeDetailsDto.favourite;

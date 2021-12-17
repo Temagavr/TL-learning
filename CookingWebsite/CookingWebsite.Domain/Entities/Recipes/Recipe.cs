@@ -15,6 +15,7 @@ namespace CookingWebsite.Domain.Entities.Recipes
         public string AuthorUsername { get; private set; }
         public List<RecipeIngredient> Ingredients { get; private set; }
         public List<RecipeStep> Steps { get; private set; }
+        public List<RecipeTag> Tags { get; private set; }
 
         protected Recipe() { }
 
@@ -26,7 +27,8 @@ namespace CookingWebsite.Domain.Entities.Recipes
             int personsCount,
             string authorUsername,
             List<RecipeIngredient> ingredients,
-            List<RecipeStep> steps
+            List<RecipeStep> steps,
+            List<RecipeTag> tags
             )
         {
             ImageUrl = imageUrl;
@@ -39,6 +41,7 @@ namespace CookingWebsite.Domain.Entities.Recipes
             AuthorUsername = authorUsername;
             Ingredients = ingredients;
             Steps = steps;
+            Tags = tags;
         }
 
         public void Update(
@@ -49,7 +52,8 @@ namespace CookingWebsite.Domain.Entities.Recipes
             int personsCount,
             string authorUsername,
             List<RecipeIngredient> ingredients,
-            List<RecipeStep> steps
+            List<RecipeStep> steps,
+            List<RecipeTag> tags
             )
         {
             ImageUrl = imageUrl;
@@ -60,7 +64,7 @@ namespace CookingWebsite.Domain.Entities.Recipes
             AuthorUsername = authorUsername;
             Ingredients = ingredients;
             Steps = steps;
-
+            Tags = tags;
         }
     }
 }

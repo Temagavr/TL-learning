@@ -49,14 +49,16 @@ export class RecipeUpdateComponent {
         cookingTime: 0,
         personsCount: 0,
         ingredients: [],
-        steps: []
+        steps: [],
+        tagsString: ''
       };
 
       this.recipeData.imageUrl = this.baseImageUrl + recipeDetailsDto.imageUrl;
       this.recipeData.authorUsername = recipeDetailsDto.authorUsername;
       this.recipeData.title = recipeDetailsDto.title;
       this.recipeData.description = recipeDetailsDto.description;
-      this.recipeData.tags = ['десерты', 'клубника', 'сливки'];
+      this.recipeData.tags = recipeDetailsDto.tags;
+      this.recipeData.tagsString = this.recipeData.tags.join(', ');
       this.recipeData.cookingTime = recipeDetailsDto.cookingTime;
       this.recipeData.personsCount = recipeDetailsDto.personsCount;
 
@@ -123,6 +125,13 @@ export class RecipeUpdateComponent {
 
       updatedRecipe.steps.push(stepDto);
     }
+
+    let tags: string[] = this.recipeData.tagsString.split(',');
+
+    for (let tag of tags) {
+      updatedRecipe.tags.push(tag.trim().toLowerCase());
+    }
+
 
     console.log(updatedRecipe);
 
