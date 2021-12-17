@@ -156,7 +156,7 @@ namespace CookingWebsite.Modules.RecipeModule
             {
                 result.Tags = recipe.Tags.Select(x => new Application.Recipes.RecipeDtos.RecipeTagDto
                 {
-                    TagName = x.TagName
+                    TagName = x
                 }).ToList();
             }
 
