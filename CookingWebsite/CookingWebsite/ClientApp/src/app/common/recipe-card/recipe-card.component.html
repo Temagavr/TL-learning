@@ -7,8 +7,8 @@
   <div class="recipe-info">
     <div class="recipe-info-content">
       <div class="recipe-top">
-        <div class="recipe-tags-block">
-          <div class="recipe-tag-bacgrd" *ngFor="let recipeTag of recipeInfo.tags">
+        <div *ngIf="recipeInfo.tags" class="recipe-tags-block">
+          <div class="recipe-tag-bacgrd"  *ngFor="let recipeTag of recipeInfo.tags">
             <span class="recipe-tag">{{recipeTag}}</span>
           </div>
         </div>

@@ -126,12 +126,13 @@ export class RecipeUpdateComponent {
       updatedRecipe.steps.push(stepDto);
     }
 
-    let tags: string[] = this.recipeData.tagsString.split(',');
+    if (this.recipeData.tagsString != '') {
+      let tags: string[] = this.recipeData.tagsString.split(',');
 
-    for (let tag of tags) {
-      updatedRecipe.tags.push(tag.trim().toLowerCase());
+      for (let tag of tags) {
+        updatedRecipe.tags.push(tag.trim().toLowerCase());
+      }
     }
-
 
     console.log(updatedRecipe);
 

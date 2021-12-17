@@ -72,10 +72,14 @@ export class RecipeCreateComponent {
       this.addRecipeDto.steps.push(stepDto);
     }
 
-    let tags: string[] = this.addRecipeDto.tagsString.split(',');
+    if (this.addRecipeDto.tagsString != '') {
 
-    for (let tag of tags) {
-      this.addRecipeDto.tags.push(tag.trim().toLowerCase());
+      let tags: string[] = this.addRecipeDto.tagsString.split(',');
+
+      for (let tag of tags) {
+        this.addRecipeDto.tags.push(tag.trim().toLowerCase());
+      }
+
     }
 
     console.log(this.addRecipeDto);
