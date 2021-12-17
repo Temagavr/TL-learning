@@ -8,6 +8,7 @@ import { GreetingModalComponent } from './common/modals/greeting-modal/greeting-
 import { RegistrationDto } from './Dtos/registration-dto';
 import { LoginDto } from './Dtos/login-dto';
 import { Router } from '@angular/router';
+import { UserInfoDto } from './Dtos/user-info-dto';
 
 @Component({
   selector: 'app-root',
@@ -43,6 +44,11 @@ export class AppComponent {
       })
   }
 
+  ngOnInit() {
+    //this.cookieService.put('test', 'value');
+    //console.log(this.cookieService.get('test'));
+  }
+
   showLoginModal() {
     this.loginModal.show();
   }
@@ -59,8 +65,12 @@ export class AppComponent {
 
   doSmthOnLoginClick(loginDto: LoginDto) {
     console.log('Im try to login');
-    if (this.accountService.Login(loginDto)) {
-      this.userName = loginDto.login;
+    if (this.accountService.login(loginDto)) {
+
+      this.accountService.getDetails(loginDto.login).then((user: UserInfoDto) => {
+        this.userName = user.name;
+      });
+
     };
     this.loginModal.close();
   }
@@ -90,7 +100,7 @@ export class AppComponent {
 
   doSmthOnRegistrationClick(registrationInfo: RegistrationDto) {
     event.preventDefault();
-    this.accountService.Register(registrationInfo);
+    this.accountService.register(registrationInfo);
     console.log('Try to registration');
     this.registrationModal.close();
   }

@@ -5,6 +5,7 @@ using CookingWebsite.Infrastructure.Foundation;
 using CookingWebsite.Modules.AccountModule;
 using CookingWebsite.Modules.HomeModule;
 using CookingWebsite.Modules.RecipeModule;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -33,6 +34,14 @@ namespace CookingWebsite
                 .AddHomeModule()
                 .AddRecipeModule()
                 .AddRepositories();
+
+            /*
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/account/login");
+                });
+            */
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -94,6 +103,10 @@ namespace CookingWebsite
                      spa.UseAngularCliServer( npmScript: "start" );
                  }
              } );
+
+
+            //app.UseAuthentication();    // аутентификация
+            //app.UseAuthorization();     // авторизация
         }
     }
 }

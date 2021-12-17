@@ -17,7 +17,6 @@ import { AccountService } from './common/services/account.service';
 
 import { SharedModule } from './common/shared.module';
 
-
 @NgModule({
   declarations: [
     AppComponent
