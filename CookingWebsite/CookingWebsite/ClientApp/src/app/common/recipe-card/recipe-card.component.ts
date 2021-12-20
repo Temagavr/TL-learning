@@ -28,7 +28,9 @@ export class RecipeCardComponent {
   ngOnInit(): void {
     let fullUrl: string = this.baseImagesPath + this.recipeInfo.imageUrl;
     this.imageSafeUrl = this.sanitizer.bypassSecurityTrustUrl(fullUrl);
-    //this.sanitizer.bypassSecurityTrustUrl(this.recipeInfo.imageUrl);
+
+    if (this.recipeInfo.tags.length > 0)
+      this.recipeInfo.tags = this.recipeInfo.tags.slice(0, 3);
 
     if (this.recipeInfo.personsCount == 1) {
       this.rightPersons = 'персону';

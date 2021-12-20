@@ -16,6 +16,8 @@ export class RecipeCreateCardComponent {
 
   @Input() recipeData: AddRecipeDto;
 
+  @Input() allTags: string;
+
   timeVariants: number[] = [];
   personsVariants: number[] = [];
   imgUrl: string = '';

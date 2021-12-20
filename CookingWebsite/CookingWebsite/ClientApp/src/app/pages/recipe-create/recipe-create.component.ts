@@ -28,7 +28,8 @@ export class RecipeCreateComponent {
     personsCount: 0,
     ingredients: [],
     steps: [],
-    tags: []
+    tags: [],
+    tagsString: ''
   };
 
   steps: string[] = [''];
@@ -69,6 +70,16 @@ export class RecipeCreateComponent {
       };
 
       this.addRecipeDto.steps.push(stepDto);
+    }
+
+    if (this.addRecipeDto.tagsString != '') {
+
+      let tags: string[] = this.addRecipeDto.tagsString.split(',');
+
+      for (let tag of tags) {
+        this.addRecipeDto.tags.push(tag.trim().toLowerCase());
+      }
+
     }
 
     console.log(this.addRecipeDto);

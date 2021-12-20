@@ -24,6 +24,7 @@ namespace CookingWebsite.Infrastructure.Repositories
                 .Include(r => r.Ingredients)
                     .ThenInclude(i => i.Items)
                 .Include(r => r.Steps)
+                .Include(r => r.Tags)
                 .FirstOrDefaultAsync(r => r.Id == recipeId);
         }
 
@@ -57,7 +58,7 @@ namespace CookingWebsite.Infrastructure.Repositories
 
             if (includeAll)
             {
-                query = query.Include(r => r.Ingredients).ThenInclude(i => i.Items);
+                query = query.Include(r => r.Ingredients).ThenInclude(i => i.Items).Include(r => r.Tags);
             }
 
             if (!string.IsNullOrWhiteSpace(searchString))
@@ -68,7 +69,7 @@ namespace CookingWebsite.Infrastructure.Repositories
                     || x.Title.Contains(trimedSearchString));
             }
 
-            query = query.OrderBy(r => r.Id).Skip(skip).Take(take);
+            query = query.Include(r => r.Tags).OrderBy(r => r.Id).Skip(skip).Take(take);
 
             return await query.ToListAsync();
         }
