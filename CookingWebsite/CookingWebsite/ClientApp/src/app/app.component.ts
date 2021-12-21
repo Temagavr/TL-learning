@@ -45,6 +45,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.accountService.getUser();
     //this.cookieService.put('test', 'value');
     //console.log(this.cookieService.get('test'));
   }

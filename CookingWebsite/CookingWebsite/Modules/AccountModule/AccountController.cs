@@ -1,12 +1,11 @@
 ﻿using CookingWebsite.Application.Account;
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Repositories;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -14,7 +13,7 @@ namespace CookingWebsite.Modules.AccountModule
 {
     [ApiController]
     [Route("api/account")]
-    public class AccountController
+    public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
         private readonly IUserRepository _userRepository;
@@ -29,14 +28,12 @@ namespace CookingWebsite.Modules.AccountModule
         [HttpPost("registrate")]
         public async Task<bool> Registrate(UserRegistrationDto userRegistrationDto)
         {
-            Console.WriteLine("Fetch Post to registrate");
             var registrateResult = await _accountService.Registrate(userRegistrationDto.Map());
-
-            Console.WriteLine(registrateResult);
 
             if (registrateResult)
             {
                 await _unitOfWork.Commit();
+                await Authenticate(userRegistrationDto.Login);
                 return true;
             }   
             else
@@ -46,7 +43,15 @@ namespace CookingWebsite.Modules.AccountModule
         [HttpPost("login")]
         public async Task<bool> Login(UserLoginDto userLoginDto)
         {
-            return await _accountService.Login(userLoginDto.Map());
+            var loginResult = await _accountService.Login(userLoginDto.Map());
+            if (loginResult)
+            {
+                await Authenticate(userLoginDto.Login);
+                return true;
+            }
+            else
+                return false;
+
         }
 
         [HttpGet("details")]
@@ -56,7 +61,13 @@ namespace CookingWebsite.Modules.AccountModule
 
             return user.Map();
         }
-        /*
+
+        [HttpGet("get-user")]
+        public void GetCookieUser()
+        {
+            var test = User.Identity.Name;
+        }
+        
         private async Task Authenticate(string username)
         {
             // создаем один claim
@@ -76,6 +87,6 @@ namespace CookingWebsite.Modules.AccountModule
             // установка аутентификационных куки
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
-        */
+        
     }
 }

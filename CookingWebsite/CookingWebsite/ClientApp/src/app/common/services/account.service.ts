@@ -42,4 +42,10 @@ export class AccountService extends HttpService {
 
     return response;
   }
+
+  public async getUser(){
+    const response = await this.Get(`${this.url}/get-user`);
+
+    return response;
+  }
 }

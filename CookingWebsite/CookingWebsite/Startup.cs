@@ -35,13 +35,13 @@ namespace CookingWebsite
                 .AddRecipeModule()
                 .AddRepositories();
 
-            /*
+            
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/account/login");
                 });
-            */
+            
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -105,8 +105,8 @@ namespace CookingWebsite
              } );
 
 
-            //app.UseAuthentication();    // аутентификация
-            //app.UseAuthorization();     // авторизация
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();     // авторизация
         }
     }
 }
