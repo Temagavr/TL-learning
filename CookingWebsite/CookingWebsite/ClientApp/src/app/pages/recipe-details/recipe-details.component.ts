@@ -22,6 +22,8 @@ export class RecipeDetailsComponent {
 
   public recipeCard: RecipeCard;
 
+  public isModify: boolean = false;
+
   public recipeIngredient: RecipeIngredientDto[];
   public recipeSteps: string[];
 
@@ -34,6 +36,8 @@ export class RecipeDetailsComponent {
       if (!recipeDetailsDto) {
         return;
       }
+
+      this.isModify = recipeDetailsDto.isModify;
 
       this.recipeCard = {
         id: 1,

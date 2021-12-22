@@ -34,7 +34,7 @@ namespace CookingWebsite.Modules.RecipeModule
         {
             var recipeDetails = await _recipeRepository.GetById(recipeId);
 
-            return recipeDetails.Map();
+            return recipeDetails.Map(User.FindFirstValue(Claims.Username));
         }
 
         [HttpGet("search")]
@@ -56,8 +56,7 @@ namespace CookingWebsite.Modules.RecipeModule
 
             AddRecipeDto addRecipeDto = JsonConvert.DeserializeObject<AddRecipeDto>(Request.Form["data"]);
 
-            var recipeDto = await addRecipeDto.Map(files);
-            recipeDto.AuthorUsername = User.FindFirstValue(Claims.Username);
+            var recipeDto = await addRecipeDto.Map(files, User.FindFirstValue(Claims.Username));
 
             await _recipeService.AddRecipe(recipeDto);
 

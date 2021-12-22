@@ -9,7 +9,7 @@ namespace CookingWebsite.Modules.RecipeModule
 {
     public static class RecipeMapper
     {
-        public static RecipeDetailsDto Map( this Recipe recipe)
+        public static RecipeDetailsDto Map( this Recipe recipe, string authorizedUser)
         {
             var recipeDetailsDto = new RecipeDetailsDto();
 
@@ -45,6 +45,11 @@ namespace CookingWebsite.Modules.RecipeModule
                 recipeDetailsDto.Steps.Add(step.Description);
             }
 
+            if (recipeDetailsDto.AuthorUsername == authorizedUser)
+                recipeDetailsDto.IsModify = true;
+            else
+                recipeDetailsDto.IsModify = false;
+
             return recipeDetailsDto;
         }
 
@@ -72,7 +77,10 @@ namespace CookingWebsite.Modules.RecipeModule
             return recipeCardsList;
         }
 
-        public async static Task<Application.Recipes.RecipeDtos.AddRecipeDto> Map(this AddRecipeDto recipe, IFormFileCollection files)
+        public async static Task<Application.Recipes.RecipeDtos.AddRecipeDto> Map(
+            this AddRecipeDto recipe,
+            IFormFileCollection files,
+            string authorizedUser)
         {
             var result = new Application.Recipes.RecipeDtos.AddRecipeDto();
 
@@ -98,6 +106,7 @@ namespace CookingWebsite.Modules.RecipeModule
                 Description = s.Description
             }).ToList();
 
+            result.AuthorUsername = authorizedUser;
 
             result.Image = await FileManagment.CreateAsync(files[0]);
 
