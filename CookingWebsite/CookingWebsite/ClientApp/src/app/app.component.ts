@@ -71,16 +71,21 @@ export class AppComponent {
 
   doSmthOnLoginClick(loginDto: LoginDto) {
     console.log('Im try to login');
-    if (this.accountService.login(loginDto)) {
+    if (!this.userName) {
+      if (this.accountService.login(loginDto)) {
 
-      this.accountService.getUser().then((user: AuthorizedUserDto) => {
-        this.userName = user.name;
-      });
+        this.accountService.getUser().then((user: AuthorizedUserDto) => {
+          this.userName = user.name;
+        });
 
-      this.loginModal.close();
+        this.loginModal.close();
+      } else {
+        this.loginModal.loginError();
+      }
     } else {
-      this.loginModal.loginError();
+      alert('Вы уже вошли в систему!');
     }
+
   }
 
   doSmthOnOpenLoginModal() {
@@ -108,14 +113,18 @@ export class AppComponent {
 
   doSmthOnRegistrationClick(registrationInfo: RegistrationDto) {
     event.preventDefault();
-    let response = this.accountService.register(registrationInfo);
+    if (!this.userName) {
+      let response = this.accountService.register(registrationInfo);
 
-    if (response) {
-      this.userName = registrationInfo.name;
-      alert('Вы успешно зарегистрировались!');
+      if (response) {
+        this.userName = registrationInfo.name;
+        alert('Вы успешно зарегистрировались!');
+      }
+
+      console.log('Try to registration');
+      this.registrationModal.close();
+    } else {
+      alert('Вы уже вошли в систему!');
     }
-
-    console.log('Try to registration');
-    this.registrationModal.close();
   }
 }
