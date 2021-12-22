@@ -61,7 +61,6 @@ export class RecipeService extends HttpService {
       id: updateRecipeDto.id,
       title: updateRecipeDto.title,
       description: updateRecipeDto.description,
-      authorUsername: updateRecipeDto.authorUsername,
       personsCount: updateRecipeDto.personsCount,
       cookingTime: updateRecipeDto.cookingTime,
       tags: updateRecipeDto.tags,

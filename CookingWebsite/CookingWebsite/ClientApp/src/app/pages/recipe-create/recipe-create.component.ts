@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { AccountService } from '../../common/services/account.service';
 
 import { RecipeService } from '../../common/services/recipe.service';
+import { AuthorizedUserDto } from '../../Dtos/authorized-user-dto';
 import { RecipeIngredientDto } from '../../Dtos/recipe-ingredient-dto';
 import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
 import { AddRecipeDto } from './add-recipe-dto';
@@ -15,6 +17,7 @@ export class RecipeCreateComponent {
 
   constructor(
     private recipeService: RecipeService,
+    private accountService: AccountService
   ) {
   }
 
@@ -70,6 +73,12 @@ export class RecipeCreateComponent {
 
       this.addRecipeDto.steps.push(stepDto);
     }
+
+    this.accountService.getUser().then((user: AuthorizedUserDto) => {
+      if (user.id != 0) {
+        this.addRecipeDto.authorUsername = user.login;
+      }
+    });
 
     console.log(this.addRecipeDto);
 

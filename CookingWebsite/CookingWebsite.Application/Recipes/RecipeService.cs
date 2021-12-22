@@ -54,7 +54,7 @@ namespace CookingWebsite.Application.Recipes
                 addRecipeDto.Description,
                 addRecipeDto.CookingTime,
                 addRecipeDto.PersonsCount,
-                authorUsername: "TestUser",
+                addRecipeDto.AuthorUsername,
                 ingredients,
                 steps
             );
@@ -94,7 +94,6 @@ namespace CookingWebsite.Application.Recipes
                 updateRecipeDto.Description,
                 updateRecipeDto.CookingTime,
                 updateRecipeDto.PersonsCount,
-                authorUsername: "TestUserName",
                 ingredients,
                 steps
             );

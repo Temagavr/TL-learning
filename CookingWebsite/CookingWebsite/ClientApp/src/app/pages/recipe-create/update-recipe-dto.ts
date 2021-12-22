@@ -6,8 +6,6 @@ export interface UpdateRecipeDto {
 
   image: File;
 
-  authorUsername: string
-
   title: string;
   description: string;
 

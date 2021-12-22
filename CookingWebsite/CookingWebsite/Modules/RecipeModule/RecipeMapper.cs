@@ -78,7 +78,6 @@ namespace CookingWebsite.Modules.RecipeModule
 
             result.Title = recipe.Title;
             result.Description = recipe.Description;
-            result.AuthorUsername = recipe.AuthorUsername;
             result.CookingTime = recipe.CookingTime;
             result.PersonsCount = recipe.PersonsCount;
 
@@ -112,7 +111,6 @@ namespace CookingWebsite.Modules.RecipeModule
             result.Id = recipe.Id;
             result.Title = recipe.Title;
             result.Description = recipe.Description;
-            result.AuthorUsername = recipe.AuthorUsername;
             result.CookingTime = recipe.CookingTime;
             result.PersonsCount = recipe.PersonsCount;
 
