@@ -51,6 +51,7 @@
     <None Remove="ClientApp\src\app\common\shared.module.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\Tag.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
+    <None Remove="ClientApp\src\app\Dtos\authorized-user-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\login-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\recipe-details-dto.ts" />
@@ -102,6 +103,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\search-input\search-input.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\account.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Dtos\authorized-user-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Dtos\user-info-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\http.service.ts" />

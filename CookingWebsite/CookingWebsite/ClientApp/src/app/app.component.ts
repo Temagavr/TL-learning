@@ -9,6 +9,7 @@ import { RegistrationDto } from './Dtos/registration-dto';
 import { LoginDto } from './Dtos/login-dto';
 import { Router } from '@angular/router';
 import { UserInfoDto } from './Dtos/user-info-dto';
+import { AuthorizedUserDto } from './Dtos/authorized-user-dto';
 
 @Component({
   selector: 'app-root',
@@ -45,9 +46,11 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.accountService.getUser();
-    //this.cookieService.put('test', 'value');
-    //console.log(this.cookieService.get('test'));
+    this.accountService.getName().then((user: AuthorizedUserDto) => {
+      if (user.id != 0) {
+        this.userName = user.name;
+      }
+    });
   }
 
   showLoginModal() {
@@ -55,12 +58,14 @@ export class AppComponent {
   }
 
   userLogOut() {
+    this.accountService.logout();
     this.userName = '';
-    console.log('User log out');
+    this.router.navigate(['/']);
   }
 
   doSmthOnCloseLoginModal() {
-    // Тут в closeModal можно что то делать
+    this.loginModal.loginData.login = '';
+    this.loginModal.loginData.password = '';
     console.log('login modal closed');
   }
 
@@ -101,9 +106,15 @@ export class AppComponent {
 
   doSmthOnRegistrationClick(registrationInfo: RegistrationDto) {
     event.preventDefault();
-    this.accountService.register(registrationInfo);
+    let response = this.accountService.register(registrationInfo);
+
+    if (response) {
+      this.userName = registrationInfo.name;
+      alert('Вы успешно зарегистрировались!');
+    }
+
     console.log('Try to registration');
     this.registrationModal.close();
-  }
 
+  }
 }

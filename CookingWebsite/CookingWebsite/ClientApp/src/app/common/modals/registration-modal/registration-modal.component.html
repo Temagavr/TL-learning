@@ -10,7 +10,7 @@
 
       <div class="little-inputs-block">
         <input [(ngModel)]="registrationInfo.password" class="big-modal-input input-style little-modal-input" type="password" placeholder="Пароль" name="password" />
-        <input class="big-modal-input input-style little-modal-input" type="password" placeholder="Повторите пароль" name="repeat_password" />
+        <input [(ngModel)]="registrationInfo.repeatPassword" class="big-modal-input input-style little-modal-input" type="password" placeholder="Повторите пароль" name="repeat_password" />
       </div>
 
       <span class="password-warning">Минимум 8 символов</span>

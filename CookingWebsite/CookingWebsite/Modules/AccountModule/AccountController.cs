@@ -1,10 +1,12 @@
 ﻿using CookingWebsite.Application.Account;
 using CookingWebsite.Domain;
+using CookingWebsite.Domain.Entities.Users;
 using CookingWebsite.Domain.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -33,7 +35,9 @@ namespace CookingWebsite.Modules.AccountModule
             if (registrateResult)
             {
                 await _unitOfWork.Commit();
-                await Authenticate(userRegistrationDto.Login);
+
+                var user = await _userRepository.GetByLogin(userRegistrationDto.Login);
+                await Authenticate(user);
                 return true;
             }   
             else
@@ -46,7 +50,8 @@ namespace CookingWebsite.Modules.AccountModule
             var loginResult = await _accountService.Login(userLoginDto.Map());
             if (loginResult)
             {
-                await Authenticate(userLoginDto.Login);
+                var user = await _userRepository.GetByLogin(userLoginDto.Login);
+                await Authenticate(user);
                 return true;
             }
             else
@@ -62,22 +67,36 @@ namespace CookingWebsite.Modules.AccountModule
             return user.Map();
         }
 
-        [HttpGet("get-user")]
-        public void GetCookieUser()
+        [HttpGet("get-authorized-user")]
+        public AuthorizedUserDto GetCookieUser()
         {
-            var test = User.Identity.Name;
+            var user = new AuthorizedUserDto();
+
+            user.Id = Convert.ToInt32(User.FindFirstValue(Claims.UserId));
+            user.Name = User.FindFirstValue(Claims.Name);
+            user.Login = User.FindFirstValue(Claims.Username);
+
+            return user;
+        }
+
+        [HttpGet("logout")]
+        public void UserLogout()
+        {
+            Logout();
         }
         
-        private async Task Authenticate(string username)
+        private async Task Authenticate(User user)
         {
             // создаем один claim
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, username)
+                new Claim(Claims.UserId, user.Id.ToString()),
+                new Claim(Claims.Username, user.Login),
+                new Claim(Claims.Name, user.Name)
             };
 
             // создаем объект ClaimsIdentity
-            ClaimsIdentity id = new ClaimsIdentity(
+            ClaimsIdentity claimIdentity = new ClaimsIdentity(
                 claims,
                 "ApplicationCookie",
                 ClaimsIdentity.DefaultNameClaimType,
@@ -85,8 +104,12 @@ namespace CookingWebsite.Modules.AccountModule
             );
 
             // установка аутентификационных куки
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdentity));
         }
-        
+
+        public async void Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        }
     }
 }

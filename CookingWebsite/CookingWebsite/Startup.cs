@@ -84,6 +84,9 @@ namespace CookingWebsite
 
             app.UseRouting();
 
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();     // авторизация
+
             app.UseEndpoints( endpoints =>
              {
                  endpoints.MapControllerRoute(
@@ -103,10 +106,6 @@ namespace CookingWebsite
                      spa.UseAngularCliServer( npmScript: "start" );
                  }
              } );
-
-
-            app.UseAuthentication();    // аутентификация
-            app.UseAuthorization();     // авторизация
         }
     }
 }

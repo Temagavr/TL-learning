@@ -28,6 +28,12 @@ export class RegistrationModalComponent {
 
   close() {
     event.preventDefault();
+
+    this.registrationInfo.login = '';
+    this.registrationInfo.name = '';
+    this.registrationInfo.password = '';
+    this.registrationInfo.repeatPassword = '';
+
     this.isShowedRegistration = false;
     this.onClose.emit();
   }
