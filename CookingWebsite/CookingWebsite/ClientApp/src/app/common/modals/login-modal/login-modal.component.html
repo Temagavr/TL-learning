@@ -5,8 +5,10 @@
     </div>
     <form class="modal-content-custom">
       <h3 class="modal-title">Войти</h3>
-      <input [(ngModel)]="loginData.login" class="big-modal-input input-style" placeholder="Логин" name="login" />
-      <input [(ngModel)]="loginData.password" class="big-modal-input input-style" type="password" placeholder="Пароль" name="password" />
+      <input [(ngModel)]="loginData.login" class="big-modal-input input-style" placeholder="Логин" name="login"
+             id="login"/>
+      <input [(ngModel)]="loginData.password" class="big-modal-input input-style" type="password" placeholder="Пароль"
+             name="password" id="password" />
       <div class="modal-buttons-block">
         <button (click)="login()" class="login-modal-button modal-button">Войти</button>
         <button (click)="close()" class="cancel-modal-button modal-button">Отмена</button>

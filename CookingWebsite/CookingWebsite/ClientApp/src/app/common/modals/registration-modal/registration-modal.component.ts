@@ -48,7 +48,47 @@ export class RegistrationModalComponent {
     this.onSwitchToLogin.emit();
   }
 
+  validate(): boolean {
+    let error = false;
+    let nameInput = document.getElementById('name');
+    let loginInput = document.getElementById('registrate_login');
+    let passwordInput = document.getElementById('registrate_password');
+    let repeatPasswordInput = document.getElementById('repeat_password');
+
+    if (!this.registrationInfo.name) {
+      this.showError(nameInput);
+      error = true;
+    }
+
+    if (!this.registrationInfo.login) {
+      this.showError(loginInput);
+      console.log('login empty');
+      error = true;
+    }
+
+    if (!this.registrationInfo.password || this.registrationInfo.password.length < 8) {
+      this.showError(passwordInput);
+      this.showError(repeatPasswordInput)
+      error = true;
+    }
+
+    if (!this.registrationInfo.repeatPassword || this.registrationInfo.repeatPassword != this.registrationInfo.password) {
+      this.showError(passwordInput);
+      this.showError(repeatPasswordInput)
+      error = true;
+    }
+
+    return error;
+  }
+
+  showError(container: HTMLElement) {
+    container.style['border-color'] = '#FF0000';
+    container.setAttribute('onclick', 'this.style=""');
+  }
+
   registration() {
-    this.onRegistrationClick.emit(this.registrationInfo);
+    if (!this.validate()) {
+      this.onRegistrationClick.emit(this.registrationInfo);
+    }
   }
 }

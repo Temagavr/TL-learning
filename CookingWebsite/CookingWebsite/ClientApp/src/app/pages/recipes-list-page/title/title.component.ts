@@ -16,7 +16,7 @@ export class RecipesTitleComponent {
   ) {}
 
   addRecipeClick() {
-    this.accountService.getName().then((user: AuthorizedUserDto) => {
+    this.accountService.getUser().then((user: AuthorizedUserDto) => {
       if (user.id != 0) {
         this.router.navigate(['/recipes/create']);
       }

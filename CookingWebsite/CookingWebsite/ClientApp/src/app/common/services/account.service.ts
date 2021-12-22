@@ -56,7 +56,7 @@ export class AccountService extends HttpService {
     return response;
   }
 
-  public async getName(){
+  public async getUser(){
     const response: AuthorizedUserDto = await this.Get(`${this.url}/get-authorized-user`);
 
     return response;

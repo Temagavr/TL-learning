@@ -46,7 +46,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.accountService.getName().then((user: AuthorizedUserDto) => {
+    this.accountService.getUser().then((user: AuthorizedUserDto) => {
       if (user.id != 0) {
         this.userName = user.name;
       }
@@ -73,12 +73,14 @@ export class AppComponent {
     console.log('Im try to login');
     if (this.accountService.login(loginDto)) {
 
-      this.accountService.getDetails(loginDto.login).then((user: UserInfoDto) => {
+      this.accountService.getUser().then((user: AuthorizedUserDto) => {
         this.userName = user.name;
       });
 
-    };
-    this.loginModal.close();
+      this.loginModal.close();
+    } else {
+      this.loginModal.loginError();
+    }
   }
 
   doSmthOnOpenLoginModal() {
@@ -115,6 +117,5 @@ export class AppComponent {
 
     console.log('Try to registration');
     this.registrationModal.close();
-
   }
 }
