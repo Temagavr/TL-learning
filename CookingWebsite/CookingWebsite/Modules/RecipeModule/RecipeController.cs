@@ -3,7 +3,6 @@ using CookingWebsite.Application.Recipes;
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Repositories;
-using CookingWebsite.Modules.AccountModule;
 using CookingWebsite.Modules.RecipeModule.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -78,7 +77,7 @@ namespace CookingWebsite.Modules.RecipeModule
         }
 
         [HttpPost("delete/{recipeId}")]
-        public async Task DeleteDetails([FromRoute] int recipeId)
+        public async Task DeleteRecipe([FromRoute] int recipeId)
         {
             var recipe = await _recipeRepository.GetById(recipeId);
 
