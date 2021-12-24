@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AccountService } from '../../common/services/account.service';
+import { AccountService } from '../../common/account/account.service';
 
 import { RecipeService } from '../../common/services/recipe.service';
-import { AuthorizedUserDto } from '../../Dtos/authorized-user-dto';
+import { AuthorizedUserDto } from '../../common/account/authorized-user-dto';
 import { RecipeIngredientDto } from '../../Dtos/recipe-ingredient-dto';
 import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
 import { AddRecipeDto } from './add-recipe-dto';

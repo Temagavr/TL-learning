@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { LoginDto } from '../../../Dtos/login-dto';
+import { LoginDto } from '../../../common/account/login-dto';
 
 @Component({
   selector: 'app-login-modal',

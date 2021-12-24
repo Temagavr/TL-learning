@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AccountService } from '../../common/services/account.service';
 
 import { RecipeService } from '../../common/services/recipe.service';
-import { AuthorizedUserDto } from '../../Dtos/authorized-user-dto';
 import { RecipeDetailsDto } from '../../Dtos/recipe-details-dto';
 import { RecipeIngredientDto } from '../../Dtos/recipe-ingredient-dto';
 import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';

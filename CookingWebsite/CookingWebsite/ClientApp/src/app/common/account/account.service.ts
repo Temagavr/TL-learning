@@ -2,11 +2,10 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 
-import { RegistrationDto } from '../../Dtos/registration-dto';
-import { LoginDto } from '../../Dtos/login-dto';
-import { UserInfoDto } from "../../Dtos/user-info-dto";
-import { HttpService } from './http.service';
-import { AuthorizedUserDto } from "../../Dtos/authorized-user-dto";
+import { RegistrationDto } from './registration-dto';
+import { LoginDto } from './login-dto';
+import { HttpService } from '../services/http.service';
+import { AuthorizedUserDto } from "./authorized-user-dto";
 
 @Injectable()
 export class AccountService extends HttpService {
@@ -46,14 +45,6 @@ export class AccountService extends HttpService {
     }
     else
       return true;
-  }
-
-  public async getDetails(username: string) {
-    console.log(`username ${username}`);
-
-    const response: UserInfoDto = await this.Get(`${this.url}/details?username=${username}`);
-
-    return response;
   }
 
   public async getUser(){

@@ -64,9 +64,16 @@ namespace CookingWebsite.Modules.AccountModule
         {
             var user = new AuthorizedUserDto();
 
-            user.Id = Convert.ToInt32(User.FindFirstValue(Claims.UserId));
-            user.Name = User.FindFirstValue(Claims.Name);
-            user.Login = User.FindFirstValue(Claims.Username);
+            if (User.FindFirstValue(Claims.UserId) != null)
+            {
+                user.Id = Convert.ToInt32(User.FindFirstValue(Claims.UserId));
+                user.Name = User.FindFirstValue(Claims.Name);
+                user.Login = User.FindFirstValue(Claims.Username);
+            } 
+            else
+            {
+                user = null;
+            }
 
             return user;
         }

@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { UserInteractionService } from './common/services/user-interaction.service';
-import { AccountService } from './common/services/account.service';
+import { AccountService } from './common/account/account.service';
 
 import { SharedModule } from './common/shared.module';
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../common/services/account.service';
-import { AuthorizedUserDto } from '../../../Dtos/authorized-user-dto';
+import { AccountService } from '../../../common/account/account.service';
+import { AuthorizedUserDto } from '../../../common/account/authorized-user-dto';
 
 @Component({
   selector: 'app-recipes-title',

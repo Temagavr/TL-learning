@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { RegistrationDto } from '../../../Dtos/registration-dto';
+import { RegistrationDto } from '../../../common/account/registration-dto';
 
 @Component({
   selector: 'app-registration-modal',

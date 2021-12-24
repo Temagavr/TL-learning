@@ -1,15 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserInteractionService } from './common/services/user-interaction.service';
-import { AccountService } from './common/services/account.service';
+import { AccountService } from './common/account/account.service';
 import { LoginModalComponent } from './common/modals/login-modal/login-modal.component';
 import { RegistrationModalComponent } from './common/modals/registration-modal/registration-modal.component';
 import { GreetingModalComponent } from './common/modals/greeting-modal/greeting-modal.component';
 
-import { RegistrationDto } from './Dtos/registration-dto';
-import { LoginDto } from './Dtos/login-dto';
+import { RegistrationDto } from './common/account/registration-dto';
+import { LoginDto } from './common/account/login-dto';
 import { Router } from '@angular/router';
-import { UserInfoDto } from './Dtos/user-info-dto';
-import { AuthorizedUserDto } from './Dtos/authorized-user-dto';
+import { AuthorizedUserDto } from './common/account/authorized-user-dto';
 
 @Component({
   selector: 'app-root',
