@@ -88,8 +88,8 @@ export class RecipeDetailsComponent {
     });
   }
 
-  deleteRecipe() {
-    var respose = this.recipeService.deleteRecipe(this.route.snapshot.params.id);
+  async deleteRecipe(){
+    var respose = await this.recipeService.deleteRecipe(this.route.snapshot.params.id);
 
     if (respose)
       this.router.navigate(['/recipes']);

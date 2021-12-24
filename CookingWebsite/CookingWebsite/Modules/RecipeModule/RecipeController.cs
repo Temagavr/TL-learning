@@ -26,32 +26,5 @@ namespace CookingWebsite.Modules.RecipeModule
             _unitOfWork = unitOfWork;
             _recipeRepository = recipeRepository;
         }
-
-        [HttpGet("search")]
-        public async Task<List<RecipeCardDto>> SearchRecipes(
-            [FromQuery] int skip,
-            [FromQuery] int take,
-            [FromQuery] string searchString)
-        {
-            List<Recipe> recipes = new List<Recipe>();
-            recipes = await _recipeRepository.Search(skip, take, searchString, false);
-
-            return recipes.Map();
-        }
-        /*
-        [HttpPost("update-recipe")]
-        public async Task UpdateRecipe()
-        {
-            IFormFileCollection files = Request.Form.Files;
-
-            UpdateRecipeDto updateRecipeDto = JsonConvert.DeserializeObject<UpdateRecipeDto>(Request.Form["data"]);
-
-            var recipeDto = await updateRecipeDto.Map(files);
-
-            await _recipeService.UpdateRecipe(recipeDto);
-            
-            await _unitOfWork.Commit();
-        }
-        */
     }
 }
