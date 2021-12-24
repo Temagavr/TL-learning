@@ -92,7 +92,6 @@
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list\recipes-list.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
-    <None Remove="Modules\RecipeModule\RecipeMapper.cs~RF886e990b.TMP" />
   </ItemGroup>
 
   <ItemGroup>
