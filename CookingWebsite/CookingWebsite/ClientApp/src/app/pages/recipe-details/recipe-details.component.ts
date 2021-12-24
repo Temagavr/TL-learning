@@ -22,7 +22,7 @@ export class RecipeDetailsComponent {
 
   public recipeCard: RecipeCard;
 
-  public isModify: boolean = false;
+  public isCanModify: boolean = false;
 
   public recipeIngredient: RecipeIngredientDto[];
   public recipeSteps: string[];
@@ -37,7 +37,7 @@ export class RecipeDetailsComponent {
         return;
       }
 
-      this.isModify = recipeDetailsDto.isModify;
+      this.isCanModify = recipeDetailsDto.isCanModify;
 
       this.recipeCard = {
         id: 1,

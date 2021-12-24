@@ -46,9 +46,9 @@ namespace CookingWebsite.Modules.RecipeModule
             }
 
             if (recipeDetailsDto.AuthorUsername == authorizedUser)
-                recipeDetailsDto.IsModify = true;
+                recipeDetailsDto.IsCanModify = true;
             else
-                recipeDetailsDto.IsModify = false;
+                recipeDetailsDto.IsCanModify = false;
 
             return recipeDetailsDto;
         }

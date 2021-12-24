@@ -10,7 +10,7 @@ export interface RecipeDetailsDto {
 
   tags: string[];
 
-  isModify: boolean;
+  isCanModify: boolean;
 
   isFavourite: boolean;
   isLiked: boolean;
