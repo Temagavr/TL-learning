@@ -51,8 +51,8 @@ export class LoginModalComponent {
 
   validate(): boolean {
     let error = false;
-    let loginInput = document.getElementById('login');
-    let passwordInput = document.getElementById('password');
+    const loginInput = document.getElementById('login');
+    const passwordInput = document.getElementById('password');
 
     if (!this.loginData.login) {
       this.showError(loginInput);

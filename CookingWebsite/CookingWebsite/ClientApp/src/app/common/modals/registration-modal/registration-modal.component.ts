@@ -50,10 +50,10 @@ export class RegistrationModalComponent {
 
   validate(): boolean {
     let error = false;
-    let nameInput = document.getElementById('name');
-    let loginInput = document.getElementById('registrate_login');
-    let passwordInput = document.getElementById('registrate_password');
-    let repeatPasswordInput = document.getElementById('repeat_password');
+    const nameInput = document.getElementById('name');
+    const loginInput = document.getElementById('registrate_login');
+    const passwordInput = document.getElementById('registrate_password');
+    const repeatPasswordInput = document.getElementById('repeat_password');
 
     if (!this.registrationInfo.name) {
       this.showError(nameInput);
