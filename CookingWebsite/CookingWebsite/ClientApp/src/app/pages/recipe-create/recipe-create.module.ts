@@ -11,7 +11,7 @@ import { RecipeCreateBodyComponent } from './recipe-create-body/recipe-create-bo
 import { RecipeUpdateComponent } from './recipe-update.component';
 
 import { SharedModule } from '../../common/shared.module';
-import { RecipeService } from '../../common/services/recipe.service';
+import { RecipeCreateUpdateService } from './recipe-create-update.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { RecipeService } from '../../common/services/recipe.service';
   ],
   imports: [CommonModule, RecipeCreateRoutingModule, FormsModule, SharedModule],
   exports: [],
-  providers: [RecipeService],
+  providers: [RecipeCreateUpdateService],
 })
 
 export class RecipeCreateModule { }

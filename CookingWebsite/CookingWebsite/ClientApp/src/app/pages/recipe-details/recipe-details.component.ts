@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
-import { RecipeService } from '../../common/services/recipe.service';
-import { RecipeDetailsDto } from '../../Dtos/recipe-details-dto';
-import { RecipeIngredientDto } from '../../Dtos/recipe-ingredient-dto';
-import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
+import { RecipeDetailsService } from './recipe-details.service';
+import { RecipeDetailsDto } from './recipe-details-dto';
+import { RecipeIngredientDto } from './recipe-ingredient-dto';
+import { RecipeIngredientItemDto } from './recipe-ingredient-item-dto';
 
 @Component({
   selector: 'app-recipe-details',
@@ -14,7 +14,7 @@ import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
 export class RecipeDetailsComponent {
 
   constructor(
-    private recipeService: RecipeService,
+    private recipeDetailsService: RecipeDetailsService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -32,7 +32,7 @@ export class RecipeDetailsComponent {
   }
 
   private getRecipeInfo(recipeId: number): void {
-    this.recipeService.getRecipeDetails(recipeId).then((recipeDetailsDto: RecipeDetailsDto) => {
+    this.recipeDetailsService.getRecipeDetails(recipeId).then((recipeDetailsDto: RecipeDetailsDto) => {
       if (!recipeDetailsDto) {
         return;
       }
@@ -89,7 +89,7 @@ export class RecipeDetailsComponent {
   }
 
   async deleteRecipe(){
-    var respose = await this.recipeService.deleteRecipe(this.route.snapshot.params.id);
+    let respose = await this.recipeDetailsService.deleteRecipe(this.route.snapshot.params.id);
 
     if (respose)
       this.router.navigate(['/recipes']);

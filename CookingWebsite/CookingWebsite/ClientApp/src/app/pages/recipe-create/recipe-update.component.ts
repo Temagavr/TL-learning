@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RecipeService } from '../../common/services/recipe.service';
-import { RecipeDetailsDto } from '../../Dtos/recipe-details-dto';
-import { RecipeIngredientDto } from '../../Dtos/recipe-ingredient-dto';
-import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
+import { RecipeCreateUpdateService } from './recipe-create-update.service';
+import { RecipeDetailsDto } from './recipe-details-dto';
+import { RecipeIngredientDto } from './recipe-ingredient-dto';
+import { RecipeIngredientItemDto } from './recipe-ingredient-item-dto';
 import { AddRecipeDto } from './add-recipe-dto';
 import { AddRecipeIngredientFront } from './add-recipe-ingredient-front';
 import { AddRecipeStepDto } from './add-recipe-step-dto';
@@ -17,7 +17,7 @@ import { UpdateRecipeDto } from './update-recipe-dto';
 export class RecipeUpdateComponent {
 
   constructor(
-    private recipeService: RecipeService,
+    private recipeCUService: RecipeCreateUpdateService,
     private route: ActivatedRoute
   ) {
   }
@@ -33,8 +33,8 @@ export class RecipeUpdateComponent {
     this.getRecipeInfo(this.route.snapshot.params.id);
   }
 
-  private getRecipeInfo(recipeId: number): void {
-    this.recipeService.getRecipeDetails(recipeId).then((recipeDetailsDto: RecipeDetailsDto) => {
+  private async getRecipeInfo(recipeId: number) {
+    await this.recipeCUService.getRecipeDetails(recipeId).then((recipeDetailsDto: RecipeDetailsDto) => {
       if (!recipeDetailsDto) {
         return;
       }
@@ -78,7 +78,7 @@ export class RecipeUpdateComponent {
     });
   }
 
-  updateRecipe() {
+  async updateRecipe() {
     let updatedRecipe: UpdateRecipeDto = {
       id: this.route.snapshot.params.id,
       image: this.recipeData.image,
@@ -125,6 +125,6 @@ export class RecipeUpdateComponent {
 
     console.log(updatedRecipe);
 
-    this.recipeService.updateRecipe(updatedRecipe);
+    await this.recipeCUService.updateRecipe(updatedRecipe);
   }
 }

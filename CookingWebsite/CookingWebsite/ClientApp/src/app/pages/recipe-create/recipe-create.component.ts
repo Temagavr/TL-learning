@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../../common/account/account.service';
 
-import { RecipeService } from '../../common/services/recipe.service';
+import { RecipeCreateUpdateService } from './recipe-create-update.service';
 import { AuthorizedUserDto } from '../../common/account/authorized-user-dto';
-import { RecipeIngredientDto } from '../../Dtos/recipe-ingredient-dto';
-import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
+import { RecipeIngredientDto } from './recipe-ingredient-dto';
+import { RecipeIngredientItemDto } from './recipe-ingredient-item-dto';
 import { AddRecipeDto } from './add-recipe-dto';
 import { AddRecipeIngredientFront } from './add-recipe-ingredient-front';
 import { AddRecipeStepDto } from './add-recipe-step-dto';
@@ -16,7 +16,7 @@ import { AddRecipeStepDto } from './add-recipe-step-dto';
 export class RecipeCreateComponent {
 
   constructor(
-    private recipeService: RecipeService,
+    private recipeCUService: RecipeCreateUpdateService,
     private accountService: AccountService
   ) {
   }
@@ -41,7 +41,7 @@ export class RecipeCreateComponent {
     items: ''
   }];
 
-  addRecipe() {
+  async addRecipe() {
     this.addRecipeDto.ingredients = this.ingredients.map(function (ingredient): RecipeIngredientDto {
       let ingredientDto: RecipeIngredientDto = {
         title: '',
@@ -82,6 +82,6 @@ export class RecipeCreateComponent {
 
     console.log(this.addRecipeDto);
 
-    this.recipeService.addRecipe(this.addRecipeDto);
+    await this.recipeCUService.addRecipe(this.addRecipeDto);
   }
 }

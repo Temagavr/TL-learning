@@ -5,7 +5,7 @@ import { Tag } from '../../common/tags-info/Tag';
 import { SearchInputComponent } from '../../common/search-input/search-input.component';
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { Router } from '@angular/router';
-import { RecipeService } from '../../common/services/recipe.service';
+import { RecipeSearchService } from './recipes-search.service';
 
 @Component({
   selector: 'app-recipes-list-page',
@@ -14,7 +14,7 @@ import { RecipeService } from '../../common/services/recipe.service';
 })
 export class RecipesListPageComponent {
 
-  constructor(private router: Router, private recipeService: RecipeService) { }
+  constructor(private router: Router, private recipeSearchService: RecipeSearchService) { }
 
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;
@@ -43,7 +43,7 @@ export class RecipesListPageComponent {
   searchRecipes(searchString: string) {
     this.searchString = searchString;
 
-    this.recipeService.getRecipeList(0, 4, this.searchString).then((recipeCards: RecipeCard[]) => {
+    this.recipeSearchService.getRecipeList(0, 4, this.searchString).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
     });
   }
@@ -51,7 +51,7 @@ export class RecipesListPageComponent {
   loadMoreRecipes() {
     var skip = this.recipes.length;
 
-    this.recipeService.getRecipeList(skip, 2, this.searchString).then((recipeCards: RecipeCard[]) => {
+    this.recipeSearchService.getRecipeList(skip, 2, this.searchString).then((recipeCards: RecipeCard[]) => {
       for (let recipe of recipeCards) {
         this.recipes.push(recipe);
       }
