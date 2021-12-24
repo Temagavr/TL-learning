@@ -27,14 +27,6 @@ namespace CookingWebsite.Modules.RecipeModule
             _recipeRepository = recipeRepository;
         }
 
-        [HttpGet("{recipeId}/details")]
-        public async Task<RecipeDetailsDto> GetRecipeDetails([FromRoute] int recipeId)
-        {
-            var recipeDetails = await _recipeRepository.GetById(recipeId);
-
-            return recipeDetails.Map(User.FindFirstValue(Claims.Username));
-        }
-
         [HttpGet("search")]
         public async Task<List<RecipeCardDto>> SearchRecipes(
             [FromQuery] int skip,
