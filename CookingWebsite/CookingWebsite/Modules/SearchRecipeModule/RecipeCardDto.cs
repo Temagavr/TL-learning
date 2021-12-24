@@ -1,4 +1,6 @@
-﻿namespace CookingWebsite.Modules.SearchRecipeModule
+﻿using System.Collections.Generic;
+
+namespace CookingWebsite.Modules.SearchRecipeModule
 {
     public class RecipeCardDto
     {
@@ -11,5 +13,6 @@
         public int LikesCount { get; set; }
         public int FavouritesCount { get; set; }
         public string AuthorUsername { get; set; }
+        public List<string> Tags { get; set; }
     }
 }

@@ -39,6 +39,13 @@ namespace CookingWebsite.Modules.RecipeCreateModule
                 Description = s.Description
             }).ToList();
 
+            result.Tags = new List<Application.Recipes.RecipeDtos.RecipeTagDto>();
+
+            result.Tags = recipe.Tags.Select(x => new Application.Recipes.RecipeDtos.RecipeTagDto
+            {
+                TagName = x
+            }).ToList();
+
             result.AuthorUsername = authorizedUser;
 
             result.Image = await FileManagment.CreateAsync(files[0]);

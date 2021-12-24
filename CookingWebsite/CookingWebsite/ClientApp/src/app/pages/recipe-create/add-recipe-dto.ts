@@ -1,4 +1,4 @@
-import { RecipeIngredientDto } from "../../Dtos/recipe-ingredient-dto";
+import { RecipeIngredientDto } from "./recipe-ingredient-dto";
 import { AddRecipeStepDto } from "./add-recipe-step-dto";
 
 export interface AddRecipeDto {
@@ -12,6 +12,7 @@ export interface AddRecipeDto {
   description: string;
 
   tags: string[];
+  tagsString: string;
 
   cookingTime: number;
   personsCount: number;

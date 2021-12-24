@@ -23,6 +23,12 @@ namespace CookingWebsite.Modules.SearchRecipeModule
                 recipeCard.LikesCount = recipe.LikesCount;
                 recipeCard.PersonsCount = recipe.PersonsCount;
 
+                recipeCard.Tags = new List<string>();
+                foreach(RecipeTag tag in recipe.Tags)
+                {
+                    recipeCard.Tags.Add(tag.TagName);
+                }
+
                 recipeCardsList.Add(recipeCard);
             }
 

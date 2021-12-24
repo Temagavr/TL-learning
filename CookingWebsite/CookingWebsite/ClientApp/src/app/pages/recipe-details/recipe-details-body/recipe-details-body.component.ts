@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { RecipeIngredientDto } from '../../../Dtos/recipe-ingredient-dto';
+import { RecipeIngredientDto } from '../recipe-ingredient-dto';
 
 @Component({
   selector: 'app-recipe-details-body',

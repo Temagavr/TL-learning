@@ -48,6 +48,15 @@ namespace CookingWebsite.Application.Recipes
                 x.Description
             )).ToList();
 
+            List<RecipeTag> tags = new List<RecipeTag>();
+
+            if (addRecipeDto.Tags.Count > 0)
+            {
+                tags = addRecipeDto.Tags.Select(x => new RecipeTag(
+                    x.TagName
+                )).ToList();
+            }
+
             var recipe = new Recipe(
                 imageSaveResult.RelativePath,
                 addRecipeDto.Title,
@@ -56,7 +65,8 @@ namespace CookingWebsite.Application.Recipes
                 addRecipeDto.PersonsCount,
                 addRecipeDto.AuthorUsername,
                 ingredients,
-                steps
+                steps,
+                tags
             );
 
             _recipeRepostitory.Add(recipe);
@@ -88,6 +98,15 @@ namespace CookingWebsite.Application.Recipes
                 x.Description
             )).ToList();
 
+            List<RecipeTag> tags = new List<RecipeTag>();
+
+            if (updateRecipeDto.Tags.Count > 0)
+            {
+                tags = updateRecipeDto.Tags.Select(x => new RecipeTag(
+                    x.TagName
+                )).ToList();
+            }
+
             recipe.Update(
                 imageSaveResult.RelativePath,
                 updateRecipeDto.Title,
@@ -95,7 +114,8 @@ namespace CookingWebsite.Application.Recipes
                 updateRecipeDto.CookingTime,
                 updateRecipeDto.PersonsCount,
                 ingredients,
-                steps
+                steps,
+                tags
             );
         }
     }

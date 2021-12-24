@@ -17,5 +17,6 @@ namespace CookingWebsite.Application.Recipes.RecipeDtos
         public int PersonsCount { get; set; }
         public List<RecipeIngredientDto> Ingredients { get; set; }
         public List<RecipeStepDto> Steps { get; set; }
+        public List<RecipeTagDto> Tags { get; set; }
     }
 }

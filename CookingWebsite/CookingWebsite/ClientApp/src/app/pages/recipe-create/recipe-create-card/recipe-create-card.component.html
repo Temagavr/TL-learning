@@ -16,7 +16,7 @@
       <div class="recipe-body">
         <input [(ngModel)]="recipeData.title" class="input-style recipe-card-input regular-input-height" placeholder="Название рецепта" name="title" />
         <textarea [(ngModel)]="recipeData.description" class="input-style recipe-card-input description" maxlength="150" placeholder="Краткое описание рецепта (150 символов)" name="description"></textarea>
-        <input class="input-style recipe-card-input regular-input-height" placeholder="Добавить теги" />
+        <input [(ngModel)]="recipeData.tagsString" class="input-style recipe-card-input regular-input-height" placeholder="Добавить теги" name="tagsString" />
       </div>
 
       <div class="recipe-metrics">

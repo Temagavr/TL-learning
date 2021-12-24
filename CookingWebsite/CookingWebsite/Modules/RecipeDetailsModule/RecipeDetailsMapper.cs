@@ -22,6 +22,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
 
             recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
             recipeDetailsDto.Steps = new List<string>();
+            recipeDetailsDto.Tags = new List<string>();
 
             recipeDetailsDto.Ingredients = recipe.Ingredients.Select(x => new RecipeIngredientDto
             {
@@ -46,6 +47,8 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
                 recipeDetailsDto.IsCanModify = true;
             else
                 recipeDetailsDto.IsCanModify = false;
+
+            recipeDetailsDto.Tags = recipe.Tags.Select(x => x.TagName).ToList();
 
             return recipeDetailsDto;
         }

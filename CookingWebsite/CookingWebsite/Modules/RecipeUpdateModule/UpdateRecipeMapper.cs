@@ -41,6 +41,16 @@ namespace CookingWebsite.Modules.RecipeUpdateModule
                 Description = s.Description
             }).ToList();
 
+            result.Tags = new List<Application.Recipes.RecipeDtos.RecipeTagDto>();
+
+            if (recipe.Tags.Count > 0)
+            {
+                result.Tags = recipe.Tags.Select(x => new Application.Recipes.RecipeDtos.RecipeTagDto
+                {
+                    TagName = x
+                }).ToList();
+            }
+
             if (files.Count > 0)
                 result.Image = await FileManagment.CreateAsync(files[0]);
             else
