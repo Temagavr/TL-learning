@@ -14,7 +14,7 @@ export class RecipeService extends HttpService {
     super(http);
   }
 
-  private url = 'api/recipe';
+  private url = 'api/recipes';
 
   public async getRecipeDetails(recipeId: number) {
 

@@ -68,24 +68,23 @@ export class AppComponent {
     console.log('login modal closed');
   }
 
-  login(loginDto: LoginDto) {
+  public async login(loginDto: LoginDto) {
     console.log('Im try to login');
-    if (!this.userName) {
-      if (this.accountService.login(loginDto)) {
-
-        this.accountService.getUser().then((user: AuthorizedUserDto) => {
-          console.log(user);
-          this.userName = user.name;
-        });
-
-        this.loginModal.close();
-      } else {
-        this.loginModal.loginError();
-      }
-    } else {
+    if (this.userName) {
       alert('Вы уже вошли в систему!');
+      return;
     }
 
+    if (await this.accountService.login(loginDto)) {
+
+      this.accountService.getUser().then((user: AuthorizedUserDto) => {
+        this.userName = user.name;
+      });
+
+      this.loginModal.close();
+    } else {
+      this.loginModal.loginError();
+    }
   }
 
   switchToRegistration() {

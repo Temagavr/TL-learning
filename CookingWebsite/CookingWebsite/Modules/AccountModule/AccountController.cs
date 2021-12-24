@@ -59,8 +59,8 @@ namespace CookingWebsite.Modules.AccountModule
 
         }
 
-        [HttpGet("get-authorized-user")]
-        public AuthorizedUserDto GetCookieUser()
+        [HttpGet("authorized-user")]
+        public AuthorizedUserDto AuthorizedUser()
         {
             var user = new AuthorizedUserDto();
 

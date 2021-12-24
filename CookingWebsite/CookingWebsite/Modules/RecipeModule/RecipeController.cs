@@ -1,5 +1,4 @@
-﻿using CookingWebsite.Application.Files;
-using CookingWebsite.Application.Recipes;
+﻿using CookingWebsite.Application.Recipes;
 using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Repositories;
@@ -14,7 +13,7 @@ using System.Threading.Tasks;
 namespace CookingWebsite.Modules.RecipeModule
 {
     [ApiController]
-    [Route("api/recipe")]
+    [Route("api/recipes")]
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeService _recipeService;

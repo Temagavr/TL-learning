@@ -16,39 +16,25 @@ export class AccountService extends HttpService {
 
   private url = 'api/account';
   
-  public async register(registrationDto: RegistrationDto) {
+  public async register(registrationDto: RegistrationDto): Promise<boolean> {
 
     console.log(`registrate ${registrationDto.login}, password = ${registrationDto.password}, name = ${registrationDto.name}`);
 
-    const response: boolean = await this.Post(`${this.url}/registrate`, registrationDto);
-
-    return response;
+    return await this.Post(`${this.url}/registrate`, registrationDto);
   }
 
-  public async login(loginDto: LoginDto) {
+  public async login(loginDto: LoginDto): Promise<boolean> {
     console.log(`login ${loginDto.login}, password = ${loginDto.password}`);
 
-    const response: boolean = await this.Post(`${this.url}/login`, loginDto);
-
-    if (!response) {
-      return false;
-    }
-    else
-      return true;
+    return await this.Post(`${this.url}/login`, loginDto);
   }
 
-  public async logout() {
-    const response: boolean = await this.Get(`${this.url}/logout`);
-
-    if (!response) {
-      return false;
-    }
-    else
-      return true;
+  public async logout(): Promise<boolean>  {
+    return await this.Get(`${this.url}/logout`);
   }
 
-  public async getUser(){
-    const response: AuthorizedUserDto = await this.Get(`${this.url}/get-authorized-user`);
+  public async getUser(): Promise<AuthorizedUserDto> {
+    const response: AuthorizedUserDto = await this.Get(`${this.url}/authorized-user`);
 
     return response;
   }
