@@ -4,6 +4,7 @@ using CookingWebsite.Infrastructure;
 using CookingWebsite.Infrastructure.Foundation;
 using CookingWebsite.Modules.AccountModule;
 using CookingWebsite.Modules.HomeModule;
+using CookingWebsite.Modules.RecipeCreateModule;
 using CookingWebsite.Modules.RecipeDeleteModule;
 using CookingWebsite.Modules.RecipeDetailsModule;
 using CookingWebsite.Modules.RecipeModule;
@@ -37,6 +38,7 @@ namespace CookingWebsite
                 .AddRecipeModule()
                 .AddRecipeDeleteModule()
                 .AddRecipeDetailsModule()
+                .AddRecipeCreateModule()
                 .AddRepositories();
 
             

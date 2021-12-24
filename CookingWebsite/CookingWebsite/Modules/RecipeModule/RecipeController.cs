@@ -38,7 +38,7 @@ namespace CookingWebsite.Modules.RecipeModule
 
             return recipes.Map();
         }
-        
+        /*
         [HttpPost("add-recipe")]
         public async Task AddRecipe()
         {
@@ -52,6 +52,7 @@ namespace CookingWebsite.Modules.RecipeModule
 
             await _unitOfWork.Commit();
         }
+        */
 
         [HttpPost("update-recipe")]
         public async Task UpdateRecipe()

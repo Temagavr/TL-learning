@@ -163,7 +163,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\RecipeCreateModule\" />
     <Folder Include="Modules\RecipeUpdateModule\" />
   </ItemGroup>
 
