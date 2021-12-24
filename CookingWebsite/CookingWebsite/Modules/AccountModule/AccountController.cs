@@ -59,14 +59,6 @@ namespace CookingWebsite.Modules.AccountModule
 
         }
 
-        [HttpGet("details")]
-        public async Task<UserInfoDto> GetUserInfo([FromQuery] string username)
-        {
-            var user = await _userRepository.GetByLogin(username);
-
-            return user.Map();
-        }
-
         [HttpGet("get-authorized-user")]
         public AuthorizedUserDto GetCookieUser()
         {
