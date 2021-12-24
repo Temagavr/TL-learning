@@ -47,7 +47,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.accountService.getUser().then((user: AuthorizedUserDto) => {
-      if (user.id != 0) {
+      if (user) {
         this.userName = user.name;
       }
     });
@@ -63,18 +63,19 @@ export class AppComponent {
     this.router.navigate(['/']);
   }
 
-  doSmthOnCloseLoginModal() {
+  cleanLoginModalInputs() {
     this.loginModal.loginData.login = '';
     this.loginModal.loginData.password = '';
     console.log('login modal closed');
   }
 
-  doSmthOnLoginClick(loginDto: LoginDto) {
+  login(loginDto: LoginDto) {
     console.log('Im try to login');
     if (!this.userName) {
       if (this.accountService.login(loginDto)) {
 
         this.accountService.getUser().then((user: AuthorizedUserDto) => {
+          console.log(user);
           this.userName = user.name;
         });
 
@@ -86,10 +87,6 @@ export class AppComponent {
       alert('Вы уже вошли в систему!');
     }
 
-  }
-
-  doSmthOnOpenLoginModal() {
-    console.log('login modal showed');
   }
 
   switchToRegistration() {
@@ -111,7 +108,7 @@ export class AppComponent {
       this.greetingModal.show();
   }
 
-  doSmthOnRegistrationClick(registrationInfo: RegistrationDto) {
+  registration(registrationInfo: RegistrationDto) {
     event.preventDefault();
     if (!this.userName) {
       let response = this.accountService.register(registrationInfo);
