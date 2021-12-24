@@ -74,15 +74,5 @@ namespace CookingWebsite.Modules.RecipeModule
             
             await _unitOfWork.Commit();
         }
-
-        [HttpPost("delete/{recipeId}")]
-        public async Task DeleteRecipe([FromRoute] int recipeId)
-        {
-            var recipe = await _recipeRepository.GetById(recipeId);
-
-            _recipeRepository.Delete(recipe);
-
-            await _unitOfWork.Commit();
-        }
     }
 }

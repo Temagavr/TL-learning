@@ -77,7 +77,7 @@ export class RecipeService extends HttpService {
 
   public async deleteRecipe(recipeId: number) {
 
-    const response = await this.Post(`${this.url}/delete/${recipeId}`, {});
+    const response = await this.Post(`${this.url}/${recipeId}/delete`, {});
 
     return response;
   }
