@@ -8,6 +8,7 @@ using CookingWebsite.Modules.RecipeCreateModule;
 using CookingWebsite.Modules.RecipeDeleteModule;
 using CookingWebsite.Modules.RecipeDetailsModule;
 using CookingWebsite.Modules.RecipeModule;
+using CookingWebsite.Modules.RecipeUpdateModule;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace CookingWebsite
                 .AddRecipeDeleteModule()
                 .AddRecipeDetailsModule()
                 .AddRecipeCreateModule()
+                .AddRecipeUpdateModule()
                 .AddRepositories();
 
             

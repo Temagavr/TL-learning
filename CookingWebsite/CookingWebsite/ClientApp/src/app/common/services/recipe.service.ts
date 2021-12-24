@@ -70,7 +70,7 @@ export class RecipeService extends HttpService {
 
     formData.append('data', data);
 
-    const response = await this.Post(`${this.url}/update-recipe`, formData);
+    const response = await this.Post(`${this.url}/${updateRecipeDto.id}/update`, formData);
 
     return response;
   }

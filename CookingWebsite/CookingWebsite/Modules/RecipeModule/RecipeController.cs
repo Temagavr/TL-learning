@@ -39,21 +39,6 @@ namespace CookingWebsite.Modules.RecipeModule
             return recipes.Map();
         }
         /*
-        [HttpPost("add-recipe")]
-        public async Task AddRecipe()
-        {
-            IFormFileCollection files = Request.Form.Files;
-
-            AddRecipeDto addRecipeDto = JsonConvert.DeserializeObject<AddRecipeDto>(Request.Form["data"]);
-
-            var recipeDto = await addRecipeDto.Map(files, User.FindFirstValue(Claims.Username));
-
-            await _recipeService.AddRecipe(recipeDto);
-
-            await _unitOfWork.Commit();
-        }
-        */
-
         [HttpPost("update-recipe")]
         public async Task UpdateRecipe()
         {
@@ -67,5 +52,6 @@ namespace CookingWebsite.Modules.RecipeModule
             
             await _unitOfWork.Commit();
         }
+        */
     }
 }
