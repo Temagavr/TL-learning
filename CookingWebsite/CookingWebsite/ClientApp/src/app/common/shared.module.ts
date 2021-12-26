@@ -15,6 +15,7 @@ import { TagsListComponent } from './tags-info/tags-list/tags-list.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { GoBackButtonComponent } from './go-back-button/go-back-button.component';
+import { RecipeLikeService } from './recipe-card/recipe-like.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { GoBackButtonComponent } from './go-back-button/go-back-button.component
     SearchInputComponent,
     RecipeCardComponent,
     GoBackButtonComponent
-  ]
+  ],
+  providers:[RecipeLikeService]
 })
 export class SharedModule { }

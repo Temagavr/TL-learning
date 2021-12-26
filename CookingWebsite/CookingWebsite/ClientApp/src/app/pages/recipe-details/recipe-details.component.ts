@@ -97,12 +97,4 @@ export class RecipeDetailsComponent {
     if (respose)
       this.router.navigate(['/recipes']);
   }
-
-  public async likeRecipe() {
-    if (this.recipeCard.isLiked) {
-      await this.recipeDetailsService.likeRecipe(this.route.snapshot.params.id);
-    } else {
-      await this.recipeDetailsService.unlikeRecipe(this.route.snapshot.params.id);
-    }
-  }
 }

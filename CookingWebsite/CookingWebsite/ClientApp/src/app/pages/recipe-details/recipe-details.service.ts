@@ -26,16 +26,4 @@ export class RecipeDetailsService extends HttpService {
 
     return response;
   }
-
-  public async likeRecipe(recipeId: number) {
-    const response = await this.Post(`${this.url}/${recipeId}/likes/add`, {});
-
-    return response;
-  }
-
-  public async unlikeRecipe(recipeId: number) {
-    const response = await this.Post(`${this.url}/${recipeId}/likes/remove`, {});
-
-    return response;
-  }
 }
