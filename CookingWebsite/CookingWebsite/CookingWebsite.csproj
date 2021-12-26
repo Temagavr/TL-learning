@@ -24,14 +24,18 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\Dtos\**" />
     <Compile Remove="Controllers\**" />
     <Compile Remove="Modules\RecipesModule\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\Dtos\**" />
     <Content Remove="Controllers\**" />
     <Content Remove="Modules\RecipesModule\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\Dtos\**" />
     <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Modules\RecipesModule\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\Dtos\**" />
     <None Remove="Controllers\**" />
     <None Remove="Modules\RecipesModule\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
@@ -50,12 +54,6 @@
     <None Remove="ClientApp\src\app\common\shared.module.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\Tag.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
-    <None Remove="ClientApp\src\app\Dtos\authorized-user-dto.ts" />
-    <None Remove="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
-    <None Remove="ClientApp\src\app\Dtos\login-dto.ts" />
-    <None Remove="ClientApp\src\app\Dtos\recipe-details-dto.ts" />
-    <None Remove="ClientApp\src\app\Dtos\registration-dto.ts" />
-    <None Remove="ClientApp\src\app\Dtos\user-info-dto.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <None Remove="ClientApp\src\app\common\footer\footer.component.ts" />
@@ -169,10 +167,6 @@
     <ProjectReference Include="..\CookingWebsite.Domain\CookingWebsite.Domain.csproj" />
     <ProjectReference Include="..\CookingWebsite.Infrastructure\CookingWebsite.Infrastructure.csproj" />
     <ProjectReference Include="..\CookingWebsite.Migrations\CookingWebsite.Migrations.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\Dtos\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

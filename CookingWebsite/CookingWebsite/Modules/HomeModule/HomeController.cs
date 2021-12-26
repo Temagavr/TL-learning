@@ -1,7 +1,5 @@
-﻿using CookingWebsite.Application.Account;
-using CookingWebsite.Application.Recipes;
+﻿using CookingWebsite.Application.Recipes;
 using CookingWebsite.Domain;
-using CookingWebsite.Domain.Entities.Recipes;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -13,12 +11,10 @@ namespace CookingWebsite.Modules.HomeModule
     {
 
         private readonly IRecipeService _recipeService;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(IRecipeService recipeService, IUnitOfWork unitOfWork)
+        public HomeController(IRecipeService recipeService)
         {
             _recipeService = recipeService;
-            _unitOfWork = unitOfWork;
         }
 
 		[HttpGet("recipe-of-day")]
@@ -26,7 +22,10 @@ namespace CookingWebsite.Modules.HomeModule
 		{
             var recipe = await _recipeService.GetRecipeOfDay();
 
-            return recipe.Map();
+            if (recipe != null)
+                return recipe.Map();
+            else
+                return null;
         }
         
     }
