@@ -30,18 +30,6 @@ namespace CookingWebsite.Infrastructure.Repositories
             _dbContext.Remove(recipeLike);
         }
 
-        public async Task<List<RecipeLike>> GetRecipeLikesCount(int recipeId)
-        {
-            IQueryable<RecipeLike> query = _recipeLikes.AsQueryable();
-
-            if (recipeId != 0)
-            {
-                query = query.Where(x => x.RecipeId == recipeId);
-            }
-
-            return await query.ToListAsync();
-        }
-
         public async Task<List<RecipeLike>> GetUserLikedRecipes(int userId)
         {
             IQueryable<RecipeLike> query = _recipeLikes.AsQueryable();

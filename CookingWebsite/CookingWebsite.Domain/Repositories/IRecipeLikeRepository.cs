@@ -8,7 +8,6 @@ namespace CookingWebsite.Domain.Repositories
     {
         void AddLike(RecipeLike recipeLike);
         void RemoveLike(RecipeLike recipeLike);
-        Task<List<RecipeLike>> GetRecipeLikesCount(int recipeId);
         Task<List<RecipeLike>> GetUserLikedRecipes(int userId);
         Task<RecipeLike> GetByUserIdRecipeId(int userId, int recipeId);
     }
