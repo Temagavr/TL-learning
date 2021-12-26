@@ -47,14 +47,15 @@
     <None Remove="ClientApp\src\app\common\services\account.service.ts" />
     <None Remove="ClientApp\src\app\common\services\home.service.ts" />
     <None Remove="ClientApp\src\app\common\services\http.service.ts" />
-    <None Remove="ClientApp\src\app\common\services\recipe.service.ts" />
     <None Remove="ClientApp\src\app\common\shared.module.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\Tag.ts" />
     <None Remove="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
+    <None Remove="ClientApp\src\app\Dtos\authorized-user-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\day-recipe-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\login-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\recipe-details-dto.ts" />
     <None Remove="ClientApp\src\app\Dtos\registration-dto.ts" />
+    <None Remove="ClientApp\src\app\Dtos\user-info-dto.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe.ts" />
     <None Remove="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <None Remove="ClientApp\src\app\common\footer\footer.component.ts" />
@@ -74,8 +75,12 @@
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-card\recipe-create-card.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-header\recipe-create-header.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-routing.module.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create-update.service.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-create.module.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-details-dto.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-ingredient-dto.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-create\recipe-ingredient-item-dto.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\recipe-update.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-create\update-recipe-dto.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-body\recipe-details-body.component.ts" />
@@ -83,14 +88,15 @@
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details.module.ts" />
+    <None Remove="ClientApp\src\app\pages\recipe-details\recipe-details.service.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-ingredient-item.ts" />
     <None Remove="ClientApp\src\app\pages\recipe-details\recipe-ingredient.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list\recipes-list.component.ts" />
+    <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-search.service.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
-    <None Remove="Modules\RecipeModule\RecipeMapper.cs~RF886e990b.TMP" />
   </ItemGroup>
 
   <ItemGroup>
@@ -100,17 +106,21 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\recipe-card\recipe-card.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\search-input\search-input.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\common\services\account.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\account\account.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\account\authorized-user-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\home.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\services\http.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\common\services\recipe.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\Tag.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\tags-info\tags-list\tags-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe-dto.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Dtos\login-dto.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-details-dto.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Dtos\registration-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\account\login-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-create-update.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-details-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-ingredient-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-create\recipe-ingredient-item-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\common\account\registration-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe\day-recipe.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\footer\footer.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\home\day-recipe.ts" />
@@ -143,12 +153,14 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details.module.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-ingredient-item-dto.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\Dtos\recipe-ingredient-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-ingredient-item-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-ingredient-dto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipe-details\recipe-details.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list-page.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list\recipes-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-search.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
   </ItemGroup>
 
@@ -157,6 +169,10 @@
     <ProjectReference Include="..\CookingWebsite.Domain\CookingWebsite.Domain.csproj" />
     <ProjectReference Include="..\CookingWebsite.Infrastructure\CookingWebsite.Infrastructure.csproj" />
     <ProjectReference Include="..\CookingWebsite.Migrations\CookingWebsite.Migrations.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\Dtos\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

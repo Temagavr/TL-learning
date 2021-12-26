@@ -18,6 +18,8 @@ export class RecipeDetailsHeaderComponent {
 
   @Input() recipeTitle: string;
 
+  @Input() isModify: boolean;
+
   goToEditRecipe() {
     this.router.navigate(['/recipes/edit', this.route.snapshot.params.id]);
   }

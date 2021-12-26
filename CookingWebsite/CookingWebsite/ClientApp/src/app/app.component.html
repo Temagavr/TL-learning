@@ -4,7 +4,9 @@
     <router-outlet></router-outlet>
   </div>
   <app-footer></app-footer>
-  <app-login-modal (onClose)="doSmthOnCloseLoginModal()" (onShow)="doSmthOnOpenLoginModal()" (onSwitchToRegistration)="switchToRegistration()" (onLoginClick)="doSmthOnLoginClick($event)"></app-login-modal>
-  <app-registration-modal (onSwitchToLogin)="switchToLogin()" (onRegistrationClick)="doSmthOnRegistrationClick($event)"></app-registration-modal>
+  <app-login-modal (onClose)="cleanLoginModalInputs()" (onSwitchToRegistration)="switchToRegistration()"
+                   (onLoginClick)="login($event)"></app-login-modal>
+  <app-registration-modal (onSwitchToLogin)="switchToLogin()"
+                          (onRegistrationClick)="registration($event)"></app-registration-modal>
   <app-greeting-modal (onSwitchToLogin)="switchToLogin()" (onSwitchToRegistration)="switchToRegistration()"></app-greeting-modal>
 </div>

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { AccountService } from '../../common/account/account.service';
 
-import { RecipeService } from '../../common/services/recipe.service';
-import { RecipeIngredientDto } from '../../Dtos/recipe-ingredient-dto';
-import { RecipeIngredientItemDto } from '../../Dtos/recipe-ingredient-item-dto';
+import { RecipeCreateUpdateService } from './recipe-create-update.service';
+import { AuthorizedUserDto } from '../../common/account/authorized-user-dto';
+import { RecipeIngredientDto } from './recipe-ingredient-dto';
+import { RecipeIngredientItemDto } from './recipe-ingredient-item-dto';
 import { AddRecipeDto } from './add-recipe-dto';
 import { AddRecipeIngredientFront } from './add-recipe-ingredient-front';
 import { AddRecipeStepDto } from './add-recipe-step-dto';
@@ -14,7 +16,8 @@ import { AddRecipeStepDto } from './add-recipe-step-dto';
 export class RecipeCreateComponent {
 
   constructor(
-    private recipeService: RecipeService,
+    private recipeCUService: RecipeCreateUpdateService,
+    private accountService: AccountService
   ) {
   }
 
@@ -39,7 +42,7 @@ export class RecipeCreateComponent {
     items: ''
   }];
 
-  addRecipe() {
+  async addRecipe() {
     this.addRecipeDto.ingredients = this.ingredients.map(function (ingredient): RecipeIngredientDto {
       let ingredientDto: RecipeIngredientDto = {
         title: '',
@@ -72,7 +75,13 @@ export class RecipeCreateComponent {
       this.addRecipeDto.steps.push(stepDto);
     }
 
-    if (this.addRecipeDto.tagsString != '') {
+	this.accountService.getUser().then((user: AuthorizedUserDto) => {
+      if (user.id != 0) {
+        this.addRecipeDto.authorUsername = user.login;
+      }
+    });
+
+	if (this.addRecipeDto.tagsString != '') {
 
       let tags: string[] = this.addRecipeDto.tagsString.split(',');
 
@@ -80,10 +89,8 @@ export class RecipeCreateComponent {
         this.addRecipeDto.tags.push(tag.trim().toLowerCase());
       }
 
-    }
+    }    console.log(this.addRecipeDto);
 
-    console.log(this.addRecipeDto);
-
-    this.recipeService.addRecipe(this.addRecipeDto);
+    await this.recipeCUService.addRecipe(this.addRecipeDto);
   }
 }

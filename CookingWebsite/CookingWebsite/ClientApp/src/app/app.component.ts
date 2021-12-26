@@ -1,13 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserInteractionService } from './common/services/user-interaction.service';
-import { AccountService } from './common/services/account.service';
+import { AccountService } from './common/account/account.service';
 import { LoginModalComponent } from './common/modals/login-modal/login-modal.component';
 import { RegistrationModalComponent } from './common/modals/registration-modal/registration-modal.component';
 import { GreetingModalComponent } from './common/modals/greeting-modal/greeting-modal.component';
 
-import { RegistrationDto } from './Dtos/registration-dto';
-import { LoginDto } from './Dtos/login-dto';
+import { RegistrationDto } from './common/account/registration-dto';
+import { LoginDto } from './common/account/login-dto';
 import { Router } from '@angular/router';
+import { AuthorizedUserDto } from './common/account/authorized-user-dto';
 
 @Component({
   selector: 'app-root',
@@ -43,30 +44,47 @@ export class AppComponent {
       })
   }
 
+  ngOnInit() {
+    this.accountService.getUser().then((user: AuthorizedUserDto) => {
+      if (user) {
+        this.userName = user.name;
+      }
+    });
+  }
+
   showLoginModal() {
     this.loginModal.show();
   }
 
   userLogOut() {
+    this.accountService.logout();
     this.userName = '';
-    console.log('User log out');
+    this.router.navigate(['/']);
   }
 
-  doSmthOnCloseLoginModal() {
-    // Тут в closeModal можно что то делать
+  cleanLoginModalInputs() {
+    this.loginModal.loginData.login = '';
+    this.loginModal.loginData.password = '';
     console.log('login modal closed');
   }
 
-  doSmthOnLoginClick(loginDto: LoginDto) {
+  public async login(loginDto: LoginDto) {
     console.log('Im try to login');
-    if (this.accountService.Login(loginDto)) {
-      this.userName = loginDto.login;
-    };
-    this.loginModal.close();
-  }
+    if (this.userName) {
+      alert('Вы уже вошли в систему!');
+      return;
+    }
 
-  doSmthOnOpenLoginModal() {
-    console.log('login modal showed');
+    if (await this.accountService.login(loginDto)) {
+
+      this.accountService.getUser().then((user: AuthorizedUserDto) => {
+        this.userName = user.name;
+      });
+
+      this.loginModal.close();
+    } else {
+      this.loginModal.loginError();
+    }
   }
 
   switchToRegistration() {
@@ -88,11 +106,20 @@ export class AppComponent {
       this.greetingModal.show();
   }
 
-  doSmthOnRegistrationClick(registrationInfo: RegistrationDto) {
+  registration(registrationInfo: RegistrationDto) {
     event.preventDefault();
-    this.accountService.Register(registrationInfo);
-    console.log('Try to registration');
-    this.registrationModal.close();
-  }
+    if (!this.userName) {
+      let response = this.accountService.register(registrationInfo);
 
+      if (response) {
+        this.userName = registrationInfo.name;
+        alert('Вы успешно зарегистрировались!');
+      }
+
+      console.log('Try to registration');
+      this.registrationModal.close();
+    } else {
+      alert('Вы уже вошли в систему!');
+    }
+  }
 }

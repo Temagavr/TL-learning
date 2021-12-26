@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { LoginDto } from '../../../Dtos/login-dto';
+import { LoginDto } from '../../../common/account/login-dto';
 
 @Component({
   selector: 'app-login-modal',
@@ -32,7 +32,6 @@ export class LoginModalComponent {
   }
 
   show() {
-    // тут, например, можно чистить логин пароль если надо
     this.isShowed = true;
     this.onShow.emit();
   }
@@ -42,9 +41,40 @@ export class LoginModalComponent {
     this.onSwitchToRegistration.emit();
   }
 
-  login() {
-    console.log(`${this.loginData.login}, ${this.loginData.password}`)
-    this.onLoginClick.emit(this.loginData);
+  loginError() {
+    let loginInput = document.getElementById('login');
+    let passwordInput = document.getElementById('password');
+
+    this.showError(loginInput);
+    this.showError(passwordInput);
   }
 
+  validate(): boolean {
+    let error = false;
+    const loginInput = document.getElementById('login');
+    const passwordInput = document.getElementById('password');
+
+    if (!this.loginData.login) {
+      this.showError(loginInput);
+      error = true;
+    }
+
+    if (!this.loginData.password) {
+      this.showError(passwordInput);
+      error = true;
+    }
+
+    return error
+  }
+
+  showError(container: HTMLElement) {
+    container.style['border-color'] = '#FF0000';
+    container.setAttribute('onclick', 'this.style=""');
+  }
+
+  login() {
+    if (!this.validate()) {
+      this.onLoginClick.emit(this.loginData);
+    }
+  }
 }

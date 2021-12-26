@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace CookingWebsite.Modules.RecipeModule.Dtos
+namespace CookingWebsite.Modules.SearchRecipeModule
 {
-    public class RecipeDetailsDto
+    public class RecipeCardDto
     {
         public int Id { get; set; }
         public string ImageUrl { get; set; }
@@ -16,8 +13,6 @@ namespace CookingWebsite.Modules.RecipeModule.Dtos
         public int LikesCount { get; set; }
         public int FavouritesCount { get; set; }
         public string AuthorUsername { get; set; }
-        public List<RecipeIngredientDto> Ingredients { get; set; }
-        public List<string> Steps { get; set; }
         public List<string> Tags { get; set; }
     }
 }

@@ -4,7 +4,12 @@ using CookingWebsite.Infrastructure;
 using CookingWebsite.Infrastructure.Foundation;
 using CookingWebsite.Modules.AccountModule;
 using CookingWebsite.Modules.HomeModule;
-using CookingWebsite.Modules.RecipeModule;
+using CookingWebsite.Modules.RecipeCreateModule;
+using CookingWebsite.Modules.RecipeDeleteModule;
+using CookingWebsite.Modules.RecipeDetailsModule;
+using CookingWebsite.Modules.RecipeUpdateModule;
+using CookingWebsite.Modules.SearchRecipeModule;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -31,8 +36,20 @@ namespace CookingWebsite
                 .AddApplication()
                 .AddAccountModule()
                 .AddHomeModule()
-                .AddRecipeModule()
+                .AddRecipeDeleteModule()
+                .AddRecipeDetailsModule()
+                .AddRecipeCreateModule()
+                .AddRecipeUpdateModule()
+                .AddRecipeSearchModule()
                 .AddRepositories();
+
+            
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/account/login");
+                });
+            
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -74,6 +91,9 @@ namespace CookingWebsite
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();    
+            app.UseAuthorization();     
 
             app.UseEndpoints( endpoints =>
              {

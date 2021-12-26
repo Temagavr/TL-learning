@@ -10,6 +10,7 @@ namespace CookingWebsite.Modules.AccountModule
 
             registrationDto.Login = userRegistrationDto.Login;
             registrationDto.Password = userRegistrationDto.Password;
+            registrationDto.RepeatPassword = userRegistrationDto.RepeatPassword;
             registrationDto.Name = userRegistrationDto.Name;
 
             return registrationDto;

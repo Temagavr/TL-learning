@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Modules.RecipeModule.Dtos
+namespace CookingWebsite.Modules.RecipeCreateModule
 {
-    public class AddRecipeStepDto
+    public class RecipeStepDto
     {
-        public int StepNumber { get; set; }
         public string Description { get; set; }
     }
 }

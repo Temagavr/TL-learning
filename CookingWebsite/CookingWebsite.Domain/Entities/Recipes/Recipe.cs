@@ -50,7 +50,6 @@ namespace CookingWebsite.Domain.Entities.Recipes
             string description,
             int cookingTime,
             int personsCount,
-            string authorUsername,
             List<RecipeIngredient> ingredients,
             List<RecipeStep> steps,
             List<RecipeTag> tags
@@ -61,10 +60,8 @@ namespace CookingWebsite.Domain.Entities.Recipes
             Description = description;
             CookingTime = cookingTime;
             PersonsCount = personsCount;
-            AuthorUsername = authorUsername;
             Ingredients = ingredients;
             Steps = steps;
-            Tags = tags;
-        }
+			Tags = tags;        }
     }
 }

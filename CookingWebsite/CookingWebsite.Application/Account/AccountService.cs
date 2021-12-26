@@ -22,7 +22,7 @@ namespace CookingWebsite.Application.Account
         public async Task<bool> Registrate (RegistrationDto registrationDto)
         {
             var user = await _userRepostitory.GetByLogin(registrationDto.Login);
-            if (user != null)
+            if (user != null && !ValidateRegistration(registrationDto))
                 return false;
 
             user = new User(
@@ -58,6 +58,23 @@ namespace CookingWebsite.Application.Account
 
             await _unitOfWork.Commit();
             
+        }
+
+        private bool ValidateRegistration(RegistrationDto registrationDto)
+        {
+            if (registrationDto.Name == "")
+                return false;
+
+            if (registrationDto.Login == "")
+                return false;
+
+            if (registrationDto.Password == "")
+                return false;
+
+            if (registrationDto.Password != registrationDto.RepeatPassword)
+                return false;
+
+            return true;
         }
     }
 }

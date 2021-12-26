@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace CookingWebsite.Modules.RecipeModule.Dtos
+namespace CookingWebsite.Modules.RecipeCreateModule
 {
-    public class UpdateRecipeDto
+    public class AddRecipeDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int CookingTime { get; set; }
