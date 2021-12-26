@@ -123,17 +123,23 @@ namespace CookingWebsite.Application.Recipes
             );
         }
 
-        public void AddLike(int recipeId, int userId)
+        public async Task AddLike(int recipeId, int userId)
         {
             RecipeLike recipeLike = new RecipeLike(userId, recipeId);
 
+            var recipe = await _recipeRepository.GetById(recipeId);
+
             _recipeLikeRepository.AddLike(recipeLike);
+            recipe.AddLike();
         }
-        public async void RemoveLike(int recipeId, int userId)
+        public async Task RemoveLike(int recipeId, int userId)
         {
             var recipeLike = await _recipeLikeRepository.GetByUserIdRecipeId(userId, recipeId);
 
+            var recipe = await _recipeRepository.GetById(recipeId);
+
             _recipeLikeRepository.RemoveLike(recipeLike);
+            recipe.RemoveLike();
         }
 
         private void GetRecipeLikes(int recipeId)

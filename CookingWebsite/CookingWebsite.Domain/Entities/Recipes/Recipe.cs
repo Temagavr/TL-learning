@@ -63,5 +63,14 @@ namespace CookingWebsite.Domain.Entities.Recipes
             Ingredients = ingredients;
             Steps = steps;
 			Tags = tags;        }
+
+        public void AddLike()
+        {
+            LikesCount += 1;
+        }
+        public void RemoveLike()
+        {
+            LikesCount -= 1;
+        }
     }
 }
