@@ -6,7 +6,12 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
 {
     public static class RecipeDetailsMapper
     {
-        public static RecipeDetailsDto Map(this Recipe recipe, string authorizedUser)
+        public static RecipeDetailsDto Map(
+            this Recipe recipe,
+            string authorizedUser,
+            List<RecipeLike> recipeLikes,
+            int userId
+            )
         {
             var recipeDetailsDto = new RecipeDetailsDto();
 
@@ -49,6 +54,13 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
                 recipeDetailsDto.IsCanModify = false;
 
             recipeDetailsDto.Tags = recipe.Tags.Select(x => x.TagName).ToList();
+
+            var likeRecipe = recipeLikes.Where(r => r.UserId == userId && r.RecipeId == recipe.Id).ToList();
+
+            if (likeRecipe.Count > 0)
+                recipeDetailsDto.IsLiked = true;
+            else
+                recipeDetailsDto.IsLiked = false;
 
             return recipeDetailsDto;
         }
