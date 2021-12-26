@@ -32,8 +32,7 @@ namespace CookingWebsite.Application.Recipes
         public async Task<Recipe> GetRecipeOfDay()
         {
             var recipeOfDay = await _recipeRepository.GetFirst();
-            GetRecipeLikes(2);
-
+            
             return recipeOfDay;
         }
         
@@ -77,8 +76,6 @@ namespace CookingWebsite.Application.Recipes
             );
 
             _recipeRepository.Add(recipe);
-
-            GetRecipeLikes(2);
         }
 
         public async Task UpdateRecipe(UpdateRecipeDto updateRecipeDto)
@@ -124,6 +121,19 @@ namespace CookingWebsite.Application.Recipes
                 steps,
                 tags
             );
+        }
+
+        public void AddLike(int recipeId, int userId)
+        {
+            RecipeLike recipeLike = new RecipeLike(userId, recipeId);
+
+            _recipeLikeRepository.AddLike(recipeLike);
+        }
+        public async void RemoveLike(int recipeId, int userId)
+        {
+            var recipeLike = await _recipeLikeRepository.GetByUserIdRecipeId(userId, recipeId);
+
+            _recipeLikeRepository.RemoveLike(recipeLike);
         }
 
         private void GetRecipeLikes(int recipeId)

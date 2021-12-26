@@ -1,4 +1,5 @@
-﻿using CookingWebsite.Domain;
+﻿using CookingWebsite.Application.Recipes;
+using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -16,35 +17,31 @@ namespace CookingWebsite.Modules.RecipeLikesModule
     {
         private readonly IRecipeLikeRepository _recipeLikeRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IRecipeService _recipeService;
 
-        public RecipeLikesController(IRecipeLikeRepository recipeLikeRepository, IUnitOfWork unitOfWork)
+        public RecipeLikesController(
+            IRecipeLikeRepository recipeLikeRepository,
+            IUnitOfWork unitOfWork,
+            IRecipeService recipeService
+            )
         {
             _unitOfWork = unitOfWork;
             _recipeLikeRepository = recipeLikeRepository;
+            _recipeService = recipeService;
         }
 
         [HttpPost("add")]
         public async Task AddLike([FromRoute] int recipeId)
         {
-
-            RecipeLike recipeLike = new RecipeLike(
-                Convert.ToInt32(User.FindFirstValue(Claims.UserId)),
-                recipeId);
-
-            _recipeLikeRepository.AddLike(recipeLike);
-
+            _recipeService.AddLike(recipeId, Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
+            
             await _unitOfWork.Commit();
         }
 
         [HttpPost("remove")]
         public async Task removeLike([FromRoute] int recipeId)
         {
-            var recipeLike = await _recipeLikeRepository.GetByUserIdRecipeId(
-                Convert.ToInt32(User.FindFirstValue(Claims.UserId)),
-                recipeId
-                );
-
-            _recipeLikeRepository.RemoveLike(recipeLike);
+            _recipeService.RemoveLike(Convert.ToInt32(User.FindFirstValue(Claims.UserId)), recipeId);
 
             await _unitOfWork.Commit();
         }
