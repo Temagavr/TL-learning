@@ -141,9 +141,5 @@ namespace CookingWebsite.Application.Recipes
             _recipeLikeRepository.RemoveLike(recipeLike);
             recipe.RemoveLike();
         }
-
-        private void GetRecipeLikes(int recipeId)
-        {
-        }
     }
 }
