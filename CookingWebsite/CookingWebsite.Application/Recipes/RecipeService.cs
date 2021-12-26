@@ -14,18 +14,25 @@ namespace CookingWebsite.Application.Recipes
     public class RecipeService : IRecipeService
     {
 
-        private readonly IRecipeRepository _recipeRepostitory;
+        private readonly IRecipeRepository _recipeRepository;
+        private readonly IRecipeLikeRepository _recipeLikeRepository;
         private readonly IFileService _fileService;
 
-        public RecipeService(IRecipeRepository recipeRepository, IFileService fileService)
+        public RecipeService(
+            IRecipeRepository recipeRepository,
+            IRecipeLikeRepository recipeLikeRepository,
+            IFileService fileService
+            )
         {
-            _recipeRepostitory = recipeRepository;
+            _recipeRepository = recipeRepository;
+            _recipeLikeRepository = recipeLikeRepository;
             _fileService = fileService;
         }
 
         public async Task<Recipe> GetRecipeOfDay()
         {
-            var recipeOfDay = await _recipeRepostitory.GetFirst();
+            var recipeOfDay = await _recipeRepository.GetFirst();
+            GetRecipeLikes(2);
 
             return recipeOfDay;
         }
@@ -69,14 +76,14 @@ namespace CookingWebsite.Application.Recipes
                 tags
             );
 
-            _recipeRepostitory.Add(recipe);
+            _recipeRepository.Add(recipe);
 
-            return;
+            GetRecipeLikes(2);
         }
 
         public async Task UpdateRecipe(UpdateRecipeDto updateRecipeDto)
         {
-            var recipe = await _recipeRepostitory.GetById(updateRecipeDto.Id);
+            var recipe = await _recipeRepository.GetById(updateRecipeDto.Id);
 
             FileSaveResult imageSaveResult = new FileSaveResult();
             if (updateRecipeDto.Image != null)
@@ -117,6 +124,17 @@ namespace CookingWebsite.Application.Recipes
                 steps,
                 tags
             );
+        }
+
+        private async void GetRecipeLikes(int recipeId)
+        {
+            _recipeLikeRepository.AddLike(new RecipeLike(1, 2));
+            _recipeLikeRepository.AddLike(new RecipeLike(2, 2));
+            _recipeLikeRepository.AddLike(new RecipeLike(3, 2));
+
+            var temp = await _recipeLikeRepository.GetRecipeLikesCount(recipeId);
+
+            Console.WriteLine();
         }
     }
 }

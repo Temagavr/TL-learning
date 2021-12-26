@@ -13,6 +13,7 @@ namespace CookingWebsite.Infrastructure
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserStatisticRepository, UserStatisticRepository>();
+            services.AddScoped<IRecipeLikeRepository, RecipeLikeRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
