@@ -132,7 +132,7 @@ namespace CookingWebsite.Application.Recipes
             _recipeLikeRepository.AddLike(recipeLike);
             recipe.AddLike();
         }
-        public async Task RemoveLike(int recipeId, int userId)
+        public async Task RemoveLike(int userId, int recipeId)
         {
             var recipeLike = await _recipeLikeRepository.GetByUserIdRecipeId(userId, recipeId);
 

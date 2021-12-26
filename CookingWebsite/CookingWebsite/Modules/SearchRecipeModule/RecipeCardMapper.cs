@@ -1,11 +1,12 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CookingWebsite.Modules.SearchRecipeModule
 {
     public static class RecipeCardMapper
     {
-        public static List<RecipeCardDto> Map(this List<Recipe> recipes)
+        public static List<RecipeCardDto> Map(this List<Recipe> recipes, List<RecipeLike> recipeLikes, int userId)
         {
             var recipeCardsList = new List<RecipeCardDto>();
 
@@ -28,6 +29,13 @@ namespace CookingWebsite.Modules.SearchRecipeModule
                 {
                     recipeCard.Tags.Add(tag.TagName);
                 }
+
+                var likeRecipe = recipeLikes.Where(r => r.UserId == userId && r.RecipeId == recipe.Id).ToList();
+
+                if (likeRecipe.Count > 0)
+                    recipeCard.IsLiked = true;
+                else
+                    recipeCard.IsLiked = false;
 
                 recipeCardsList.Add(recipeCard);
             }
