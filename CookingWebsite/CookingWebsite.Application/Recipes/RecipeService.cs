@@ -126,15 +126,8 @@ namespace CookingWebsite.Application.Recipes
             );
         }
 
-        private async void GetRecipeLikes(int recipeId)
+        private void GetRecipeLikes(int recipeId)
         {
-            _recipeLikeRepository.AddLike(new RecipeLike(1, 2));
-            _recipeLikeRepository.AddLike(new RecipeLike(2, 2));
-            _recipeLikeRepository.AddLike(new RecipeLike(3, 2));
-
-            var temp = await _recipeLikeRepository.GetRecipeLikesCount(recipeId);
-
-            Console.WriteLine();
         }
     }
 }

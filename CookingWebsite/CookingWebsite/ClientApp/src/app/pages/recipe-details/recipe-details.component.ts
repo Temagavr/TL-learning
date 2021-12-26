@@ -63,7 +63,7 @@ export class RecipeDetailsComponent {
         this.recipeCard.tags = recipeDetailsDto.tags.slice(0, 3);
       
       this.recipeCard.isFavourite = false;
-      this.recipeCard.isLiked = true;
+      this.recipeCard.isLiked = false;
       this.recipeCard.favouritesCount = 12 //recipeDetailsDto.favourite;
       this.recipeCard.likesCount = 6 //recipeDetailsDto.likes;
       this.recipeCard.cookingTime = recipeDetailsDto.cookingTime;
@@ -91,11 +91,18 @@ export class RecipeDetailsComponent {
     });
   }
 
-  async deleteRecipe(){
+  public async deleteRecipe(){
     let respose = await this.recipeDetailsService.deleteRecipe(this.route.snapshot.params.id);
 
     if (respose)
       this.router.navigate(['/recipes']);
   }
 
+  public async likeRecipe() {
+    if (this.recipeCard.isLiked) {
+      await this.recipeDetailsService.likeRecipe(this.route.snapshot.params.id);
+    } else {
+      await this.recipeDetailsService.unlikeRecipe(this.route.snapshot.params.id);
+    }
+  }
 }

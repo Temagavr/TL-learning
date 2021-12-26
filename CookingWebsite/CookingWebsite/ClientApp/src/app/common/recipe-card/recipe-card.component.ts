@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -18,6 +18,8 @@ export class RecipeCardComponent {
   }
 
   @Input() recipeInfo: RecipeCard;
+
+  @Output() onLikeClick = new EventEmitter();
 
   baseImagesPath: string = '../../../assets/'; // Здесь наверное должен быть полный путь на устройстве 
 
@@ -48,6 +50,7 @@ export class RecipeCardComponent {
     } else {
       this.recipeInfo.likesCount = this.recipeInfo.likesCount - 1;
     }
+    this.onLikeClick.emit();
   }
 
   favouriteRecipe() {

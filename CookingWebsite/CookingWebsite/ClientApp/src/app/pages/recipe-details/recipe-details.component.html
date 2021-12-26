@@ -1,5 +1,5 @@
 <div class="content-block">
   <app-recipe-details-header [isModify]="isCanModify" (onDeleteRecipeClick)="deleteRecipe()" [recipeTitle]="recipeCard.title"></app-recipe-details-header>
-  <app-recipe-card [recipeInfo]="recipeCard"></app-recipe-card>
+  <app-recipe-card (onLikeClick)="likeRecipe()" [recipeInfo]="recipeCard"></app-recipe-card>
   <app-recipe-details-body [recipeIngredients]="recipeIngredient" [recipeSteps]="recipeSteps"></app-recipe-details-body>
 </div>

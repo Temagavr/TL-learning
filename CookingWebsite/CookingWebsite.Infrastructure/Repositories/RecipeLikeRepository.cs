@@ -46,5 +46,10 @@ namespace CookingWebsite.Infrastructure.Repositories
         {
             return null;
         }
+
+        public async Task<RecipeLike> GetByUserIdRecipeId(int userId, int recipeId)
+        {
+            return await _recipeLikes.FirstOrDefaultAsync(r => r.RecipeId == recipeId && r.UserId == userId);
+        }
     }
 }
