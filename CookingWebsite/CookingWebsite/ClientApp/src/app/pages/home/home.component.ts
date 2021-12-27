@@ -43,7 +43,7 @@ export class HomeComponent {
         authorUsername: recipeOfDayDto.authorUsername,
         title: recipeOfDayDto.title,
         description: recipeOfDayDto.description,
-        likesCount: 0,
+        likesCount: recipeOfDayDto.likesCount,
         cookingTime: recipeOfDayDto.cookingTime
       };
 
