@@ -37,7 +37,6 @@ namespace CookingWebsite
                 .AddApplication()
                 .AddAccountModule()
                 .AddHomeModule()
-                .AddRecipeDeleteModule()
                 .AddRecipeDetailsModule()
                 .AddRecipeCreateModule()
                 .AddRecipeUpdateModule()

@@ -13,7 +13,7 @@ export class RecipeDetailsService extends HttpService {
 
   private url = 'api/recipes';
 
-  public async getRecipeDetails(recipeId: number): Promise<RecipeDetailsDto> {
+  public async getRecipeDetails(recipeId: number) {
 
     const response: RecipeDetailsDto = await this.Get(`${this.url}/${recipeId}/details`);
 
