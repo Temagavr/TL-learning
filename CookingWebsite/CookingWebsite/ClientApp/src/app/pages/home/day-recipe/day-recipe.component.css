@@ -13,6 +13,12 @@
   width: 100%;
 }
 
+.day-recipe-img {
+    width: 543px;
+    height: 543px;
+    border-radius: 72px 0px;
+}
+
 .day-recipe-info {
   width: 48%;
 }
