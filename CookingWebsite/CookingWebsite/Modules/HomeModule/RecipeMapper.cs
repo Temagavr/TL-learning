@@ -8,6 +8,9 @@ namespace CookingWebsite.Modules.HomeModule
         
         public static RecipeOfDayDto Map( this Recipe recipe )
         {
+            if (recipe == null)
+                return null;
+
             var recipeOfDay = new RecipeOfDayDto();
 
             recipeOfDay.Title = recipe.Title;

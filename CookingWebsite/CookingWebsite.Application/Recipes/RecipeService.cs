@@ -21,8 +21,7 @@ namespace CookingWebsite.Application.Recipes
         public RecipeService(
             IRecipeRepository recipeRepository,
             IRecipeLikeRepository recipeLikeRepository,
-            IFileService fileService
-            )
+            IFileService fileService)
         {
             _recipeRepository = recipeRepository;
             _recipeLikeRepository = recipeLikeRepository;
@@ -125,7 +124,7 @@ namespace CookingWebsite.Application.Recipes
 
         public async Task AddLike(int recipeId, int userId)
         {
-            RecipeLike recipeLike = new RecipeLike(userId, recipeId);
+            var recipeLike = new RecipeLike(userId, recipeId);
 
             var recipe = await _recipeRepository.GetById(recipeId);
 

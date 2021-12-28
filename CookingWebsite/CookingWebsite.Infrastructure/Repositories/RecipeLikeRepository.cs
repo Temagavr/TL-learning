@@ -34,10 +34,7 @@ namespace CookingWebsite.Infrastructure.Repositories
         {
             IQueryable<RecipeLike> query = _recipeLikes.AsQueryable();
 
-            if (userId != 0)
-            {
-                query = query.Where(x => x.UserId == userId);
-            }
+            query = query.Where(x => x.UserId == userId);
 
             return await query.ToListAsync();
         }

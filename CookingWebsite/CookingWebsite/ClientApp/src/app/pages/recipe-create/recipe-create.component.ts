@@ -8,6 +8,7 @@ import { RecipeIngredientItemDto } from './recipe-ingredient-item-dto';
 import { AddRecipeDto } from './add-recipe-dto';
 import { AddRecipeIngredientFront } from './add-recipe-ingredient-front';
 import { AddRecipeStepDto } from './add-recipe-step-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-create',
@@ -17,6 +18,7 @@ export class RecipeCreateComponent {
 
   constructor(
     private recipeCUService: RecipeCreateUpdateService,
+    private router: Router,
     private accountService: AccountService
   ) {
   }
@@ -92,5 +94,7 @@ export class RecipeCreateComponent {
     }    console.log(this.addRecipeDto);
 
     await this.recipeCUService.addRecipe(this.addRecipeDto);
+
+    this.router.navigate(["/recipes"]);
   }
 }

@@ -18,8 +18,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
         public RecipeDetailsController(
             IUnitOfWork unitOfWork,
             IRecipeRepository recipeRepository,
-            IRecipeLikeRepository recipeLikeRepository
-            )
+            IRecipeLikeRepository recipeLikeRepository)
         {
             _unitOfWork = unitOfWork;
             _recipeRepository = recipeRepository;
@@ -35,8 +34,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             return recipeDetails.Map(
                 User.FindFirstValue(Claims.Username),
                 userLikes,
-                Convert.ToInt32(User.FindFirstValue(Claims.UserId))
-                );
+                Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
         }
 
         [HttpPost("delete")]

@@ -17,16 +17,12 @@ namespace CookingWebsite.Modules.HomeModule
             _recipeService = recipeService;
         }
 
-		[HttpGet("recipe-of-day")]
+        [HttpGet("recipe-of-day")]
         public async Task<RecipeOfDayDto> GetRecipeOfDay()
-		{
+        {
             var recipe = await _recipeService.GetRecipeOfDay();
 
-            if (recipe != null)
-                return recipe.Map();
-            else
-                return null;
+            return recipe.Map();
         }
-        
     }
 }

@@ -94,7 +94,6 @@ export class RecipeDetailsComponent {
   public async deleteRecipe(){
     let respose = await this.recipeDetailsService.deleteRecipe(this.route.snapshot.params.id);
 
-    if (respose != null)
-      this.router.navigate(['/recipes']);
+    this.router.navigate(['/recipes']);
   }
 }
