@@ -1,12 +1,12 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
-
+using System.Collections.Generic;
 
 namespace CookingWebsite.Modules.HomeModule
 {
     public static class RecipeMapper
     {
         
-        public static RecipeOfDayDto Map( this Recipe recipe )
+        public static RecipeOfDayDto Map( this Recipe recipe, List<RecipeLike> recipeLikes )
         {
             if (recipe == null)
                 return null;
@@ -17,7 +17,7 @@ namespace CookingWebsite.Modules.HomeModule
             recipeOfDay.Description = recipe.Description;
             recipeOfDay.AuthorUsername = recipe.AuthorUsername;
             recipeOfDay.Image = recipe.ImageUrl;
-            recipeOfDay.LikesCount = recipe.LikesCount;
+            recipeOfDay.LikesCount = recipeLikes.Count;
             recipeOfDay.CookingTime = recipe.CookingTime;
 
             return recipeOfDay;

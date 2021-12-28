@@ -33,7 +33,10 @@ namespace CookingWebsite.Modules.SearchRecipeModule
             recipes = await _recipeRepository.Search(skip, take, searchString, false);
             var userLikes = await _recipeLikeRepository.GetUserLikedRecipes(Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
 
-            return recipes.Map(userLikes, Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
+            return await recipes.Map(
+                userLikes,
+                Convert.ToInt32(User.FindFirstValue(Claims.UserId)),
+                _recipeLikeRepository);
         }
     }
 }

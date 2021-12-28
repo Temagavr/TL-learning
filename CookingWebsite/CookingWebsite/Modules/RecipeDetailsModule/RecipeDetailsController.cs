@@ -29,11 +29,11 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
         public async Task<RecipeDetailsDto> GetRecipeDetails([FromRoute] int recipeId)
         {
             var recipeDetails = await _recipeRepository.GetById(recipeId);
-            var userLikes = await _recipeLikeRepository.GetUserLikedRecipes(Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
+            var recipeLikes = await _recipeLikeRepository.GetRecipeLikes(recipeId);
 
             return recipeDetails.Map(
                 User.FindFirstValue(Claims.Username),
-                userLikes,
+                recipeLikes,
                 Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
         }
 

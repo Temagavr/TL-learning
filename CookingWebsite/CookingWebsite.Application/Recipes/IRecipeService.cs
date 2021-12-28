@@ -10,7 +10,7 @@ namespace CookingWebsite.Application.Recipes
         Task<Recipe> GetRecipeOfDay();
         Task AddRecipe(AddRecipeDto addRecipeDto);
         Task UpdateRecipe(UpdateRecipeDto updateRecipeDto);
-        Task AddLike(int recipeId, int userId);
+        void AddLike(int recipeId, int userId);
         Task RemoveLike(int recipeId, int userId);
     }
 }

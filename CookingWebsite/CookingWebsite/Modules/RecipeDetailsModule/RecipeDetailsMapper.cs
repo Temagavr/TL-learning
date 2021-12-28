@@ -19,10 +19,10 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             recipeDetailsDto.Description = recipe.Description;
             recipeDetailsDto.AuthorUsername = recipe.AuthorUsername;
             recipeDetailsDto.CookingTime = recipe.CookingTime;
-            recipeDetailsDto.FavouritesCount = recipe.FavouritesCount;
+            recipeDetailsDto.FavouritesCount = 0;
             recipeDetailsDto.Id = recipe.Id;
             recipeDetailsDto.ImageUrl = recipe.ImageUrl;
-            recipeDetailsDto.LikesCount = recipe.LikesCount;
+            recipeDetailsDto.LikesCount = recipeLikes.Count;
             recipeDetailsDto.PersonsCount = recipe.PersonsCount;
 
             recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
@@ -55,7 +55,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
 
             recipeDetailsDto.Tags = recipe.Tags.Select(x => x.TagName).ToList();
 
-            var likeRecipe = recipeLikes.Where(r => r.UserId == userId && r.RecipeId == recipe.Id).ToList();
+            var likeRecipe = recipeLikes.Where(r => r.UserId == userId).ToList();
 
             if (likeRecipe.Count > 0)
                 recipeDetailsDto.IsLiked = true;

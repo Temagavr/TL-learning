@@ -39,6 +39,15 @@ namespace CookingWebsite.Infrastructure.Repositories
             return await query.ToListAsync();
         }
 
+        public async Task<List<RecipeLike>> GetRecipeLikes(int recipeId)
+        {
+            IQueryable<RecipeLike> query = _recipeLikes.AsQueryable();
+
+            query = query.Where(x => x.RecipeId == recipeId);
+
+            return await query.ToListAsync();
+        }
+
         public async Task<RecipeLike> GetByUserIdRecipeId(int userId, int recipeId)
         {
             return await _recipeLikes.FirstOrDefaultAsync(r => r.RecipeId == recipeId && r.UserId == userId);
