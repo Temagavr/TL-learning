@@ -9,7 +9,7 @@ namespace CookingWebsite.Modules.RecipeLikesModule
 {
     [ApiController]
     [Route("api/recipes/{recipeId}/likes")]
-    public class RecipeLikesController : ControllerBase
+    public class RecipeLikesController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRecipeService _recipeService;
@@ -26,7 +26,7 @@ namespace CookingWebsite.Modules.RecipeLikesModule
         [HttpPost("add")]
         public async Task AddLike([FromRoute] int recipeId)
         {
-            _recipeService.AddLike(recipeId, Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
+            _recipeService.AddLike(recipeId, GetAuthorizedUserId());
             
             await _unitOfWork.Commit();
         }
@@ -34,7 +34,7 @@ namespace CookingWebsite.Modules.RecipeLikesModule
         [HttpPost("remove")]
         public async Task removeLike([FromRoute] int recipeId)
         {
-            await _recipeService.RemoveLike(Convert.ToInt32(User.FindFirstValue(Claims.UserId)), recipeId);
+            await _recipeService.RemoveLike(GetAuthorizedUserId(), recipeId);
 
             await _unitOfWork.Commit();
         }

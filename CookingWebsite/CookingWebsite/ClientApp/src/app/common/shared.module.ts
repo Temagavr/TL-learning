@@ -30,7 +30,7 @@ import { RecipeLikeService } from './recipe-card/recipe-like.service';
     RecipeCardComponent,
     GoBackButtonComponent
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [ CommonModule, FormsModule ],
   exports: [
     TagsTypeComponent,
     HeaderComponent,
@@ -43,6 +43,6 @@ import { RecipeLikeService } from './recipe-card/recipe-like.service';
     RecipeCardComponent,
     GoBackButtonComponent
   ],
-  providers:[RecipeLikeService]
+  providers: [ RecipeLikeService ]
 })
 export class SharedModule { }

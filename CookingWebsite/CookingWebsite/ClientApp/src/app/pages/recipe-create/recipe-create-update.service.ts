@@ -15,7 +15,7 @@ export class RecipeCreateUpdateService extends HttpService {
 
   private url = 'api/recipes';
  
-  public async getRecipeDetails(recipeId: number) {
+  public async getRecipeDetails(recipeId: number): Promise<RecipeDetailsDto> {
 
     const response: RecipeDetailsDto = await this.Get(`${this.url}/${recipeId}/details`);
 
@@ -23,7 +23,7 @@ export class RecipeCreateUpdateService extends HttpService {
   }
   
 
-  public async addRecipe(addRecipeDto: AddRecipeDto) {
+  public async addRecipe(addRecipeDto: AddRecipeDto): Promise<void> {
     const formData = new FormData();
     formData.append(addRecipeDto.image.name, addRecipeDto.image);
 
@@ -40,12 +40,10 @@ export class RecipeCreateUpdateService extends HttpService {
 
     formData.append('data', data);
 
-    const response = await this.Post(`${this.url}/create`, formData);
-
-    return response;
+    await this.Post(`${this.url}/create`, formData);
   }
 
-  public async updateRecipe(updateRecipeDto: UpdateRecipeDto) {
+  public async updateRecipe(updateRecipeDto: UpdateRecipeDto): Promise<void> {
     const formData = new FormData();
     if (updateRecipeDto.image)
       formData.append(updateRecipeDto.image.name, updateRecipeDto.image);
@@ -63,8 +61,6 @@ export class RecipeCreateUpdateService extends HttpService {
 
     formData.append('data', data);
 
-    const response = await this.Post(`${this.url}/${updateRecipeDto.id}/update`, formData);
-
-    return response;
+    await this.Post(`${this.url}/${updateRecipeDto.id}/update`, formData);
   }
 }

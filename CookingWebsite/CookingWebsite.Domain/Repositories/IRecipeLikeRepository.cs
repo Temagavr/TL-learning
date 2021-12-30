@@ -6,10 +6,10 @@ namespace CookingWebsite.Domain.Repositories
 {
     public interface IRecipeLikeRepository
     {
-        void AddLike(RecipeLike recipeLike);
-        void RemoveLike(RecipeLike recipeLike);
-        Task<List<RecipeLike>> GetUserLikedRecipes(int userId);
-        Task<List<RecipeLike>> GetRecipeLikes(int recipeId);
-        Task<RecipeLike> GetByUserIdRecipeId(int userId, int recipeId);
+        void Add(RecipeLike recipeLike);
+        void Remove(RecipeLike recipeLike);
+        Task<List<RecipeLike>> GetByUserId(int userId);
+        Task<List<RecipeLike>> GetByRecipeId(int recipeId);
+        Task<RecipeLike> GetByUserIdAndRecipeId(int userId, int recipeId);
     }
 }

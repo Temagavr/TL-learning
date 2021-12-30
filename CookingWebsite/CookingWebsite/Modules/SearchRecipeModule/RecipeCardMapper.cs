@@ -29,8 +29,7 @@ namespace CookingWebsite.Modules.SearchRecipeModule
                 recipeCard.ImageUrl = recipe.ImageUrl;
                 recipeCard.PersonsCount = recipe.PersonsCount;
 
-                var recipeLikes = await recipeLikeRepository.GetRecipeLikes(recipe.Id);
-                // поправить подсчет лайков у рецептов через выборку всех лайков с данным recipeId
+                var recipeLikes = await recipeLikeRepository.GetByRecipeId(recipe.Id);
                 recipeCard.LikesCount = recipeLikes.Count;
 
                 recipeCard.Tags = new List<string>();

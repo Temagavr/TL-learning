@@ -44,7 +44,7 @@ export class RecipeCardComponent {
     }
   }
 
-  public async likeRecipe() {
+  public async likeRecipe(): Promise<void> {
     this.recipeInfo.isLiked = !this.recipeInfo.isLiked;
     if (this.recipeInfo.isLiked) {
       this.recipeInfo.likesCount = this.recipeInfo.likesCount + 1;

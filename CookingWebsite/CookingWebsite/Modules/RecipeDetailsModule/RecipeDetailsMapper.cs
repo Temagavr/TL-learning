@@ -10,8 +10,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             this Recipe recipe,
             string authorizedUser,
             List<RecipeLike> recipeLikes,
-            int userId
-            )
+            int userId)
         {
             var recipeDetailsDto = new RecipeDetailsDto();
 
@@ -25,9 +24,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             recipeDetailsDto.LikesCount = recipeLikes.Count;
             recipeDetailsDto.PersonsCount = recipe.PersonsCount;
 
-            recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
             recipeDetailsDto.Steps = new List<string>();
-            recipeDetailsDto.Tags = new List<string>();
 
             recipeDetailsDto.Ingredients = recipe.Ingredients.Select(x => new RecipeIngredientDto
             {
@@ -55,12 +52,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
 
             recipeDetailsDto.Tags = recipe.Tags.Select(x => x.TagName).ToList();
 
-            var likeRecipe = recipeLikes.Where(r => r.UserId == userId).ToList();
-
-            if (likeRecipe.Count > 0)
-                recipeDetailsDto.IsLiked = true;
-            else
-                recipeDetailsDto.IsLiked = false;
+            recipeDetailsDto.IsLiked = recipeLikes.Any(x => x.UserId == userId);
 
             return recipeDetailsDto;
         }

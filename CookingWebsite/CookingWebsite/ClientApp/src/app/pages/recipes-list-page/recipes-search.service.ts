@@ -20,16 +20,12 @@ export class RecipeSearchService extends HttpService {
     return response;
   }
 
-  public async likeRecipe(recipeId: number) {
-    const response = await this.Post(`${this.url}/${recipeId}/likes/add`, {});
-
-    return response;
+  public async likeRecipe(recipeId: number): Promise<void> {
+    await this.Post(`${this.url}/${recipeId}/likes/add`, {});
   }
 
-  public async unlikeRecipe(recipeId: number) {
-    const response = await this.Post(`${this.url}/${recipeId}/likes/remove`, {});
-
-    return response;
+  public async unlikeRecipe(recipeId: number): Promise<void> {
+    await this.Post(`${this.url}/${recipeId}/likes/remove`, {});
   }
 
 }

@@ -13,7 +13,7 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
 {
     [ApiController]
     [Route("api/recipes")]
-    public class RecipeCreateUpdateController : ControllerBase
+    public class RecipeCreateUpdateController : BaseController
     {
 
         private readonly IRecipeService _recipeService;
@@ -32,7 +32,7 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
 
             AddRecipeDto addRecipeDto = JsonConvert.DeserializeObject<AddRecipeDto>(Request.Form["data"]);
 
-            var recipeDto = await addRecipeDto.Map(files, User.FindFirstValue(Claims.Username));
+            var recipeDto = await addRecipeDto.Map(files, GetAuthorizedUserUsername());
 
             await _recipeService.AddRecipe(recipeDto);
 

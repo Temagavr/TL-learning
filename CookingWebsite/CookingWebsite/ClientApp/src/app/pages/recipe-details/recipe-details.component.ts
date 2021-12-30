@@ -91,8 +91,8 @@ export class RecipeDetailsComponent {
     });
   }
 
-  public async deleteRecipe(){
-    let respose = await this.recipeDetailsService.deleteRecipe(this.route.snapshot.params.id);
+  public async deleteRecipe(): Promise<void>{
+    await this.recipeDetailsService.deleteRecipe(this.route.snapshot.params.id);
 
     this.router.navigate(['/recipes']);
   }

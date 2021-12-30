@@ -20,17 +20,17 @@ namespace CookingWebsite.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public void AddLike(RecipeLike recipeLike)
+        public void Add(RecipeLike recipeLike)
         {
             _dbContext.Add(recipeLike);
         }
 
-        public void RemoveLike(RecipeLike recipeLike)
+        public void Remove(RecipeLike recipeLike)
         {
             _dbContext.Remove(recipeLike);
         }
 
-        public async Task<List<RecipeLike>> GetUserLikedRecipes(int userId)
+        public async Task<List<RecipeLike>> GetByUserId(int userId)
         {
             IQueryable<RecipeLike> query = _recipeLikes.AsQueryable();
 
@@ -39,7 +39,7 @@ namespace CookingWebsite.Infrastructure.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<List<RecipeLike>> GetRecipeLikes(int recipeId)
+        public async Task<List<RecipeLike>> GetByRecipeId(int recipeId)
         {
             IQueryable<RecipeLike> query = _recipeLikes.AsQueryable();
 
@@ -48,7 +48,7 @@ namespace CookingWebsite.Infrastructure.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<RecipeLike> GetByUserIdRecipeId(int userId, int recipeId)
+        public async Task<RecipeLike> GetByUserIdAndRecipeId(int userId, int recipeId)
         {
             return await _recipeLikes.FirstOrDefaultAsync(r => r.RecipeId == recipeId && r.UserId == userId);
         }

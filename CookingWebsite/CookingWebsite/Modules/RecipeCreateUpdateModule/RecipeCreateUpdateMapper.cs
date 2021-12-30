@@ -19,8 +19,6 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
             result.CookingTime = recipe.CookingTime;
             result.PersonsCount = recipe.PersonsCount;
 
-            result.Ingredients = new List<Application.Recipes.RecipeDtos.RecipeIngredientDto>();
-
             result.Ingredients = recipe.Ingredients.Select(x => new Application.Recipes.RecipeDtos.RecipeIngredientDto
             {
                 Title = x.Title,
@@ -31,15 +29,11 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
                 }).ToList()
             }).ToList();
 
-            result.Steps = new List<Application.Recipes.RecipeDtos.RecipeStepDto>();
-
             result.Steps = recipe.Steps.Select((s, i) => new Application.Recipes.RecipeDtos.RecipeStepDto
             {
                 StepNumber = i + 1,
                 Description = s.Description
             }).ToList();
-
-            result.Tags = new List<Application.Recipes.RecipeDtos.RecipeTagDto>();
 
             result.Tags = recipe.Tags.Select(x => new Application.Recipes.RecipeDtos.RecipeTagDto
             {
@@ -67,8 +61,6 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
             result.CookingTime = recipe.CookingTime;
             result.PersonsCount = recipe.PersonsCount;
 
-            result.Ingredients = new List<Application.Recipes.RecipeDtos.RecipeIngredientDto>();
-
             result.Ingredients = recipe.Ingredients.Select(x => new Application.Recipes.RecipeDtos.RecipeIngredientDto
             {
                 Title = x.Title,
@@ -78,8 +70,6 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
                     Value = y.Value
                 }).ToList()
             }).ToList();
-
-            result.Steps = new List<Application.Recipes.RecipeDtos.RecipeStepDto>();
 
             result.Steps = recipe.Steps.Select((s, i) => new Application.Recipes.RecipeDtos.RecipeStepDto
             {

@@ -10,7 +10,7 @@ namespace CookingWebsite.Modules.SearchRecipeModule
 {
     [ApiController]
     [Route("api/recipes/search")]
-    public class RecipeSearchController : ControllerBase
+    public class RecipeSearchController : BaseController
     {
 
         private readonly IRecipeRepository _recipeRepository;
@@ -31,11 +31,11 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         {
             List<Recipe> recipes = new List<Recipe>();
             recipes = await _recipeRepository.Search(skip, take, searchString, false);
-            var userLikes = await _recipeLikeRepository.GetUserLikedRecipes(Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
+            var userLikes = await _recipeLikeRepository.GetByUserId(GetAuthorizedUserId());
 
             return await recipes.Map(
                 userLikes,
-                Convert.ToInt32(User.FindFirstValue(Claims.UserId)),
+                GetAuthorizedUserId(),
                 _recipeLikeRepository);
         }
     }

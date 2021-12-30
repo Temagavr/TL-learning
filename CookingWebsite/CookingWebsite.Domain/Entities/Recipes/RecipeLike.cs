@@ -15,9 +15,8 @@ namespace CookingWebsite.Domain.Entities.Recipes
         protected RecipeLike() { }
 
         public RecipeLike(
-                int userId,
-                int recipeId
-            )
+            int userId,
+            int recipeId)
         {
             UserId = userId;
             RecipeId = recipeId;

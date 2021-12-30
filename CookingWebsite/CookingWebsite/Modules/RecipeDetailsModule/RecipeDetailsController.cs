@@ -9,7 +9,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
 {
     [ApiController]
     [Route("api/recipes/{recipeId}")]
-    public class RecipeDetailsController : ControllerBase
+    public class RecipeDetailsController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRecipeRepository _recipeRepository;
@@ -29,12 +29,12 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
         public async Task<RecipeDetailsDto> GetRecipeDetails([FromRoute] int recipeId)
         {
             var recipeDetails = await _recipeRepository.GetById(recipeId);
-            var recipeLikes = await _recipeLikeRepository.GetRecipeLikes(recipeId);
+            var recipeLikes = await _recipeLikeRepository.GetByRecipeId(recipeId);
 
             return recipeDetails.Map(
-                User.FindFirstValue(Claims.Username),
+                GetAuthorizedUserUsername(),
                 recipeLikes,
-                Convert.ToInt32(User.FindFirstValue(Claims.UserId)));
+                GetAuthorizedUserId());
         }
 
         [HttpPost("delete")]

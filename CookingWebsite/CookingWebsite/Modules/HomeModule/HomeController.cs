@@ -29,7 +29,7 @@ namespace CookingWebsite.Modules.HomeModule
             var recipeLikes = new List<RecipeLike>();
 
             if (recipe != null)
-                recipeLikes = await _recipeLikeRepository.GetRecipeLikes(recipe.Id);
+                recipeLikes = await _recipeLikeRepository.GetByRecipeId(recipe.Id);
 
             return recipe.Map(recipeLikes);
         }
