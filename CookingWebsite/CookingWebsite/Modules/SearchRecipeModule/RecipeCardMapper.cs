@@ -26,7 +26,6 @@ namespace CookingWebsite.Modules.SearchRecipeModule
                 recipeCard.Description = recipe.Description;
                 recipeCard.AuthorUsername = recipe.AuthorUsername;
                 recipeCard.CookingTime = recipe.CookingTime;
-                recipeCard.FavouritesCount = 0;
                 recipeCard.Id = recipe.Id;
                 recipeCard.ImageUrl = recipe.ImageUrl;
                 recipeCard.PersonsCount = recipe.PersonsCount;
