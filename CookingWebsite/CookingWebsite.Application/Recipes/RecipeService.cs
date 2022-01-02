@@ -16,15 +16,18 @@ namespace CookingWebsite.Application.Recipes
 
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeLikeRepository _recipeLikeRepository;
+        private readonly IRecipeFavouriteRepository _recipeFavouriteRepository;
         private readonly IFileService _fileService;
 
         public RecipeService(
             IRecipeRepository recipeRepository,
             IRecipeLikeRepository recipeLikeRepository,
+            IRecipeFavouriteRepository recipeFavouriteRepository,
             IFileService fileService)
         {
             _recipeRepository = recipeRepository;
             _recipeLikeRepository = recipeLikeRepository;
+            _recipeFavouriteRepository = recipeFavouriteRepository;
             _fileService = fileService;
         }
 
@@ -128,11 +131,26 @@ namespace CookingWebsite.Application.Recipes
 
             _recipeLikeRepository.Add(recipeLike);
         }
+
         public async Task RemoveLike(int userId, int recipeId)
         {
             var recipeLike = await _recipeLikeRepository.GetByUserIdAndRecipeId(userId, recipeId);
 
             _recipeLikeRepository.Remove(recipeLike);
+        }
+
+        public void AddFavourite(int recipeId, int userId)
+        {
+            var recipeFavourite = new RecipeFavourite(userId, recipeId);
+
+            _recipeFavouriteRepository.Add(recipeFavourite);
+        }
+
+        public async Task RemoveFavourite(int userId, int recipeId)
+        {
+            var recipeFavourite = await _recipeFavouriteRepository.GetByUserIdAndRecipeId(userId, recipeId);
+
+            _recipeFavouriteRepository.Remove(recipeFavourite);
         }
     }
 }

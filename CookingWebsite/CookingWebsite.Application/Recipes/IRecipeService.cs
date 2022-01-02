@@ -12,5 +12,7 @@ namespace CookingWebsite.Application.Recipes
         Task UpdateRecipe(UpdateRecipeDto updateRecipeDto);
         void AddLike(int recipeId, int userId);
         Task RemoveLike(int recipeId, int userId);
+        void AddFavourite(int recipeId, int userId);
+        Task RemoveFavourite(int recipeId, int userId);
     }
 }
