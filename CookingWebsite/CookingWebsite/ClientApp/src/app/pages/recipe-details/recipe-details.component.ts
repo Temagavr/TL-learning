@@ -63,9 +63,9 @@ export class RecipeDetailsComponent {
         this.recipeCard.tags = recipeDetailsDto.tags.slice(0, 3);
       
       this.recipeCard.isFavourite = false;
-      this.recipeCard.isLiked = true;
+      this.recipeCard.isLiked = recipeDetailsDto.isLiked;
       this.recipeCard.favouritesCount = 12 //recipeDetailsDto.favourite;
-      this.recipeCard.likesCount = 6 //recipeDetailsDto.likes;
+      this.recipeCard.likesCount = recipeDetailsDto.likesCount;
       this.recipeCard.cookingTime = recipeDetailsDto.cookingTime;
       this.recipeCard.personsCount = recipeDetailsDto.personsCount;
 
@@ -91,11 +91,9 @@ export class RecipeDetailsComponent {
     });
   }
 
-  async deleteRecipe(){
-    let respose = await this.recipeDetailsService.deleteRecipe(this.route.snapshot.params.id);
+  public async deleteRecipe(): Promise<void>{
+    await this.recipeDetailsService.deleteRecipe(this.route.snapshot.params.id);
 
-    if (respose)
-      this.router.navigate(['/recipes']);
+    this.router.navigate(['/recipes']);
   }
-
 }

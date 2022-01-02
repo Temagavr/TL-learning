@@ -10,8 +10,6 @@ namespace CookingWebsite.Domain.Entities.Recipes
         public string Description { get; private set; }
         public int CookingTime { get; private set; }
         public int PersonsCount { get; private set; }
-        public int LikesCount { get; private set; }
-        public int FavouritesCount { get; private set; }
         public string AuthorUsername { get; private set; }
         public List<RecipeIngredient> Ingredients { get; private set; }
         public List<RecipeStep> Steps { get; private set; }
@@ -36,8 +34,6 @@ namespace CookingWebsite.Domain.Entities.Recipes
             Description = description;
             CookingTime = cookingTime;
             PersonsCount = personsCount;
-            LikesCount = 0;
-            FavouritesCount = 0;
             AuthorUsername = authorUsername;
             Ingredients = ingredients;
             Steps = steps;
@@ -62,6 +58,7 @@ namespace CookingWebsite.Domain.Entities.Recipes
             PersonsCount = personsCount;
             Ingredients = ingredients;
             Steps = steps;
-			Tags = tags;        }
+			Tags = tags;        
+        }
     }
 }

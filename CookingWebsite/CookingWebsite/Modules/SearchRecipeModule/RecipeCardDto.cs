@@ -13,6 +13,7 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         public int LikesCount { get; set; }
         public int FavouritesCount { get; set; }
         public string AuthorUsername { get; set; }
+        public bool IsLiked { get; set; }
         public List<string> Tags { get; set; }
     }
 }

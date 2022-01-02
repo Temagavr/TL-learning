@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { RecipeCreateUpdateService } from './recipe-create-update.service';
 import { RecipeDetailsDto } from './recipe-details-dto';
@@ -18,6 +18,7 @@ export class RecipeUpdateComponent {
 
   constructor(
     private recipeCUService: RecipeCreateUpdateService,
+    private router: Router,
     private route: ActivatedRoute
   ) {
   }
@@ -135,6 +136,8 @@ export class RecipeUpdateComponent {
 
     console.log(updatedRecipe);
 
-    await this.recipeCUService.updateRecipe(updatedRecipe);
+    let response = await this.recipeCUService.updateRecipe(updatedRecipe);
+
+    this.router.navigate(['/recipes/details', updatedRecipe.id]);
   }
 }

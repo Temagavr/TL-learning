@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace CookingWebsite.Modules.RecipeUpdateModule
+namespace CookingWebsite.Modules.RecipeCreateUpdateModule
 {
-    public class UpdateRecipeDto
+    public class AddRecipeDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int CookingTime { get; set; }
         public int PersonsCount { get; set; }
+        public string AuthorUsername { get; set; }
         public List<RecipeIngredientDto> Ingredients { get; set; }
         public List<RecipeStepDto> Steps { get; set; }
         public List<string> Tags { get; set; }

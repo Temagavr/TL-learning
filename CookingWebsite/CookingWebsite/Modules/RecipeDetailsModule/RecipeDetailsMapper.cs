@@ -6,7 +6,11 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
 {
     public static class RecipeDetailsMapper
     {
-        public static RecipeDetailsDto Map(this Recipe recipe, string authorizedUser)
+        public static RecipeDetailsDto Map(
+            this Recipe recipe,
+            string authorizedUser,
+            List<RecipeLike> recipeLikes,
+            int userId)
         {
             var recipeDetailsDto = new RecipeDetailsDto();
 
@@ -14,15 +18,13 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             recipeDetailsDto.Description = recipe.Description;
             recipeDetailsDto.AuthorUsername = recipe.AuthorUsername;
             recipeDetailsDto.CookingTime = recipe.CookingTime;
-            recipeDetailsDto.FavouritesCount = recipe.FavouritesCount;
+            recipeDetailsDto.FavouritesCount = 0;
             recipeDetailsDto.Id = recipe.Id;
             recipeDetailsDto.ImageUrl = recipe.ImageUrl;
-            recipeDetailsDto.LikesCount = recipe.LikesCount;
+            recipeDetailsDto.LikesCount = recipeLikes.Count;
             recipeDetailsDto.PersonsCount = recipe.PersonsCount;
 
-            recipeDetailsDto.Ingredients = new List<RecipeIngredientDto>();
             recipeDetailsDto.Steps = new List<string>();
-            recipeDetailsDto.Tags = new List<string>();
 
             recipeDetailsDto.Ingredients = recipe.Ingredients.Select(x => new RecipeIngredientDto
             {
@@ -49,6 +51,8 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
                 recipeDetailsDto.IsCanModify = false;
 
             recipeDetailsDto.Tags = recipe.Tags.Select(x => x.TagName).ToList();
+
+            recipeDetailsDto.IsLiked = recipeLikes.Any(x => x.UserId == userId);
 
             return recipeDetailsDto;
         }

@@ -1,20 +1,24 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CookingWebsite.Modules.SearchRecipeModule
 {
     [ApiController]
     [Route("api/recipes/search")]
-    public class RecipeSearchController : ControllerBase
+    public class RecipeSearchController : BaseController
     {
 
         private readonly IRecipeRepository _recipeRepository;
-        public RecipeSearchController(IRecipeRepository recipeRepository)
+        private readonly IRecipeLikeRepository _recipeLikeRepository;
+        public RecipeSearchController(IRecipeRepository recipeRepository, IRecipeLikeRepository recipeLikeRepository)
         {
             _recipeRepository = recipeRepository;
+            _recipeLikeRepository = recipeLikeRepository;
         }
 
         [HttpGet]
@@ -27,8 +31,12 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         {
             List<Recipe> recipes = new List<Recipe>();
             recipes = await _recipeRepository.Search(skip, take, searchString, false);
+            var userLikes = await _recipeLikeRepository.GetByUserId(GetAuthorizedUserId());
 
-            return recipes.Map();
+            return await recipes.Map(
+                userLikes,
+                GetAuthorizedUserId(),
+                _recipeLikeRepository);
         }
     }
 }

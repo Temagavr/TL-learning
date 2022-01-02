@@ -14,19 +14,24 @@ namespace CookingWebsite.Application.Recipes
     public class RecipeService : IRecipeService
     {
 
-        private readonly IRecipeRepository _recipeRepostitory;
+        private readonly IRecipeRepository _recipeRepository;
+        private readonly IRecipeLikeRepository _recipeLikeRepository;
         private readonly IFileService _fileService;
 
-        public RecipeService(IRecipeRepository recipeRepository, IFileService fileService)
+        public RecipeService(
+            IRecipeRepository recipeRepository,
+            IRecipeLikeRepository recipeLikeRepository,
+            IFileService fileService)
         {
-            _recipeRepostitory = recipeRepository;
+            _recipeRepository = recipeRepository;
+            _recipeLikeRepository = recipeLikeRepository;
             _fileService = fileService;
         }
 
         public async Task<Recipe> GetRecipeOfDay()
         {
-            var recipeOfDay = await _recipeRepostitory.GetFirst();
-
+            var recipeOfDay = await _recipeRepository.GetFirst();
+            
             return recipeOfDay;
         }
         
@@ -69,14 +74,12 @@ namespace CookingWebsite.Application.Recipes
                 tags
             );
 
-            _recipeRepostitory.Add(recipe);
-
-            return;
+            _recipeRepository.Add(recipe);
         }
 
         public async Task UpdateRecipe(UpdateRecipeDto updateRecipeDto)
         {
-            var recipe = await _recipeRepostitory.GetById(updateRecipeDto.Id);
+            var recipe = await _recipeRepository.GetById(updateRecipeDto.Id);
 
             FileSaveResult imageSaveResult = new FileSaveResult();
             if (updateRecipeDto.Image != null)
@@ -117,6 +120,19 @@ namespace CookingWebsite.Application.Recipes
                 steps,
                 tags
             );
+        }
+
+        public void AddLike(int recipeId, int userId)
+        {
+            var recipeLike = new RecipeLike(userId, recipeId);
+
+            _recipeLikeRepository.Add(recipeLike);
+        }
+        public async Task RemoveLike(int userId, int recipeId)
+        {
+            var recipeLike = await _recipeLikeRepository.GetByUserIdAndRecipeId(userId, recipeId);
+
+            _recipeLikeRepository.Remove(recipeLike);
         }
     }
 }

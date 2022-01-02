@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { RecipeCard } from './recipe-card';
+import { RecipeLikeService } from './recipe-like.service';
 
 @Component({
   selector: 'app-recipe-card',
@@ -12,8 +13,10 @@ import { RecipeCard } from './recipe-card';
 })
 export class RecipeCardComponent {
 
-  constructor(private router: Router,
-    private sanitizer: DomSanitizer
+  constructor(
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private recipeLikeService: RecipeLikeService
   ) {
   }
 
@@ -41,16 +44,18 @@ export class RecipeCardComponent {
     }
   }
 
-  likeRecipe() {
+  public async likeRecipe(): Promise<void> {
     this.recipeInfo.isLiked = !this.recipeInfo.isLiked;
     if (this.recipeInfo.isLiked) {
       this.recipeInfo.likesCount = this.recipeInfo.likesCount + 1;
+      this.recipeLikeService.likeRecipe(this.recipeInfo.id);
     } else {
       this.recipeInfo.likesCount = this.recipeInfo.likesCount - 1;
+      this.recipeLikeService.unlikeRecipe(this.recipeInfo.id);
     }
   }
 
-  favouriteRecipe() {
+  public favouriteRecipe() {
     this.recipeInfo.isFavourite = !this.recipeInfo.isFavourite;
     if (this.recipeInfo.isFavourite) {
       this.recipeInfo.favouritesCount = this.recipeInfo.favouritesCount + 1;

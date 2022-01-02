@@ -20,10 +20,8 @@ export class RecipeDetailsService extends HttpService {
     return response;
   }
 
-  public async deleteRecipe(recipeId: number) {
+  public async deleteRecipe(recipeId: number): Promise<void> {
 
-    const response = await this.Post(`${this.url}/${recipeId}/delete`, {});
-
-    return response;
+    await this.Post(`${this.url}/${recipeId}/delete`, {});
   }
 }

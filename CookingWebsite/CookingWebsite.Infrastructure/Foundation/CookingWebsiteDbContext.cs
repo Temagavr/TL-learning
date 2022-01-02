@@ -20,6 +20,7 @@ namespace CookingWebsite.Infrastructure.Foundation
             builder.ApplyConfiguration( new RecipeIngredientConfiguration() ); 
             builder.ApplyConfiguration( new RecipeIngredientItemConfiguration() );
             builder.ApplyConfiguration( new RecipeStepConfiguration() );
+            builder.ApplyConfiguration( new RecipeLikeConfiguration() );
         }
     }
 }
