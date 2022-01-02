@@ -11,8 +11,10 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         public static async Task<List<RecipeCardDto>> Map(
             this List<Recipe> recipes,
             List<RecipeLike> userLikes,
+            List<RecipeFavourite> userFavourites,
             int userId,
-            IRecipeLikeRepository recipeLikeRepository)
+            IRecipeLikeRepository recipeLikeRepository,
+            IRecipeFavouriteRepository recipeFavouriteRepository)
         {
             var recipeCardsList = new List<RecipeCardDto>();
 
@@ -32,18 +34,18 @@ namespace CookingWebsite.Modules.SearchRecipeModule
                 var recipeLikes = await recipeLikeRepository.GetByRecipeId(recipe.Id);
                 recipeCard.LikesCount = recipeLikes.Count;
 
+                var recipeFavourites = await recipeFavouriteRepository.GetByRecipeId(recipe.Id);
+                recipeCard.FavouritesCount = recipeFavourites.Count;
+
                 recipeCard.Tags = new List<string>();
                 foreach(RecipeTag tag in recipe.Tags)
                 {
                     recipeCard.Tags.Add(tag.TagName);
                 }
 
-                var likeRecipe = userLikes.Where(r => r.UserId == userId && r.RecipeId == recipe.Id).ToList();
+                recipeCard.IsLiked = userLikes.Any(r => r.UserId == userId && r.RecipeId == recipe.Id);
 
-                if (likeRecipe.Count > 0)
-                    recipeCard.IsLiked = true;
-                else
-                    recipeCard.IsLiked = false;
+                recipeCard.IsFavourite = userFavourites.Any(r => r.UserId == userId && r.RecipeId == recipe.Id);
 
                 recipeCardsList.Add(recipeCard);
             }

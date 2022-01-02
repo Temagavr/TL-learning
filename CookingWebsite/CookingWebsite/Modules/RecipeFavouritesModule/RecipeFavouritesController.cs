@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CookingWebsite.Modules.RecipeFavouritesModule
 {
     [ApiController]
-    [Route("api/recipes/favourites")]
+    [Route("api/recipes/{recipeId}/favourites")]
     public class RecipeFavouritesController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;

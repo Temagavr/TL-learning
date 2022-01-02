@@ -3,6 +3,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { RecipeCard } from './recipe-card';
+import { RecipeFavouriteService } from './recipe-favourite.service';
 import { RecipeLikeService } from './recipe-like.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class RecipeCardComponent {
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
-    private recipeLikeService: RecipeLikeService
+    private recipeLikeService: RecipeLikeService,
+    private recipeFavouriteService: RecipeFavouriteService
   ) {
   }
 
@@ -55,12 +57,14 @@ export class RecipeCardComponent {
     }
   }
 
-  public favouriteRecipe() {
+  public async favouriteRecipe(): Promise<void> {
     this.recipeInfo.isFavourite = !this.recipeInfo.isFavourite;
     if (this.recipeInfo.isFavourite) {
       this.recipeInfo.favouritesCount = this.recipeInfo.favouritesCount + 1;
+      this.recipeFavouriteService.favouriteRecipe(this.recipeInfo.id);
     } else {
       this.recipeInfo.favouritesCount = this.recipeInfo.favouritesCount - 1;
+      this.recipeFavouriteService.unfavouriteRecipe(this.recipeInfo.id);
     }
   }
 
