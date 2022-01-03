@@ -9,6 +9,9 @@
   justify-content: space-between;
   flex-direction: row;
   padding: 5%;
+  background: url('../../../../assets/userEditIcon.png') no-repeat #FFFFFF;
+  background-position: 98% 7%;
+  background-size: 24px;
 }
 
 .left-user-info {
@@ -20,6 +23,19 @@
 
 .user-info-input {
   height: 50px;
+  padding-top: 10px;
+}
+
+.user-name {
+  background: url('../../../../assets/userNameLabel.png') no-repeat #FFFFFF;
+  background-position: 4.3% 22%;
+  background-size: 24px;
+}
+
+.user-login {
+  background: url('../../../../assets/userLoginLabel.png') no-repeat #FFFFFF;
+  background-position: 4.3% 21%;
+  background-size: 38px;
 }
 
 .right-user-info {
