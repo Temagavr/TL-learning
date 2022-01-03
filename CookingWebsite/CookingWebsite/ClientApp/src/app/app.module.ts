@@ -8,6 +8,7 @@ import { HomeModule } from './pages/home/home.module';
 import { RecipesListPageModule } from './pages/recipes-list-page/recipes-list-page.module';
 import { RecipeDetailsModule } from './pages/recipe-details/recipe-details.module';
 import { RecipeCreateModule } from './pages/recipe-create/recipe-create.module';
+import { UserInfoModule } from './pages/user-info/user-info.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { SharedModule } from './common/shared.module';
     RecipesListPageModule,
     RecipeDetailsModule,
     RecipeCreateModule,
+    UserInfoModule,
 
     AppRoutingModule,
 

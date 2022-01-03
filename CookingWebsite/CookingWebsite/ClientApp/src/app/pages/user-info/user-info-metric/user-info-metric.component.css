@@ -1,0 +1,52 @@
+.user-metric-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 378px;
+  padding: 8%;
+  background: #FFFFFF;
+  box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+  border-radius: 24px;
+  height: 151px;
+}
+
+.user-metric-img-block {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  background-color: #FFEFFC;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.user-metric-img-block img {
+  margin: 12px 0;
+}
+
+.user-metric-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-metric-value-block {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-metric-value {
+  display: block;
+  color: #FDB100;
+  font-weight: 600;
+  font-size: 107px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.user-metric-title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 30px;
+  color: #25292D;
+}
