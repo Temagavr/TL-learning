@@ -103,6 +103,7 @@
     <None Remove="ClientApp\src\app\pages\user-info\user-info-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\user-info\user-info.component.ts" />
     <None Remove="ClientApp\src\app\pages\user-info\user-info.module.ts" />
+    <None Remove="ClientApp\src\app\pages\user-info\user-metric-dto.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -176,6 +177,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\user-info\user-info-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\user-info\user-info.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\user-info\user-info.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\user-info\user-metric-dto.ts" />
   </ItemGroup>
 
   <ItemGroup>

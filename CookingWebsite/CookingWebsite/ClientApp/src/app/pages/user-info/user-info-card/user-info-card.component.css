@@ -5,4 +5,30 @@
   background: #FFFFFF;
   box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
   border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 5%;
+}
+
+.left-user-info {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-info-input {
+  height: 50px;
+}
+
+.right-user-info {
+  width: 48%;
+}
+
+.user-description{
+  width: 100%;
+  resize: none;
+  height: 191px;
+  padding: 15px 35px;
 }

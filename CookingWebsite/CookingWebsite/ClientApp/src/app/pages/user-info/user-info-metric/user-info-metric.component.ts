@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserMetricDto } from '../user-metric-dto';
 
 @Component({
   selector: 'app-user-info-metric',
@@ -10,4 +11,6 @@ export class UserInfoMetricComponent {
   ) {
 
   }
+
+  @Input() userMetric: UserMetricDto;
 }

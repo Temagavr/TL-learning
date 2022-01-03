@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
+import { UserMetricDto } from './user-metric-dto';
 
 @Component({
   selector: 'app-user-info',
@@ -14,6 +15,13 @@ export class UserInfoComponent {
 
   userRecipes: RecipeCard[];
 
+  userStatistic: UserMetricDto[] = [
+    { title: 'Всего рецептов', value: 0 },
+    { title: 'Всего лайков', value: 0 },
+    { title: 'В избранных', value: 0 }
+  ]
+
   ngOnInit() {
+    this.userRecipes = [];
   }
 }
