@@ -96,6 +96,10 @@
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-list\recipes-list.component.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\recipes-search.service.ts" />
     <None Remove="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
+    <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites-header\user-favourites-header.component.ts" />
+    <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites-routing.module.ts" />
+    <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites.component.ts" />
+    <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -162,6 +166,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-list\recipes-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\recipes-search.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\recipes-list-page\title\title.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites-header\user-favourites-header.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites.module.ts" />
   </ItemGroup>
 
   <ItemGroup>
