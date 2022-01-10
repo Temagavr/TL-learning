@@ -26,7 +26,7 @@ namespace CookingWebsite.Modules.RecipeLikesModule
         [HttpPost("add")]
         public async Task AddLike([FromRoute] int recipeId)
         {
-            _recipeService.AddLike(recipeId, GetAuthorizedUserId());
+            await _recipeService.AddLike(recipeId, GetAuthorizedUserId());
             
             await _unitOfWork.Commit();
         }

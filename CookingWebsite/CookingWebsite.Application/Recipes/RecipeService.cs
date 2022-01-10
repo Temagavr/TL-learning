@@ -125,11 +125,16 @@ namespace CookingWebsite.Application.Recipes
             );
         }
 
-        public void AddLike(int recipeId, int userId)
+        public async Task AddLike(int recipeId, int userId)
         {
-            var recipeLike = new RecipeLike(userId, recipeId);
+            var like = await _recipeLikeRepository.GetByUserIdAndRecipeId(userId, recipeId);
 
-            _recipeLikeRepository.Add(recipeLike);
+            if (like == null)
+            {
+                var recipeLike = new RecipeLike(userId, recipeId);
+
+                _recipeLikeRepository.Add(recipeLike);
+            }
         }
 
         public async Task RemoveLike(int userId, int recipeId)
@@ -139,11 +144,16 @@ namespace CookingWebsite.Application.Recipes
             _recipeLikeRepository.Remove(recipeLike);
         }
 
-        public void AddFavourite(int recipeId, int userId)
+        public async Task AddFavourite(int recipeId, int userId)
         {
-            var recipeFavourite = new RecipeFavourite(userId, recipeId);
+            var favourite = await _recipeFavouriteRepository.GetByUserIdAndRecipeId(userId, recipeId);
 
-            _recipeFavouriteRepository.Add(recipeFavourite);
+            if (favourite == null)
+            {
+                var recipeFavourite = new RecipeFavourite(userId, recipeId);
+
+                _recipeFavouriteRepository.Add(recipeFavourite);
+            }
         }
 
         public async Task RemoveFavourite(int userId, int recipeId)

@@ -27,7 +27,7 @@ namespace CookingWebsite.Modules.RecipeFavouritesModule
         [HttpPost("add")]
         public async Task AddFavourite([FromRoute] int recipeId)
         {
-            _recipeService.AddFavourite(recipeId, GetAuthorizedUserId());
+            await _recipeService.AddFavourite(recipeId, GetAuthorizedUserId());
 
             await _unitOfWork.Commit();
         }
