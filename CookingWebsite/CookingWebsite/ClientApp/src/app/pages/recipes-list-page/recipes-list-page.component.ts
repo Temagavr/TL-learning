@@ -49,7 +49,7 @@ export class RecipesListPageComponent {
   }
 
   loadMoreRecipes() {
-    var skip = this.recipes.length;
+    let skip = this.recipes.length;
 
     this.recipeSearchService.getRecipeList(skip, 2, this.searchString).then((recipeCards: RecipeCard[]) => {
       for (let recipe of recipeCards) {

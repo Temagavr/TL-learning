@@ -11,5 +11,6 @@ namespace CookingWebsite.Domain.Repositories
         Task<List<RecipeFavourite>> GetByUserId(int userId);
         Task<List<RecipeFavourite>> GetByRecipeId(int recipeId);
         Task<RecipeFavourite> GetByUserIdAndRecipeId(int userId, int recipeId);
+        Task<List<RecipeFavourite>> GetUserFavourites(int skip, int take, int userId);
     }
 }

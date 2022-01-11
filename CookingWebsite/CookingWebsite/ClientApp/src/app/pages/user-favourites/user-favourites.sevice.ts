@@ -14,9 +14,9 @@ export class UserFavouritesService extends HttpService {
 
   private url = 'api/user/favourites';
 
-  public async getUserFavourites(): Promise<RecipeCard[]> {
+  public async getUserFavourites(skip: number, take: number): Promise<RecipeCard[]> {
 
-    const response: RecipeCard[] = await this.Get(`${this.url}`);
+    const response: RecipeCard[] = await this.Get(`${this.url}?skip=${skip}&take=${take}`);
 
     return response;
   }

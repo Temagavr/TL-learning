@@ -163,9 +163,9 @@ namespace CookingWebsite.Application.Recipes
             _recipeFavouriteRepository.Remove(recipeFavourite);
         }
 
-        public async Task<List<Recipe>> GetUserFavourites(int userId)
+        public async Task<List<Recipe>> GetUserFavourites(int skip, int take, int userId)
         {
-            List<RecipeFavourite> recipeFavourites = await _recipeFavouriteRepository.GetByUserId(userId);
+            List<RecipeFavourite> recipeFavourites = await _recipeFavouriteRepository.GetUserFavourites(skip, take, userId);
             
             if(recipeFavourites != null)
             {
