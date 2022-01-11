@@ -1,0 +1,9 @@
+.user-favourites-header-block {
+  margin-top: 4%;
+}
+
+.user-favourites-header {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+}
