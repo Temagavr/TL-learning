@@ -162,5 +162,24 @@ namespace CookingWebsite.Application.Recipes
 
             _recipeFavouriteRepository.Remove(recipeFavourite);
         }
+
+        public async Task<List<Recipe>> GetUserFavourites(int userId)
+        {
+            List<RecipeFavourite> recipeFavourites = await _recipeFavouriteRepository.GetByUserId(userId);
+            
+            if(recipeFavourites != null)
+            {
+                var recipes = new List<Recipe>();
+
+                foreach(RecipeFavourite favourite in recipeFavourites)
+                {
+                    recipes.Add(await _recipeRepository.GetById(favourite.RecipeId));
+                }
+
+                return recipes;
+            }
+
+            return new List<Recipe>();
+        }
     }
 }
