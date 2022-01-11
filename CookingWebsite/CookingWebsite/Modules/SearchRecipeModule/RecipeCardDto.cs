@@ -14,6 +14,7 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         public int FavouritesCount { get; set; }
         public string AuthorUsername { get; set; }
         public bool IsLiked { get; set; }
+        public bool IsFavourite { get; set; }
         public List<string> Tags { get; set; }
     }
 }

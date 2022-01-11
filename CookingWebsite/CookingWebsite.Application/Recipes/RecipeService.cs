@@ -16,15 +16,18 @@ namespace CookingWebsite.Application.Recipes
 
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeLikeRepository _recipeLikeRepository;
+        private readonly IRecipeFavouriteRepository _recipeFavouriteRepository;
         private readonly IFileService _fileService;
 
         public RecipeService(
             IRecipeRepository recipeRepository,
             IRecipeLikeRepository recipeLikeRepository,
+            IRecipeFavouriteRepository recipeFavouriteRepository,
             IFileService fileService)
         {
             _recipeRepository = recipeRepository;
             _recipeLikeRepository = recipeLikeRepository;
+            _recipeFavouriteRepository = recipeFavouriteRepository;
             _fileService = fileService;
         }
 
@@ -122,17 +125,42 @@ namespace CookingWebsite.Application.Recipes
             );
         }
 
-        public void AddLike(int recipeId, int userId)
+        public async Task AddLike(int recipeId, int userId)
         {
-            var recipeLike = new RecipeLike(userId, recipeId);
+            var like = await _recipeLikeRepository.GetByUserIdAndRecipeId(userId, recipeId);
 
-            _recipeLikeRepository.Add(recipeLike);
+            if (like == null)
+            {
+                var recipeLike = new RecipeLike(userId, recipeId);
+
+                _recipeLikeRepository.Add(recipeLike);
+            }
         }
+
         public async Task RemoveLike(int userId, int recipeId)
         {
             var recipeLike = await _recipeLikeRepository.GetByUserIdAndRecipeId(userId, recipeId);
 
             _recipeLikeRepository.Remove(recipeLike);
+        }
+
+        public async Task AddFavourite(int recipeId, int userId)
+        {
+            var favourite = await _recipeFavouriteRepository.GetByUserIdAndRecipeId(userId, recipeId);
+
+            if (favourite == null)
+            {
+                var recipeFavourite = new RecipeFavourite(userId, recipeId);
+
+                _recipeFavouriteRepository.Add(recipeFavourite);
+            }
+        }
+
+        public async Task RemoveFavourite(int userId, int recipeId)
+        {
+            var recipeFavourite = await _recipeFavouriteRepository.GetByUserIdAndRecipeId(userId, recipeId);
+
+            _recipeFavouriteRepository.Remove(recipeFavourite);
         }
     }
 }

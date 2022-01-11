@@ -62,9 +62,9 @@ export class RecipeDetailsComponent {
       if(recipeDetailsDto.tags.length > 0)
         this.recipeCard.tags = recipeDetailsDto.tags.slice(0, 3);
       
-      this.recipeCard.isFavourite = false;
+      this.recipeCard.isFavourite = recipeDetailsDto.isFavourite;
       this.recipeCard.isLiked = recipeDetailsDto.isLiked;
-      this.recipeCard.favouritesCount = 12 //recipeDetailsDto.favourite;
+      this.recipeCard.favouritesCount = recipeDetailsDto.favouritesCount;
       this.recipeCard.likesCount = recipeDetailsDto.likesCount;
       this.recipeCard.cookingTime = recipeDetailsDto.cookingTime;
       this.recipeCard.personsCount = recipeDetailsDto.personsCount;

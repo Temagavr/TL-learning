@@ -10,6 +10,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             this Recipe recipe,
             string authorizedUser,
             List<RecipeLike> recipeLikes,
+            List<RecipeFavourite> recipeFavourites,
             int userId)
         {
             var recipeDetailsDto = new RecipeDetailsDto();
@@ -18,7 +19,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             recipeDetailsDto.Description = recipe.Description;
             recipeDetailsDto.AuthorUsername = recipe.AuthorUsername;
             recipeDetailsDto.CookingTime = recipe.CookingTime;
-            recipeDetailsDto.FavouritesCount = 0;
+            recipeDetailsDto.FavouritesCount = recipeFavourites.Count;
             recipeDetailsDto.Id = recipe.Id;
             recipeDetailsDto.ImageUrl = recipe.ImageUrl;
             recipeDetailsDto.LikesCount = recipeLikes.Count;
@@ -53,6 +54,8 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             recipeDetailsDto.Tags = recipe.Tags.Select(x => x.TagName).ToList();
 
             recipeDetailsDto.IsLiked = recipeLikes.Any(x => x.UserId == userId);
+
+            recipeDetailsDto.IsFavourite = recipeFavourites.Any(x => x.UserId == userId);
 
             return recipeDetailsDto;
         }
