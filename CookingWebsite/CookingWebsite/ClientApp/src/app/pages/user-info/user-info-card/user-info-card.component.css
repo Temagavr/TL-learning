@@ -38,6 +38,25 @@
   background-size: 38px;
 }
 
+.user-password {
+  width: 100%;
+}
+
+.password-block {
+  position: relative;
+}
+
+.change-visibility-icon {
+  position: absolute;
+  background: url('../../../../assets/visibilityIcon.png') no-repeat #FFFFFF;
+  width: 24px;
+  height: 24px;
+  top: 12px;
+  right: 15px;
+  display: inline-block;
+  background-size: 24px;
+}
+
 .right-user-info {
   width: 48%;
 }

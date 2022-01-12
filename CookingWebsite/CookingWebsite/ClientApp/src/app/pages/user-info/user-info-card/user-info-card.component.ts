@@ -10,4 +10,14 @@ export class UserInfoCardComponent {
   ) {
 
   }
+
+  changeVisibility() {
+    event.preventDefault();
+    var passwordInput = document.getElementById("user_password_card") as HTMLInputElement;
+    if (passwordInput.type == "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
+  }
 }
