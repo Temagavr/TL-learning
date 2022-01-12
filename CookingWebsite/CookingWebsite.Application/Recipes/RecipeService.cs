@@ -169,12 +169,9 @@ namespace CookingWebsite.Application.Recipes
             
             if(recipeFavourites.Count > 0)
             {
-                var recipes = new List<Recipe>();
+                List<int> recipeIds = recipeFavourites.Select(x => x.Id).ToList();
 
-                foreach(RecipeFavourite favourite in recipeFavourites)
-                {
-                    recipes.Add(await _recipeRepository.GetById(favourite.RecipeId));
-                }
+                List<Recipe> recipes = await _recipeRepository.GetByIds(recipeIds);
 
                 return recipes;
             }
