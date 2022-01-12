@@ -57,7 +57,7 @@ namespace CookingWebsite.Infrastructure.Repositories
         {
             IQueryable<RecipeFavourite> query = _recipeFavourites.AsQueryable();
 
-            query = query.Where(x => x.UserId == userId).Skip(skip).Take(take);
+            query = query.Where(x => x.UserId == userId).OrderBy(x => x.Id).Skip(skip).Take(take);
 
             return await query.ToListAsync();
         }

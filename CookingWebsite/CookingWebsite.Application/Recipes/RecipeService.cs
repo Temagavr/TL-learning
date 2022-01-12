@@ -167,7 +167,7 @@ namespace CookingWebsite.Application.Recipes
         {
             List<RecipeFavourite> recipeFavourites = await _recipeFavouriteRepository.GetUserFavourites(skip, take, userId);
             
-            if(recipeFavourites != null)
+            if(recipeFavourites.Count > 0)
             {
                 var recipes = new List<Recipe>();
 

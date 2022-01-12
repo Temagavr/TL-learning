@@ -30,15 +30,15 @@ namespace CookingWebsite.Modules.UserFavouritesModule
         [HttpGet]
         public async Task<List<RecipeCardDto>> GetUserFavouritesRecipes(
             [FromQuery] int skip,
-            [FromQuery] int take,
-            [FromQuery] string searchString)
+            [FromQuery] int take)
         {
-            List<Recipe> recipe = await _recipeService.GetUserFavourites(skip, take, GetAuthorizedUserId());
+            int authorizedUserId = GetAuthorizedUserId();
+            List<Recipe> recipes = await _recipeService.GetUserFavourites(skip, take, authorizedUserId);
 
-            List<RecipeLike> userLikes = await _recipeLikeRepository.GetByUserId(GetAuthorizedUserId());
-            List<RecipeFavourite> userFavourites = await _recipeFavouriteRepository.GetByUserId(GetAuthorizedUserId());
+            List<RecipeLike> userLikes = await _recipeLikeRepository.GetByUserId(authorizedUserId);
+            List<RecipeFavourite> userFavourites = await _recipeFavouriteRepository.GetByUserId(authorizedUserId);
 
-            return await recipe.Map(
+            return await recipes.Map(
                 userLikes,
                 userFavourites,
                 GetAuthorizedUserId(),

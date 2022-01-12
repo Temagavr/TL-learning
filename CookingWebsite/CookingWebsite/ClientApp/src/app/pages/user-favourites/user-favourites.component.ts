@@ -23,8 +23,9 @@ export class UserFavouritesComponent {
 
   loadMoreRecipes() {
     let skip = this.recipes.length;
+    const take = 2;
 
-    this.userFavouritesService.getUserFavourites(skip, 2).then((recipeCards: RecipeCard[]) => {
+    this.userFavouritesService.getUserFavourites(skip, take).then((recipeCards: RecipeCard[]) => {
       for (let recipe of recipeCards) {
         this.recipes.push(recipe);
       }
