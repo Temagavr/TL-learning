@@ -40,6 +40,9 @@
 
 .user-password {
   width: 100%;
+  background: url('../../../../assets/userPasswordLabel.png') no-repeat #FFFFFF;
+  background-position: 4.3% 21%;
+  background-size: 58px;
 }
 
 .password-block {
