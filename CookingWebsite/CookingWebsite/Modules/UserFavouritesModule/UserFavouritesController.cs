@@ -35,15 +35,9 @@ namespace CookingWebsite.Modules.UserFavouritesModule
             int authorizedUserId = GetAuthorizedUserId();
             List<Recipe> recipes = await _recipeService.GetUserFavourites(skip, take, authorizedUserId);
 
-            List<RecipeLike> userLikes = await _recipeLikeRepository.GetByUserId(authorizedUserId);
-            List<RecipeFavourite> userFavourites = await _recipeFavouriteRepository.GetByUserId(authorizedUserId);
+            RecipeCardBuilder builder = new RecipeCardBuilder(_recipeLikeRepository, _recipeFavouriteRepository);
 
-            return await recipes.Map(
-                userLikes,
-                userFavourites,
-                GetAuthorizedUserId(),
-                _recipeLikeRepository,
-                _recipeFavouriteRepository);
+            return await builder.Build(recipes, authorizedUserId);
         }
     }
 }
