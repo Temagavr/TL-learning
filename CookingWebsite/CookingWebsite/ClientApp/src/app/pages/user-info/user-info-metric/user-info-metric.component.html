@@ -6,6 +6,7 @@
     <span class="user-metric-title">{{userMetric.title}}</span>
   </div>
   <div class="user-metric-value-block">
-    <span class="user-metric-value">{{userMetric.value}}</span>
+    <span *ngIf="userMetric.value < 100" class="user-metric-value">{{userMetric.value}}</span>
+    <span *ngIf="userMetric.value >= 100" class="user-metric-value">+99</span>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="content-block">
   <app-user-info-header></app-user-info-header>
-  <app-user-info-card></app-user-info-card>
+  <app-user-info-card [userInfo]="userInfo"></app-user-info-card>
   <div class="user-statistic">
     <app-user-info-metric *ngFor="let metric of userStatistic" [userMetric]="metric" ></app-user-info-metric>
   </div>

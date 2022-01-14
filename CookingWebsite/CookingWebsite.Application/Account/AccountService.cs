@@ -60,6 +60,13 @@ namespace CookingWebsite.Application.Account
             
         }
 
+        public async Task<User> GetUserInfo(int userId)
+        {
+            User user = await _userRepostitory.GetById(userId);
+
+            return user;
+        }
+
         private bool ValidateRegistration(RegistrationDto registrationDto)
         {
             if (registrationDto.Name == "")

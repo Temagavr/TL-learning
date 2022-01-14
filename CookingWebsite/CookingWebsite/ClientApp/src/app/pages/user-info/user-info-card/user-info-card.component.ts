@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserInfoDto } from '../user-info-dto';
 
 @Component({
   selector: 'app-user-info-card',
@@ -10,6 +11,8 @@ export class UserInfoCardComponent {
   ) {
 
   }
+
+  @Input() userInfo: UserInfoDto;
 
   changeVisibility() {
     event.preventDefault();

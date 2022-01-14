@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { UserInfoComponent } from './user-info.component';
 import { UserInfoHeaderComponent } from './user-info-header/user-info-header.component';
@@ -8,6 +9,8 @@ import { UserInfoMetricComponent } from './user-info-metric/user-info-metric.com
 import { UserInfoRecipesListComponent } from './user-info-recipes-list/user-info-recipes-list.component';
 
 import { UserInfoRoutingModule } from './user-info-routing.module';
+
+import { UserInfoService } from './user-info.service';
 
 import { SharedModule } from '../../common/shared.module';
 
@@ -19,9 +22,9 @@ import { SharedModule } from '../../common/shared.module';
     UserInfoMetricComponent,
     UserInfoRecipesListComponent
   ],
-  imports: [CommonModule, UserInfoRoutingModule, SharedModule],
+  imports: [CommonModule, UserInfoRoutingModule, FormsModule, SharedModule],
   exports: [],
-  providers: [  ],
+  providers: [ UserInfoService ],
 })
 
 export class UserInfoModule { }
