@@ -40,8 +40,6 @@ export class UserInfoComponent {
 
   private getUserInfo(): void {
     this.userInfoService.getUserInfo().then((userInfoDto: UserInfoDto) => {
-      console.log(userInfoDto);
-
       this.userInfo.login = userInfoDto.login;
       this.userInfo.name = userInfoDto.name;
       this.userInfo.description = userInfoDto.description;
