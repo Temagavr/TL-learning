@@ -14,17 +14,14 @@ namespace CookingWebsite.Modules.UserFavouritesModule
     public class UserFavouritesController : BaseController
     {
         private readonly IRecipeService _recipeService;
-        private readonly IRecipeLikeRepository _recipeLikeRepository;
-        private readonly IRecipeFavouriteRepository _recipeFavouriteRepository;
+        private readonly IRecipeCardBuilder _recipeCardBuilder;
 
         public UserFavouritesController(
             IRecipeService recipeService,
-            IRecipeLikeRepository recipeLikeRepository,
-            IRecipeFavouriteRepository recipeFavouriteRepository)
+            IRecipeCardBuilder recipeCardBuilder)
         {
             _recipeService = recipeService;
-            _recipeLikeRepository = recipeLikeRepository;
-            _recipeFavouriteRepository = recipeFavouriteRepository;
+            _recipeCardBuilder = recipeCardBuilder;
         }
 
         [HttpGet]
@@ -35,9 +32,7 @@ namespace CookingWebsite.Modules.UserFavouritesModule
             int authorizedUserId = GetAuthorizedUserId();
             List<Recipe> recipes = await _recipeService.GetUserFavourites(skip, take, authorizedUserId);
 
-            RecipeCardBuilder builder = new RecipeCardBuilder(_recipeLikeRepository, _recipeFavouriteRepository);
-
-            return await builder.Build(recipes, authorizedUserId);
+            return await _recipeCardBuilder.Build(recipes, authorizedUserId);
         }
     }
 }

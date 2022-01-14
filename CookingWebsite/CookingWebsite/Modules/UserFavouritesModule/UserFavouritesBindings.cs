@@ -6,6 +6,8 @@ namespace CookingWebsite.Modules.UserFavouritesModule
     {
         public static IServiceCollection AddUserFavouritesModule(this IServiceCollection services)
         {
+            services.AddScoped<IRecipeCardBuilder, RecipeCardBuilder>();
+
             return services;
         }
     }

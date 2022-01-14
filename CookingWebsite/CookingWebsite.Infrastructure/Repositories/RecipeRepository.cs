@@ -89,7 +89,7 @@ namespace CookingWebsite.Infrastructure.Repositories
                     .ThenInclude(i => i.Items)
                 .Include(r => r.Steps)
                 .Include(r => r.Tags)
-                .Where(x => recipeIds.Contains(x.Id)).OrderBy(r => r.Id);
+                .Where(x => recipeIds.Contains(x.Id));
 
             return await query.ToListAsync();
         }
