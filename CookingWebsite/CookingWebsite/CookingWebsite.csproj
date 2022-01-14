@@ -101,6 +101,7 @@
     <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites-routing.module.ts" />
     <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites.component.ts" />
     <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites.module.ts" />
+    <None Remove="ClientApp\src\app\pages\user-favourites\user-favourites.sevice.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -172,6 +173,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pages\user-favourites\user-favourites.sevice.ts" />
   </ItemGroup>
 
   <ItemGroup>

@@ -106,6 +106,10 @@
   font-weight: bold;
 }
 
+.recipe-title:hover {
+  cursor: pointer;
+}
+
 .recipe-descr {
   font-size: 18px;
   line-height: 30px;

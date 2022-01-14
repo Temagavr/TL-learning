@@ -17,8 +17,7 @@ namespace CookingWebsite.Modules.RecipeFavouritesModule
 
         public RecipeFavouritesController(
             IUnitOfWork unitOfWork,
-            IRecipeService recipeService
-            )
+            IRecipeService recipeService)
         {
             _unitOfWork = unitOfWork;
             _recipeService = recipeService;

@@ -14,5 +14,6 @@ namespace CookingWebsite.Application.Recipes
         Task RemoveLike(int recipeId, int userId);
         Task AddFavourite(int recipeId, int userId);
         Task RemoveFavourite(int recipeId, int userId);
+        Task<List<Recipe>> GetUserFavourites(int skip, int take, int userId);
     }
 }
