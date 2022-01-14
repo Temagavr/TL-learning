@@ -10,7 +10,7 @@
     <img class="login-img" src="../../assets/loginIcon.png" />
     <span *ngIf="userName == ''" class="sign-in-btn" (click)="enterByUser()">Войти</span>
     <div *ngIf="userName != ''" class="logined-user">
-      <span class="sign-in-btn user-name">Привет, {{userName}}</span>
+      <span (click)="usernameClick()" class="sign-in-btn user-name">Привет, {{userName}}</span>
       <hr class="vertical-line" />
       <img (click)="LogOut()" class="log-out-btn" src="../../../assets/exitAppIcon.png" />
     </div>
