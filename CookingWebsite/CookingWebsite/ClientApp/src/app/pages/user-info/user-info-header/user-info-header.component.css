@@ -1,0 +1,9 @@
+.user-info-header-block {
+  margin-top: 3%;
+}
+
+.user-info-header {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+}

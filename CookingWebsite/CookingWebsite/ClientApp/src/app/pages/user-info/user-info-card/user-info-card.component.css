@@ -1,0 +1,69 @@
+.user-card-block {
+  width: 100%;
+  margin-top: 4%;
+  height: 311px;
+  background: #FFFFFF;
+  box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 5%;
+  background: url('../../../../assets/userEditIcon.png') no-repeat #FFFFFF;
+  background-position: 98% 7%;
+  background-size: 24px;
+}
+
+.left-user-info {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-info-input {
+  height: 50px;
+  padding-top: 10px;
+}
+
+.user-name {
+  background: url('../../../../assets/userNameLabel.png') no-repeat #FFFFFF;
+  background-position: 4.3% 22%;
+  background-size: 24px;
+}
+
+.user-login {
+  background: url('../../../../assets/userLoginLabel.png') no-repeat #FFFFFF;
+  background-position: 4.3% 21%;
+  background-size: 38px;
+}
+
+.user-password {
+  width: 100%;
+}
+
+.password-block {
+  position: relative;
+}
+
+.change-visibility-icon {
+  position: absolute;
+  background: url('../../../../assets/visibilityIcon.png') no-repeat #FFFFFF;
+  width: 24px;
+  height: 24px;
+  top: 12px;
+  right: 15px;
+  display: inline-block;
+  background-size: 24px;
+}
+
+.right-user-info {
+  width: 48%;
+}
+
+.user-description{
+  width: 100%;
+  resize: none;
+  height: 191px;
+  padding: 15px 35px;
+}
