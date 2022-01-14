@@ -19,3 +19,24 @@
   font-weight: 600;
   text-align: center;
 }
+
+.load-more-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 7%;
+}
+
+.load-more-btn {
+  border: 1px solid #FDB100;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: #FDB100;
+  height: 60px;
+  padding: 16px;
+  width: 20%;
+  text-align: center;
+}
+
+.load-more-btn:hover {
+  cursor: pointer;
+}

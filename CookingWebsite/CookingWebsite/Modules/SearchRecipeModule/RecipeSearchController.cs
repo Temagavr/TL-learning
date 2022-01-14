@@ -28,8 +28,7 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         (
             [FromQuery] int skip,
             [FromQuery] int take,
-            [FromQuery] string searchString
-        )
+            [FromQuery] string searchString)
         {
             List<Recipe> recipes = new List<Recipe>();
             int authorizedUserId = GetAuthorizedUserId();

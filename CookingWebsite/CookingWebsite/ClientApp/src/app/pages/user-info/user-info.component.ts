@@ -35,7 +35,9 @@ export class UserInfoComponent {
   ngOnInit() {
     this.getUserInfo();
 
-    this.userRecipes = [];
+    this.userInfoService.getUserRecipes(0, 4).then((recipeCards: RecipeCard[]) => {
+      this.userRecipes = recipeCards;
+    });
   }
 
   private getUserInfo(): void {
@@ -47,6 +49,17 @@ export class UserInfoComponent {
       this.userStatistic[0].value = userInfoDto.recipesCount;
       this.userStatistic[1].value = userInfoDto.likesCount;
       this.userStatistic[2].value = userInfoDto.favouritesCount;
+    });
+  }
+
+  loadMoreRecipes() {
+    let skip = this.userRecipes.length;
+    const take = 2;
+
+    this.userInfoService.getUserRecipes(skip, take).then((recipeCards: RecipeCard[]) => {
+      for (let recipe of recipeCards) {
+        this.userRecipes.push(recipe);
+      }
     });
   }
 }

@@ -15,18 +15,20 @@ namespace CookingWebsite.Modules.UserInfoModule
     public class UserInfoController : BaseController
     {
         private readonly IAccountService _accountService;
+        private readonly IRecipeCardBuilder _recipeCardBuilder;
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeLikeRepository _recipeLikeRepository;
         private readonly IRecipeFavouriteRepository _recipeFavouriteRepository;
 
         public UserInfoController(
             IAccountService accountService,
+            IRecipeCardBuilder recipeCardBuilder,
             IRecipeRepository recipeRepository,
             IRecipeLikeRepository recipeLikeRepository,
-            IRecipeFavouriteRepository recipeFavouriteRepository
-            )
+            IRecipeFavouriteRepository recipeFavouriteRepository)
         {
             _accountService = accountService;
+            _recipeCardBuilder = recipeCardBuilder;
             _recipeRepository = recipeRepository;
             _recipeLikeRepository = recipeLikeRepository;
             _recipeFavouriteRepository = recipeFavouriteRepository;
@@ -37,7 +39,6 @@ namespace CookingWebsite.Modules.UserInfoModule
         {
             int userId = GetAuthorizedUserId();
             User user = await _accountService.GetUserInfo(userId);
-            //List<Recipe> recipes = await _recipeRepository.
             List<RecipeLike> userLikes = await _recipeLikeRepository.GetByUserId(userId);
             List<RecipeFavourite> userFavourites = await _recipeFavouriteRepository.GetByUserId(userId);
 
@@ -49,13 +50,17 @@ namespace CookingWebsite.Modules.UserInfoModule
 
             return user.Map(userLikes, userFavourites, recipes);
         }
-        /*
-        [HttpGet("recipes")]
-        public async Task<RecipeCardDto> GetUserRecipes()
-        {
-
-        }
-        */
         
+        [HttpGet("recipes")]
+        public async Task<List<RecipeCardDto>> GetUserRecipes(
+            [FromQuery] int skip,
+            [FromQuery] int take)
+        {
+            int authorizedUserId = GetAuthorizedUserId();
+            string userName = GetAuthorizedUserUsername();
+            List<Recipe> recipes = await _recipeRepository.Search(skip, take, userName, false);
+
+            return await _recipeCardBuilder.Build(recipes, authorizedUserId);
+        }   
     }
 }

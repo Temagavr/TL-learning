@@ -10,6 +10,8 @@ namespace CookingWebsite.Modules.UserInfoModule
     {
         public static IServiceCollection AddUserInfoModule(this IServiceCollection services)
         {
+            services.AddScoped<IRecipeCardBuilder, RecipeCardBuilder>();
+
             return services;
         }
     }

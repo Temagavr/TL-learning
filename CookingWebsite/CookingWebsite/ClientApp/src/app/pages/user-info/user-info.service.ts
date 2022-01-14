@@ -24,7 +24,7 @@ export class UserInfoService extends HttpService {
 
   public async getUserRecipes(skip: number, take: number): Promise<RecipeCard[]> {
 
-    const response: RecipeCard[] = await this.Get(`${this.url}?skip=${skip}&take=${take}`);
+    const response: RecipeCard[] = await this.Get(`${this.url}/recipes?skip=${skip}&take=${take}`);
 
     return response;
   }
