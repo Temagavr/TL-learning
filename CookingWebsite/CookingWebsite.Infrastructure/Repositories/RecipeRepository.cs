@@ -78,5 +78,20 @@ namespace CookingWebsite.Infrastructure.Repositories
         {
             return await _recipes.FirstOrDefaultAsync();
         }
+
+        public async Task<List<Recipe>> GetByIds(List<int> recipeIds)
+        {
+
+            IQueryable<Recipe> query = _recipes.AsQueryable();
+
+            query = query
+                .Include(r => r.Ingredients)
+                    .ThenInclude(i => i.Items)
+                .Include(r => r.Steps)
+                .Include(r => r.Tags)
+                .Where(x => recipeIds.Contains(x.Id));
+
+            return await query.ToListAsync();
+        }
     }
 }

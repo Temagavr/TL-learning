@@ -14,5 +14,6 @@ namespace CookingWebsite.Domain.Repositories
         void Delete(Recipe recipe);
         Task<List<Recipe>> Search(int skip, int take, string searchString, bool includeAll);
         Task<Recipe> GetFirst();
+        Task<List<Recipe>> GetByIds(List<int> recipeIds);
     }
 }

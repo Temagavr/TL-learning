@@ -1,0 +1,14 @@
+<div class="content-block">
+  <app-user-favourites-header></app-user-favourites-header>
+  <div>
+    <span *ngIf="recipes.length == 0" class="empty-list-title">Ваш список пуст</span>
+    <div *ngIf="recipes.length > 0">
+      <app-recipe-card *ngFor="let recipeInfo of recipes" [recipeInfo]="recipeInfo"></app-recipe-card>
+
+      <div (click)="loadMoreRecipes()" class="load-more-block">
+        <span class="load-more-btn">Загрузить еще</span>
+      </div>
+
+    </div>
+    </div>
+</div>

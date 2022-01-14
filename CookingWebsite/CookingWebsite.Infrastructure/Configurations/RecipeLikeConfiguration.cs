@@ -10,6 +10,8 @@ namespace CookingWebsite.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<RecipeLike> builder)
         {
             builder.ToTable(nameof(RecipeLike)).HasKey(t => t.Id);
+
+            builder.HasIndex(x => new { x.UserId, x.RecipeId }).IsUnique();
         }
     }
 }

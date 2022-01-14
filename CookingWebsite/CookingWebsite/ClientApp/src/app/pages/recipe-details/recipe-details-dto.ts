@@ -15,7 +15,7 @@ export interface RecipeDetailsDto {
   isFavourite: boolean;
   isLiked: boolean;
 
-  favourite: number;
+  favouritesCount: number;
   likesCount: number;
   cookingTime: number;
   personsCount: number;

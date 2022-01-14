@@ -15,10 +15,16 @@ namespace CookingWebsite.Modules.SearchRecipeModule
 
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeLikeRepository _recipeLikeRepository;
-        public RecipeSearchController(IRecipeRepository recipeRepository, IRecipeLikeRepository recipeLikeRepository)
+        private readonly IRecipeFavouriteRepository _recipeFavouriteRepository;
+
+        public RecipeSearchController(
+            IRecipeRepository recipeRepository,
+            IRecipeLikeRepository recipeLikeRepository,
+            IRecipeFavouriteRepository recipeFavouriteRepository)
         {
             _recipeRepository = recipeRepository;
             _recipeLikeRepository = recipeLikeRepository;
+            _recipeFavouriteRepository = recipeFavouriteRepository;
         }
 
         [HttpGet]
@@ -31,12 +37,15 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         {
             List<Recipe> recipes = new List<Recipe>();
             recipes = await _recipeRepository.Search(skip, take, searchString, false);
-            var userLikes = await _recipeLikeRepository.GetByUserId(GetAuthorizedUserId());
+            List<RecipeLike> userLikes = await _recipeLikeRepository.GetByUserId(GetAuthorizedUserId());
+            List<RecipeFavourite> userFavourites = await _recipeFavouriteRepository.GetByUserId(GetAuthorizedUserId());
 
             return await recipes.Map(
                 userLikes,
+                userFavourites,
                 GetAuthorizedUserId(),
-                _recipeLikeRepository);
+                _recipeLikeRepository,
+                _recipeFavouriteRepository);
         }
     }
 }
