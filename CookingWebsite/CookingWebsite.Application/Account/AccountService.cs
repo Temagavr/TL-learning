@@ -52,12 +52,48 @@ namespace CookingWebsite.Application.Account
             return false;
         }
 
-        public async Task Edit (EditUserDto editUserDto)
+        public async Task<bool> ChangeName(int userId, string newValue)
         {
-            
+            User user = await _userRepostitory.GetById(userId);
 
-            await _unitOfWork.Commit();
-            
+            if (user == null)
+                return false;
+
+            user.UpdateName(newValue);
+            return true;
+        }
+
+        public async Task<bool> ChangeLogin(int userId, string newValue)
+        {
+            User user = await _userRepostitory.GetById(userId);
+
+            if (user == null)
+                return false;
+
+            user.UpdateLogin(newValue);
+            return true;
+        }
+
+        public async Task<bool> ChangePassword(int userId, string newValue)
+        {
+            User user = await _userRepostitory.GetById(userId);
+
+            if (user == null)
+                return false;
+
+            user.UpdatePassword(newValue);
+            return true;
+        }
+
+        public async Task<bool> ChangeDescription(int userId, string newValue)
+        {
+            User user = await _userRepostitory.GetById(userId);
+
+            if (user == null)
+                return false;
+
+            user.UpdateDescription(newValue);
+            return true;
         }
 
         public async Task<User> GetUserInfo(int userId)

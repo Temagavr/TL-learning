@@ -1,4 +1,5 @@
 ﻿using CookingWebsite.Application.Account;
+using CookingWebsite.Domain;
 using CookingWebsite.Domain.Entities.Recipes;
 using CookingWebsite.Domain.Entities.Users;
 using CookingWebsite.Domain.Repositories;
@@ -19,19 +20,22 @@ namespace CookingWebsite.Modules.UserInfoModule
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeLikeRepository _recipeLikeRepository;
         private readonly IRecipeFavouriteRepository _recipeFavouriteRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public UserInfoController(
             IAccountService accountService,
             IRecipeCardBuilder recipeCardBuilder,
             IRecipeRepository recipeRepository,
             IRecipeLikeRepository recipeLikeRepository,
-            IRecipeFavouriteRepository recipeFavouriteRepository)
+            IRecipeFavouriteRepository recipeFavouriteRepository,
+            IUnitOfWork unitOfWork)
         {
             _accountService = accountService;
             _recipeCardBuilder = recipeCardBuilder;
             _recipeRepository = recipeRepository;
             _recipeLikeRepository = recipeLikeRepository;
             _recipeFavouriteRepository = recipeFavouriteRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet("info")]
@@ -62,5 +66,49 @@ namespace CookingWebsite.Modules.UserInfoModule
 
             return await _recipeCardBuilder.Build(recipes, authorizedUserId);
         }   
+
+        [HttpPost("change/name")]
+        public async Task<bool> ChangeName([FromQuery] string newValue)
+        {
+            int userId = GetAuthorizedUserId();
+            bool result = await _accountService.ChangeName(userId, newValue);
+
+            await _unitOfWork.Commit();
+
+            return result;
+        }
+
+        [HttpPost("change/login")]
+        public async Task<bool> ChangeLogin([FromQuery] string newValue)
+        {
+            int userId = GetAuthorizedUserId();
+            bool result = await _accountService.ChangeLogin(userId, newValue);
+
+            await _unitOfWork.Commit();
+
+            return result;
+        }
+
+        [HttpPost("change/password")]
+        public async Task<bool> ChangePassword([FromQuery] string newValue)
+        {
+            int userId = GetAuthorizedUserId();
+            bool result = await _accountService.ChangePassword(userId, newValue);
+
+            await _unitOfWork.Commit();
+
+            return result;
+        }
+
+        [HttpPost("change/description")]
+        public async Task<bool> ChangeDescription([FromQuery] string newValue)
+        {
+            int userId = GetAuthorizedUserId();
+            bool result = await _accountService.ChangeDescription(userId, newValue);
+
+            await _unitOfWork.Commit();
+
+            return result;
+        }
     }
 }

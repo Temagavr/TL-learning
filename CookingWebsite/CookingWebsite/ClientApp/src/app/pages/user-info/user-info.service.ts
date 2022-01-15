@@ -28,4 +28,32 @@ export class UserInfoService extends HttpService {
 
     return response;
   }
+
+  public async changeName(newValue: string): Promise<boolean> {
+
+    const response: boolean = await this.Post(`${this.url}/change/name?newValue=${newValue}`, {});
+
+    return response;
+  }
+
+  public async changeLogin(newValue: string): Promise<boolean> {
+
+    const response: boolean = await this.Post(`${this.url}/change/login?newValue=${newValue}`, {});
+
+    return response;
+  }
+
+  public async changePassword(newValue: string): Promise<boolean> {
+
+    const response: boolean = await this.Post(`${this.url}/change/password?newValue=${newValue}`, {});
+
+    return response;
+  }
+
+  public async changeDescription(newValue: string): Promise<boolean> {
+
+    const response: boolean = await this.Post(`${this.url}/change/description?newValue=${newValue}`, {});
+
+    return response;
+  }
 }

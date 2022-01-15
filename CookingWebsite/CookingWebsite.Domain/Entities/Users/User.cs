@@ -22,5 +22,26 @@
         }
 
         protected User() { }
+
+        public void UpdateName(string newValue)
+        {
+            Name = newValue;
+        }
+        
+        public void UpdateLogin(string newValue)
+        {
+            Login = newValue;
+        }
+        
+        public void UpdatePassword(string newValue)
+        {
+            Password = newValue;
+        }
+
+        public void UpdateDescription(string newValue)
+        {
+            Description = newValue;
+        }
+
     }
 }

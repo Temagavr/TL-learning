@@ -19,6 +19,17 @@ export class UserInfoComponent {
     login: "",
     name: "",
     description: "",
+    password: "abc",
+    favouritesCount: 0,
+    likesCount: 0,
+    recipesCount: 0
+  };
+
+  staticUserInfo: UserInfoDto = {
+    login: "",
+    name: "",
+    description: "",
+    password: "abc",
     favouritesCount: 0,
     likesCount: 0,
     recipesCount: 0
@@ -46,6 +57,10 @@ export class UserInfoComponent {
       this.userInfo.name = userInfoDto.name;
       this.userInfo.description = userInfoDto.description;
 
+      this.staticUserInfo.login = userInfoDto.login;
+      this.staticUserInfo.name = userInfoDto.name;
+      this.staticUserInfo.description = userInfoDto.description;
+
       this.userStatistic[0].value = userInfoDto.recipesCount;
       this.userStatistic[1].value = userInfoDto.likesCount;
       this.userStatistic[2].value = userInfoDto.favouritesCount;
@@ -61,5 +76,33 @@ export class UserInfoComponent {
         this.userRecipes.push(recipe);
       }
     });
+  }
+
+  async changeName() {
+    if (this.staticUserInfo.name != this.userInfo.name) {
+      console.log("Change Name");
+      await this.userInfoService.changeName(this.userInfo.name);
+    }
+  }
+
+  async changeUsername() {
+    if (this.staticUserInfo.login != this.userInfo.login) {
+      console.log("Change username");
+      await this.userInfoService.changeLogin(this.userInfo.login);
+    }
+  }
+
+  async changePassword() {
+    if (this.staticUserInfo.password != this.userInfo.password) {
+      console.log("Change password");
+      await this.userInfoService.changePassword(this.userInfo.password);
+    }
+  }
+
+  async changeDescription() {
+    if (this.staticUserInfo.description != this.userInfo.description) {
+      console.log("Change description");
+      await this.userInfoService.changeDescription(this.userInfo.description);
+    }
   }
 }
