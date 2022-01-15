@@ -48,9 +48,8 @@ namespace CookingWebsite.Modules.UserInfoModule
 
             int skip = 0;
             int take = 100;
-            string userName = GetAuthorizedUserUsername();
             List<Recipe> recipes = new List<Recipe>();
-            recipes = await _recipeRepository.Search(skip, take, userName, false);
+            recipes = await _recipeRepository.GetUserRecipes(skip, take, userId);
 
             return user.Map(userLikes, userFavourites, recipes);
         }
@@ -61,8 +60,7 @@ namespace CookingWebsite.Modules.UserInfoModule
             [FromQuery] int take)
         {
             int authorizedUserId = GetAuthorizedUserId();
-            string userName = GetAuthorizedUserUsername();
-            List<Recipe> recipes = await _recipeRepository.Search(skip, take, userName, false);
+            List<Recipe> recipes = await _recipeRepository.GetUserRecipes(skip, take, authorizedUserId);
 
             return await _recipeCardBuilder.Build(recipes, authorizedUserId);
         }   

@@ -15,5 +15,6 @@ namespace CookingWebsite.Domain.Repositories
         Task<List<Recipe>> Search(int skip, int take, string searchString, bool includeAll);
         Task<Recipe> GetFirst();
         Task<List<Recipe>> GetByIds(List<int> recipeIds);
+        Task<List<Recipe>> GetUserRecipes(int skip, int take, int userId);
     }
 }

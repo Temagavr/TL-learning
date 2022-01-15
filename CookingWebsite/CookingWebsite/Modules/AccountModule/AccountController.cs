@@ -60,22 +60,23 @@ namespace CookingWebsite.Modules.AccountModule
         }
 
         [HttpGet("authorized-user")]
-        public AuthorizedUserDto AuthorizedUser()
+        public async Task<AuthorizedUserDto> AuthorizedUser()
         {
-            var user = new AuthorizedUserDto();
+            var authorizedUser = new AuthorizedUserDto();
 
             if (User.FindFirstValue(Claims.UserId) != null)
             {
-                user.Id = Convert.ToInt32(User.FindFirstValue(Claims.UserId));
-                user.Name = User.FindFirstValue(Claims.Name);
-                user.Login = User.FindFirstValue(Claims.Username);
+                authorizedUser.Id = Convert.ToInt32(User.FindFirstValue(Claims.UserId));
+                User user = await _userRepository.GetById(authorizedUser.Id);
+                authorizedUser.Name = user.Name;
+                authorizedUser.Login = user.Login;
             } 
             else
             {
-                user = null;
+                authorizedUser = null;
             }
 
-            return user;
+            return authorizedUser;
         }
 
         [HttpGet("logout")]

@@ -8,7 +8,6 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
     {
         public static RecipeDetailsDto Map(
             this Recipe recipe,
-            string authorizedUser,
             List<RecipeLike> recipeLikes,
             List<RecipeFavourite> recipeFavourites,
             int userId)
@@ -46,7 +45,7 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
                 recipeDetailsDto.Steps.Add(step.Description);
             }
 
-            if (recipeDetailsDto.AuthorUsername == authorizedUser)
+            if (recipe.AuthorId == userId)
                 recipeDetailsDto.IsCanModify = true;
             else
                 recipeDetailsDto.IsCanModify = false;

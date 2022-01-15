@@ -38,7 +38,7 @@ namespace CookingWebsite.Application.Recipes
             return recipeOfDay;
         }
         
-        public async Task AddRecipe(AddRecipeDto addRecipeDto)
+        public async Task AddRecipe(AddRecipeDto addRecipeDto, int authorId)
         {
             var imageSaveResult = await _fileService.SaveAsync(addRecipeDto.Image, "\\recipes");
 
@@ -74,7 +74,8 @@ namespace CookingWebsite.Application.Recipes
                 addRecipeDto.AuthorUsername,
                 ingredients,
                 steps,
-                tags
+                tags,
+                authorId
             );
 
             _recipeRepository.Add(recipe);
@@ -169,7 +170,7 @@ namespace CookingWebsite.Application.Recipes
             
             if(recipeFavourites.Count > 0)
             {
-                List<int> recipeIds = recipeFavourites.Select(x => x.Id).ToList();
+                List<int> recipeIds = recipeFavourites.Select(x => x.RecipeId).ToList();
 
                 List<Recipe> recipes = await _recipeRepository.GetByIds(recipeIds);
 

@@ -8,7 +8,7 @@ namespace CookingWebsite.Application.Recipes
     public interface IRecipeService
     {
         Task<Recipe> GetRecipeOfDay();
-        Task AddRecipe(AddRecipeDto addRecipeDto);
+        Task AddRecipe(AddRecipeDto addRecipeDto, int authorId);
         Task UpdateRecipe(UpdateRecipeDto updateRecipeDto);
         Task AddLike(int recipeId, int userId);
         Task RemoveLike(int recipeId, int userId);

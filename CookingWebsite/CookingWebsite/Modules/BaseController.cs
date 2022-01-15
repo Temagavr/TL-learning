@@ -19,5 +19,10 @@ namespace CookingWebsite.Modules
             return User.FindFirstValue(Claims.Username);
         }
 
+        public void ChangeAuthorizedUserName(string newName)
+        {
+
+        }
+
     }
 }
