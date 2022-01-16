@@ -57,7 +57,7 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                return false;
+                throw new Exception();
 
             user.UpdateName(newValue);
             return true;
@@ -68,7 +68,7 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                return false;
+                throw new Exception();
 
             user.UpdateLogin(newValue);
             return true;
@@ -79,7 +79,7 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                return false;
+                throw new Exception();
 
             user.UpdatePassword(newValue);
             return true;
@@ -90,17 +90,10 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                return false;
+                throw new Exception();
 
             user.UpdateDescription(newValue);
             return true;
-        }
-
-        public async Task<User> GetUserInfo(int userId)
-        {
-            User user = await _userRepostitory.GetById(userId);
-
-            return user;
         }
 
         private bool ValidateRegistration(RegistrationDto registrationDto)

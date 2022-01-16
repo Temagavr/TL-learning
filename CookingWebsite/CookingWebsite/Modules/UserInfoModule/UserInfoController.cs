@@ -16,6 +16,7 @@ namespace CookingWebsite.Modules.UserInfoModule
     public class UserInfoController : BaseController
     {
         private readonly IAccountService _accountService;
+        private readonly IUserRepository _userRepository;
         private readonly IRecipeCardBuilder _recipeCardBuilder;
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeLikeRepository _recipeLikeRepository;
@@ -24,6 +25,7 @@ namespace CookingWebsite.Modules.UserInfoModule
 
         public UserInfoController(
             IAccountService accountService,
+            IUserRepository userRepository,
             IRecipeCardBuilder recipeCardBuilder,
             IRecipeRepository recipeRepository,
             IRecipeLikeRepository recipeLikeRepository,
@@ -31,6 +33,7 @@ namespace CookingWebsite.Modules.UserInfoModule
             IUnitOfWork unitOfWork)
         {
             _accountService = accountService;
+            _userRepository = userRepository;
             _recipeCardBuilder = recipeCardBuilder;
             _recipeRepository = recipeRepository;
             _recipeLikeRepository = recipeLikeRepository;
@@ -42,7 +45,7 @@ namespace CookingWebsite.Modules.UserInfoModule
         public async Task<UserInfoDto> GetUserInfo()
         {
             int userId = GetAuthorizedUserId();
-            User user = await _accountService.GetUserInfo(userId);
+            User user = await _userRepository.GetById(userId);
             List<RecipeLike> userLikes = await _recipeLikeRepository.GetByUserId(userId);
             List<RecipeFavourite> userFavourites = await _recipeFavouriteRepository.GetByUserId(userId);
 

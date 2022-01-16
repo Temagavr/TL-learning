@@ -19,7 +19,7 @@ export class UserInfoComponent {
     login: "",
     name: "",
     description: "",
-    password: "abc",
+    password: "xxx",
     favouritesCount: 0,
     likesCount: 0,
     recipesCount: 0
@@ -29,7 +29,7 @@ export class UserInfoComponent {
     login: "",
     name: "",
     description: "",
-    password: "abc",
+    password: "xxx",
     favouritesCount: 0,
     likesCount: 0,
     recipesCount: 0
@@ -80,28 +80,24 @@ export class UserInfoComponent {
 
   async changeName() {
     if (this.staticUserInfo.name != this.userInfo.name) {
-      console.log("Change Name");
       await this.userInfoService.changeName(this.userInfo.name);
     }
   }
 
   async changeUsername() {
     if (this.staticUserInfo.login != this.userInfo.login) {
-      console.log("Change username");
       await this.userInfoService.changeLogin(this.userInfo.login);
     }
   }
 
   async changePassword() {
     if (this.staticUserInfo.password != this.userInfo.password) {
-      console.log("Change password");
       await this.userInfoService.changePassword(this.userInfo.password);
     }
   }
 
   async changeDescription() {
     if (this.staticUserInfo.description != this.userInfo.description) {
-      console.log("Change description");
       await this.userInfoService.changeDescription(this.userInfo.description);
     }
   }

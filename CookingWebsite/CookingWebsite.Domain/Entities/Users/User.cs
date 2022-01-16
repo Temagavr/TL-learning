@@ -1,4 +1,6 @@
-﻿namespace CookingWebsite.Domain.Entities.Users
+﻿using System;
+
+namespace CookingWebsite.Domain.Entities.Users
 {
     public class User
     {
@@ -25,17 +27,39 @@
 
         public void UpdateName(string newValue)
         {
-            Name = newValue;
+            if (newValue.Length > 2)
+            {
+                Name = newValue;
+            }
+            else
+            {
+                throw new Exception();
+            }
+
         }
         
         public void UpdateLogin(string newValue)
         {
-            Login = newValue;
+            if (newValue.Length > 3)
+            {
+                Login = newValue;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
         
         public void UpdatePassword(string newValue)
         {
-            Password = newValue;
+            if (newValue.Length > 7)
+            {
+                Password = newValue;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public void UpdateDescription(string newValue)
