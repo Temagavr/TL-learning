@@ -8,9 +8,9 @@ namespace CookingWebsite.Application.Account
     {
         Task<bool> Registrate(RegistrationDto registrationDto);
         Task<bool> Login(LoginDto loginDto);
-        Task<bool> ChangeName(int userId, string newValue);
-        Task<bool> ChangeLogin(int userId, string newValue);
-        Task<bool> ChangePassword(int userId, string newValue);
-        Task<bool> ChangeDescription(int userId, string newValue);
+        void ChangeName(int userId, string newValue);
+        void ChangeLogin(int userId, string newValue);
+        void ChangePassword(int userId, string newValue);
+        void ChangeDescription(int userId, string newValue);
     }
 }

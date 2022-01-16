@@ -27,39 +27,33 @@ namespace CookingWebsite.Domain.Entities.Users
 
         public void UpdateName(string newValue)
         {
-            if (newValue.Length > 2)
+            if (newValue.Length > 3)
             {
-                Name = newValue;
-            }
-            else
-            {
-                throw new Exception();
+                throw new Exception();    
             }
 
+            Name = newValue;
         }
         
         public void UpdateLogin(string newValue)
         {
-            if (newValue.Length > 3)
-            {
-                Login = newValue;
-            }
-            else
+            if (newValue.Length < 4)
             {
                 throw new Exception();
             }
+
+            Login = newValue;
         }
         
         public void UpdatePassword(string newValue)
         {
-            if (newValue.Length > 7)
-            {
-                Password = newValue;
-            }
-            else
+            if (newValue.Length < 8)
             {
                 throw new Exception();
+                
             }
+
+            Password = newValue;
         }
 
         public void UpdateDescription(string newValue)
