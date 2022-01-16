@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Modules.SearchRecipeModule
+namespace CookingWebsite.Modules.UserInfoModule
 {
-    public static class SearchRecipeBindings
+    public static class UserInfoBindings
     {
-        public static IServiceCollection AddRecipeSearchModule(this IServiceCollection services)
+        public static IServiceCollection AddUserInfoModule(this IServiceCollection services)
         {
             services.AddScoped<IRecipeCardBuilder, RecipeCardBuilder>();
 

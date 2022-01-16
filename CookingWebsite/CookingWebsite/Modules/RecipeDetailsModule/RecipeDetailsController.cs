@@ -38,7 +38,6 @@ namespace CookingWebsite.Modules.RecipeDetailsModule
             List<RecipeFavourite> recipeFavourites = await _recipeFavouriteRepository.GetByRecipeId(recipeId);
 
             return recipeDetails.Map(
-                GetAuthorizedUserUsername(),
                 recipeLikes,
                 recipeFavourites,
                 GetAuthorizedUserId());

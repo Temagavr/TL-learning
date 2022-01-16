@@ -17,15 +17,10 @@ export class AccountService extends HttpService {
   private url = 'api/account';
   
   public async register(registrationDto: RegistrationDto): Promise<boolean> {
-
-    console.log(`registrate ${registrationDto.login}, password = ${registrationDto.password}, name = ${registrationDto.name}`);
-
     return await this.Post(`${this.url}/registrate`, registrationDto);
   }
 
   public async login(loginDto: LoginDto): Promise<boolean> {
-    console.log(`login ${loginDto.login}, password = ${loginDto.password}`);
-
     return await this.Post(`${this.url}/login`, loginDto);
   }
 

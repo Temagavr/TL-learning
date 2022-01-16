@@ -77,13 +77,13 @@ export class RecipeCreateComponent {
       this.addRecipeDto.steps.push(stepDto);
     }
 
-	this.accountService.getUser().then((user: AuthorizedUserDto) => {
+	  await this.accountService.getUser().then((user: AuthorizedUserDto) => {
       if (user.id != 0) {
         this.addRecipeDto.authorUsername = user.login;
       }
     });
 
-	if (this.addRecipeDto.tagsString != '') {
+	  if (this.addRecipeDto.tagsString != '') {
 
       let tags: string[] = this.addRecipeDto.tagsString.split(',');
 
@@ -91,7 +91,7 @@ export class RecipeCreateComponent {
         this.addRecipeDto.tags.push(tag.trim().toLowerCase());
       }
 
-    }    console.log(this.addRecipeDto);
+    }
 
     await this.recipeCUService.addRecipe(this.addRecipeDto);
 

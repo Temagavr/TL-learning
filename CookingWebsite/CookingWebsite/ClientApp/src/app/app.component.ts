@@ -65,11 +65,9 @@ export class AppComponent {
   cleanLoginModalInputs() {
     this.loginModal.loginData.login = '';
     this.loginModal.loginData.password = '';
-    console.log('login modal closed');
   }
 
   public async login(loginDto: LoginDto) {
-    console.log('Im try to login');
     if (this.userName) {
       alert('Вы уже вошли в систему!');
       return;
@@ -116,7 +114,6 @@ export class AppComponent {
         alert('Вы успешно зарегистрировались!');
       }
 
-      console.log('Try to registration');
       this.registrationModal.close();
     } else {
       alert('Вы уже вошли в систему!');

@@ -12,19 +12,15 @@ namespace CookingWebsite.Modules.SearchRecipeModule
     [Route("api/recipes/search")]
     public class RecipeSearchController : BaseController
     {
-
+        private readonly IRecipeCardBuilder _recipeCardBuilder;
         private readonly IRecipeRepository _recipeRepository;
-        private readonly IRecipeLikeRepository _recipeLikeRepository;
-        private readonly IRecipeFavouriteRepository _recipeFavouriteRepository;
 
         public RecipeSearchController(
-            IRecipeRepository recipeRepository,
-            IRecipeLikeRepository recipeLikeRepository,
-            IRecipeFavouriteRepository recipeFavouriteRepository)
+            IRecipeCardBuilder recipeCardBuilder,
+            IRecipeRepository recipeRepository)
         {
             _recipeRepository = recipeRepository;
-            _recipeLikeRepository = recipeLikeRepository;
-            _recipeFavouriteRepository = recipeFavouriteRepository;
+            _recipeCardBuilder = recipeCardBuilder;
         }
 
         [HttpGet]
@@ -32,20 +28,13 @@ namespace CookingWebsite.Modules.SearchRecipeModule
         (
             [FromQuery] int skip,
             [FromQuery] int take,
-            [FromQuery] string searchString
-        )
+            [FromQuery] string searchString)
         {
             List<Recipe> recipes = new List<Recipe>();
+            int authorizedUserId = GetAuthorizedUserId();
             recipes = await _recipeRepository.Search(skip, take, searchString, false);
-            List<RecipeLike> userLikes = await _recipeLikeRepository.GetByUserId(GetAuthorizedUserId());
-            List<RecipeFavourite> userFavourites = await _recipeFavouriteRepository.GetByUserId(GetAuthorizedUserId());
 
-            return await recipes.Map(
-                userLikes,
-                userFavourites,
-                GetAuthorizedUserId(),
-                _recipeLikeRepository,
-                _recipeFavouriteRepository);
+            return await _recipeCardBuilder.Build(recipes, authorizedUserId);
         }
     }
 }

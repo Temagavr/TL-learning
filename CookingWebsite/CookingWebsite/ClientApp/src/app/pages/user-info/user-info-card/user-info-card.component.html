@@ -1,13 +1,13 @@
 <div class="user-card-block">
   <div class="left-user-info">
-    <input class="user-name user-info-input input-style" />
-    <input class="user-login user-info-input input-style" />
+    <input [(ngModel)]="userInfo.name" (blur)="changeName()" class="user-name user-info-input input-style" name="name" id="user_name_card" />
+    <input [(ngModel)]="userInfo.login" (blur)="changeLogin()" class="user-login user-info-input input-style" name="login" id="user_login_card" />
     <div class="password-block">
-      <input class="user-password user-info-input input-style" type="password" id="user_password_card" />
+      <input [(ngModel)]="userInfo.password" (blur)="changePassword()" class="user-password user-info-input input-style" type="password" id="user_password_card" />
       <a href="#" class="change-visibility-icon" (click)="changeVisibility()"></a>
     </div>
   </div>
   <div class="right-user-info">
-    <textarea class="user-description input-style" placeholder="Напишите немного о себе"></textarea>
+    <textarea [(ngModel)]="userInfo.description" (blur)="changeDescription()" class="user-description input-style" placeholder="Напишите немного о себе" name="description"></textarea>
   </div>
 </div>

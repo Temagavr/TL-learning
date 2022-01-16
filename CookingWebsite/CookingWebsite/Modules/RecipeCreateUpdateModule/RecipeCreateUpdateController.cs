@@ -1,5 +1,7 @@
 ﻿using CookingWebsite.Application.Recipes;
 using CookingWebsite.Domain;
+using CookingWebsite.Domain.Entities.Users;
+using CookingWebsite.Domain.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,12 +19,17 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
     {
 
         private readonly IRecipeService _recipeService;
+        private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public RecipeCreateUpdateController(IUnitOfWork unitOfWork, IRecipeService recipeService)
+        public RecipeCreateUpdateController(
+            IUnitOfWork unitOfWork,
+            IRecipeService recipeService,
+            IUserRepository userRepository)
         {
             _unitOfWork = unitOfWork;
             _recipeService = recipeService;
+            _userRepository = userRepository;
         }
 
         [HttpPost("create")]
@@ -31,10 +38,12 @@ namespace CookingWebsite.Modules.RecipeCreateUpdateModule
             IFormFileCollection files = Request.Form.Files;
 
             AddRecipeDto addRecipeDto = JsonConvert.DeserializeObject<AddRecipeDto>(Request.Form["data"]);
+            
+            var userId = GetAuthorizedUserId();
+            User user = await _userRepository.GetById(userId);
+            var recipeDto = await addRecipeDto.Map(files, user.Login);
 
-            var recipeDto = await addRecipeDto.Map(files, GetAuthorizedUserUsername());
-
-            await _recipeService.AddRecipe(recipeDto);
+            await _recipeService.AddRecipe(recipeDto, userId);
 
             await _unitOfWork.Commit();
         }

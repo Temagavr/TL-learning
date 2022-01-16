@@ -62,7 +62,6 @@ export class RegistrationModalComponent {
 
     if (!this.registrationInfo.login) {
       this.showError(loginInput);
-      console.log('login empty');
       error = true;
     }
 

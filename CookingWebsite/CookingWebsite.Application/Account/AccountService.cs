@@ -33,15 +33,12 @@ namespace CookingWebsite.Application.Account
                 );
             _userRepostitory.Add(user);
 
-            Console.WriteLine($"{user.Login}, {user.Password}, {user.Name}");
-
             return true;
         }
 
         public async Task<bool> Login (LoginDto loginDto)
         {
             var user = await _userRepostitory.GetByLogin(loginDto.Login);
-            Console.WriteLine($"{loginDto.Login}, {loginDto.Password}");
             if (user == null)
                 return false;
             else if (loginDto.Password == user.Password)
@@ -52,12 +49,44 @@ namespace CookingWebsite.Application.Account
             return false;
         }
 
-        public async Task Edit (EditUserDto editUserDto)
+        public async void ChangeName(int userId, string newValue)
         {
-            
+            User user = await _userRepostitory.GetById(userId);
 
-            await _unitOfWork.Commit();
-            
+            if (user == null)
+                throw new Exception();
+
+            user.UpdateName(newValue);
+        }
+
+        public async void ChangeLogin(int userId, string newValue)
+        {
+            User user = await _userRepostitory.GetById(userId);
+
+            if (user == null)
+                throw new Exception();
+
+            user.UpdateLogin(newValue);
+        }
+
+        public async void ChangePassword(int userId, string newValue)
+        {
+            User user = await _userRepostitory.GetById(userId);
+
+            if (user == null)
+                throw new Exception();
+
+            user.UpdatePassword(newValue);
+        }
+
+        public async void ChangeDescription(int userId, string newValue)
+        {
+            User user = await _userRepostitory.GetById(userId);
+
+            if (user == null)
+                throw new Exception();
+
+            user.UpdateDescription(newValue);
         }
 
         private bool ValidateRegistration(RegistrationDto registrationDto)

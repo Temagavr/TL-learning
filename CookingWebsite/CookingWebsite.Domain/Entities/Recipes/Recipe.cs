@@ -14,6 +14,7 @@ namespace CookingWebsite.Domain.Entities.Recipes
         public List<RecipeIngredient> Ingredients { get; private set; }
         public List<RecipeStep> Steps { get; private set; }
         public List<RecipeTag> Tags { get; private set; }
+        public int AuthorId { get; private set; }
 
         protected Recipe() { }
 
@@ -26,7 +27,8 @@ namespace CookingWebsite.Domain.Entities.Recipes
             string authorUsername,
             List<RecipeIngredient> ingredients,
             List<RecipeStep> steps,
-            List<RecipeTag> tags
+            List<RecipeTag> tags,
+            int authorId
             )
         {
             ImageUrl = imageUrl;
@@ -38,6 +40,7 @@ namespace CookingWebsite.Domain.Entities.Recipes
             Ingredients = ingredients;
             Steps = steps;
             Tags = tags;
+            AuthorId = authorId;
         }
 
         public void Update(

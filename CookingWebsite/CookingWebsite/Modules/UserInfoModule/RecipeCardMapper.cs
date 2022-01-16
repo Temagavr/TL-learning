@@ -1,10 +1,10 @@
 ﻿using CookingWebsite.Domain.Entities.Recipes;
-using CookingWebsite.Domain.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CookingWebsite.Modules.SearchRecipeModule
+namespace CookingWebsite.Modules.UserInfoModule
 {
     public static class RecipeCardMapper
     {
