@@ -33,15 +33,12 @@ namespace CookingWebsite.Application.Account
                 );
             _userRepostitory.Add(user);
 
-            Console.WriteLine($"{user.Login}, {user.Password}, {user.Name}");
-
             return true;
         }
 
         public async Task<bool> Login (LoginDto loginDto)
         {
             var user = await _userRepostitory.GetByLogin(loginDto.Login);
-            Console.WriteLine($"{loginDto.Login}, {loginDto.Password}");
             if (user == null)
                 return false;
             else if (loginDto.Password == user.Password)

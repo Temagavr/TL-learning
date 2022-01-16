@@ -134,8 +134,6 @@ export class RecipeUpdateComponent {
       }
     }
 
-    console.log(updatedRecipe);
-
     let response = await this.recipeCUService.updateRecipe(updatedRecipe);
 
     this.router.navigate(['/recipes/details', updatedRecipe.id]);

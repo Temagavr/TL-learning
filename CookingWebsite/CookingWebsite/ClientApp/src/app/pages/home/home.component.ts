@@ -46,8 +46,6 @@ export class HomeComponent {
         likesCount: recipeOfDayDto.likesCount,
         cookingTime: recipeOfDayDto.cookingTime
       };
-
-      console.log(recipeOfDayDto);
     });
   }
 

@@ -91,7 +91,7 @@ export class RecipeCreateComponent {
         this.addRecipeDto.tags.push(tag.trim().toLowerCase());
       }
 
-    }    console.log(this.addRecipeDto);
+    }
 
     await this.recipeCUService.addRecipe(this.addRecipeDto);
 
