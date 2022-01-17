@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./preloader.component.css']
 })
 export class PreloaderComponent {
-  public isShow = true;
+
 }

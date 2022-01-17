@@ -49,7 +49,7 @@ namespace CookingWebsite.Application.Account
             return false;
         }
 
-        public async void ChangeName(int userId, string newValue)
+        public async Task ChangeName(int userId, string newValue)
         {
             User user = await _userRepostitory.GetById(userId);
 
@@ -59,7 +59,7 @@ namespace CookingWebsite.Application.Account
             user.UpdateName(newValue);
         }
 
-        public async void ChangeLogin(int userId, string newValue)
+        public async Task ChangeLogin(int userId, string newValue)
         {
             User user = await _userRepostitory.GetById(userId);
 
@@ -69,7 +69,7 @@ namespace CookingWebsite.Application.Account
             user.UpdateLogin(newValue);
         }
 
-        public async void ChangePassword(int userId, string newValue)
+        public async Task ChangePassword(int userId, string newValue)
         {
             User user = await _userRepostitory.GetById(userId);
 
@@ -79,7 +79,7 @@ namespace CookingWebsite.Application.Account
             user.UpdatePassword(newValue);
         }
 
-        public async void ChangeDescription(int userId, string newValue)
+        public async Task ChangeDescription(int userId, string newValue)
         {
             User user = await _userRepostitory.GetById(userId);
 
