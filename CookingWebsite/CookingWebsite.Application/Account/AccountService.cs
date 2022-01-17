@@ -54,7 +54,7 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                throw new Exception();
+                throw new Exception($"Cannot change name. User by id:{userId} not found");
 
             user.UpdateName(newValue);
         }
@@ -64,7 +64,7 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                throw new Exception();
+                throw new Exception($"Cannot change login. User by id:{userId} not found");
 
             user.UpdateLogin(newValue);
         }
@@ -74,7 +74,7 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                throw new Exception();
+                throw new Exception($"Cannot change password. User by id:{userId} not found");
 
             user.UpdatePassword(newValue);
         }
@@ -84,7 +84,7 @@ namespace CookingWebsite.Application.Account
             User user = await _userRepostitory.GetById(userId);
 
             if (user == null)
-                throw new Exception();
+                throw new Exception($"Cannot change description. User by id:{userId} not found");
 
             user.UpdateDescription(newValue);
         }
