@@ -6,6 +6,7 @@ import { SearchInputComponent } from '../../common/search-input/search-input.com
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { Router } from '@angular/router';
 import { RecipeSearchService } from './recipes-search.service';
+import { PreloaderComponent } from '../../common/preloader/preloader.component';
 
 @Component({
   selector: 'app-recipes-list-page',
@@ -19,10 +20,19 @@ export class RecipesListPageComponent {
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;
 
+  @ViewChild(PreloaderComponent, { static: false })
+  private preloader: PreloaderComponent;
+  public preloaderShow = true;
+
   private searchString: string = '';
 
   ngOnInit() {
     this.searchRecipes(this.searchString);
+
+    setTimeout(() => {
+      this.preloader.isShow = false;
+      this.preloaderShow = false;
+    }, 3000);
   }
 
   insertTagValue(tagName) {
