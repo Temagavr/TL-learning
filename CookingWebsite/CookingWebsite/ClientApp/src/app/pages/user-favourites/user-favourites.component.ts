@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { Router } from '@angular/router';
 import { UserFavouritesService } from './user-favourites.sevice';
+import { PreloaderComponent } from '../../common/preloader/preloader.component';
 
 @Component({
   selector: 'app-user-favourites',
@@ -15,10 +16,20 @@ export class UserFavouritesComponent {
 
   constructor(private router: Router, private userFavouritesService: UserFavouritesService) { }
 
+  @ViewChild(PreloaderComponent, { static: false })
+  private preloader: PreloaderComponent;
+  public preloaderShow = true;
+
+
   ngOnInit() {
     this.userFavouritesService.getUserFavourites(0, 4).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
     });
+
+    setTimeout(() => {
+      this.preloader.isShow = false;
+      this.preloaderShow = false;
+    }, 3000);
   }
 
   loadMoreRecipes() {
