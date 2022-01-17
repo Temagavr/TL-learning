@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
@@ -6,6 +6,7 @@ import { RecipeDetailsService } from './recipe-details.service';
 import { RecipeDetailsDto } from './recipe-details-dto';
 import { RecipeIngredientDto } from './recipe-ingredient-dto';
 import { RecipeIngredientItemDto } from './recipe-ingredient-item-dto';
+import { PreloaderComponent } from '../../common/preloader/preloader.component';
 
 @Component({
   selector: 'app-recipe-details',
@@ -20,6 +21,10 @@ export class RecipeDetailsComponent {
   ) {
   }
 
+  @ViewChild(PreloaderComponent, { static: false })
+  private preloader: PreloaderComponent;
+  public preloaderShow = true;
+
   public recipeCard: RecipeCard;
 
   public isCanModify: boolean = false;
@@ -29,6 +34,11 @@ export class RecipeDetailsComponent {
 
   ngOnInit() {
     this.getRecipeInfo(this.route.snapshot.params.id);
+
+    setTimeout(() => {
+      this.preloader.isShow = false;
+      this.preloaderShow = false;
+    }, 3000);
   }
 
   private getRecipeInfo(recipeId: number): void {

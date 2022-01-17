@@ -34,12 +34,12 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+    this.getDayRecipe();
+
     setTimeout(() => {
       this.preloader.isShow = false;
       this.preloaderShow = false;
     }, 3000);
-
-    this.getDayRecipe();
   }
 
   private getDayRecipe(): void {
