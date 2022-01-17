@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { UserMetricDto } from './user-metric-dto';
 
 import { UserInfoService } from './user-info.service';
 import { UserInfoDto } from './user-info-dto';
+import { PreloaderComponent } from '../../common/preloader/preloader.component';
 
 @Component({
   selector: 'app-user-info',
@@ -14,6 +15,10 @@ export class UserInfoComponent {
 
   constructor( private userInfoService: UserInfoService) {
   }
+
+  @ViewChild(PreloaderComponent, { static: false })
+  private preloader: PreloaderComponent;
+  public preloaderShow = true;
 
   userInfo: UserInfoDto = {
     login: "",
@@ -49,6 +54,11 @@ export class UserInfoComponent {
     this.userInfoService.getUserRecipes(0, 4).then((recipeCards: RecipeCard[]) => {
       this.userRecipes = recipeCards;
     });
+
+    setTimeout(() => {
+      this.preloader.isShow = false;
+      this.preloaderShow = false;
+    }, 3000);
   }
 
   private getUserInfo(): void {

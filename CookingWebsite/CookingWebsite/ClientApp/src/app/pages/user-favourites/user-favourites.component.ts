@@ -20,7 +20,6 @@ export class UserFavouritesComponent {
   private preloader: PreloaderComponent;
   public preloaderShow = true;
 
-
   ngOnInit() {
     this.userFavouritesService.getUserFavourites(0, 4).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
