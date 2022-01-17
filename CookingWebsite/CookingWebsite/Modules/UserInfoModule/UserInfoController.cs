@@ -69,47 +69,39 @@ namespace CookingWebsite.Modules.UserInfoModule
         }   
 
         [HttpPost("change/name")]
-        public async Task<bool> ChangeName([FromQuery] string newValue)
+        public async void ChangeName([FromQuery] string newValue)
         {
             int userId = GetAuthorizedUserId();
-            bool result = await _accountService.ChangeName(userId, newValue);
+            _accountService.ChangeName(userId, newValue);
 
             await _unitOfWork.Commit();
-
-            return result;
         }
 
         [HttpPost("change/login")]
-        public async Task<bool> ChangeLogin([FromQuery] string newValue)
+        public async void ChangeLogin([FromQuery] string newValue)
         {
             int userId = GetAuthorizedUserId();
-            bool result = await _accountService.ChangeLogin(userId, newValue);
+            _accountService.ChangeLogin(userId, newValue);
 
             await _unitOfWork.Commit();
-
-            return result;
         }
 
         [HttpPost("change/password")]
-        public async Task<bool> ChangePassword([FromQuery] string newValue)
+        public async void ChangePassword([FromQuery] string newValue)
         {
             int userId = GetAuthorizedUserId();
-            bool result = await _accountService.ChangePassword(userId, newValue);
+            _accountService.ChangePassword(userId, newValue);
 
             await _unitOfWork.Commit();
-
-            return result;
         }
 
         [HttpPost("change/description")]
-        public async Task<bool> ChangeDescription([FromQuery] string newValue)
+        public async void ChangeDescription([FromQuery] string newValue)
         {
             int userId = GetAuthorizedUserId();
-            bool result = await _accountService.ChangeDescription(userId, newValue);
+            _accountService.ChangeDescription(userId, newValue);
 
             await _unitOfWork.Commit();
-
-            return result;
         }
     }
 }

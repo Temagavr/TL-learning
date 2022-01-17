@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserInteractionService } from '../../common/services/user-interaction.service';
 
 import { DayRecipeDto } from './day-recipe-dto';
 
 import { Tag } from '../../common/tags-info/Tag';
 import { HomeService } from './home.service';
+import { PreloaderComponent } from '../../common/preloader/preloader.component';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,10 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
+  @ViewChild(PreloaderComponent, { static: false })
+  private preloader: PreloaderComponent;
+  public preloaderShow = true;
 
   public dayRecipe: DayRecipeDto = {
     image: '',
@@ -29,6 +34,11 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.preloader.isShow = false;
+      this.preloaderShow = false;
+    }, 3000);
+
     this.getDayRecipe();
   }
 
