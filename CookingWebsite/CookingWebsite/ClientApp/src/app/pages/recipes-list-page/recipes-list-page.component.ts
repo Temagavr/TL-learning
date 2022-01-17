@@ -25,10 +25,6 @@ export class RecipesListPageComponent {
 
   ngOnInit() {
     this.searchRecipes(this.searchString);
-
-    setTimeout(() => {
-      this.preloaderShow = false;
-    }, 3000);
   }
 
   insertTagValue(tagName) {
@@ -52,6 +48,8 @@ export class RecipesListPageComponent {
     this.recipeSearchService.getRecipeList(0, 4, this.searchString).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
     });
+
+    this.preloaderShow = false;
   }
 
   loadMoreRecipes() {

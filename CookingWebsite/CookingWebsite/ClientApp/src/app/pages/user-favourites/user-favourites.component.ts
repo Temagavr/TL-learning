@@ -22,9 +22,7 @@ export class UserFavouritesComponent {
       this.recipes = recipeCards;
     });
 
-    setTimeout(() => {
-      this.preloaderShow = false;
-    }, 3000);
+    this.preloaderShow = false;
   }
 
   loadMoreRecipes() {

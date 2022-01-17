@@ -31,10 +31,6 @@ export class RecipeDetailsComponent {
 
   ngOnInit() {
     this.getRecipeInfo(this.route.snapshot.params.id);
-
-    setTimeout(() => {
-      this.preloaderShow = false;
-    }, 3000);
   }
 
   private getRecipeInfo(recipeId: number): void {
@@ -95,6 +91,8 @@ export class RecipeDetailsComponent {
         this.recipeSteps.push(step);
       }
     });
+
+    this.preloaderShow = false;
   }
 
   public async deleteRecipe(): Promise<void>{

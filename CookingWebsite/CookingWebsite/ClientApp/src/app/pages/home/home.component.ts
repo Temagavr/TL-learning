@@ -32,10 +32,6 @@ export class HomeComponent {
 
   ngOnInit() {
     this.getDayRecipe();
-
-    setTimeout(() => {
-      this.preloaderShow = false;
-    }, 3000);
   }
 
   private getDayRecipe(): void {
@@ -53,6 +49,8 @@ export class HomeComponent {
         cookingTime: recipeOfDayDto.cookingTime
       };
     });
+
+    this.preloaderShow = false;
   }
 
   showLoginModal() {

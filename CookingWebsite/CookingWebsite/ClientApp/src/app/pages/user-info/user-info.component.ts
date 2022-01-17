@@ -52,9 +52,7 @@ export class UserInfoComponent {
       this.userRecipes = recipeCards;
     });
 
-    setTimeout(() => {
-      this.preloaderShow = false;
-    }, 3000);
+    this.preloaderShow = false;
   }
 
   private getUserInfo(): void {
