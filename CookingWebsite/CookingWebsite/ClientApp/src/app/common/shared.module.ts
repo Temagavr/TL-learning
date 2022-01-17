@@ -18,6 +18,8 @@ import { GoBackButtonComponent } from './go-back-button/go-back-button.component
 import { RecipeLikeService } from './recipe-card/recipe-like.service';
 import { RecipeFavouriteService } from './recipe-card/recipe-favourite.service';
 
+import { PreloaderComponent } from './preloader/preloader.component';
+
 @NgModule({
   declarations: [
     TagsTypeComponent,
@@ -29,7 +31,8 @@ import { RecipeFavouriteService } from './recipe-card/recipe-favourite.service';
     RegistrationModalComponent,
     SearchInputComponent,
     RecipeCardComponent,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    PreloaderComponent
   ],
   imports: [ CommonModule, FormsModule ],
   exports: [
@@ -42,7 +45,8 @@ import { RecipeFavouriteService } from './recipe-card/recipe-favourite.service';
     TagsListComponent,
     SearchInputComponent,
     RecipeCardComponent,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    PreloaderComponent
   ],
   providers: [ RecipeLikeService, RecipeFavouriteService ]
 })

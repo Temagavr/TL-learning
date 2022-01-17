@@ -19,6 +19,8 @@ export class RecipesListPageComponent {
   @ViewChild(SearchInputComponent, { static: false })
   private searchInput: SearchInputComponent;
 
+  public preloaderShow = true;
+
   private searchString: string = '';
 
   ngOnInit() {
@@ -46,6 +48,8 @@ export class RecipesListPageComponent {
     this.recipeSearchService.getRecipeList(0, 4, this.searchString).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
     });
+
+    this.preloaderShow = false;
   }
 
   loadMoreRecipes() {

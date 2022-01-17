@@ -20,6 +20,8 @@ export class RecipeDetailsComponent {
   ) {
   }
 
+  public preloaderShow = true;
+
   public recipeCard: RecipeCard;
 
   public isCanModify: boolean = false;
@@ -89,6 +91,8 @@ export class RecipeDetailsComponent {
         this.recipeSteps.push(step);
       }
     });
+
+    this.preloaderShow = false;
   }
 
   public async deleteRecipe(): Promise<void>{

@@ -13,6 +13,8 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent {
 
+  public preloaderShow = true;
+
   public dayRecipe: DayRecipeDto = {
     image: '',
     authorUsername: '',
@@ -47,6 +49,8 @@ export class HomeComponent {
         cookingTime: recipeOfDayDto.cookingTime
       };
     });
+
+    this.preloaderShow = false;
   }
 
   showLoginModal() {

@@ -15,6 +15,8 @@ export class UserInfoComponent {
   constructor( private userInfoService: UserInfoService) {
   }
 
+  public preloaderShow = true;
+
   userInfo: UserInfoDto = {
     login: "",
     name: "",
@@ -49,6 +51,8 @@ export class UserInfoComponent {
     this.userInfoService.getUserRecipes(0, 4).then((recipeCards: RecipeCard[]) => {
       this.userRecipes = recipeCards;
     });
+
+    this.preloaderShow = false;
   }
 
   private getUserInfo(): void {

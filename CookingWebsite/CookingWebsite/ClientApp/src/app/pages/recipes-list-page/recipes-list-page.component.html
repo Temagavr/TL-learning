@@ -1,13 +1,16 @@
 <div class="content-block">
-  <app-recipes-title></app-recipes-title>
-  <app-tags-list (tagClicked)="insertTagValue($event)" [tagsList]="tagsInfo"></app-tags-list>
+  <app-load-spinner *ngIf="preloaderShow"></app-load-spinner>
+  <div *ngIf="!preloaderShow">
+    <app-recipes-title></app-recipes-title>
+    <app-tags-list (tagClicked)="insertTagValue($event)" [tagsList]="tagsInfo"></app-tags-list>
 
-  <div class="recipe-search-block">
-    <h3 class="recipe-search-title">Поиск рецепта</h3>
-    <div class="recipe-search">
-      <app-search-input (onSearchClick)="searchRecipes($event)" [recommendsTags]="recommendsList"></app-search-input>
+    <div class="recipe-search-block">
+      <h3 class="recipe-search-title">Поиск рецепта</h3>
+      <div class="recipe-search">
+        <app-search-input (onSearchClick)="searchRecipes($event)" [recommendsTags]="recommendsList"></app-search-input>
+      </div>
     </div>
-  </div>
 
-  <app-recipes-list (onLoadMoreClick)="loadMoreRecipes()" [recipes]="recipes"></app-recipes-list>
+    <app-recipes-list (onLoadMoreClick)="loadMoreRecipes()" [recipes]="recipes"></app-recipes-list>
+  </div>
 </div>

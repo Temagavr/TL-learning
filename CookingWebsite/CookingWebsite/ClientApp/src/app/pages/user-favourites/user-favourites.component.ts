@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { RecipeCard } from '../../common/recipe-card/recipe-card';
 import { Router } from '@angular/router';
@@ -15,10 +15,14 @@ export class UserFavouritesComponent {
 
   constructor(private router: Router, private userFavouritesService: UserFavouritesService) { }
 
+  public preloaderShow = true;
+
   ngOnInit() {
     this.userFavouritesService.getUserFavourites(0, 4).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
     });
+
+    this.preloaderShow = false;
   }
 
   loadMoreRecipes() {
