@@ -38,11 +38,14 @@ export class UserInfoCardComponent {
 
   changeVisibility() {
     event.preventDefault();
+    var visibilityIcon = document.getElementById("visibilityIcon");
     var passwordInput = document.getElementById("user_password_card") as HTMLInputElement;
     if (passwordInput.type == "password") {
       passwordInput.type = "text";
+      visibilityIcon.classList.add('view');
     } else {
       passwordInput.type = "password";
+      visibilityIcon.classList.remove('view');
     }
   }
 

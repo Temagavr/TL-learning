@@ -12,10 +12,11 @@ export class RecipesListComponent {
 
   @Input() recipes: RecipeCard[];
 
+  @Input() loadMoreFlag: boolean;
+
   @Output() onLoadMoreClick = new EventEmitter();
 
   loadMoreRecipes() {
-    console.log('Try to load more recipes');
     this.onLoadMoreClick.emit();
   }
 }

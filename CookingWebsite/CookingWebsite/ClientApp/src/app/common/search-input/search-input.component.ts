@@ -17,6 +17,10 @@ export class SearchInputComponent {
     this.inputValue = tagName;
   }
 
+  recomendTagClick(recomendValue) {
+    this.inputValue = recomendValue;
+  }
+
   searchClick() {
     this.onSearchClick.emit(this.inputValue);
   }

@@ -6,7 +6,7 @@
     <div *ngIf="recipes.length > 0">
       <app-recipe-card *ngFor="let recipeInfo of recipes" [recipeInfo]="recipeInfo"></app-recipe-card>
 
-      <div (click)="loadMoreRecipes()" class="load-more-block">
+      <div *ngIf="loadMoreFlag" (click)="loadMoreRecipes()" class="load-more-block">
         <span class="load-more-btn">Загрузить еще</span>
       </div>
 

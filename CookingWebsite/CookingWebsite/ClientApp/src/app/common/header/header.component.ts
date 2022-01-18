@@ -50,5 +50,4 @@ export class HeaderComponent {
   usernameClick() {
     this.router.navigate(["/user/info"]);
   }
-
 }

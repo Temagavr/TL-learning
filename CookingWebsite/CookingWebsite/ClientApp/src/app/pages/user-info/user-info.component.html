@@ -10,6 +10,8 @@
     <div class="user-statistic">
       <app-user-info-metric *ngFor="let metric of userStatistic" [userMetric]="metric"></app-user-info-metric>
     </div>
-    <app-user-info-recipes-list (loadMoreClick)="loadMoreRecipes()" [recipes]="userRecipes"></app-user-info-recipes-list>
+    <app-user-info-recipes-list (loadMoreFlag)="loadMoreFlag"
+                                (loadMoreClick)="loadMoreRecipes()"
+                                [recipes]="userRecipes"></app-user-info-recipes-list>
   </div>
 </div>

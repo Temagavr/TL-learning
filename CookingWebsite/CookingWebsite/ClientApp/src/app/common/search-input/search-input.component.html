@@ -5,7 +5,7 @@
   </div>
   <div class="recomends-list-block">
     <ul class="recomends-list">
-      <li class="recomend-el" *ngFor="let recommendWord of recommendsTags">{{recommendWord}}</li>
+      <li class="recomend-el" *ngFor="let recommendWord of recommendsTags" (click)="recomendTagClick(recommendWord)">{{recommendWord}}</li>
     </ul>
   </div>
 </div>
