@@ -82,6 +82,7 @@ export class AppComponent {
       this.loginModal.close();
     } else {
       this.loginModal.loginError();
+      alert('Неправильный логин или пароль!');
     }
   }
 
