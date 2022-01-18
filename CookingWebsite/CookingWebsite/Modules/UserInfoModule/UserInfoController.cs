@@ -51,8 +51,7 @@ namespace CookingWebsite.Modules.UserInfoModule
 
             int skip = 0;
             int take = 100;
-            List<Recipe> recipes = new List<Recipe>();
-            recipes = await _recipeRepository.GetUserRecipes(skip, take, userId);
+            List<Recipe> recipes = await _recipeRepository.GetUserRecipes(skip, take, userId);
 
             return user.Map(userLikes, userFavourites, recipes);
         }

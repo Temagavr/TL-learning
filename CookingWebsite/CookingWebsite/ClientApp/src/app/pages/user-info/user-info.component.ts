@@ -17,11 +17,13 @@ export class UserInfoComponent {
 
   public preloaderShow = true;
 
+  public loadMoreFlag = true;
+
   userInfo: UserInfoDto = {
     login: "",
     name: "",
     description: "",
-    password: "xxx",
+    password: "",
     favouritesCount: 0,
     likesCount: 0,
     recipesCount: 0
@@ -31,7 +33,7 @@ export class UserInfoComponent {
     login: "",
     name: "",
     description: "",
-    password: "xxx",
+    password: "",
     favouritesCount: 0,
     likesCount: 0,
     recipesCount: 0
@@ -50,6 +52,10 @@ export class UserInfoComponent {
 
     this.userInfoService.getUserRecipes(0, 4).then((recipeCards: RecipeCard[]) => {
       this.userRecipes = recipeCards;
+
+      if (recipeCards.length < 4) {
+        this.loadMoreFlag = false;
+      }
     });
 
     this.preloaderShow = false;
@@ -78,6 +84,10 @@ export class UserInfoComponent {
     this.userInfoService.getUserRecipes(skip, take).then((recipeCards: RecipeCard[]) => {
       for (let recipe of recipeCards) {
         this.userRecipes.push(recipe);
+      }
+
+      if (recipeCards.length < 2) {
+        this.loadMoreFlag = false;
       }
     });
   }

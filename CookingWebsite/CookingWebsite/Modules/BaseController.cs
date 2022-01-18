@@ -13,16 +13,5 @@ namespace CookingWebsite.Modules
         {
             return Convert.ToInt32(User.FindFirstValue(Claims.UserId));
         }
-
-        public string GetAuthorizedUserUsername()
-        {
-            return User.FindFirstValue(Claims.Username);
-        }
-
-        public void ChangeAuthorizedUserName(string newName)
-        {
-
-        }
-
     }
 }

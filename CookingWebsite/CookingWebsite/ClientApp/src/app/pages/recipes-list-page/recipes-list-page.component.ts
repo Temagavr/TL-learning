@@ -21,6 +21,8 @@ export class RecipesListPageComponent {
 
   public preloaderShow = true;
 
+  public loadMoreFlag = true;
+
   private searchString: string = '';
 
   ngOnInit() {
@@ -47,9 +49,14 @@ export class RecipesListPageComponent {
 
     this.recipeSearchService.getRecipeList(0, 4, this.searchString).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
+
+      if (recipeCards.length < 4) {
+        this.loadMoreFlag = false;
+      }
     });
 
     this.preloaderShow = false;
+
   }
 
   loadMoreRecipes() {
@@ -58,6 +65,10 @@ export class RecipesListPageComponent {
     this.recipeSearchService.getRecipeList(skip, 2, this.searchString).then((recipeCards: RecipeCard[]) => {
       for (let recipe of recipeCards) {
         this.recipes.push(recipe);
+      }
+
+      if (recipeCards.length < 2) {
+        this.loadMoreFlag = false;
       }
     });
   }

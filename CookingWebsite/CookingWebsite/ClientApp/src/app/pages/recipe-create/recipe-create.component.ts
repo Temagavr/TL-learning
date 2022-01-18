@@ -41,7 +41,7 @@ export class RecipeCreateComponent {
 
   ingredients: AddRecipeIngredientFront[] = [{
     title: '',
-    items: ''
+    items: 'Мясо - 1кг.\nСоль - по вкусу'
   }];
 
   async addRecipe() {

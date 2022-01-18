@@ -17,9 +17,15 @@ export class UserFavouritesComponent {
 
   public preloaderShow = true;
 
+  public loadMoreFlag = true;
+
   ngOnInit() {
     this.userFavouritesService.getUserFavourites(0, 4).then((recipeCards: RecipeCard[]) => {
       this.recipes = recipeCards;
+
+      if (recipeCards.length < 4) {
+        this.loadMoreFlag = false;
+      }
     });
 
     this.preloaderShow = false;
@@ -32,6 +38,10 @@ export class UserFavouritesComponent {
     this.userFavouritesService.getUserFavourites(skip, take).then((recipeCards: RecipeCard[]) => {
       for (let recipe of recipeCards) {
         this.recipes.push(recipe);
+      }
+
+      if (recipeCards.length < 2) {
+        this.loadMoreFlag = false;
       }
     });
   }

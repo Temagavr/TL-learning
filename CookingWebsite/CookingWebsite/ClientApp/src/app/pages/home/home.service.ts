@@ -14,8 +14,6 @@ export class HomeService extends HttpService {
   private url = 'api/home';
 
   public async getRecipeOfDay(): Promise<DayRecipeDto> {
-    console.log('Try to get recipe of day');
-
     const response: DayRecipeDto = await this.Get(`${this.url}/recipe-of-day`);
 
     return response;

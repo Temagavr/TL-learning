@@ -10,6 +10,8 @@ export class UserInfoRecipesListComponent {
 
   @Input() recipes: RecipeCard[];
 
+  @Input() loadMoreFlag: boolean;
+
   @Output() loadMoreClick = new EventEmitter();
 
   constructor(
