@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -34,7 +35,7 @@ import { PreloaderComponent } from './preloader/preloader.component';
     GoBackButtonComponent,
     PreloaderComponent
   ],
-  imports: [ CommonModule, FormsModule ],
+  imports: [ CommonModule, FormsModule, RouterModule ],
   exports: [
     TagsTypeComponent,
     HeaderComponent,
