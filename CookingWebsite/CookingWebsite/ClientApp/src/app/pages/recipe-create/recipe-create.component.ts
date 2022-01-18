@@ -90,7 +90,6 @@ export class RecipeCreateComponent {
       for (let tag of tags) {
         this.addRecipeDto.tags.push(tag.trim().toLowerCase());
       }
-
     }
 
     await this.recipeCUService.addRecipe(this.addRecipeDto);
