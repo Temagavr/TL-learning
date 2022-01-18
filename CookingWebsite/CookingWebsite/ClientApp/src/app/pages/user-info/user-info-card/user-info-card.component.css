@@ -57,6 +57,12 @@
   background-size: 24px;
 }
 
+.change-visibility-icon.view {
+  background: url('../../../../assets/noVisibilityIcon.png') no-repeat #FFFFFF;
+  opacity: 0.5;
+  top: 13px;
+}
+
 .right-user-info {
   width: 48%;
 }

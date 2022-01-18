@@ -4,7 +4,7 @@
     <input [(ngModel)]="userInfo.login" (blur)="changeLogin()" class="user-login user-info-input input-style" name="login" id="user_login_card" />
     <div class="password-block">
       <input [(ngModel)]="userInfo.password" placeholder="***" (blur)="changePassword()" class="user-password user-info-input input-style" type="password" id="user_password_card" />
-      <a href="#" class="change-visibility-icon" (click)="changeVisibility()"></a>
+      <a href="#" class="change-visibility-icon" (click)="changeVisibility()" id="visibilityIcon"></a>
     </div>
   </div>
   <div class="right-user-info">
