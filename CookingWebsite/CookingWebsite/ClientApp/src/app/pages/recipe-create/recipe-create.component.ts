@@ -23,6 +23,8 @@ export class RecipeCreateComponent {
   ) {
   }
 
+  public publishFlag = false;
+
   addRecipeDto: AddRecipeDto = {
     image: null,
     imageUrl: '',
@@ -45,55 +47,78 @@ export class RecipeCreateComponent {
   }];
 
   async addRecipe() {
-    this.addRecipeDto.ingredients = this.ingredients.map(function (ingredient): RecipeIngredientDto {
-      let ingredientDto: RecipeIngredientDto = {
-        title: '',
-        items: []
-      };
+    if (!this.checkData) {
+      alert("Заполните все поля для публикации рецепта!");
+    }
+    else {
 
-      ingredientDto.title = ingredient.title.trim();
-      let ingredientsFront: string[] = ingredient.items.trim().split('\n');
+      this.addRecipeDto.ingredients = this.ingredients.map(function (ingredient): RecipeIngredientDto {
+        let ingredientDto: RecipeIngredientDto = {
+          title: '',
+          items: []
+        };
 
-      ingredientDto.items = ingredientsFront.map(function (item: string): RecipeIngredientItemDto {
-        let ingredientItems: string[] = item.split('-');
+        ingredientDto.title = ingredient.title.trim();
+        let ingredientsFront: string[] = ingredient.items.trim().split('\n');
 
-        let itemDto: RecipeIngredientItemDto = {
-          name: ingredientItems[0].trim(),
-          value: ingredientItems[1].trim()
-        }
+        ingredientDto.items = ingredientsFront.map(function (item: string): RecipeIngredientItemDto {
+          let ingredientItems: string[] = item.split('-');
 
-        return itemDto;
+          let itemDto: RecipeIngredientItemDto = {
+            name: ingredientItems[0].trim(),
+            value: ingredientItems[1].trim()
+          }
+
+          return itemDto;
+        })
+
+        return ingredientDto;
       })
 
-      return ingredientDto;
-    })
+      for (let [index, step] of this.steps.entries()) {
+        let stepDto: AddRecipeStepDto = {
+          stepNumber: index + 1,
+          description: step.trim()
+        };
 
-    for (let [index, step] of this.steps.entries()) {
-      let stepDto: AddRecipeStepDto = {
-        stepNumber: index + 1,
-        description: step.trim()
-      };
+        this.addRecipeDto.steps.push(stepDto);
+      }
 
-      this.addRecipeDto.steps.push(stepDto);
+      await this.accountService.getUser().then((user: AuthorizedUserDto) => {
+        if (user.id != 0) {
+          this.addRecipeDto.authorUsername = user.login;
+        }
+      });
+
+      if (this.addRecipeDto.tagsString != '') {
+
+        let tags: string[] = this.addRecipeDto.tagsString.split(',');
+
+        for (let tag of tags) {
+          this.addRecipeDto.tags.push(tag.trim().toLowerCase());
+        }
+      }
+
+      await this.recipeCUService.addRecipe(this.addRecipeDto);
+
+      this.router.navigate(["/recipes"]);
+    }
+  }
+
+  private checkData(): boolean {
+    if (this.addRecipeDto.image == null ||
+      this.addRecipeDto.title == '' ||
+      this.addRecipeDto.description == '' ||
+      this.addRecipeDto.cookingTime == 0 ||
+      this.addRecipeDto.personsCount == 0 ||
+      this.steps.length == 0 ||
+      this.steps[0] == '' ||
+      this.ingredients.length == 0 ||
+      this.ingredients[0].title == '' ||
+      this.ingredients[0].items == '') {
+      return false;
     }
 
-	  await this.accountService.getUser().then((user: AuthorizedUserDto) => {
-      if (user.id != 0) {
-        this.addRecipeDto.authorUsername = user.login;
-      }
-    });
-
-	  if (this.addRecipeDto.tagsString != '') {
-
-      let tags: string[] = this.addRecipeDto.tagsString.split(',');
-
-      for (let tag of tags) {
-        this.addRecipeDto.tags.push(tag.trim().toLowerCase());
-      }
-    }
-
-    await this.recipeCUService.addRecipe(this.addRecipeDto);
-
-    this.router.navigate(["/recipes"]);
+    return true;
   }
 }
