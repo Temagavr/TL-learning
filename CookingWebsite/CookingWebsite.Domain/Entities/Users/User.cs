@@ -27,7 +27,7 @@ namespace CookingWebsite.Domain.Entities.Users
 
         public void UpdateName(string newValue)
         {
-            if (newValue.Length > 3)
+            if (newValue.Length < 3)
             {
                 throw new Exception();    
             }

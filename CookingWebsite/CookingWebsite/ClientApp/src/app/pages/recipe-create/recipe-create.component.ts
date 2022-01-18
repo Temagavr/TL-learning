@@ -47,7 +47,7 @@ export class RecipeCreateComponent {
   }];
 
   async addRecipe() {
-    if (!this.checkData) {
+    if (!this.checkData()) {
       alert("Заполните все поля для публикации рецепта!");
     }
     else {
